@@ -21,6 +21,7 @@ import cpw.mods.fml.common.registry.*;
 @Mod(modid = KeyCraft.MODID, version = KeyCraft.VERSION)
 public class KeyCraft {
 	
+	//Made by Kanbe-Kotori&xfgryujk
 	public static final String MODID = "keycraft";
     public static final String VERSION = "Demo-2.3.1";
     
