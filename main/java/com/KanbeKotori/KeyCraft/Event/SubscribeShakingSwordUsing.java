@@ -3,6 +3,7 @@ package com.KanbeKotori.KeyCraft.Event;
 import com.KanbeKotori.KeyCraft.KeyCraft;
 import com.KanbeKotori.KeyCraft.Helper.MainHelper;
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.KanbeKotori.KeyCraft.Items.ModItems;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -27,7 +28,7 @@ public class SubscribeShakingSwordUsing {
 		
 		for (int i=0; i<36; i++) {
 			if ((itemstacks[i] = player.inventory.mainInventory[i]) != null) {
-				if (itemstacks[i].getItem() == KeyCraft.PointShakingSword) {
+				if (itemstacks[i].getItem() == ModItems.PointShakingSword) {
 					if (held != itemstacks[i]) {
 						player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.useshakingsword")));
 			            player.inventory.mainInventory[i] = new ItemStack(Items.iron_sword, rwhelper.getShakingSwordDamage(player));
@@ -47,7 +48,7 @@ public class SubscribeShakingSwordUsing {
 		ItemStack held = player.getHeldItem();
 		for (int i=0; i<36; i++) {
 			if ((itemstacks[i] = player.inventory.mainInventory[i]) != null) {
-				if (itemstacks[i].getItem() == KeyCraft.PointShakingSword) {
+				if (itemstacks[i].getItem() == ModItems.PointShakingSword) {
 					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.useshakingsword")));
 			        player.inventory.mainInventory[i] = new ItemStack(Items.iron_sword, 1, rwhelper.getShakingSwordDamage(player));
 				}	

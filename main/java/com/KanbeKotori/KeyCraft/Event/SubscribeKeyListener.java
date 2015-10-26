@@ -13,6 +13,7 @@ import org.lwjgl.input.Keyboard;
 import com.KanbeKotori.KeyCraft.KeyCraft;
 import com.KanbeKotori.KeyCraft.GUI.*;
 import com.KanbeKotori.KeyCraft.Helper.*;
+import com.KanbeKotori.KeyCraft.Items.ModItems;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
@@ -36,17 +37,17 @@ public class SubscribeKeyListener {
     		if (held == null) {
     			if (rwhelper.getPoint(playerSv, 312) && rwhelper.getAuroraPoint(playerSv) > 1) {
 	    			rwhelper.minusAuroraPoint(playerSv, 1);
-	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(KeyCraft.PointAuroraBlade, 1));
+	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.PointAuroraBlade, 1));
 	    			playerSv.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.callblade")));
 	    		} else if (rwhelper.getPoint(playerSv, 311) && rwhelper.getAuroraPoint(playerSv) > 1) {
 	    			rwhelper.minusAuroraPoint(playerSv, 1);
-	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(KeyCraft.PointAuroraTrident, 1));
+	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.PointAuroraTrident, 1));
 	    			playerSv.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.calltrident")));
 	    		}
 	    	} else if (held.getItem() == Items.iron_sword) {
 	    		if (rwhelper.getPoint(playerSv, 231) && rwhelper.getAuroraPoint(playerSv) > 1) {
 	    			rwhelper.setShakingSwordDamage(playerSv, held.getItemDamage());
-	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(KeyCraft.PointShakingSword, 1));
+	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.PointShakingSword, 1));
 	    			rwhelper.minusAuroraPoint(playerSv, 1);
 	    			playerSv.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.shakingsword")));
 	    		}
