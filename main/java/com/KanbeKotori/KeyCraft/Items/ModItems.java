@@ -4,6 +4,7 @@ import com.KanbeKotori.KeyCraft.KeyCraft;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -20,6 +21,8 @@ public class ModItems {
     public static Item PeachJuice;
     public static Item MapoTofu;
     public static Item PizzaJam;
+    public static Item AkikoJam;
+    public static Item BreadWithJam;
     
     public static void InitItems() {
     	//
@@ -74,11 +77,23 @@ public class ModItems {
     	GameRegistry.addRecipe(new ItemStack(MapoTofu), new Object[] { "ABA", "ACA", "AAA", 'A', new ItemStack(Items.dye, 1, 1), 
     																   'B', Items.blaze_powder, 'C', Items.bowl });
     	
-    	PizzaJam = (new ItemFood(20, false))
-    			.setPotionEffect(Potion.field_76443_y.id, 60, 0, 1.0F)
+    	PizzaJam = (new ItemFood(4, false))
+    			.setPotionEffect(Potion.field_76443_y.id, 60, -1, 1.0F)
     			.setUnlocalizedName("PizzaJam").setTextureName("keycraft:PizzaJam").setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(PizzaJam, "PizzaJam");
-    	//GameRegistry.addRecipe(new ItemStack(PizzaJam), new Object[] {  });
+    	GameRegistry.addRecipe(new ItemStack(PizzaJam), new Object[] { "AAA", "ABA", "AAA", 'A', Blocks.red_flower, 'B', Items.glass_bottle });
+    	
+    	AkikoJam = (new ItemFood(4, false))
+    			.setPotionEffect(Potion.confusion.id, 20, 3, 1.0F)
+    			.setUnlocalizedName("AkikoJam").setTextureName("keycraft:AkikoJam").setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(AkikoJam, "AkikoJam");
+    	GameRegistry.addRecipe(new ItemStack(AkikoJam), new Object[] { "AAA", "ABA", "AAA", 'A', Blocks.yellow_flower, 'B', Items.glass_bottle });
+    	
+    	BreadWithJam = (new ItemBreadWithJam(-20))
+    			.setPotionEffect(Potion.confusion.id, 60, 3, 1.0F)
+    			.setUnlocalizedName("BreadWithJam").setTextureName("keycraft:SanaeBread").setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(BreadWithJam, "BreadWithJam");
+    	GameRegistry.addShapelessRecipe(new ItemStack(BreadWithJam), new Object[] { SanaeBread, AkikoJam });
     }
 
 }
