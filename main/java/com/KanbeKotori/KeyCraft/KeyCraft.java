@@ -18,13 +18,12 @@ import cpw.mods.fml.common.Mod.*;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.registry.*;
 
-@Mod(modid = KeyCraft.MODID, version = KeyCraft.VERSION)
+@Mod(modid = KeyCraft.MODID, name = KeyCraft.MODNAME, version = KeyCraft.VERSION)
 public class KeyCraft {
 	
-	public static final String MODID = "keycraft";
+	public static final String MODID = "KeyCraft";
+	public static final String MODNAME = "KeyCraft";
     public static final String VERSION = "Demo-2.3.1";
-    
-    public static CreativeTabs CreativeTab = new CreativeTab("KeyCraft");
     
     @SidedProxy(clientSide = "com.KanbeKotori.KeyCraft.ClientProxy",
             	serverSide = "com.KanbeKotori.KeyCraft.CommonProxy")
@@ -32,6 +31,8 @@ public class KeyCraft {
  
     @Instance("KeyCraft")
     public static KeyCraft instance;
+    
+    public static CreativeTabs CreativeTab = new CreativeTab("KeyCraft");
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {

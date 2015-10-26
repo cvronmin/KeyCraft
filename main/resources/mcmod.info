@@ -1,0 +1,12 @@
+{
+  "modListVersion": 2,
+  "modList": [{
+    "modid": "KeyCraft",
+    "name": "KeyCraft",
+    "description": "A Minecraft MOD by Kanbe-Kotori & xfgryujk.",
+    "version": "Demo-2.3.1",
+    "mcversion": "1.7.10",
+    "url": "https://github.com/xfgryujk/KeyCraft",
+    "authorList": [ "Kanbe-Kotori", "xfgryujk" ]
+  }]
+}
