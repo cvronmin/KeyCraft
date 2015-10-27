@@ -3,6 +3,8 @@ package com.KanbeKotori.KeyCraft;
 import com.KanbeKotori.KeyCraft.Event.*;
 import com.KanbeKotori.KeyCraft.Items.*;
 import com.KanbeKotori.KeyCraft.*;
+import com.KanbeKotori.KeyCraft.Entities.EntityBaseball;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -39,6 +41,13 @@ public class KeyCraft {
     	proxy.preInit(event);
     	
     	ModItems.InitItems();
+    	
+    	// 
+    	// Init entities
+    	//
+
+    	int modID = 1;
+    	EntityRegistry.registerModEntity(EntityBaseball.class, "EntityBaseball", modID++, this, 128, 1, true);
     }
     
     @EventHandler

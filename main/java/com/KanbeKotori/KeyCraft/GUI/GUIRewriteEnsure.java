@@ -9,21 +9,19 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 public class GUIRewriteEnsure extends GuiScreen {
-	MainHelper mainhelper = new MainHelper();
-	RewriteHelper rwhelper = new RewriteHelper();
 	
 	private GuiScreen parentScreen;
-	private int pointNum;
+	private int skillNum;
 
 	private GuiButton btnYes;
 	private GuiButton btnCancel;
 	
-	private String playername = mainhelper.getName();
-	private EntityPlayer playerSv = mainhelper.getPlayerSv(playername);
+	private String playername = MainHelper.getName();
+	private EntityPlayer playerSv = MainHelper.getPlayerSv(playername);
 	 
     public GUIRewriteEnsure(GuiScreen parent, int num) {
     	parentScreen = parent;
-        pointNum = num;
+        skillNum = num;
     }
     
     public void initGui() {
@@ -35,7 +33,7 @@ public class GUIRewriteEnsure extends GuiScreen {
     	
     	drawDefaultBackground();
     	
-        if (rwhelper.getPoint(playerSv, 0)) {
+        if (RewriteHelper.getPoint(playerSv, 0)) {
         	mc.renderEngine.bindTexture(ResourceHelper.bg1);
         	func_146110_a((int)(width*0.05), (int)(height*0.05), 0, 0, (int)(width*0.9), (int)(height*0.8), (int)(width*0.9), (int)(height*0.8));
         } else {
@@ -48,7 +46,7 @@ public class GUIRewriteEnsure extends GuiScreen {
         mc.renderEngine.bindTexture(ResourceHelper.logo);
     	func_146110_a((int)(width*0.1), (int)(height*0.1), 0, 0, 128, 57, 128, 57);
     	
-        switch (pointNum) {
+        switch (skillNum) {
         	case 000:
         		mc.renderEngine.bindTexture(ResourceHelper.icon000);
         		func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
@@ -222,12 +220,12 @@ public class GUIRewriteEnsure extends GuiScreen {
 		if (button == btnCancel) {
 	        mc.displayGuiScreen(parentScreen);
 	    } else if (button == btnYes) {
-	    	if (pointNum == 000) {
-	    		rwhelper.setPoint_First(playerSv);
+	    	if (skillNum == 000) {
+	    		RewriteHelper.setPoint_First(playerSv);
 	    	} else {
-	    		if (rwhelper.getAuroraPoint(playerSv) > rwhelper.getAuroraRequired(pointNum)) {
-	    			rwhelper.minusAuroraPoint(playerSv, rwhelper.getAuroraRequired(pointNum));
-	    			rwhelper.setPoint(playerSv, pointNum, true);
+	    		if (RewriteHelper.getAuroraPoint(playerSv) > RewriteHelper.getAuroraRequired(skillNum)) {
+	    			RewriteHelper.minusAuroraPoint(playerSv, RewriteHelper.getAuroraRequired(skillNum));
+	    			RewriteHelper.setPoint(playerSv, skillNum, true);
 	    		}
 	    	}
 	        mc.displayGuiScreen(parentScreen);

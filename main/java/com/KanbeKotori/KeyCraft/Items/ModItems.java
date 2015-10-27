@@ -17,12 +17,15 @@ public class ModItems {
     public static Item PointShakingSword;
     public static Item PointAuroraTrident;
     public static Item PointAuroraBlade;
+    
     public static Item SanaeBread;
     public static Item PeachJuice;
     public static Item MapoTofu;
     public static Item PizzaJam;
     public static Item AkikoJam;
     public static Item BreadWithJam;
+    
+    public static Item Baseball;
     
     public static void InitItems() {
     	//
@@ -94,6 +97,16 @@ public class ModItems {
     			.setUnlocalizedName("BreadWithJam").setTextureName("keycraft:SanaeBread").setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(BreadWithJam, "BreadWithJam");
     	GameRegistry.addShapelessRecipe(new ItemStack(BreadWithJam), new Object[] { SanaeBread, AkikoJam });
+    	
+    	//
+    	// Init other items
+    	//
+    	
+    	Baseball = (new ItemBaseball())
+    			.setMaxStackSize(16)
+    			.setUnlocalizedName("Baseball").setTextureName("keycraft:Baseball").setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(Baseball, "Baseball");
+    	GameRegistry.addRecipe(new ItemStack(Baseball, 4), new Object[] { " A ", "ABA", " A ", 'A', Items.leather, 'B', Items.wheat });
     }
 
 }

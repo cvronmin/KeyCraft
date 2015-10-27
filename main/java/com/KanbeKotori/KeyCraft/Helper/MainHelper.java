@@ -10,13 +10,11 @@ import net.minecraft.server.management.ServerConfigurationManager;
 
 public class MainHelper {
 	
-	public EntityPlayer getPlayerCl() {
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-		return player;
+	public static EntityPlayer getPlayerCl() {
+		return Minecraft.getMinecraft().thePlayer;
 	}
 	
-	public EntityPlayer getPlayerSv(String name) {
-
+	public static EntityPlayer getPlayerSv(String name) {
 	    ServerConfigurationManager server = MinecraftServer.getServer().getConfigurationManager();
 	    ArrayList pl = (ArrayList) server.playerEntityList;
 	    ListIterator list = pl.listIterator();
@@ -28,12 +26,10 @@ public class MainHelper {
 	        }
 	    }
 	    return null;
-
 	}
 	
-	public String getName() {
-		EntityPlayer player = this.getPlayerCl();
-		return player.getDisplayName();
+	public static String getName() {
+		return getPlayerCl().getDisplayName();
 	}
 
 }
