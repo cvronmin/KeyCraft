@@ -1,3 +1,7 @@
+/*A Minecraft Mod, Developed by Kanbe-Kotori&xfgryujk
+ * 
+ */
+
 package com.KanbeKotori.KeyCraft;
 
 import com.KanbeKotori.KeyCraft.Event.*;
