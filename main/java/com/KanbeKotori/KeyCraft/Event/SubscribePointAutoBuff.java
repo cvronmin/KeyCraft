@@ -97,7 +97,7 @@ public class SubscribePointAutoBuff {
 	public void Point_AutoBuffResistance(LivingAttackEvent event) {
 		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = mainhelper.getPlayerSv(mainhelper.getName());
-			if (event.source.damageType == "arrow" || event.source.damageType == "mob"|| event.source.damageType == "player") {
+			if (event.source.damageType == "arrow" || event.source.damageType == "mob" || event.source.damageType == "player") {
 				if (rwhelper.getPoint(player, 211) && isCD_Buff_Resistance()) {
 					player.addPotionEffect(new PotionEffect(11, 400, 1));
 					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.resistance")));

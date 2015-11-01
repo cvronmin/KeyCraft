@@ -24,7 +24,10 @@ public class SubscribeShakingSwordUsing {
 		String name = mainhelper.getName();
 		EntityPlayer player = mainhelper.getPlayerSv(name);
 		ItemStack itemstacks[] = new ItemStack[36];
-		ItemStack held = player.getHeldItem();
+		ItemStack held = null;
+		if (player != null) {
+			held = player.getHeldItem();
+		}
 		
 		for (int i=0; i<36; i++) {
 			if ((itemstacks[i] = player.inventory.mainInventory[i]) != null) {
