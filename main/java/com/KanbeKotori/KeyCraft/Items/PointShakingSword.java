@@ -6,6 +6,8 @@ import com.KanbeKotori.KeyCraft.Event.*;
 import com.KanbeKotori.KeyCraft.Helper.*;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,6 +40,12 @@ public class PointShakingSword extends ItemSword {
 		return true;
 		
 	}
+	
+	@SideOnly(Side.CLIENT)
+    public boolean hasEffect(ItemStack p_77636_1_)
+    {
+        return true;
+    }
 	
 	@Override
 	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
