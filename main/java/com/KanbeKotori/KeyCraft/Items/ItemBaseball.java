@@ -1,13 +1,13 @@
 package com.KanbeKotori.KeyCraft.Items;
 
-import com.KanbeKotori.KeyCraft.Entities.EntityBaseball;
-import com.KanbeKotori.KeyCraft.Helper.MainHelper;
-import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import java.util.List;
 
+import com.KanbeKotori.KeyCraft.Entities.EntityBaseball;
+import com.KanbeKotori.KeyCraft.Helper.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySnowball;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class ItemBaseball extends Item {
@@ -37,5 +37,12 @@ public class ItemBaseball extends Item {
 
         return stack;
     }
+	
+	@Override
+	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
+		p_77624_3_.add(StatCollector.translateToLocal("keycraft.item.intro_baseball_1"));
+		p_77624_3_.add(StatCollector.translateToLocal("keycraft.item.intro_baseball_2"));
+		p_77624_3_.add(StatCollector.translateToLocal("keycraft.item.intro_baseball_3"));
+	}
 
 }

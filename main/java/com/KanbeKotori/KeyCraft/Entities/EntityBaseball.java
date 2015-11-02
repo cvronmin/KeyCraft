@@ -20,9 +20,11 @@ public class EntityBaseball extends EntityThrowable {
         super(world, thrower);
     }
 	
+	//ÒôËÙß÷ß÷Çò
 	public EntityBaseball(World world, EntityLivingBase thrower, float speed) {
         super(world, thrower);
         this.SPEED = speed;
+        this.DAMAGE = speed;
     }
 	
 	protected void onImpact(MovingObjectPosition target) {

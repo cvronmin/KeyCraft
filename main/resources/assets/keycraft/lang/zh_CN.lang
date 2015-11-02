@@ -82,7 +82,7 @@ keycraft.prompt.againstmagic=欧若拉的力量从魔法的破坏中保护了你
 keycraft.prompt.againstmagicplus=食屎啦你！
 
 
-keycraft.prompt.cheat1=小鸟的力量帮助了你。
+keycraft.prompt.cheat1=获得100欧若拉点。
 
 keycraft.item.intro231_1=超振动中的铁剑，看起来非常危险。
 keycraft.item.intro231_2=要小心脱手。
@@ -90,6 +90,10 @@ keycraft.item.intro311_1=用欧若拉制作而成的三叉戟，打架斗殴必�
 keycraft.item.intro311_2=要记住不要脱手或用爆掉哦~
 keycraft.item.intro312_1=用欧若拉制作而成的剑，适用于砍树，开山，削人等等。
 keycraft.item.intro312_2=要记住不要脱手或用爆掉哦~
+
+keycraft.item.intro_baseball_1=优质棒球，蓝色品质，5G一件。
+keycraft.item.intro_baseball_2=习得技能No.???『投掷物精通』后可用于投掷。
+keycraft.item.intro_baseball_3=习得技能No.232『蛮力』后可升级为『音速喵喵球』。
 
 item.PointShakingSword.name=超振动中的铁剑
 item.PointAuroraTrident.name=欧若拉三叉戟
