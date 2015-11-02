@@ -12,6 +12,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
@@ -27,7 +28,6 @@ public class PointAuroraBlade extends ItemTool {
 	
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int meta) {
-		 
 		 if (HARVESTABLE.contains(block.getHarvestTool(meta))) {
 			 return efficiencyOnProperMaterial;
 		 } else {
@@ -38,7 +38,6 @@ public class PointAuroraBlade extends ItemTool {
 	 
 	 @Override
 	 public boolean canHarvestBlock(Block block, ItemStack itemStack) {
-		 
 		 if (HARVESTABLE.contains(block.getHarvestTool(0))) {
 			 return true;
 		 } else {
@@ -48,7 +47,6 @@ public class PointAuroraBlade extends ItemTool {
 	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		
 		if (stack.getItemDamage() >= 64) {
 			EntityPlayer player = (EntityPlayer)attacker;
 			World world = player.getEntityWorld();
@@ -60,13 +58,11 @@ public class PointAuroraBlade extends ItemTool {
 		}
 		
 		stack.damageItem(1, attacker);
-		
 		return true;
 	}
 	
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World worldIn, Block blockIn, int posX, int posY ,int posZ, EntityLivingBase entity) {
-	    
 		if(worldIn.isRemote) {
 	        return true;
 	    }
@@ -82,38 +78,33 @@ public class PointAuroraBlade extends ItemTool {
 		}
 		
 		stack.damageItem(1, entity);
-		
 		return true;
-		
 	}
 	
 	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
-    {
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
         player.setItemInUse(stack, 72000);
         return stack;
     }
 	
 	@Override
-	public EnumAction getItemUseAction(ItemStack p_77661_1_)
-    {
+	public EnumAction getItemUseAction(ItemStack p_77661_1_) {
         return EnumAction.block;
     }
 	
 	@Override
-	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(StatCollector.translateToLocal("keycraft.item.intro2_1"));
-		p_77624_3_.add(StatCollector.translateToLocal("keycraft.item.intro2_2"));
+	public void addInformation(ItemStack stack, EntityPlayer player, List information, boolean p_77624_4_) {
+		information.add(StatCollector.translateToLocal("keycraft.item.intro2_1"));
+		information.add(StatCollector.translateToLocal("keycraft.item.intro2_2"));
 	}
 	
 	@SubscribeEvent
-    public void brokenAurora(EventOnAuroraBreak event)
-    {
+    public void brokenAurora(EventOnAuroraBreak event) {
 		EntityPlayer attacker = event.entityPlayer;
-        attacker.addPotionEffect(new PotionEffect(2, 6000, 1));
-        attacker.addPotionEffect(new PotionEffect(4, 6000, 3));
-        attacker.addPotionEffect(new PotionEffect(9, 6000));
-        attacker.addPotionEffect(new PotionEffect(18, 6000, 3));
+        attacker.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 6000, 1));
+        attacker.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 6000, 3));
+        attacker.addPotionEffect(new PotionEffect(Potion.confusion.id, 6000));
+        attacker.addPotionEffect(new PotionEffect(Potion.weakness.id, 6000, 3));
     }
 
 }

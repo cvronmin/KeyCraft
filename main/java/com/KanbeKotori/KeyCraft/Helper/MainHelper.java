@@ -16,11 +16,9 @@ public class MainHelper {
 	
 	public static EntityPlayer getPlayerSv(String name) {
 	    ServerConfigurationManager server = MinecraftServer.getServer().getConfigurationManager();
-	    ArrayList pl = (ArrayList) server.playerEntityList;
-	    ListIterator list = pl.listIterator();
-
-	    while (list.hasNext()){
-	        EntityPlayer p = (EntityPlayer) list.next();
+	    
+	    for (ListIterator list = server.playerEntityList.listIterator(); list.hasNext(); ) {
+	        EntityPlayer p = (EntityPlayer)list.next();
 	        if(p.getGameProfile().getName().equals(name)){
 	            return p;
 	        }

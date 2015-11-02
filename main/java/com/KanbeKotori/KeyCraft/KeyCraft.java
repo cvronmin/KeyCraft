@@ -1,6 +1,4 @@
-/*A Minecraft Mod, Developed by Kanbe-Kotori&xfgryujk
- * 
- */
+/* A Minecraft MOD made by Kanbe-Kotori & xfgryujk */
 
 package com.KanbeKotori.KeyCraft;
 

@@ -11,6 +11,7 @@ public class ItemBreadWithJam extends ItemFood {
 	}
 	
 	@SideOnly(Side.CLIENT)
+	@Override
     public boolean hasEffect(ItemStack p_77636_1_)
     {
         return true;

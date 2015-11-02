@@ -11,19 +11,16 @@ import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class SubscribePointAutoRecovery {
 	
-	private MainHelper mainhelper = new MainHelper();
-	private RewriteHelper rwhelper = new RewriteHelper();
-	
 	@SubscribeEvent
 	public void Point_AutoRecover(PlayerTickEvent event) {
 		
-		EntityPlayer player = mainhelper.getPlayerSv(mainhelper.getName());
+		EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
 		
-		if (rwhelper.getPoint(player, 343)) {
+		if (RewriteHelper.getPoint(player, 343)) {
 			Random random = new Random();
 			int ran = random.nextInt(2400);
 			if (ran == 1200) {
-				rwhelper.addAuroraPoint(player, 1);
+				RewriteHelper.addAuroraPoint(player, 1);
 			}
 		}
 		

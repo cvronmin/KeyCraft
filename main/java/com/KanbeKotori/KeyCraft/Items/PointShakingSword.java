@@ -25,32 +25,28 @@ public class PointShakingSword extends ItemSword {
 	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		
 		EntityPlayer player = (EntityPlayer)attacker;
 		EventOnShakingSwordUse EventOnShakingSwordUse = new EventOnShakingSwordUse(player);
 		MinecraftForge.EVENT_BUS.post(EventOnShakingSwordUse);	
 		return true;
-		
 	}
 	
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World worldIn, Block blockIn, int posX, int posY ,int posZ, EntityLivingBase entity) {
-		
 		stack.damageItem(0, entity);
 		return true;
-		
 	}
 	
 	@SideOnly(Side.CLIENT)
-    public boolean hasEffect(ItemStack p_77636_1_)
-    {
+	@Override
+    public boolean hasEffect(ItemStack p_77636_1_) {
         return true;
     }
 	
 	@Override
-	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(StatCollector.translateToLocal("keycraft.item.intro231_1"));
-		p_77624_3_.add(StatCollector.translateToLocal("keycraft.item.intro231_2"));
+	public void addInformation(ItemStack stack, EntityPlayer player, List information, boolean p_77624_4_) {
+		information.add(StatCollector.translateToLocal("keycraft.item.intro231_1"));
+		information.add(StatCollector.translateToLocal("keycraft.item.intro231_2"));
 	}
 
 }

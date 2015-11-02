@@ -14,13 +14,10 @@ public class SubscribePointAgainstMagic {
 	private long last_against_magic = 0;
 	private long last_mention = 0;
 	
-	private MainHelper mainhelper = new MainHelper();
-	private RewriteHelper rwhelper = new RewriteHelper();
-	
 	public boolean isCD_against_arrow(EntityPlayer player) {
     	if (System.currentTimeMillis() - last_against_arrow >= 10000) {
     		last_against_arrow = System.currentTimeMillis();
-    		rwhelper.minusAuroraPoint(player, 1);
+    		RewriteHelper.minusAuroraPoint(player, 1);
     		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstarrow")));
     		return true;
     	}
@@ -30,7 +27,7 @@ public class SubscribePointAgainstMagic {
 	public boolean isCD_against_magic(EntityPlayer player) {
     	if (System.currentTimeMillis() - last_against_magic >= 10000) {
     		last_against_magic = System.currentTimeMillis();
-    		rwhelper.minusAuroraPoint(player, 1);
+    		RewriteHelper.minusAuroraPoint(player, 1);
     		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagic")));
     		return true;
     	}
@@ -49,20 +46,20 @@ public class SubscribePointAgainstMagic {
 	@SubscribeEvent
 	public void PointAgainstMagic(LivingAttackEvent event) {
 		if (event.entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = mainhelper.getPlayerSv(mainhelper.getName());
+			EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
 			if (event.source.damageType == "arrow" || event.source.damageType == "explosion") {
-				if (rwhelper.getPoint(player, 333)) {
+				if (RewriteHelper.getPoint(player, 333)) {
     				event.setCanceled(true);
     				isCD_mention(player);
-    			} else if (rwhelper.getPoint(player, 331)) {
+    			} else if (RewriteHelper.getPoint(player, 331)) {
     				event.setCanceled(true);
     				isCD_against_arrow(player);
     			}
     		} else if (event.source.damageType == "magic" || event.source.damageType == "indirectMagic") {
-    			if (rwhelper.getPoint(player, 333)) {
+    			if (RewriteHelper.getPoint(player, 333)) {
     				event.setCanceled(true);
     				isCD_mention(player);
-    			} else if (rwhelper.getPoint(player, 332)) {
+    			} else if (RewriteHelper.getPoint(player, 332)) {
     				event.setCanceled(true);
     				isCD_against_magic(player);
     			}

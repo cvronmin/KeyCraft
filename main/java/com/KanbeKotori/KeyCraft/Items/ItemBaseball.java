@@ -28,10 +28,10 @@ public class ItemBaseball extends Item {
     }
 	
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List infomation, boolean p_77624_4_) {
-		infomation.add(StatCollector.translateToLocal("keycraft.item.intro_baseball_1"));
-		infomation.add(StatCollector.translateToLocal("keycraft.item.intro_baseball_2"));
-		infomation.add(StatCollector.translateToLocal("keycraft.item.intro_baseball_3"));
+	public void addInformation(ItemStack stack, EntityPlayer player, List information, boolean p_77624_4_) {
+		information.add(StatCollector.translateToLocal("keycraft.item.intro_baseball_1"));
+		information.add(StatCollector.translateToLocal("keycraft.item.intro_baseball_2"));
+		information.add(StatCollector.translateToLocal("keycraft.item.intro_baseball_3"));
 	}
 
 }

@@ -11,9 +11,6 @@ import com.KanbeKotori.KeyCraft.Helper.*;
 
 public class GUIRewrite extends GuiScreen {
 	
-	MainHelper mainhelper = new MainHelper();
-	RewriteHelper rwhelper = new RewriteHelper();
-	
 	public GuiScreen parentScreen;
 
 	private GuiButton btnSkill000;
@@ -21,28 +18,29 @@ public class GUIRewrite extends GuiScreen {
 	private GuiButton btnSkillLogging;
 	private GuiButton btnSkillPolluting;
 	
-	private String playername = mainhelper.getName();
-	private EntityPlayer playerSv = mainhelper.getPlayerSv(playername);
+	private String playername = MainHelper.getName();
+	private EntityPlayer playerSv = MainHelper.getPlayerSv(playername);
 	 
     public GUIRewrite(GuiScreen parent) {
          parentScreen = parent;
     }
- 
+
+    @Override
     public void initGui() {
-    	if (!rwhelper.getPoint(playerSv, 0)) {
+    	if (!RewriteHelper.getPoint(playerSv, 0)) {
     		buttonList.add(btnSkill000 = new GuiButton(0, (int)(width * 0.5 - 32), (int)(height*0.4), 64, 64, ""));
     	}
-    	if (rwhelper.getPoint(playerSv, 0)) {
+    	if (RewriteHelper.getPoint(playerSv, 0)) {
     		buttonList.add(btnSkillHunting = new GuiButton(1, (int)(width * 0.25 - 32), (int)(height*0.4), 64, 64, ""));
     		buttonList.add(btnSkillLogging = new GuiButton(2, (int)(width * 0.5 - 32), (int)(height*0.4), 64, 64, ""));    	
     		buttonList.add(btnSkillPolluting = new GuiButton(3, (int)(width * 0.75 - 32), (int)(height*0.4), 64, 64, ""));    	
     	}
     }
- 
+
+    @Override
     public void drawScreen(int par1, int par2, float par3) {
-    	
         drawDefaultBackground();
-        if (rwhelper.getPoint(playerSv, 0)) {
+        if (RewriteHelper.getPoint(playerSv, 0)) {
         	mc.renderEngine.bindTexture(ResourceHelper.bg1);
         	func_146110_a((int)(width*0.05), (int)(height*0.05), 0, 0, (int)(width*0.9), (int)(height*0.8), (int)(width*0.9), (int)(height*0.8));
         } else {
@@ -58,29 +56,29 @@ public class GUIRewrite extends GuiScreen {
     	super.drawScreen(par1,par2,par3);
     	
         String point;
-        if (rwhelper.getPoint(playerSv, 0)) {
-        	point = rwhelper.getAuroraPoint(playerSv) + "";
+        if (RewriteHelper.getPoint(playerSv, 0)) {
+        	point = RewriteHelper.getAuroraPoint(playerSv) + "";
         } else {
         	point = "???";
         }
         drawString(fontRendererObj, "Your Aurora Point:" + point, (int)(width*0.5), (int)(height*0.2), 0xFFFFFF);
 
-        if (!rwhelper.getPoint(playerSv, 0)) {
+        if (!RewriteHelper.getPoint(playerSv, 0)) {
         	mc.renderEngine.bindTexture(ResourceHelper.icon000);
     		func_146110_a((int)(width * 0.5 - 32), (int)(height * 0.4), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.category.title0"), (int)(width * 0.5), (int)(height * 0.7), 0xFFFFFF);
         }
-        if (rwhelper.getPoint(playerSv, 0)) {
+        if (RewriteHelper.getPoint(playerSv, 0)) {
         	mc.renderEngine.bindTexture(ResourceHelper.category1);
         	func_146110_a((int)(width * 0.25 - 32), (int)(height * 0.4), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.category.title1"), (int)(width * 0.25), (int)(height * 0.7), 0xFFFFFF);
         }
-        if (rwhelper.getPoint(playerSv, 0)) {
+        if (RewriteHelper.getPoint(playerSv, 0)) {
         	mc.renderEngine.bindTexture(ResourceHelper.category2);
         	func_146110_a((int)(width * 0.5 - 32), (int)(height * 0.4), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.category.title2"), (int)(width * 0.5), (int)(height * 0.7), 0xFFFFFF);
         }
-        if (rwhelper.getPoint(playerSv, 0)) {
+        if (RewriteHelper.getPoint(playerSv, 0)) {
         	mc.renderEngine.bindTexture(ResourceHelper.category3);
         	func_146110_a((int)(width * 0.75 - 32), (int)(height * 0.4), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.category.title3"), (int)(width * 0.75), (int)(height * 0.7), 0xFFFFFF);
@@ -91,7 +89,7 @@ public class GUIRewrite extends GuiScreen {
     @Override
 	protected void actionPerformed(GuiButton button) {
 		if (button == btnSkill000) {
-	    	if (!rwhelper.hasFirstSet(playerSv)) {
+	    	if (!RewriteHelper.hasFirstSet(playerSv)) {
 	    		mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 000));
 	    	}
     	} else if (button == btnSkillHunting) {
@@ -115,5 +113,4 @@ public class GUIRewrite extends GuiScreen {
     	return (GUIRewrite) mc.currentScreen;
     }
     
-
 }

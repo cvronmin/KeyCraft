@@ -16,13 +16,10 @@ import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class SubscribeAuroraRecycle {
 	
-	private MainHelper mainhelper = new MainHelper();
-	private RewriteHelper rwhelper = new RewriteHelper();
-	
 	@SubscribeEvent
 	public void Aurora_Recycle(PlayerTickEvent event) {
-		String name = mainhelper.getName();
-		EntityPlayer player = mainhelper.getPlayerSv(name);
+		String name = MainHelper.getName();
+		EntityPlayer player = MainHelper.getPlayerSv(name);
 		ItemStack itemstacks[] = new ItemStack[36];
 		ItemStack held = player.getHeldItem();
 		
@@ -52,10 +49,10 @@ public class SubscribeAuroraRecycle {
 	
 	@SubscribeEvent
 	public void Aurora_Recycle(EventOnAuroraRecycle event) {
-		String name = mainhelper.getName();
-		EntityPlayer player = mainhelper.getPlayerSv(name);
+		String name = MainHelper.getName();
+		EntityPlayer player = MainHelper.getPlayerSv(name);
 		if (event.proportion == 0) {
-			rwhelper.addAuroraPoint(player, 1);
+			RewriteHelper.addAuroraPoint(player, 1);
 		} else {
 			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recyclerate") + event.proportion));
 			int time = (int)(6000 * event.proportion);

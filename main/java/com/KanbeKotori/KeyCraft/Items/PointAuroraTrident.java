@@ -23,7 +23,6 @@ public class PointAuroraTrident extends ItemSword {
 	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		
 		if (stack.getItemDamage() >= 64) {
 			EntityPlayer player = (EntityPlayer)attacker;
 			World world = player.getEntityWorld();
@@ -35,13 +34,11 @@ public class PointAuroraTrident extends ItemSword {
 		}
 		
 		stack.damageItem(1, attacker);
-		
 		return true;
 	}
 	
 	@Override
 	public boolean onBlockDestroyed(ItemStack stack, World worldIn, Block blockIn, int posX, int posY ,int posZ, EntityLivingBase entity) {
-	    
 		if(worldIn.isRemote) {
 	        return true;
 	    }
@@ -57,15 +54,13 @@ public class PointAuroraTrident extends ItemSword {
 		}
 		
 		stack.damageItem(1, entity);
-		
 		return true;
-		
 	}
 	
 	@Override
-	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
-		p_77624_3_.add(StatCollector.translateToLocal("keycraft.item.intro1_1"));
-		p_77624_3_.add(StatCollector.translateToLocal("keycraft.item.intro1_2"));
+	public void addInformation(ItemStack stack, EntityPlayer player, List information, boolean p_77624_4_) {
+		information.add(StatCollector.translateToLocal("keycraft.item.intro1_1"));
+		information.add(StatCollector.translateToLocal("keycraft.item.intro1_2"));
 	}
 
 }

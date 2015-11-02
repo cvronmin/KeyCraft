@@ -1,5 +1,3 @@
-/* A Minecraft MOD made by Kanbe-Kotori & xfgryujk */
-
 package com.KanbeKotori.KeyCraft.Items;
 
 import com.KanbeKotori.KeyCraft.*;
