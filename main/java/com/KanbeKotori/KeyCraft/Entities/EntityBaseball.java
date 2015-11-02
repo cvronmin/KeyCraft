@@ -20,6 +20,11 @@ public class EntityBaseball extends EntityThrowable {
         super(world, thrower);
     }
 	
+	public EntityBaseball(World world, EntityLivingBase thrower, float speed) {
+        super(world, thrower);
+        this.SPEED = speed;
+    }
+	
 	protected void onImpact(MovingObjectPosition target) {
         if (target.entityHit != null) {
             target.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), DAMAGE);
