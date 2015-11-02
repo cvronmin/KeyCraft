@@ -2,23 +2,21 @@
 
 package com.KanbeKotori.KeyCraft.Items;
 
-import com.KanbeKotori.KeyCraft.KeyCraft;
+import com.KanbeKotori.KeyCraft.*;
+import com.KanbeKotori.KeyCraft.Helper.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
+import net.minecraft.init.*;
+import net.minecraft.item.*;
 import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
 
 public class ModItems {
 	
-    public static Item PointShakingSword;
-    public static Item PointAuroraTrident;
-    public static Item PointAuroraBlade;
+    public static Item ShakingSword;
+    public static Item AuroraTrident;
+    public static Item AuroraBlade;
     
     public static Item SanaeBread;
     public static Item PeachJuice;
@@ -28,23 +26,24 @@ public class ModItems {
     public static Item BreadWithJam;
     
     public static Item Baseball;
+    public static Item WirePole;
     
     public static void InitItems() {
     	//
     	// Init skills
     	//
     	
-    	PointShakingSword = new PointShakingSword();
-    	PointShakingSword.setUnlocalizedName("PointShakingSword").setTextureName("keycraft:PointShakingSword").setCreativeTab(null);
-    	GameRegistry.registerItem(PointShakingSword, "PointShakingSword");
+    	ShakingSword = new PointShakingSword();
+    	ShakingSword.setUnlocalizedName("ShakingSword").setTextureName("keycraft:PointShakingSword").setCreativeTab(null);
+    	GameRegistry.registerItem(ShakingSword, "ShakingSword");
     	
-    	PointAuroraTrident = new PointAuroraTrident();
-    	PointAuroraTrident.setUnlocalizedName("PointAuroraTrident").setTextureName("keycraft:PointAuroraTrident").setCreativeTab(null);
-    	GameRegistry.registerItem(PointAuroraTrident, "PointAuroraTrident");
+    	AuroraTrident = new PointAuroraTrident();
+    	AuroraTrident.setUnlocalizedName("AuroraTrident").setTextureName("keycraft:PointAuroraTrident").setCreativeTab(null);
+    	GameRegistry.registerItem(AuroraTrident, "AuroraTrident");
     	
-    	PointAuroraBlade = new PointAuroraBlade();
-		PointAuroraBlade.setUnlocalizedName("PointAuroraBlade").setTextureName("keycraft:PointAuroraBlade").setCreativeTab(null);
-    	GameRegistry.registerItem(PointAuroraBlade, "PointAuroraBlade");
+    	AuroraBlade = new PointAuroraBlade();
+		AuroraBlade.setUnlocalizedName("AuroraBlade").setTextureName("keycraft:PointAuroraBlade").setCreativeTab(null);
+    	GameRegistry.registerItem(AuroraBlade, "AuroraBlade");
     	
     	//
     	// Init food
@@ -109,6 +108,12 @@ public class ModItems {
     			.setUnlocalizedName("Baseball").setTextureName("keycraft:Baseball").setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(Baseball, "Baseball");
     	GameRegistry.addRecipe(new ItemStack(Baseball, 4), new Object[] { " A ", "ABA", " A ", 'A', Items.leather, 'B', Items.wheat });
+    	
+    	WirePole = (new ItemWirePole())
+    			.setUnlocalizedName("WirePole").setTextureName("keycraft:ItemWirePole").setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(WirePole, "WirePole");
+    	GameRegistry.addRecipe(new ItemStack(WirePole), new Object[] { "ABA", "ABA", "ABA", 'A', Blocks.stone, 'B', Items.iron_ingot });
+    	ToolMaterialHelper.WirePole.setRepairItem(new ItemStack(Items.iron_ingot));
     }
 
 }

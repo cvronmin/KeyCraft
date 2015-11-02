@@ -28,7 +28,7 @@ public class SubscribeAuroraRecycle {
 		
 		for (int i=0; i<36; i++) {
 			if ((itemstacks[i] = player.inventory.mainInventory[i]) != null) {
-				if (itemstacks[i].getItem() == ModItems.PointAuroraTrident) {
+				if (itemstacks[i].getItem() == ModItems.AuroraTrident) {
 					if (held != itemstacks[i]) {
 						double pp = (double)itemstacks[i].getItemDamage() / itemstacks[i].getMaxDamage();
 						player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recycletrident")));
@@ -36,7 +36,7 @@ public class SubscribeAuroraRecycle {
 			            MinecraftForge.EVENT_BUS.post(EventOnAuroraRecycle);
 			            player.inventory.mainInventory[i] = null;
 					}
-				} else if (itemstacks[i].getItem() == ModItems.PointAuroraBlade) {
+				} else if (itemstacks[i].getItem() == ModItems.AuroraBlade) {
 					if (held != itemstacks[i]) {
 						double pp = (double)itemstacks[i].getItem().getDamage(itemstacks[i]) / itemstacks[i].getMaxDamage();
 						player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recycleblade")));

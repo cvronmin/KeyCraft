@@ -94,14 +94,19 @@ keycraft.item.intro312_2=要记住不要脱手或用爆掉哦~
 keycraft.item.intro_baseball_1=优质棒球，蓝色品质，5G一件。
 keycraft.item.intro_baseball_2=习得技能No.???『投掷物精通』后可用于投掷。
 keycraft.item.intro_baseball_3=习得技能No.232『蛮力』后可升级为『音速喵喵球』。
+keycraft.item.intro_WirePole_1=很常见、非常沉重的电线杆子。
+keycraft.item.intro_WirePole_2=习得技能No.232『蛮力』后可右键使用『横扫』。
 
-item.PointShakingSword.name=超振动中的铁剑
-item.PointAuroraTrident.name=欧若拉三叉戟
-item.PointAuroraBlade.name=欧若拉之刃
+item.ShakingSword.name=超振动中的铁剑
+item.AuroraTrident.name=欧若拉三叉戟
+item.AuroraBlade.name=欧若拉之刃
+
 item.SanaeBread.name=早苗面包
 item.PeachJuice.name=粘稠浓厚桃子味
 item.MapoTofu.name=麻婆豆腐
 item.PizzaJam.name=乙坂家秘制披萨酱
 item.AkikoJam.name=秋子秘制果酱
 item.BreadWithJam.name=？？？
+
 item.Baseball.name=棒球
+item.WirePole.name=电线杆子

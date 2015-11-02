@@ -31,7 +31,7 @@ public class SubscribeShakingSwordUsing {
 		
 		for (int i=0; i<36; i++) {
 			if ((itemstacks[i] = player.inventory.mainInventory[i]) != null) {
-				if (itemstacks[i].getItem() == ModItems.PointShakingSword) {
+				if (itemstacks[i].getItem() == ModItems.ShakingSword) {
 					if (held != itemstacks[i]) {
 						player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.useshakingsword")));
 			            player.inventory.mainInventory[i] = new ItemStack(Items.iron_sword, rwhelper.getShakingSwordDamage(player));
@@ -51,7 +51,7 @@ public class SubscribeShakingSwordUsing {
 		ItemStack held = player.getHeldItem();
 		for (int i=0; i<36; i++) {
 			if ((itemstacks[i] = player.inventory.mainInventory[i]) != null) {
-				if (itemstacks[i].getItem() == ModItems.PointShakingSword) {
+				if (itemstacks[i].getItem() == ModItems.ShakingSword) {
 					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.useshakingsword")));
 			        player.inventory.mainInventory[i] = new ItemStack(Items.iron_sword, 1, rwhelper.getShakingSwordDamage(player));
 				}	

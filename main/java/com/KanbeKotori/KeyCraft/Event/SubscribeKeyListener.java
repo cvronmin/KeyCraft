@@ -37,17 +37,17 @@ public class SubscribeKeyListener {
     		if (held == null) {
     			if (rwhelper.getPoint(playerSv, 312) && rwhelper.getAuroraPoint(playerSv) > 1) {
 	    			rwhelper.minusAuroraPoint(playerSv, 1);
-	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.PointAuroraBlade, 1));
+	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraBlade, 1));
 	    			playerSv.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.callblade")));
 	    		} else if (rwhelper.getPoint(playerSv, 311) && rwhelper.getAuroraPoint(playerSv) > 1) {
 	    			rwhelper.minusAuroraPoint(playerSv, 1);
-	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.PointAuroraTrident, 1));
+	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraTrident, 1));
 	    			playerSv.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.calltrident")));
 	    		}
 	    	} else if (held.getItem() == Items.iron_sword) {
 	    		if (rwhelper.getPoint(playerSv, 231) && rwhelper.getAuroraPoint(playerSv) > 1) {
 	    			rwhelper.setShakingSwordDamage(playerSv, held.getItemDamage());
-	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.PointShakingSword, 1));
+	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.ShakingSword, 1));
 	    			rwhelper.minusAuroraPoint(playerSv, 1);
 	    			playerSv.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.shakingsword")));
 	    		}

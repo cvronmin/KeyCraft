@@ -29,7 +29,7 @@ public class ItemBaseball extends Item {
 
         if (!world.isRemote) {
         	if (rwhelper.getPoint(player, 232)) {
-        		world.spawnEntityInWorld(new EntityBaseball(world, player, 10.0F));
+        		world.spawnEntityInWorld(new EntityBaseball(world, player, 5.0F, 10.0F));
         	} else {
         		world.spawnEntityInWorld(new EntityBaseball(world, player));
         	}

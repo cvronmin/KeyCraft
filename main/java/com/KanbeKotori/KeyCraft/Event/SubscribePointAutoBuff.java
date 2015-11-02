@@ -1,10 +1,15 @@
 package com.KanbeKotori.KeyCraft.Event;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+
 import com.KanbeKotori.KeyCraft.Helper.*;
+import com.KanbeKotori.KeyCraft.Items.ModItems;
+
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
@@ -16,8 +21,7 @@ public class SubscribePointAutoBuff {
 	public long last_Buff_Resistance = 0;
 	public long last_Buff_MoreHealth = 0;
 	public long last_Buff_Power = 0;
-	public long last_Buff_Heal = 0;
-	public long last_Buff_Burst = 0;
+	public long last_Buff_Continuous = 0;
 	
 	public boolean isCD_Buff_ER() {
     	if (System.currentTimeMillis() - last_Buff_ER >= 300000) {
@@ -51,21 +55,14 @@ public class SubscribePointAutoBuff {
     	return false;
     }
 	
-	public boolean isCD_Buff_Heal() {
-    	if (System.currentTimeMillis() - last_Buff_Heal >= 3000) {
-    		last_Buff_Heal = System.currentTimeMillis();
+	public boolean isCD_Buff_Continuous() {
+    	if (System.currentTimeMillis() - last_Buff_Continuous >= 3000) {
+    		last_Buff_Continuous = System.currentTimeMillis();
     		return true;
     	}
     	return false;
     }
 	
-	public boolean isCD_Buff_Burst() {
-    	if (System.currentTimeMillis() - last_Buff_Burst >= 3000) {
-    		last_Buff_Burst = System.currentTimeMillis();
-    		return true;
-    	}
-    	return false;
-    }
 	
 	@SubscribeEvent
 	public void Point_ER(PlayerTickEvent event) {
@@ -123,9 +120,9 @@ public class SubscribePointAutoBuff {
 	public void Point_AutoHeal(PlayerTickEvent event) {
 		EntityPlayer player = mainhelper.getPlayerSv(mainhelper.getName());
 		if (player.getHealth() < 20) {
-			if (rwhelper.getPoint(player, 342) && isCD_Buff_Heal()) {
+			if (rwhelper.getPoint(player, 342) && isCD_Buff_Continuous()) {
 				player.addPotionEffect(new PotionEffect(10, 80, 1));
-			} else if (rwhelper.getPoint(player, 341) && isCD_Buff_Heal()) {
+			} else if (rwhelper.getPoint(player, 341) && isCD_Buff_Continuous()) {
 				player.addPotionEffect(new PotionEffect(10, 80));
 			}
 		}
@@ -136,11 +133,27 @@ public class SubscribePointAutoBuff {
 	public void Point_Burst(PlayerTickEvent event) {
 		EntityPlayer player = mainhelper.getPlayerSv(mainhelper.getName());
 		
-		if (rwhelper.getPoint(player, 323) && rwhelper.getPoint(player, 333) && rwhelper.getPoint(player, 343) && isCD_Buff_Burst()) {
+		if (rwhelper.getPoint(player, 323) && rwhelper.getPoint(player, 333) && rwhelper.getPoint(player, 343) && isCD_Buff_Continuous()) {
 			player.addPotionEffect(new PotionEffect(1, 80, 255));
 			player.addPotionEffect(new PotionEffect(8, 80, 99));
 		}
 	
+	}
+	
+	@SubscribeEvent
+	public void Overweight(PlayerTickEvent event) {
+		String name = mainhelper.getName();
+		EntityPlayer player = mainhelper.getPlayerSv(name);
+		ItemStack held = player.getHeldItem();
+		if (held != null) {
+			if (held.getItem() == ModItems.WirePole) {
+				if (!rwhelper.getPoint(player, 232) && isCD_Buff_Continuous()) {
+					player.addPotionEffect(new PotionEffect(2, 80, 1)); 	
+				}
+			}
+				
+		}
+		
 	}
 
 }
