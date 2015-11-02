@@ -105,7 +105,7 @@ public class ModItems {
     			.setMaxStackSize(16)
     			.setUnlocalizedName("Baseball").setTextureName("keycraft:Baseball").setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(Baseball, "Baseball");
-    	GameRegistry.addRecipe(new ItemStack(Baseball, 4), new Object[] { " A ", "ABA", " A ", 'A', Items.leather, 'B', Items.wheat });
+    	GameRegistry.addRecipe(new ItemStack(Baseball, 4), new Object[] { " A ", "ABA", " A ", 'A', Items.leather, 'B', Blocks.planks });
     	
     	WirePole = (new ItemWirePole())
     			.setUnlocalizedName("WirePole").setTextureName("keycraft:ItemWirePole").setCreativeTab(KeyCraft.CreativeTab);
