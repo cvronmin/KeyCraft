@@ -39,7 +39,10 @@ public class MainHelper {
 	}
 	
 	public static String getName() {
-		return getPlayerCl().getDisplayName();
+		if (getPlayerCl() != null) {
+			return getPlayerCl().getDisplayName();
+		}
+		return null;
 	}
 
 }
