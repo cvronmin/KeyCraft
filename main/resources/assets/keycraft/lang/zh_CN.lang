@@ -3,6 +3,9 @@ keycraft.gui.category.title1=狩猎系
 keycraft.gui.category.title2=采伐系
 keycraft.gui.category.title3=污染系
 
+keycraft.gui.button.yes=升级，消耗
+keycraft.gui.button.cancel=取消
+
 keycraft.gui.ensure.title000=欧若拉认知
 keycraft.gui.ensure.title200=紧急防护
 keycraft.gui.ensure.title211=战斗准备

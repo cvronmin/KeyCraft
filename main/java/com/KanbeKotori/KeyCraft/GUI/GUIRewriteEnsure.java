@@ -25,8 +25,8 @@ public class GUIRewriteEnsure extends GuiScreen {
 
     @Override
     public void initGui() {
-    	buttonList.add(btnYes = new GuiButton(0, (int)(width*0.3) - 40, (int)(height*0.7), 80, 20, "确定"));
-    	buttonList.add(btnCancel = new GuiButton(1, (int)(width*0.7) - 40, (int)(height*0.7), 80, 20, "取消"));
+    	buttonList.add(btnYes = new GuiButton(0, (int)(width*0.3) - 40, (int)(height*0.7), 80, 20, StatCollector.translateToLocal("keycraft.gui.button.yes")+RewriteHelper.getAuroraRequired(skillNum)));
+    	buttonList.add(btnCancel = new GuiButton(1, (int)(width*0.7) - 40, (int)(height*0.7), 80, 20, StatCollector.translateToLocal("keycraft.gui.button.cancel")));
     }
 
     @Override
