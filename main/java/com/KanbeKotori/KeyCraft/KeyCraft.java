@@ -74,6 +74,7 @@ public class KeyCraft {
     	MinecraftForge.EVENT_BUS.register(new SubscribePointAgainstMagic());
     	MinecraftForge.EVENT_BUS.register(new SubscribePointAutoBuff());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnDead());
+    	MinecraftForge.EVENT_BUS.register(new SubscribeOnBlock());
     	MinecraftForge.EVENT_BUS.register(new SubscribeShakingSwordUsing());
     	MinecraftForge.EVENT_BUS.register(new PointAuroraBlade());
     	MinecraftForge.EVENT_BUS.register(new SubscribeAuroraRecycle());

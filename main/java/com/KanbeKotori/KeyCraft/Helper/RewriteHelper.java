@@ -30,7 +30,7 @@ public class RewriteHelper {
 	public static final Skill WitherAttach			= new Skill(223, 20);
 	public static final Skill SuperVibration		= new Skill(231, 10);
 	public static final Skill BruteForce			= new Skill(232, 10);
-	public static final Skill WeaponsProficient		= new Skill(233, 30);
+	public static final Skill ParryProficient		= new Skill(233, 30);
 	public static final Skill LifeSuck				= new Skill(241, 20);
 	public static final Skill PowerDown				= new Skill(242, 20);
 	public static final Skill AuroraRob				= new Skill(243, 20);
@@ -48,7 +48,7 @@ public class RewriteHelper {
 	public static final Skill AuroraRegeneration	= new Skill(343, 40);
 	
 	public static final Skill SKILLS[] = { AuroraCognition, UrgentProtect, UrgentProtect, BattleReadiness, PhysiqueUp, FireAttach, PoisonAttach, 
-			WitherAttach, SuperVibration, BruteForce, WeaponsProficient, LifeSuck, PowerDown, AuroraRob, AuroraControl, AuroraTrident, 
+			WitherAttach, SuperVibration, BruteForce, ParryProficient, LifeSuck, PowerDown, AuroraRob, AuroraControl, AuroraTrident, 
 			AuroraBlade, FireResist, FireResistUp, FireResistMax, FireResistMax, ExplosionResist, MagicResist, UltimateHardening, 
 			AuroraActivation, AuroraSurge, AuroraRegeneration };
 	
