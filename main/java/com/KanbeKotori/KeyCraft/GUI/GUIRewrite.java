@@ -90,7 +90,7 @@ public class GUIRewrite extends GuiScreen {
 	protected void actionPerformed(GuiButton button) {
 		if (button == btnSkill000) {
 	    	if (!RewriteHelper.hasFirstSet(playerSv)) {
-	    		mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 000));
+	    		mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.AuroraCognition.id));
 	    	}
     	} else if (button == btnSkillHunting) {
     		

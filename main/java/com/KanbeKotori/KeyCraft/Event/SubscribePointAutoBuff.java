@@ -47,7 +47,7 @@ public class SubscribePointAutoBuff {
     }
 	
 	public boolean isCD_Buff_MoreHealth() {
-    	if (System.currentTimeMillis() - last_Buff_MoreHealth >= 2147483647) {
+    	if (System.currentTimeMillis() - last_Buff_MoreHealth >= 0x7FFFFFFF) {
     		last_Buff_MoreHealth = System.currentTimeMillis();
     		return true;
     	}
@@ -66,13 +66,13 @@ public class SubscribePointAutoBuff {
 	@SubscribeEvent
 	public void Point_ER(PlayerTickEvent event) {
 		EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
-		if (RewriteHelper.getPoint(player, 200) && player.getHealth() <= 6 && RewriteHelper.getAuroraPoint(player) > 5) {
+		if (RewriteHelper.getPoint(player, RewriteHelper.UrgentProtect.id) && player.getHealth() <= 6 && RewriteHelper.getAuroraPoint(player) > 5) {
 			if (isCD_Buff_ER()) {
-			RewriteHelper.minusAuroraPoint(player, 5);
-			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 200, 1));
-			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 200, 4));
-			player.addPotionEffect(new PotionEffect(Potion.resistance.id, 200, 1));
-    		player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.er")));
+				RewriteHelper.minusAuroraPoint(player, 5);
+				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 200, 1));
+				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 200, 4));
+				player.addPotionEffect(new PotionEffect(Potion.resistance.id, 200, 1));
+	    		player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.er")));
 			}
 		}
 	}
