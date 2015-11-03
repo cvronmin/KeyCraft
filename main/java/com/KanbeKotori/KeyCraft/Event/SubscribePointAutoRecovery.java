@@ -12,7 +12,7 @@ import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 public class SubscribePointAutoRecovery {
 	
 	@SubscribeEvent
-	public void Point_AutoRecover(PlayerTickEvent event) {
+	public void Point_AuroraAutoRecover(PlayerTickEvent event) {
 		
 		EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
 		

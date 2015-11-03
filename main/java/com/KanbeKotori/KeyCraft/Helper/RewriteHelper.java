@@ -33,7 +33,7 @@ public class RewriteHelper {
 	public static final Skill ParryProficient		= new Skill(233, 20);
 	public static final Skill LifeSuck				= new Skill(241, 20);
 	public static final Skill PowerDown				= new Skill(242, 20);
-	public static final Skill AuroraRob				= new Skill(243, 20);
+	public static final Skill AuroraRob				= new Skill(243, 30);
 	public static final Skill AuroraControl			= new Skill(300, 5);
 	public static final Skill AuroraTrident			= new Skill(311, 5);
 	public static final Skill AuroraBlade			= new Skill(312, 10);

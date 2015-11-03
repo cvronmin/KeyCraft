@@ -124,7 +124,10 @@ public class SubscribePointAutoBuff {
 	@SubscribeEvent
 	public void Point_Burst(PlayerTickEvent event) {
 		EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
-		if (RewriteHelper.getPoint(player, RewriteHelper.FireResistMax.id) 
+		if (RewriteHelper.getPoint(player, RewriteHelper.PhysiqueUp.id)
+			&& RewriteHelper.getPoint(player, RewriteHelper.WitherAttach.id)
+			&& RewriteHelper.getPoint(player, RewriteHelper.AuroraRob.id)
+			&& RewriteHelper.getPoint(player, RewriteHelper.FireResistMax.id) 
 			&& RewriteHelper.getPoint(player, RewriteHelper.UltimateHardening.id) 
 			&& RewriteHelper.getPoint(player, RewriteHelper.AuroraRegeneration.id) 
 			&& isCD_Buff_Continuous()) {
