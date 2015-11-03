@@ -38,36 +38,36 @@ public class GUIRewrite_Polluting extends GuiScreen {
 
     @Override
 	public void initGui() {
-		if (RewriteHelper.getPoint(playerSv, 0))
-			buttonList.add(btnSkill300 = new GuiButton(300, (int)(width * 0.2 - 16), (int)(height * 0.4), 32, 32, ""));
-		if (RewriteHelper.getPoint(playerSv, 300))
-			buttonList.add(btnSkill311 = new GuiButton(311, (int)(width * 0.2 - 16), (int)(height * 0.55), 32, 32, ""));
-		if (RewriteHelper.getPoint(playerSv, 311))
-			buttonList.add(btnSkill312 = new GuiButton(312, (int)(width * 0.2 - 16), (int)(height * 0.7), 32, 32, ""));
-		if (RewriteHelper.getPoint(playerSv, 300))
-			buttonList.add(btnSkill321 = new GuiButton(321, (int)(width * 0.4 - 16), (int)(height * 0.4), 32, 32, ""));
-		if (RewriteHelper.getPoint(playerSv, 321))
-			buttonList.add(btnSkill322 = new GuiButton(322, (int)(width * 0.4 - 16), (int)(height * 0.55), 32, 32, ""));
-		if (RewriteHelper.getPoint(playerSv, 322))
-			buttonList.add(btnSkill323 = new GuiButton(323, (int)(width * 0.4 - 16), (int)(height * 0.7), 32, 32, ""));
-		if (RewriteHelper.getPoint(playerSv, 300))
-			buttonList.add(btnSkill331 = new GuiButton(331, (int)(width * 0.6 - 16), (int)(height * 0.4), 32, 32, ""));
-		if (RewriteHelper.getPoint(playerSv, 331))
-			buttonList.add(btnSkill332 = new GuiButton(332, (int)(width * 0.6 - 16), (int)(height * 0.55), 32, 32, ""));
-		if (RewriteHelper.getPoint(playerSv, 332))
-			buttonList.add(btnSkill333 = new GuiButton(333, (int)(width * 0.6 - 16), (int)(height * 0.7), 32, 32, ""));
-		if (RewriteHelper.getPoint(playerSv, 300))
-			buttonList.add(btnSkill341 = new GuiButton(341, (int)(width * 0.8 - 16), (int)(height * 0.4), 32, 32, ""));
-		if (RewriteHelper.getPoint(playerSv, 341))
-			buttonList.add(btnSkill342 = new GuiButton(342, (int)(width * 0.8 - 16), (int)(height * 0.55), 32, 32, ""));
-		if (RewriteHelper.getPoint(playerSv, 342))
-			buttonList.add(btnSkill343 = new GuiButton(343, (int)(width * 0.8 - 16), (int)(height * 0.7), 32, 32, ""));
+		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraCognition.id))
+			buttonList.add(btnSkill300 = new GuiButton(RewriteHelper.AuroraControl.id, (int)(width * 0.2 - 16), (int)(height * 0.4), 32, 32, ""));
+		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraControl.id))
+			buttonList.add(btnSkill311 = new GuiButton(RewriteHelper.AuroraTrident.id, (int)(width * 0.2 - 16), (int)(height * 0.55), 32, 32, ""));
+		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraTrident.id))
+			buttonList.add(btnSkill312 = new GuiButton(RewriteHelper.AuroraBlade.id, (int)(width * 0.2 - 16), (int)(height * 0.7), 32, 32, ""));
+		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraControl.id))
+			buttonList.add(btnSkill321 = new GuiButton(RewriteHelper.FireResist.id, (int)(width * 0.4 - 16), (int)(height * 0.4), 32, 32, ""));
+		if (RewriteHelper.getPoint(playerSv, RewriteHelper.FireResist.id))
+			buttonList.add(btnSkill322 = new GuiButton(RewriteHelper.FireResistUp.id, (int)(width * 0.4 - 16), (int)(height * 0.55), 32, 32, ""));
+		if (RewriteHelper.getPoint(playerSv, RewriteHelper.FireResistUp.id))
+			buttonList.add(btnSkill323 = new GuiButton(RewriteHelper.FireResistMax.id, (int)(width * 0.4 - 16), (int)(height * 0.7), 32, 32, ""));
+		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraControl.id))
+			buttonList.add(btnSkill331 = new GuiButton(RewriteHelper.ExplosionResist.id, (int)(width * 0.6 - 16), (int)(height * 0.4), 32, 32, ""));
+		if (RewriteHelper.getPoint(playerSv, RewriteHelper.ExplosionResist.id))
+			buttonList.add(btnSkill332 = new GuiButton(RewriteHelper.MagicResist.id, (int)(width * 0.6 - 16), (int)(height * 0.55), 32, 32, ""));
+		if (RewriteHelper.getPoint(playerSv, RewriteHelper.MagicResist.id))
+			buttonList.add(btnSkill333 = new GuiButton(RewriteHelper.UltimateHardening.id, (int)(width * 0.6 - 16), (int)(height * 0.7), 32, 32, ""));
+		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraControl.id))
+			buttonList.add(btnSkill341 = new GuiButton(RewriteHelper.AuroraActivation.id, (int)(width * 0.8 - 16), (int)(height * 0.4), 32, 32, ""));
+		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraActivation.id))
+			buttonList.add(btnSkill342 = new GuiButton(RewriteHelper.AuroraSurge.id, (int)(width * 0.8 - 16), (int)(height * 0.55), 32, 32, ""));
+		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraSurge.id))
+			buttonList.add(btnSkill343 = new GuiButton(RewriteHelper.AuroraRegeneration.id, (int)(width * 0.8 - 16), (int)(height * 0.7), 32, 32, ""));
 	}
 
     @Override
 	public void drawScreen(int par1, int par2, float par3) {
 		drawDefaultBackground();
-        if (RewriteHelper.getPoint(playerSv, 0)) {
+        if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraCognition.id)) {
         	mc.renderEngine.bindTexture(bg1);
         	func_146110_a((int)(width*0.05), (int)(height*0.05), 0, 0, (int)(width*0.9), (int)(height*0.8), (int)(width*0.9), (int)(height*0.8));
         } else {
@@ -82,61 +82,61 @@ public class GUIRewrite_Polluting extends GuiScreen {
        
    		super.drawScreen(par1,par2,par3);
    		String point;
-        if (RewriteHelper.getPoint(playerSv, 0)) {
+        if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraCognition.id)) {
         	point = RewriteHelper.getAuroraPoint(playerSv) + "";
         } else {
         	point = "???";
         }
    		drawString(fontRendererObj, "Your Aurora Point:" + point, (int)(width*0.5), (int)(height*0.2), 0xFFFFFF);
 
-   		if (RewriteHelper.getPoint(playerSv, 0)) {
+   		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraCognition.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon300);
    			func_146110_a((int)(width * 0.2 - 16), (int)(height * 0.4), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.getPoint(playerSv, 300)) {
+   		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraControl.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon311);
    			func_146110_a((int)(width * 0.2 - 16), (int)(height * 0.55), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.getPoint(playerSv, 311)) {
+   		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraTrident.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon312);
    			func_146110_a((int)(width * 0.2 - 16), (int)(height * 0.7), 0, 0, 32, 32, 32, 32);
    		}
    		
-   		if (RewriteHelper.getPoint(playerSv, 300)) {
+   		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraControl.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon321);
    			func_146110_a((int)(width * 0.4 - 16), (int)(height * 0.4), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.getPoint(playerSv, 321)) {
+   		if (RewriteHelper.getPoint(playerSv, RewriteHelper.FireResist.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon322);
    			func_146110_a((int)(width * 0.4 - 16), (int)(height * 0.55), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.getPoint(playerSv, 322)) {
+   		if (RewriteHelper.getPoint(playerSv, RewriteHelper.FireResistUp.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon323);
    			func_146110_a((int)(width * 0.4 - 16), (int)(height * 0.7), 0, 0, 32, 32, 32, 32);
    		}
    		
-   		if (RewriteHelper.getPoint(playerSv, 300)) {
+   		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraControl.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon331);
    			func_146110_a((int)(width * 0.6 - 16), (int)(height * 0.4), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.getPoint(playerSv, 331)) {
+   		if (RewriteHelper.getPoint(playerSv, RewriteHelper.ExplosionResist.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon332);
    			func_146110_a((int)(width * 0.6 - 16), (int)(height * 0.55), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.getPoint(playerSv, 332)) {
+   		if (RewriteHelper.getPoint(playerSv, RewriteHelper.MagicResist.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon333);
    			func_146110_a((int)(width * 0.6 - 16), (int)(height * 0.7), 0, 0, 32, 32, 32, 32);
    		}
    		
-   		if (RewriteHelper.getPoint(playerSv, 300)) {
+   		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraControl.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon341);
    			func_146110_a((int)(width * 0.8 - 16), (int)(height * 0.4), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.getPoint(playerSv, 341)) {
+   		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraActivation.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon342);
    			func_146110_a((int)(width * 0.8 - 16), (int)(height * 0.55), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.getPoint(playerSv, 342)) {
+   		if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraSurge.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon343);
    			func_146110_a((int)(width * 0.8 - 16), (int)(height * 0.7), 0, 0, 32, 32, 32, 32);
    		}
@@ -146,52 +146,52 @@ public class GUIRewrite_Polluting extends GuiScreen {
    @Override
 	protected void actionPerformed(GuiButton button) {
 	   if (button == btnSkill300) {
-		   if (!RewriteHelper.getPoint(playerSv, 300)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 300));
+		   if (!RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraControl.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.AuroraControl.id));
 		   }
 	   } else if (button == btnSkill311) {
-		   if (!RewriteHelper.getPoint(playerSv, 311)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 311));
+		   if (!RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraTrident.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.AuroraTrident.id));
 		   }
 	   } else if (button == btnSkill312) {
-		   if (!RewriteHelper.getPoint(playerSv, 312)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 312));
+		   if (!RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraBlade.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.AuroraBlade.id));
 		   }
 	   } else if (button == btnSkill321) {
-		   if (!RewriteHelper.getPoint(playerSv, 321)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 321));
+		   if (!RewriteHelper.getPoint(playerSv, RewriteHelper.FireResist.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.FireResist.id));
 		   }
 	   } else if (button == btnSkill322) {
-		   if (!RewriteHelper.getPoint(playerSv, 322)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 322));
+		   if (!RewriteHelper.getPoint(playerSv, RewriteHelper.FireResistUp.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.FireResistUp.id));
 		   }
 	   } else if (button == btnSkill323) {
-		   if (!RewriteHelper.getPoint(playerSv, 323)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 323));
+		   if (!RewriteHelper.getPoint(playerSv, RewriteHelper.FireResistMax.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.FireResistMax.id));
 		   }
 	   } else if (button == btnSkill331) {
-		   if (!RewriteHelper.getPoint(playerSv, 331)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 331));
+		   if (!RewriteHelper.getPoint(playerSv, RewriteHelper.ExplosionResist.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.ExplosionResist.id));
 		   }
 	   } else if (button == btnSkill332) {
-		   if (!RewriteHelper.getPoint(playerSv, 332)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 332));
+		   if (!RewriteHelper.getPoint(playerSv, RewriteHelper.MagicResist.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.MagicResist.id));
 		   }
 	   } else if (button == btnSkill333) {
-		   if (!RewriteHelper.getPoint(playerSv, 333)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 333));
+		   if (!RewriteHelper.getPoint(playerSv, RewriteHelper.UltimateHardening.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.UltimateHardening.id));
 		   }
 	   } else if (button == btnSkill341) {
-		   if (!RewriteHelper.getPoint(playerSv, 341)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 341));
+		   if (!RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraActivation.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.AuroraActivation.id));
 		   }
 	   } else if (button == btnSkill342) {
-		   if (!RewriteHelper.getPoint(playerSv, 342)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 342));
+		   if (!RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraSurge.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.AuroraSurge.id));
 		   }
 	   } else if (button == btnSkill343) {
-		   if (!RewriteHelper.getPoint(playerSv, 343)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), 343));
+		   if (!RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraRegeneration.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.AuroraRegeneration.id));
 		   }
 	   }
 	}

@@ -24,7 +24,7 @@ public class SubscribeAuroraRecycle {
 		ItemStack itemstacks[] = new ItemStack[36];
 		ItemStack held = player.getHeldItem();
 		
-		for (int i=0; i<36; i++) {
+		for (int i = 0; i < 36; i++) {
 			if ((itemstacks[i] = player.inventory.mainInventory[i]) != null) {
 				if (itemstacks[i].getItem() == ModItems.AuroraTrident) {
 					if (held != itemstacks[i]) {

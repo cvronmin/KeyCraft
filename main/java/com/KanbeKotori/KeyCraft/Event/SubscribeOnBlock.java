@@ -13,7 +13,7 @@ public class SubscribeOnBlock {
     public void Block_HandSonic(LivingHurtEvent event) {
         if(event.entityLiving instanceof EntityPlayer) {
     		EntityPlayer entityPlayer = (EntityPlayer)event.entityLiving;
-    		if (RewriteHelper.getPoint(entityPlayer, 233) && entityPlayer.isUsingItem()) {
+    		if (RewriteHelper.getPoint(entityPlayer, RewriteHelper.ParryProficient.id) && entityPlayer.isUsingItem()) {
     			if (entityPlayer.getItemInUse().getItem() instanceof ItemSword) {
     				int level = entityPlayer.getFoodStats().getFoodLevel();
     				if (level >= 1) {

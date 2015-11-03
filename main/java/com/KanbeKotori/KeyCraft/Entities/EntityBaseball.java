@@ -34,7 +34,7 @@ public class EntityBaseball extends EntityThrowable {
         this.motionY = (double)(-MathHelper.sin(this.rotationPitch / 180.0F * (float)Math.PI));
         if (thrower instanceof EntityPlayer) {
         	this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, 
-        							 RewriteHelper.getPoint((EntityPlayer)thrower, 232) ? SPEED_HAS_SKILL : SPEED_NO_SKILL, 0.0F);
+        							 RewriteHelper.getPoint((EntityPlayer)thrower, RewriteHelper.BruteForce.id) ? SPEED_HAS_SKILL : SPEED_NO_SKILL, 0.0F);
         } else {
         	this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, SPEED_NO_SKILL, 0.0F);
         }
@@ -45,7 +45,7 @@ public class EntityBaseball extends EntityThrowable {
         	EntityLivingBase thrower = this.getThrower();
         	if (thrower instanceof EntityPlayer) {
         		target.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, thrower), 
-        										  RewriteHelper.getPoint((EntityPlayer)thrower, 232) ? SPEED_HAS_SKILL : DAMAGE_NO_SKILL);
+        										  RewriteHelper.getPoint((EntityPlayer)thrower, RewriteHelper.BruteForce.id) ? SPEED_HAS_SKILL : DAMAGE_NO_SKILL);
         	} else {
         		target.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, thrower), DAMAGE_NO_SKILL);
         	}

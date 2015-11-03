@@ -16,7 +16,7 @@ public class SubscribePointAutoRecovery {
 		
 		EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
 		
-		if (RewriteHelper.getPoint(player, 343)) {
+		if (RewriteHelper.getPoint(player, RewriteHelper.AuroraRegeneration.id)) {
 			Random random = new Random();
 			int ran = random.nextInt(2400);
 			if (ran == 1200) {

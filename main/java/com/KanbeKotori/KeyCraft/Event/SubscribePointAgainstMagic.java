@@ -48,18 +48,18 @@ public class SubscribePointAgainstMagic {
 		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
 			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("explosion")) {
-				if (RewriteHelper.getPoint(player, 333)) {
+				if (RewriteHelper.getPoint(player, RewriteHelper.UltimateHardening.id)) {
     				event.setCanceled(true);
     				isCD_mention(player);
-    			} else if (RewriteHelper.getPoint(player, 331)) {
+    			} else if (RewriteHelper.getPoint(player, RewriteHelper.ExplosionResist.id)) {
     				event.setCanceled(true);
     				isCD_against_arrow(player);
     			}
     		} else if (event.source.damageType.equals("magic") || event.source.damageType.equals("indirectMagic")) {
-    			if (RewriteHelper.getPoint(player, 333)) {
+    			if (RewriteHelper.getPoint(player, RewriteHelper.UltimateHardening.id)) {
     				event.setCanceled(true);
     				isCD_mention(player);
-    			} else if (RewriteHelper.getPoint(player, 332)) {
+    			} else if (RewriteHelper.getPoint(player, RewriteHelper.MagicResist.id)) {
     				event.setCanceled(true);
     				isCD_against_magic(player);
     			}

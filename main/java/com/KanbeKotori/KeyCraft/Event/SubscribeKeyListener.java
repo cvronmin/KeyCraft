@@ -32,17 +32,17 @@ public class SubscribeKeyListener {
 	    	EntityPlayer playerSv = MainHelper.getPlayerSv(MainHelper.getName());
     		ItemStack held = playerSv.getHeldItem();
     		if (held == null) {
-    			if (RewriteHelper.getPoint(playerSv, 312) && RewriteHelper.getAuroraPoint(playerSv) > 1) {
+    			if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraBlade.id) && RewriteHelper.getAuroraPoint(playerSv) > 1) {
 	    			RewriteHelper.minusAuroraPoint(playerSv, 1);
 	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraBlade, 1));
 	    			playerSv.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.callblade")));
-	    		} else if (RewriteHelper.getPoint(playerSv, 311) && RewriteHelper.getAuroraPoint(playerSv) > 1) {
+	    		} else if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraTrident.id) && RewriteHelper.getAuroraPoint(playerSv) > 1) {
 	    			RewriteHelper.minusAuroraPoint(playerSv, 1);
 	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraTrident, 1));
 	    			playerSv.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.calltrident")));
 	    		}
 	    	} else if (held.getItem() == Items.iron_sword) {
-	    		if (RewriteHelper.getPoint(playerSv, 231) && RewriteHelper.getAuroraPoint(playerSv) > 1) {
+	    		if (RewriteHelper.getPoint(playerSv, RewriteHelper.SuperVibration.id) && RewriteHelper.getAuroraPoint(playerSv) > 1) {
 	    			RewriteHelper.setShakingSwordDamage(playerSv, held.getItemDamage());
 	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.ShakingSword, 1));
 	    			RewriteHelper.minusAuroraPoint(playerSv, 1);
