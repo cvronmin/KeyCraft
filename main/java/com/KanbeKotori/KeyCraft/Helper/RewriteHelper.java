@@ -63,7 +63,7 @@ public class RewriteHelper {
 			case 223:	return 20;
 			case 231:	return 10;
 			case 232:	return 10;
-			case 233:	return 30;
+			case 233:	return 20;
 			case 241:	return 20;
 			case 242:	return 20;
 			case 243:	return 20;
