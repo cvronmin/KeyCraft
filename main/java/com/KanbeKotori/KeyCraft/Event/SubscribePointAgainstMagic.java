@@ -47,7 +47,7 @@ public class SubscribePointAgainstMagic {
 	public void PointAgainstMagic(LivingAttackEvent event) {
 		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
-			if (event.source.damageType == "arrow" || event.source.damageType == "explosion") {
+			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("explosion")) {
 				if (RewriteHelper.getPoint(player, 333)) {
     				event.setCanceled(true);
     				isCD_mention(player);
@@ -55,7 +55,7 @@ public class SubscribePointAgainstMagic {
     				event.setCanceled(true);
     				isCD_against_arrow(player);
     			}
-    		} else if (event.source.damageType == "magic" || event.source.damageType == "indirectMagic") {
+    		} else if (event.source.damageType.equals("magic") || event.source.damageType.equals("indirectMagic")) {
     			if (RewriteHelper.getPoint(player, 333)) {
     				event.setCanceled(true);
     				isCD_mention(player);

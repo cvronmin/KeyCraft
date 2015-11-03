@@ -1,6 +1,7 @@
 package com.KanbeKotori.KeyCraft.Event;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraftforge.event.entity.living.*;
@@ -59,23 +60,23 @@ public class SubscribePointAgainstFire {
 	public void PointAgainstFireAndLava(LivingHurtEvent event) {
 		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
-			if (event.source.damageType == "lava") {
+			if (event.source.damageType.equals("lava")) {
 				if (RewriteHelper.getPoint(player, 323)) {
     				event.setCanceled(true); 
     				isCD_mention(player);
     				if (isCD_buff_fire(player)) {
-    					player.addPotionEffect(new PotionEffect(12, 1200));
+    					player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 1200));
     				}
     			} else if (RewriteHelper.getPoint(player, 322)) {
     				event.setCanceled(true);
     				isCD_against_lava(player);
     			}
-    		} else if (event.source.damageType == "inFire" || event.source.damageType == "onFire") {
+    		} else if (event.source.damageType.equals("inFire") || event.source.damageType.equals("onFire")) {
     			if (RewriteHelper.getPoint(player, 323)) {
     				event.setCanceled(true); 
     				isCD_mention(player);
     				if (isCD_buff_fire(player)) {
-    					player.addPotionEffect(new PotionEffect(12, 1200));
+    					player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 1200));
     				}
     			} else if (RewriteHelper.getPoint(player, 322)) {
     				event.setCanceled(true);

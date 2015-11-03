@@ -1,6 +1,7 @@
 package com.KanbeKotori.KeyCraft.Event;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraftforge.event.entity.living.*;
@@ -13,7 +14,7 @@ public class SubscribeOnAttack {
 	
 	@SubscribeEvent
 	public void AttackWithFire(LivingAttackEvent event) {
-		if (event.source.damageType == "player") {
+		if (event.source.damageType.equals("player")) {
 			EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
 			if (RewriteHelper.getPoint(player, 221)) {
 				event.entityLiving.setFire(8000);
@@ -23,27 +24,27 @@ public class SubscribeOnAttack {
 	
 	@SubscribeEvent
 	public void AttackWithPoison(LivingAttackEvent event) {
-		if (event.source.damageType == "player") {
+		if (event.source.damageType.equals("player")) {
 			EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
 			if (RewriteHelper.getPoint(player, 222)) {
-				event.entityLiving.addPotionEffect(new PotionEffect(19, 100, 1));
+				event.entityLiving.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 1));
     		}
     	}
 	}
 	
 	@SubscribeEvent
 	public void AttackWithWither(LivingAttackEvent event) {
-		if (event.source.damageType == "player") {
+		if (event.source.damageType.equals("player")) {
 			EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
 			if (RewriteHelper.getPoint(player, 223)) {
-				event.entityLiving.addPotionEffect(new PotionEffect(20, 100));
+				event.entityLiving.addPotionEffect(new PotionEffect(Potion.wither.id, 100));
     		}
     	}
 	}
 	
 	@SubscribeEvent
 	public void AttackWithLifeDrawing(LivingAttackEvent event) {
-		if (event.source.damageType == "player") {
+		if (event.source.damageType.equals("player")) {
 			EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
 			if (RewriteHelper.getPoint(player, 241)) {
 				player.setHealth(player.getHealth() + 2);

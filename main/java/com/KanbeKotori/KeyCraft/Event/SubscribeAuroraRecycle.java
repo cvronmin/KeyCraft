@@ -2,6 +2,7 @@ package com.KanbeKotori.KeyCraft.Event;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.StatCollector;
@@ -56,10 +57,10 @@ public class SubscribeAuroraRecycle {
 		} else {
 			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recyclerate") + event.proportion));
 			int time = (int)(6000 * event.proportion);
-			player.addPotionEffect(new PotionEffect(2, time, 1));
-			player.addPotionEffect(new PotionEffect(4, time, 3));
-			player.addPotionEffect(new PotionEffect(9, time));
-			player.addPotionEffect(new PotionEffect(18, time, 3));
+			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, time, 1));
+			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, time, 3));
+			player.addPotionEffect(new PotionEffect(Potion.confusion.id, time));
+			player.addPotionEffect(new PotionEffect(Potion.weakness.id, time, 3));
 		}
 	}
 

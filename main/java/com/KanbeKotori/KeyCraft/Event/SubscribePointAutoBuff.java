@@ -2,6 +2,7 @@ package com.KanbeKotori.KeyCraft.Event;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraftforge.common.MinecraftForge;
@@ -65,53 +66,47 @@ public class SubscribePointAutoBuff {
 	@SubscribeEvent
 	public void Point_ER(PlayerTickEvent event) {
 		EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
-		
 		if (RewriteHelper.getPoint(player, 200) && player.getHealth() <= 6 && RewriteHelper.getAuroraPoint(player) > 5) {
 			if (isCD_Buff_ER()) {
 			RewriteHelper.minusAuroraPoint(player, 5);
-			player.addPotionEffect(new PotionEffect(1, 200, 1));
-			player.addPotionEffect(new PotionEffect(10, 200, 4));
-			player.addPotionEffect(new PotionEffect(11, 200, 1));
+			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 200, 1));
+			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 200, 4));
+			player.addPotionEffect(new PotionEffect(Potion.resistance.id, 200, 1));
     		player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.er")));
 			}
 		}
-	
 	}
 	
 	@SubscribeEvent
 	public void Point_MoreHealth(PlayerTickEvent event) {
 		EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
-		
 		if (RewriteHelper.getPoint(player, 212) && isCD_Buff_MoreHealth()) {
-			player.addPotionEffect(new PotionEffect(21, 2147483647, 4));
+			player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 0x7FFFFFFF, 4));
 		}
-	
 	}
 	
 	@SubscribeEvent
 	public void Point_AutoBuffResistance(LivingAttackEvent event) {
 		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
-			if (event.source.damageType == "arrow" || event.source.damageType == "mob" || event.source.damageType == "player") {
+			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("mob") || event.source.damageType.equals("player")) {
 				if (RewriteHelper.getPoint(player, 211) && isCD_Buff_Resistance()) {
-					player.addPotionEffect(new PotionEffect(11, 400, 1));
+					player.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1));
 					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.resistance")));
 				}
 			}
 		}
-	
 	}
 	
 	@SubscribeEvent
 	public void Point_AutoBuffPower(LivingAttackEvent event) {
-		if (event.source.damageType == "arrow") {
+		if (event.source.damageType.equals("arrow")) {
 			EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
 			if (RewriteHelper.getPoint(player, 232) && isCD_Buff_Power()) {
-				player.addPotionEffect(new PotionEffect(5, 400, 1));
+				player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 400, 1));
 				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.power")));
 			}
 		}
-	
 	}
 	
 	@SubscribeEvent
@@ -119,23 +114,20 @@ public class SubscribePointAutoBuff {
 		EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
 		if (player.getHealth() < 20) {
 			if (RewriteHelper.getPoint(player, 342) && isCD_Buff_Continuous()) {
-				player.addPotionEffect(new PotionEffect(10, 80, 1));
+				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 80, 1));
 			} else if (RewriteHelper.getPoint(player, 341) && isCD_Buff_Continuous()) {
-				player.addPotionEffect(new PotionEffect(10, 80));
+				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 80));
 			}
 		}
-	
 	}
 	
 	@SubscribeEvent
 	public void Point_Burst(PlayerTickEvent event) {
 		EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
-		
 		if (RewriteHelper.getPoint(player, 323) && RewriteHelper.getPoint(player, 333) && RewriteHelper.getPoint(player, 343) && isCD_Buff_Continuous()) {
-			player.addPotionEffect(new PotionEffect(1, 80, 255));
-			player.addPotionEffect(new PotionEffect(8, 80, 99));
+			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 80, 255));
+			player.addPotionEffect(new PotionEffect(Potion.jump.id, 80, 99));
 		}
-	
 	}
 	
 	@SubscribeEvent
@@ -146,12 +138,10 @@ public class SubscribePointAutoBuff {
 		if (held != null) {
 			if (held.getItem() == ModItems.WirePole) {
 				if (!RewriteHelper.getPoint(player, 232) && isCD_Buff_Continuous()) {
-					player.addPotionEffect(new PotionEffect(2, 80, 1)); 	
+					player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 80, 1)); 	
 				}
 			}
-				
 		}
-		
 	}
 
 }
