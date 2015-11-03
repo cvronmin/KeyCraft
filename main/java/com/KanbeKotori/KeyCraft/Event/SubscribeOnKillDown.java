@@ -14,16 +14,17 @@ public class SubscribeOnKillDown {
 	
 	@SubscribeEvent
     public void Point_AuroraRob(LivingDeathEvent event) {
+		if (!(event.source.getEntity() instanceof EntityPlayer)) {
+			return;
+		}
+		EntityPlayer player = (EntityPlayer)event.source.getEntity();
+		if (!player.worldObj.isRemote) {
+			return;
+		}
 		
-		EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
-		
-		if (event.source.damageType.equals("player")) {
-			if (RewriteHelper.getPoint(player, RewriteHelper.AuroraRob.id)) {
-				Random random = new Random();
-				int ran = random.nextInt(16);
-				if (ran == 8) {
-					RewriteHelper.addAuroraPoint(player, 1);
-				}
+		if (RewriteHelper.getPoint(player, RewriteHelper.AuroraRob.id)) {
+			if (new Random().nextInt(16) == 8) {
+				RewriteHelper.addAuroraPoint(player, 1);
 			}
 		}
 	}
