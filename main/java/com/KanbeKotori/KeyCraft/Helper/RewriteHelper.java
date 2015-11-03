@@ -72,14 +72,12 @@ public class RewriteHelper {
 		return player.getEntityData().getInteger("SkillPoint");
 	}
 	
-	/** 不要执行2次！ */
 	public static void minusAuroraPoint(EntityPlayer player, int point) {
 		if (point >= 0) {
 			player.getEntityData().setInteger("SkillPoint", getAuroraPoint(player) - point);
 		}	
 	}
 
-	/** 不要执行2次！ */
 	public static void addAuroraPoint(EntityPlayer player, int point) {
 		if (point >= 0) {
 			player.getEntityData().setInteger("SkillPoint", getAuroraPoint(player) + point);

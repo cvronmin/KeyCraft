@@ -16,8 +16,8 @@ public class SubscribeCheating {
         if(event.message.equals("Kotori")) {
         	event.setCanceled(true);
             EntityPlayer player = event.player;
+            RewriteHelper.addAuroraPoint(player, 100);
             if (!player.worldObj.isRemote) {
-                RewriteHelper.addAuroraPoint(player, 100);
                 player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.cheat1")));
             }
         }

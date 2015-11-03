@@ -21,8 +21,8 @@ public class SubscribePointAgainstFire {
 	public boolean isCD_against_fire(EntityPlayer player) {
     	if (System.currentTimeMillis() - last_against_fire >= 60000) {
     		last_against_fire = System.currentTimeMillis();
+    		RewriteHelper.minusAuroraPoint(player, 1);
     		if (!player.worldObj.isRemote) {
-        		RewriteHelper.minusAuroraPoint(player, 1);
         		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfire")));
     		}
     		return true;
@@ -34,8 +34,8 @@ public class SubscribePointAgainstFire {
     	if (System.currentTimeMillis() - last_against_lava >= 30000) {
     		last_against_lava = System.currentTimeMillis();
     		//last_against_fire = last_against_lava;
+			RewriteHelper.minusAuroraPoint(player, 1);
     		if (!player.worldObj.isRemote) {
-    			RewriteHelper.minusAuroraPoint(player, 1);
         		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstlava")));
     		}
     		return true;
