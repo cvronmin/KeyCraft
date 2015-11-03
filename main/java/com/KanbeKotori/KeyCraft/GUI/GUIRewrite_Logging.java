@@ -22,8 +22,7 @@ public class GUIRewrite_Logging  extends GuiScreen {
 	private GuiButton btnSkill242; // ¡¶¡øÀ•»ı
 	private GuiButton btnSkill243; // ≈∑»Ù¿≠¬”∂·
 	
-	private String playername = MainHelper.getName();
-	private EntityPlayer playerSv = MainHelper.getPlayerSv(playername);
+	private EntityPlayer playerSv = MainHelper.getPlayerSv();
 	
 	public GUIRewrite_Logging(GuiScreen parent) {
         parentScreen = parent;

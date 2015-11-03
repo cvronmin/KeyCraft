@@ -13,17 +13,16 @@ public class SubscribePointAutoRecovery {
 	
 	@SubscribeEvent
 	public void Point_AutoRecover(PlayerTickEvent event) {
-		
-		EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
+		EntityPlayer player = event.player;
+		if (!player.worldObj.isRemote) {
+			return;
+		}
 		
 		if (RewriteHelper.getPoint(player, RewriteHelper.AuroraRegeneration.id)) {
-			Random random = new Random();
-			int ran = random.nextInt(2400);
-			if (ran == 1200) {
+			if (new Random().nextInt(2400) == 1200) {
 				RewriteHelper.addAuroraPoint(player, 1);
 			}
 		}
-		
 	}
 
 }

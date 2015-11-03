@@ -29,8 +29,7 @@ public class GUIRewrite_Polluting extends GuiScreen {
 	private ResourceLocation bg1 = new ResourceLocation(KeyCraft.MODID, "textures/icons/bg1.png"); 
 	private ResourceLocation logo = new ResourceLocation(KeyCraft.MODID, "textures/icons/logo.png");
 	
-	private String playername = MainHelper.getName();
-	private EntityPlayer playerSv = MainHelper.getPlayerSv(playername);
+	private EntityPlayer playerSv = MainHelper.getPlayerSv();
 	
 	public GUIRewrite_Polluting(GuiScreen parent) {
         parentScreen = parent;

@@ -18,8 +18,7 @@ public class GUIRewrite extends GuiScreen {
 	private GuiButton btnSkillLogging;
 	private GuiButton btnSkillPolluting;
 	
-	private String playername = MainHelper.getName();
-	private EntityPlayer playerSv = MainHelper.getPlayerSv(playername);
+	private EntityPlayer playerSv = MainHelper.getPlayerSv();
 	 
     public GUIRewrite(GuiScreen parent) {
          parentScreen = parent;
@@ -29,8 +28,7 @@ public class GUIRewrite extends GuiScreen {
     public void initGui() {
     	if (!RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraCognition.id)) {
     		buttonList.add(btnSkill000 = new GuiButton(0, (int)(width * 0.5 - 32), (int)(height*0.4), 64, 64, ""));
-    	}
-    	if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraCognition.id)) {
+    	} else {
     		buttonList.add(btnSkillHunting = new GuiButton(1, (int)(width * 0.25 - 32), (int)(height*0.4), 64, 64, ""));
     		buttonList.add(btnSkillLogging = new GuiButton(2, (int)(width * 0.5 - 32), (int)(height*0.4), 64, 64, ""));    	
     		buttonList.add(btnSkillPolluting = new GuiButton(3, (int)(width * 0.75 - 32), (int)(height*0.4), 64, 64, ""));    	

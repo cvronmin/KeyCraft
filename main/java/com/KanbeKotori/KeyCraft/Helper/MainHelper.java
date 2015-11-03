@@ -14,6 +14,10 @@ public class MainHelper {
 		return Minecraft.getMinecraft().thePlayer;
 	}
 	
+	public static EntityPlayer getPlayerSv() {
+		return getPlayerSv(getName());
+	}
+	
 	public static EntityPlayer getPlayerSv(String name) {
 	    ServerConfigurationManager server = MinecraftServer.getServer().getConfigurationManager();
 	    
@@ -24,6 +28,14 @@ public class MainHelper {
 	        }
 	    }
 	    return null;
+	}
+	
+	public static EntityPlayer getPlayerSv(EntityPlayer player) {
+		if (player.worldObj.isRemote) {
+			return player;
+		} else {
+			return getPlayerSv(player.getDisplayName());
+		}
 	}
 	
 	public static String getName() {

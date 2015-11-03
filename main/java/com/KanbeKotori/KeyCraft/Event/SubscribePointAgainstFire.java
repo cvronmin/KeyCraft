@@ -21,8 +21,10 @@ public class SubscribePointAgainstFire {
 	public boolean isCD_against_fire(EntityPlayer player) {
     	if (System.currentTimeMillis() - last_against_fire >= 60000) {
     		last_against_fire = System.currentTimeMillis();
-    		RewriteHelper.minusAuroraPoint(player, 1);
-    		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfire")));
+    		if (!player.worldObj.isRemote) {
+        		RewriteHelper.minusAuroraPoint(player, 1);
+        		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfire")));
+    		}
     		return true;
     	}
     	return false;
@@ -32,8 +34,10 @@ public class SubscribePointAgainstFire {
     	if (System.currentTimeMillis() - last_against_lava >= 30000) {
     		last_against_lava = System.currentTimeMillis();
     		//last_against_fire = last_against_lava;
-    		RewriteHelper.minusAuroraPoint(player, 1);
-    		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstlava")));
+    		if (!player.worldObj.isRemote) {
+    			RewriteHelper.minusAuroraPoint(player, 1);
+        		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstlava")));
+    		}
     		return true;
     	}
     	return false;
@@ -42,7 +46,9 @@ public class SubscribePointAgainstFire {
 	public boolean isCD_mention(EntityPlayer player) {
     	if (System.currentTimeMillis() - last_mention >= 30000) {
     		last_mention = System.currentTimeMillis();
-    		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfireplus")));
+    		if (!player.worldObj.isRemote) {
+    			player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfireplus")));
+    		}
     		return true;
     	}
     	return false;
@@ -59,7 +65,7 @@ public class SubscribePointAgainstFire {
 	@SubscribeEvent
 	public void PointAgainstFireAndLava(LivingHurtEvent event) {
 		if (event.entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
+			EntityPlayer player = (EntityPlayer)event.entityLiving;
 			if (event.source.damageType.equals("lava")) {
 				if (RewriteHelper.getPoint(player, RewriteHelper.FireResistMax.id)) {
     				event.setCanceled(true); 

@@ -17,8 +17,10 @@ public class SubscribePointAgainstMagic {
 	public boolean isCD_against_arrow(EntityPlayer player) {
     	if (System.currentTimeMillis() - last_against_arrow >= 10000) {
     		last_against_arrow = System.currentTimeMillis();
-    		RewriteHelper.minusAuroraPoint(player, 1);
-    		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstarrow")));
+    		if (!player.worldObj.isRemote) {
+    			RewriteHelper.minusAuroraPoint(player, 1);
+        		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstarrow")));
+    		}
     		return true;
     	}
     	return false;
@@ -27,8 +29,10 @@ public class SubscribePointAgainstMagic {
 	public boolean isCD_against_magic(EntityPlayer player) {
     	if (System.currentTimeMillis() - last_against_magic >= 10000) {
     		last_against_magic = System.currentTimeMillis();
-    		RewriteHelper.minusAuroraPoint(player, 1);
-    		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagic")));
+    		if (!player.worldObj.isRemote) {
+    			RewriteHelper.minusAuroraPoint(player, 1);
+        		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagic")));
+    		}
     		return true;
     	}
     	return false;
@@ -37,7 +41,9 @@ public class SubscribePointAgainstMagic {
 	public boolean isCD_mention(EntityPlayer player) {
     	if (System.currentTimeMillis() - last_mention >= 30000) {
     		last_mention = System.currentTimeMillis();
-    		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagicplus")));
+    		if (!player.worldObj.isRemote) {
+    			player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagicplus")));
+    		}
     		return true;
     	}
     	return false;
@@ -45,8 +51,8 @@ public class SubscribePointAgainstMagic {
 	
 	@SubscribeEvent
 	public void PointAgainstMagic(LivingAttackEvent event) {
-		if (event.entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = MainHelper.getPlayerSv(MainHelper.getName());
+		if (event.entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)event.entity;
 			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("explosion")) {
 				if (RewriteHelper.getPoint(player, RewriteHelper.UltimateHardening.id)) {
     				event.setCanceled(true);

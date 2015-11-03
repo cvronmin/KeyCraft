@@ -29,7 +29,7 @@ public class SubscribeKeyListener {
 	        Minecraft mc = Minecraft.getMinecraft();
 	        mc.displayGuiScreen(new GUIRewrite(mc.currentScreen));
 	    } else if (key_Interact.isPressed()) {
-	    	EntityPlayer playerSv = MainHelper.getPlayerSv(MainHelper.getName());
+	    	EntityPlayer playerSv = MainHelper.getPlayerSv();
     		ItemStack held = playerSv.getHeldItem();
     		if (held == null) {
     			if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraBlade.id) && RewriteHelper.getAuroraPoint(playerSv) > 1) {

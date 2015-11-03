@@ -18,37 +18,37 @@ public class SubscribeShakingSwordUsing {
 	
 	@SubscribeEvent
 	public void ShakingSword_Recycle(PlayerTickEvent event) {
-		String name = MainHelper.getName();
-		EntityPlayer player = MainHelper.getPlayerSv(name);
-		ItemStack itemstacks[] = new ItemStack[36];
+		EntityPlayer player = event.player;
 		ItemStack held = null;
 		if (player != null) {
 			held = player.getHeldItem();
 		}
 		
-		for (int i=0; i<36; i++) {
-			if ((itemstacks[i] = player.inventory.mainInventory[i]) != null) {
-				if (itemstacks[i].getItem() == ModItems.ShakingSword) {
-					if (held != itemstacks[i]) {
-						player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.useshakingsword")));
+		ItemStack itemstack;
+		for (int i = 0; i < player.inventory.mainInventory.length; i++) {
+			if ((itemstack = player.inventory.mainInventory[i]) != null) {
+				if (itemstack.getItem() == ModItems.ShakingSword) {
+					if (itemstack != held) {
+						if (!player.worldObj.isRemote) {
+							player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.useshakingsword")));
+						}
 			            player.inventory.mainInventory[i] = new ItemStack(Items.iron_sword, RewriteHelper.getShakingSwordDamage(player));
 					}
 				}	
 			}
 		}
-		
 	}
 	
 	@SubscribeEvent
     public void usedShakingSword(EventOnShakingSwordUse event) {
-		String name = MainHelper.getName();
-		EntityPlayer player = MainHelper.getPlayerSv(name);
-		ItemStack itemstacks[] = new ItemStack[36];
-		ItemStack held = player.getHeldItem();
-		for (int i=0; i<36; i++) {
-			if ((itemstacks[i] = player.inventory.mainInventory[i]) != null) {
-				if (itemstacks[i].getItem() == ModItems.ShakingSword) {
-					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.useshakingsword")));
+		EntityPlayer player = event.entityPlayer;
+		ItemStack itemstack;
+		for (int i = 0; i < player.inventory.mainInventory.length; i++) {
+			if ((itemstack = player.inventory.mainInventory[i]) != null) {
+				if (itemstack.getItem() == ModItems.ShakingSword) {
+					if (!player.worldObj.isRemote) {
+						player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.useshakingsword")));
+					}
 			        player.inventory.mainInventory[i] = new ItemStack(Items.iron_sword, 1, RewriteHelper.getShakingSwordDamage(player));
 				}	
 			}

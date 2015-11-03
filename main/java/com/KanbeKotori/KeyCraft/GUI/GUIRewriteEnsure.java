@@ -16,8 +16,7 @@ public class GUIRewriteEnsure extends GuiScreen {
 	private GuiButton btnYes;
 	private GuiButton btnCancel;
 	
-	private String playername = MainHelper.getName();
-	private EntityPlayer playerSv = MainHelper.getPlayerSv(playername);
+	private EntityPlayer playerSv = MainHelper.getPlayerSv();
 	 
     public GUIRewriteEnsure(GuiScreen parent, int num) {
     	parentScreen = parent;

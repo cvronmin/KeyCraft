@@ -19,25 +19,28 @@ public class SubscribeAuroraRecycle {
 	
 	@SubscribeEvent
 	public void Aurora_Recycle(PlayerTickEvent event) {
-		String name = MainHelper.getName();
-		EntityPlayer player = MainHelper.getPlayerSv(name);
-		ItemStack itemstacks[] = new ItemStack[36];
+		EntityPlayer player = event.player;
 		ItemStack held = player.getHeldItem();
 		
-		for (int i = 0; i < 36; i++) {
-			if ((itemstacks[i] = player.inventory.mainInventory[i]) != null) {
-				if (itemstacks[i].getItem() == ModItems.AuroraTrident) {
-					if (held != itemstacks[i]) {
-						double pp = (double)itemstacks[i].getItemDamage() / itemstacks[i].getMaxDamage();
-						player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recycletrident")));
+		ItemStack itemstack;
+		for (int i = 0; i < player.inventory.mainInventory.length; i++) {
+			if ((itemstack = player.inventory.mainInventory[i]) != null) {
+				if (itemstack.getItem() == ModItems.AuroraTrident) {
+					if (itemstack != held) {
+						double pp = (double)itemstack.getItemDamage() / itemstack.getMaxDamage();
+						if (!player.worldObj.isRemote) {
+							player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recycletrident")));
+						}
 						EventOnAuroraRecycle EventOnAuroraRecycle = new EventOnAuroraRecycle(player, pp);
 			            MinecraftForge.EVENT_BUS.post(EventOnAuroraRecycle);
 			            player.inventory.mainInventory[i] = null;
 					}
-				} else if (itemstacks[i].getItem() == ModItems.AuroraBlade) {
-					if (held != itemstacks[i]) {
-						double pp = (double)itemstacks[i].getItem().getDamage(itemstacks[i]) / itemstacks[i].getMaxDamage();
-						player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recycleblade")));
+				} else if (itemstack.getItem() == ModItems.AuroraBlade) {
+					if (itemstack != held) {
+						double pp = (double)itemstack.getItem().getDamage(itemstack) / itemstack.getMaxDamage();
+						if (!player.worldObj.isRemote) {
+							player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recycleblade")));
+						}
 						EventOnAuroraRecycle EventOnAuroraRecycle = new EventOnAuroraRecycle(player, pp);
 			            MinecraftForge.EVENT_BUS.post(EventOnAuroraRecycle);
 			            player.inventory.mainInventory[i] = null;
@@ -50,12 +53,15 @@ public class SubscribeAuroraRecycle {
 	
 	@SubscribeEvent
 	public void Aurora_Recycle(EventOnAuroraRecycle event) {
-		String name = MainHelper.getName();
-		EntityPlayer player = MainHelper.getPlayerSv(name);
+		EntityPlayer player = event.entityPlayer;
 		if (event.proportion == 0) {
-			RewriteHelper.addAuroraPoint(player, 1);
+			if (player.worldObj.isRemote) {
+				RewriteHelper.addAuroraPoint(player, 1);
+			}
 		} else {
-			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recyclerate") + event.proportion));
+			if (!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recyclerate") + event.proportion));
+			}
 			int time = (int)(6000 * event.proportion);
 			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, time, 1));
 			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, time, 3));
