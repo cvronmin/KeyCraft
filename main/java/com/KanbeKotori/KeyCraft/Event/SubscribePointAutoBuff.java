@@ -68,9 +68,7 @@ public class SubscribePointAutoBuff {
 		EntityPlayer player = event.player;
 		if (RewriteHelper.getPoint(player, RewriteHelper.UrgentProtect.id) && player.getHealth() <= 6 && RewriteHelper.getAuroraPoint(player) > 5) {
 			if (isCD_Buff_ER()) {
-	    		if (player.worldObj.isRemote) {
-	    			RewriteHelper.minusAuroraPoint(player, 5);
-	    		}
+	    		RewriteHelper.minusAuroraPoint(player, 5);
 				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 200, 1));
 				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 200, 4));
 				player.addPotionEffect(new PotionEffect(Potion.resistance.id, 200, 1));

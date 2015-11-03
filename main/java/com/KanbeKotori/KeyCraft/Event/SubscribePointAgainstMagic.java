@@ -17,8 +17,8 @@ public class SubscribePointAgainstMagic {
 	public boolean isCD_against_arrow(EntityPlayer player) {
     	if (System.currentTimeMillis() - last_against_arrow >= 10000) {
     		last_against_arrow = System.currentTimeMillis();
+			RewriteHelper.minusAuroraPoint(player, 1);
     		if (!player.worldObj.isRemote) {
-    			RewriteHelper.minusAuroraPoint(player, 1);
         		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstarrow")));
     		}
     		return true;
@@ -29,8 +29,8 @@ public class SubscribePointAgainstMagic {
 	public boolean isCD_against_magic(EntityPlayer player) {
     	if (System.currentTimeMillis() - last_against_magic >= 10000) {
     		last_against_magic = System.currentTimeMillis();
+			RewriteHelper.minusAuroraPoint(player, 1);
     		if (!player.worldObj.isRemote) {
-    			RewriteHelper.minusAuroraPoint(player, 1);
         		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagic")));
     		}
     		return true;

@@ -10,14 +10,24 @@ import net.minecraft.server.management.ServerConfigurationManager;
 
 public class MainHelper {
 	
+	/**
+	 *只能在客户端用
+	 */
 	public static EntityPlayer getPlayerCl() {
 		return Minecraft.getMinecraft().thePlayer;
 	}
 	
+	/**
+	 * 可能返回null
+	 * 只能在客户端用
+	 */
 	public static EntityPlayer getPlayerSv() {
 		return getPlayerSv(getName());
 	}
 	
+	/** 
+	 * 可能返回null
+	 */
 	public static EntityPlayer getPlayerSv(String name) {
 	    ServerConfigurationManager server = MinecraftServer.getServer().getConfigurationManager();
 	    
@@ -30,6 +40,9 @@ public class MainHelper {
 	    return null;
 	}
 	
+	/** 
+	 * 可能返回null
+	 */
 	public static EntityPlayer getPlayerSv(EntityPlayer player) {
 		if (player.worldObj.isRemote) {
 			return player;
@@ -37,7 +50,11 @@ public class MainHelper {
 			return getPlayerSv(player.getDisplayName());
 		}
 	}
-	
+
+	/**
+	 * 可能返回null
+	 * 只能在客户端用
+	 */
 	public static String getName() {
 		if (getPlayerCl() != null) {
 			return getPlayerCl().getDisplayName();
