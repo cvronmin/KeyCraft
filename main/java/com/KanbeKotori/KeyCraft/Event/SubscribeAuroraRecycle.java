@@ -55,7 +55,7 @@ public class SubscribeAuroraRecycle {
 	public void Aurora_Recycle(EventOnAuroraRecycle event) {
 		EntityPlayer player = event.entityPlayer;
 		if (event.proportion == 0) {
-			if (player.worldObj.isRemote) {
+			if (!player.worldObj.isRemote) {
 				RewriteHelper.addAuroraPoint(player, 1);
 			}
 		} else {
