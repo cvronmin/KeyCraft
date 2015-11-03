@@ -64,36 +64,36 @@ public class RewriteHelper {
 	
 	public static void setAuroraPoint(EntityPlayer player, int point) {
 		if (point >= 0) {
-			MainHelper.getPlayerSv(player).getEntityData().setInteger("SkillPoint", point);
+			player.getEntityData().setInteger("SkillPoint", point);
 		}	
 	}
 		
 	public static int getAuroraPoint(EntityPlayer player) {
-		return MainHelper.getPlayerSv(player).getEntityData().getInteger("SkillPoint");
+		return player.getEntityData().getInteger("SkillPoint");
 	}
 	
 	/** 不要执行2次！ */
 	public static void minusAuroraPoint(EntityPlayer player, int point) {
 		if (point >= 0) {
-			MainHelper.getPlayerSv(player).getEntityData().setInteger("SkillPoint", getAuroraPoint(player) - point);
+			player.getEntityData().setInteger("SkillPoint", getAuroraPoint(player) - point);
 		}	
 	}
 
 	/** 不要执行2次！ */
 	public static void addAuroraPoint(EntityPlayer player, int point) {
 		if (point >= 0) {
-			MainHelper.getPlayerSv(player).getEntityData().setInteger("SkillPoint", getAuroraPoint(player) + point);
+			player.getEntityData().setInteger("SkillPoint", getAuroraPoint(player) + point);
 		}	
 	}
 	
 	public static void setPoint(EntityPlayer player, int skill, boolean PuP) {
 		final String name = "Skill" + String.format("%03d", skill);
-		MainHelper.getPlayerSv(player).getEntityData().setBoolean(name, PuP);
+		player.getEntityData().setBoolean(name, PuP);
 	}
 	
 	public static boolean getPoint(EntityPlayer player, int skill) {
 		final String name = "Skill" + String.format("%03d", skill);
-		return MainHelper.getPlayerSv(player).getEntityData().getBoolean(name);
+		return player.getEntityData().getBoolean(name);
 	}
 	
 	public static int getAuroraRequired(int skill) {
@@ -114,12 +114,12 @@ public class RewriteHelper {
 	
 	public static void setShakingSwordDamage(EntityPlayer player, int damage) {
 		final String name = "ShakingSwordDamage";
-		MainHelper.getPlayerSv(player).getEntityData().setInteger(name, damage);
+		player.getEntityData().setInteger(name, damage);
 	}
 	
 	public static int getShakingSwordDamage(EntityPlayer player) {
 		final String name = "ShakingSwordDamage";
-		return MainHelper.getPlayerSv(player).getEntityData().getInteger(name);
+		return player.getEntityData().getInteger(name);
 	}
 	
 }
