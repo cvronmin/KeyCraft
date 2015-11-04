@@ -37,7 +37,7 @@ public class SubscribeAuroraRecycle {
 					}
 				} else if (itemstack.getItem() == ModItems.AuroraBlade) {
 					if (itemstack != held) {
-						double pp = (double)itemstack.getItem().getDamage(itemstack) / itemstack.getMaxDamage();
+						double pp = (double)itemstack.getItemDamage() / itemstack.getMaxDamage();
 						if (!player.worldObj.isRemote) {
 							player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recycleblade")));
 						}
@@ -55,9 +55,7 @@ public class SubscribeAuroraRecycle {
 	public void Aurora_Recycle(EventOnAuroraRecycle event) {
 		EntityPlayer player = event.entityPlayer;
 		if (event.proportion == 0) {
-			if (!player.worldObj.isRemote) {
-				RewriteHelper.addAuroraPoint(player, 1);
-			}
+			RewriteHelper.modifyAuroraPoint(player, 1);
 		} else {
 			if (!player.worldObj.isRemote) {
 				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recyclerate") + event.proportion));

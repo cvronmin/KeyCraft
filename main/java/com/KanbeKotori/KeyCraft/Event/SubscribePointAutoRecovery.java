@@ -20,7 +20,7 @@ public class SubscribePointAutoRecovery {
 		
 		if (RewriteHelper.getPoint(player, RewriteHelper.AuroraRegeneration.id)) {
 			if (new Random().nextInt(4800) == 2400) {
-				RewriteHelper.addAuroraPoint(player, 1);
+				RewriteHelper.modifyAuroraPoint(player, 1);
 			}
 		}
 	}

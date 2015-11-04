@@ -9,6 +9,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.ServerConfigurationManager;
 
 import com.KanbeKotori.KeyCraft.Helper.*;
+import com.KanbeKotori.KeyCraft.Network.RewriteNetwork;
 
 public class RewriteHelper {
 	
@@ -52,55 +53,55 @@ public class RewriteHelper {
 			AuroraBlade, FireResist, FireResistUp, FireResistMax, FireResistMax, ExplosionResist, MagicResist, UltimateHardening, 
 			AuroraActivation, AuroraSurge, AuroraRegeneration };
 	
-	
+	/** 学习欧若拉认知，获得100欧若拉点 */
 	public static void setPoint_First(EntityPlayer player) {
 		setAuroraPoint(player, 100);
 		setPoint(player, AuroraCognition.id, true);
 	}
 	
+	/** 判断有没有欧若拉认知 */
 	public static boolean hasFirstSet(EntityPlayer player) {
 		return getPoint(player, AuroraCognition.id);
 	}
 	
-	public static void setAuroraPoint(EntityPlayer player, int point) {
-		if (point >= 0) {
-			player.getEntityData().setInteger("SkillPoint", point);
-		}	
-	}
-		
+	/** 取欧若拉点 */
 	public static int getAuroraPoint(EntityPlayer player) {
-		
 		return player.getEntityData().getInteger("SkillPoint");
 	}
 	
-	/**
-	 * 不要执行2次！
-	 */
-	public static void minusAuroraPoint(EntityPlayer player, int point) {
-		if (point >= 0) {
-			player.getEntityData().setInteger("SkillPoint", getAuroraPoint(player) - point);
-		}	
-	}
-
-	/**
-	 * 不要执行2次！
-	 */
-	public static void addAuroraPoint(EntityPlayer player, int point) {
-		if (point >= 0) {
-			player.getEntityData().setInteger("SkillPoint", getAuroraPoint(player) + point);
-		}	
+	/** 设置欧若拉点，如果在服务端会发同步包 */
+	public static void setAuroraPoint(EntityPlayer player, int point) {
+		player.getEntityData().setInteger("SkillPoint", point < 0 ? 0 : point);
+		if (player instanceof EntityPlayerMP) {
+			RewriteNetwork.rewriteChannel.sendTo(RewriteNetwork.createSyncSkillPacket(player), (EntityPlayerMP)player);
+		}
 	}
 	
+	/** 改变欧若拉点，如果在服务端会发同步包 */
+	public static void modifyAuroraPoint(EntityPlayer player, int point) {
+		int newPoint = getAuroraPoint(player) + point;
+		player.getEntityData().setInteger("SkillPoint", newPoint < 0 ? 0 : newPoint);
+		if (player instanceof EntityPlayerMP) {
+			RewriteNetwork.rewriteChannel.sendTo(RewriteNetwork.createSyncSkillPacket(player), (EntityPlayerMP)player);
+		}
+	}
+	
+	/** 学习\取消技能，如果在服务端会发同步包 */
 	public static void setPoint(EntityPlayer player, int skill, boolean PuP) {
 		final String name = "Skill" + String.format("%03d", skill);
 		player.getEntityData().setBoolean(name, PuP);
+		if (player instanceof EntityPlayerMP) {
+			RewriteNetwork.rewriteChannel.sendTo(RewriteNetwork.createSyncSkillPacket(player), (EntityPlayerMP)player);
+		}
 	}
-	
+
+	/** 判断有没有技能 */
 	public static boolean getPoint(EntityPlayer player, int skill) {
 		final String name = "Skill" + String.format("%03d", skill);
 		return player.getEntityData().getBoolean(name);
 	}
 	
+	/** 取学习技能需要的欧若拉点 */
 	public static int getAuroraRequired(int skill) {
 		for (Skill i : SKILLS) {
 			if (i.id == skill) {
@@ -109,7 +110,8 @@ public class RewriteHelper {
 		}
 		return 0x7FFFFFFF;
 	}
-	
+
+	/** 用于复活后恢复技能数据 */
 	public static void CLONE(EntityPlayer _old, EntityPlayer _new) {
 		setAuroraPoint(_new, getAuroraPoint(_old));
 		for (Skill i : SKILLS) {

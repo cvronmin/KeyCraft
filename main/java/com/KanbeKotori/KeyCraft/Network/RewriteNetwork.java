@@ -4,13 +4,16 @@ import java.io.IOException;
 
 import com.KanbeKotori.KeyCraft.Helper.MainHelper;
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.KanbeKotori.KeyCraft.Items.ModItems;
 
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.common.network.FMLEventChannel;
 import cpw.mods.fml.common.network.FMLNetworkEvent.ClientCustomPacketEvent;
+import cpw.mods.fml.common.network.FMLNetworkEvent.ServerConnectionFromClientEvent;
 import cpw.mods.fml.common.network.FMLNetworkEvent.ServerCustomPacketEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.internal.FMLProxyPacket;
@@ -19,7 +22,11 @@ import io.netty.buffer.ByteBufOutputStream;
 import io.netty.buffer.Unpooled;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.NetHandlerPlayServer;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.StatCollector;
 
 public class RewriteNetwork {
 	
@@ -28,27 +35,59 @@ public class RewriteNetwork {
 
 	public static final int SYNC_SKILL_CODE = 1;
 	public static final int LEARN_SKILL_CODE = 2;
+	public static final int USE_SKILL_CODE = 3;
+	
+	public static class SubscribePlayerLoggedIn {
+		/** 服务器玩家登陆处理 */
+		@SubscribeEvent
+		public void onPlayerLoggedIn(PlayerLoggedInEvent event) {
+			EntityPlayer player = event.player;
+			
+			// 同步技能数据
+			rewriteChannel.sendTo(createSyncSkillPacket(player), (EntityPlayerMP)player);
+		}
+	}
 	
 	/** 服务器封包处理 */
 	@SubscribeEvent
 	public void onServerPacket(ServerCustomPacketEvent event) {
+		EntityPlayerMP player = ((NetHandlerPlayServer)event.handler).playerEntity;
+		
 		ByteBufInputStream stream = new ByteBufInputStream(event.packet.payload());
 		try {
-			int code = stream.readInt();
-			
-			switch (code) {
+			switch (stream.readInt()) {
 			case LEARN_SKILL_CODE:
 				int id = stream.readInt();
-				EntityPlayer player = ((NetHandlerPlayServer)event.handler).playerEntity;
 				if (id == RewriteHelper.AuroraCognition.id) {
 		    		RewriteHelper.setPoint_First(player);
 		    	} else {
 		    		if (RewriteHelper.getAuroraPoint(player) > RewriteHelper.getAuroraRequired(id)) {
-		    			RewriteHelper.minusAuroraPoint(player, RewriteHelper.getAuroraRequired(id));
+		    			RewriteHelper.modifyAuroraPoint(player, -RewriteHelper.getAuroraRequired(id));
 		    			RewriteHelper.setPoint(player, id, true);
 		    		}
 		    	}
-				rewriteChannel.sendTo(createSyncSkillPacket(player), (EntityPlayerMP)player);
+				break;
+				
+			case USE_SKILL_CODE:
+	    		ItemStack held = player.getHeldItem();
+	    		if (held == null) {
+	    			if (RewriteHelper.getPoint(player, RewriteHelper.AuroraBlade.id) && RewriteHelper.getAuroraPoint(player) > 1) {
+		    			RewriteHelper.modifyAuroraPoint(player, -1);
+		    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraBlade, 1));
+		    			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.callblade")));
+		    		} else if (RewriteHelper.getPoint(player, RewriteHelper.AuroraTrident.id) && RewriteHelper.getAuroraPoint(player) > 1) {
+		    			RewriteHelper.modifyAuroraPoint(player, -1);
+		    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraTrident, 1));
+		    			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.calltrident")));
+		    		}
+		    	} else if (held.getItem() == Items.iron_sword) {
+		    		if (RewriteHelper.getPoint(player, RewriteHelper.SuperVibration.id) && RewriteHelper.getAuroraPoint(player) > 1) {
+		    			RewriteHelper.setShakingSwordDamage(player, held.getItemDamage());
+		    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.ShakingSword, 1));
+		    			RewriteHelper.modifyAuroraPoint(player, -1);
+		    			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.shakingsword")));
+		    		}
+		    	}
 				break;
 			}
 			
@@ -107,6 +146,20 @@ public class RewriteNetwork {
 		try {
 			stream.writeInt(LEARN_SKILL_CODE);
 			stream.writeInt(skillId);
+			
+			packet = new FMLProxyPacket(stream.buffer(), REWRITE_CHANNEL);
+			stream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return packet;
+	}
+	
+	public static FMLProxyPacket createUseSkillPacket() {
+		ByteBufOutputStream stream = new ByteBufOutputStream(Unpooled.buffer());
+		FMLProxyPacket packet = null;
+		try {
+			stream.writeInt(USE_SKILL_CODE);
 			
 			packet = new FMLProxyPacket(stream.buffer(), REWRITE_CHANNEL);
 			stream.close();

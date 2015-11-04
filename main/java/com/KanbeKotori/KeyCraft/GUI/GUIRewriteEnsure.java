@@ -193,8 +193,15 @@ public class GUIRewriteEnsure extends GuiScreen {
 		if (button == btnCancel) {
 	        mc.displayGuiScreen(parentScreen);
 	    } else if (button == btnYes) {
-	    	// 单人游戏时关闭GUI时服务器才处理
     		RewriteNetwork.rewriteChannel.sendToServer(RewriteNetwork.createLearnSkillPacket(skillNum));
+    		if (skillNum == RewriteHelper.AuroraCognition.id) {
+	    		RewriteHelper.setPoint_First(playerCl);
+	    	} else {
+	    		if (RewriteHelper.getAuroraPoint(playerCl) > RewriteHelper.getAuroraRequired(skillNum)) {
+	    			RewriteHelper.modifyAuroraPoint(playerCl, -RewriteHelper.getAuroraRequired(skillNum));
+	    			RewriteHelper.setPoint(playerCl, skillNum, true);
+	    		}
+	    	}
 	        mc.displayGuiScreen(parentScreen);
     	}
 	}

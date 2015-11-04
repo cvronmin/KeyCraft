@@ -30,26 +30,22 @@ public class SubscribeKeyListener {
 	        Minecraft mc = Minecraft.getMinecraft();
 	        mc.displayGuiScreen(new GUIRewrite(mc.currentScreen));
 	    } else if (key_Interact.isPressed()) {
-			// 这里改成发封包
-			
-	    	EntityPlayer playerSv = MainHelper.getPlayerSv();
-    		ItemStack held = playerSv.getHeldItem();
+			RewriteNetwork.rewriteChannel.sendToServer(RewriteNetwork.createUseSkillPacket());
+	    	EntityPlayer player = MainHelper.getPlayerCl();
+    		ItemStack held = player.getHeldItem();
     		if (held == null) {
-    			if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraBlade.id) && RewriteHelper.getAuroraPoint(playerSv) > 1) {
-	    			RewriteHelper.minusAuroraPoint(playerSv, 1);
-	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraBlade, 1));
-	    			playerSv.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.callblade")));
-	    		} else if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraTrident.id) && RewriteHelper.getAuroraPoint(playerSv) > 1) {
-	    			RewriteHelper.minusAuroraPoint(playerSv, 1);
-	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraTrident, 1));
-	    			playerSv.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.calltrident")));
+    			if (RewriteHelper.getPoint(player, RewriteHelper.AuroraBlade.id) && RewriteHelper.getAuroraPoint(player) > 1) {
+	    			RewriteHelper.modifyAuroraPoint(player, -1);
+	    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraBlade, 1));
+	    		} else if (RewriteHelper.getPoint(player, RewriteHelper.AuroraTrident.id) && RewriteHelper.getAuroraPoint(player) > 1) {
+	    			RewriteHelper.modifyAuroraPoint(player, -1);
+	    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraTrident, 1));
 	    		}
 	    	} else if (held.getItem() == Items.iron_sword) {
-	    		if (RewriteHelper.getPoint(playerSv, RewriteHelper.SuperVibration.id) && RewriteHelper.getAuroraPoint(playerSv) > 1) {
-	    			RewriteHelper.setShakingSwordDamage(playerSv, held.getItemDamage());
-	    			playerSv.setCurrentItemOrArmor(0, new ItemStack(ModItems.ShakingSword, 1));
-	    			RewriteHelper.minusAuroraPoint(playerSv, 1);
-	    			playerSv.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.shakingsword")));
+	    		if (RewriteHelper.getPoint(player, RewriteHelper.SuperVibration.id) && RewriteHelper.getAuroraPoint(player) > 1) {
+	    			RewriteHelper.setShakingSwordDamage(player, held.getItemDamage());
+	    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.ShakingSword, 1));
+	    			RewriteHelper.modifyAuroraPoint(player, -1);
 	    		}
 	    	}
 	    }

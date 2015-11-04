@@ -25,9 +25,7 @@ public class EntityBaseball extends EntityThrowable {
 	public EntityBaseball(World world, EntityLivingBase thrower) {
         super(world, thrower);
         
-        //
-        // Set location and speed
-        //
+        // 重新设置位置和速度
         this.setLocationAndAngles(thrower.posX, thrower.posY + (double)thrower.getEyeHeight(), thrower.posZ, thrower.rotationYaw, thrower.rotationPitch);
         this.motionX = (double)(-MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI));
         this.motionZ = (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI));
