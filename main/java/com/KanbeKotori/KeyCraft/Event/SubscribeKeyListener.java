@@ -26,10 +26,18 @@ public class SubscribeKeyListener {
 	@SubscribeEvent
 	public void keyListener(KeyInputEvent event) {
 	    if (key_Rewrite.isPressed()) {
+	    	if (MainHelper.getPlayerSv() == null) {
+	    		System.out.println("MainHelper.getPlayerSv() == null");
+	    		return;
+	    	}
 	        Minecraft mc = Minecraft.getMinecraft();
 	        mc.displayGuiScreen(new GUIRewrite(mc.currentScreen));
 	    } else if (key_Interact.isPressed()) {
 	    	EntityPlayer playerSv = MainHelper.getPlayerSv();
+	    	if (playerSv == null) {
+	    		System.out.println("playerSv == null");
+	    		return;
+	    	}
     		ItemStack held = playerSv.getHeldItem();
     		if (held == null) {
     			if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraBlade.id) && RewriteHelper.getAuroraPoint(playerSv) > 1) {
