@@ -29,10 +29,6 @@ public class MainHelper {
 	 * 可能返回null
 	 */
 	public static EntityPlayer getPlayerSv(String name) {
-		if (MinecraftServer.getServer() == null) {
-			System.out.println("MinecraftServer.getServer() == null");
-			return null;
-		}
 	    ServerConfigurationManager server = MinecraftServer.getServer().getConfigurationManager();
 	    
 	    for (ListIterator list = server.playerEntityList.listIterator(); list.hasNext(); ) {
@@ -43,17 +39,6 @@ public class MainHelper {
 	    }
 	    return null;
 	}
-	
-	/** 
-	 * 可能返回null
-	 */
-	/*public static EntityPlayer getPlayerSv(EntityPlayer player) {
-		if (!player.worldObj.isRemote) {
-			return player;
-		} else {
-			return getPlayerSv(player.getDisplayName());
-		}
-	}*/
 
 	/**
 	 * 可能返回null

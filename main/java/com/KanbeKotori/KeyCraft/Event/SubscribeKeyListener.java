@@ -14,6 +14,7 @@ import com.KanbeKotori.KeyCraft.KeyCraft;
 import com.KanbeKotori.KeyCraft.GUI.*;
 import com.KanbeKotori.KeyCraft.Helper.*;
 import com.KanbeKotori.KeyCraft.Items.ModItems;
+import com.KanbeKotori.KeyCraft.Network.RewriteNetwork;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
@@ -26,18 +27,12 @@ public class SubscribeKeyListener {
 	@SubscribeEvent
 	public void keyListener(KeyInputEvent event) {
 	    if (key_Rewrite.isPressed()) {
-	    	if (MainHelper.getPlayerSv() == null) {
-	    		System.out.println("MainHelper.getPlayerSv() == null");
-	    		return;
-	    	}
 	        Minecraft mc = Minecraft.getMinecraft();
 	        mc.displayGuiScreen(new GUIRewrite(mc.currentScreen));
 	    } else if (key_Interact.isPressed()) {
+			// 这里改成发封包
+			
 	    	EntityPlayer playerSv = MainHelper.getPlayerSv();
-	    	if (playerSv == null) {
-	    		System.out.println("playerSv == null");
-	    		return;
-	    	}
     		ItemStack held = playerSv.getHeldItem();
     		if (held == null) {
     			if (RewriteHelper.getPoint(playerSv, RewriteHelper.AuroraBlade.id) && RewriteHelper.getAuroraPoint(playerSv) > 1) {

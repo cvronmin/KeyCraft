@@ -1,9 +1,12 @@
 package com.KanbeKotori.KeyCraft;
 
 import com.KanbeKotori.KeyCraft.*;
+import com.KanbeKotori.KeyCraft.Helper.MainHelper;
 import com.KanbeKotori.KeyCraft.Items.*;
+import com.KanbeKotori.KeyCraft.Network.RewriteNetwork;
 
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CommonProxy {
@@ -13,7 +16,9 @@ public class CommonProxy {
 	}
 	 
 	public void init(FMLInitializationEvent event) {
-		
+		// ×¢²áÍøÂçÊÂ¼þ
+		RewriteNetwork.rewriteChannel = NetworkRegistry.INSTANCE.newEventDrivenChannel(RewriteNetwork.REWRITE_CHANNEL);
+		RewriteNetwork.rewriteChannel.register(new RewriteNetwork());
 	}
 	 
 	public void postInit(FMLPostInitializationEvent event) {

@@ -16,23 +16,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ClientProxy extends CommonProxy {
 	
 	public void preInit(FMLPreInitializationEvent event) {
-		
+		super.preInit(event);
 	}
 	 
 	public void init(FMLInitializationEvent event) {
+		super.init(event);
+		
+		// ×¢²á°´¼üÊÂ¼þ
 		FMLCommonHandler.instance().bus().register(new SubscribeKeyListener());
 		ClientRegistry.registerKeyBinding(SubscribeKeyListener.key_Rewrite);
 		ClientRegistry.registerKeyBinding(SubscribeKeyListener.key_Interact);
 		
-		//
-		// Init renderers
-		//
-
+		// ×¢²áäÖÈ¾Æ÷
 		RenderingRegistry.registerEntityRenderingHandler(EntityBaseball.class, new RenderSnowball(ModItems.Baseball));
 	}
 	 
 	public void postInit(FMLPostInitializationEvent event) {
-
+		super.postInit(event);
 	}
 
 }

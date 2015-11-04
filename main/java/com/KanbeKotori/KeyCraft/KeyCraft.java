@@ -52,22 +52,19 @@ public class KeyCraft {
     public void preInit(FMLPreInitializationEvent event) {
     	proxy.preInit(event);
     	
+    	// 注册物品
     	ModItems.InitItems();
     	
-    	// 
-    	// Init entities
-    	//
-
+    	// 注册实体
     	int modID = 1;
     	EntityRegistry.registerModEntity(EntityBaseball.class, "EntityBaseball", modID++, this, 128, 1, true);
     }
     
     @EventHandler
     public void Init(FMLInitializationEvent event) {
-    	//
-    	// Init events
-    	//
+    	proxy.init(event);
     	
+    	// 注册事件
     	MinecraftForge.EVENT_BUS.register(new SubscribeCheating());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnAttack());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnKillDown());
@@ -84,7 +81,6 @@ public class KeyCraft {
     	FMLCommonHandler.instance().bus().register(new SubscribePointAutoBuff());
     	FMLCommonHandler.instance().bus().register(new SubscribePointAutoRecovery());
     	FMLCommonHandler.instance().bus().register(new SubscribeAuroraRecycle());
-    	proxy.init(event);
     }
     
     @EventHandler
