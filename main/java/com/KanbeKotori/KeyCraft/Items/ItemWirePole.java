@@ -23,7 +23,7 @@ public class ItemWirePole extends ItemSword {
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		if (!RewriteHelper.getPoint(player, RewriteHelper.BruteForce.id)) {
+		if (!RewriteHelper.hasSkill(player, RewriteHelper.BruteForce.id)) {
 			return stack;
 		}
 		

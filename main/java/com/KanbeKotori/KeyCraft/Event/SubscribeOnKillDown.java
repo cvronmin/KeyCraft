@@ -24,7 +24,7 @@ public class SubscribeOnKillDown {
 			return;
 		}
 		
-		if (RewriteHelper.getPoint(player, RewriteHelper.AuroraRob.id)) {
+		if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraRob.id)) {
 			if (new Random().nextInt(16) == 8) {
 				RewriteHelper.modifyAuroraPoint(player, 1);
 			}

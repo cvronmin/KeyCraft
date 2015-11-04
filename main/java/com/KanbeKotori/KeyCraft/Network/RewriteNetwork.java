@@ -59,11 +59,11 @@ public class RewriteNetwork {
 			case LEARN_SKILL_CODE:
 				int id = stream.readInt();
 				if (id == RewriteHelper.AuroraCognition.id) {
-		    		RewriteHelper.setPoint_First(player);
+		    		RewriteHelper.initializeSkills(player);
 		    	} else {
 		    		if (RewriteHelper.getAuroraPoint(player) > RewriteHelper.getAuroraRequired(id)) {
 		    			RewriteHelper.modifyAuroraPoint(player, -RewriteHelper.getAuroraRequired(id));
-		    			RewriteHelper.setPoint(player, id, true);
+		    			RewriteHelper.learnSkill(player, id, true);
 		    		}
 		    	}
 				break;
@@ -71,17 +71,17 @@ public class RewriteNetwork {
 			case USE_SKILL_CODE:
 	    		ItemStack held = player.getHeldItem();
 	    		if (held == null) {
-	    			if (RewriteHelper.getPoint(player, RewriteHelper.AuroraBlade.id) && RewriteHelper.getAuroraPoint(player) > 1) {
+	    			if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraBlade.id) && RewriteHelper.getAuroraPoint(player) > 1) {
 		    			RewriteHelper.modifyAuroraPoint(player, -1);
 		    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraBlade, 1));
 		    			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.callblade")));
-		    		} else if (RewriteHelper.getPoint(player, RewriteHelper.AuroraTrident.id) && RewriteHelper.getAuroraPoint(player) > 1) {
+		    		} else if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraTrident.id) && RewriteHelper.getAuroraPoint(player) > 1) {
 		    			RewriteHelper.modifyAuroraPoint(player, -1);
 		    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraTrident, 1));
 		    			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.calltrident")));
 		    		}
 		    	} else if (held.getItem() == Items.iron_sword) {
-		    		if (RewriteHelper.getPoint(player, RewriteHelper.SuperVibration.id) && RewriteHelper.getAuroraPoint(player) > 1) {
+		    		if (RewriteHelper.hasSkill(player, RewriteHelper.SuperVibration.id) && RewriteHelper.getAuroraPoint(player) > 1) {
 		    			RewriteHelper.setShakingSwordDamage(player, held.getItemDamage());
 		    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.ShakingSword, 1));
 		    			RewriteHelper.modifyAuroraPoint(player, -1);
@@ -109,7 +109,7 @@ public class RewriteNetwork {
 				EntityPlayer player = MainHelper.getPlayerCl();
 				RewriteHelper.setAuroraPoint(player, stream.readInt());
 				for (int i = 0; i < RewriteHelper.SKILLS.length; i++) {
-					RewriteHelper.setPoint(player, RewriteHelper.SKILLS[i].id, stream.readBoolean());
+					RewriteHelper.learnSkill(player, RewriteHelper.SKILLS[i].id, stream.readBoolean());
 				}
 				break;
 			}
@@ -129,7 +129,7 @@ public class RewriteNetwork {
 			stream.writeInt(SYNC_SKILL_CODE);
 			stream.writeInt(RewriteHelper.getAuroraPoint(player));
 			for (RewriteHelper.Skill i : RewriteHelper.SKILLS) {
-				stream.writeBoolean(RewriteHelper.getPoint(player, i.id));
+				stream.writeBoolean(RewriteHelper.hasSkill(player, i.id));
 			}
 			
 			packet = new FMLProxyPacket(stream.buffer(), REWRITE_CHANNEL);

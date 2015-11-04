@@ -34,7 +34,7 @@ public class GUIRewriteEnsure extends GuiScreen {
     public void drawScreen(int par1, int par2, float par3) {
     	drawDefaultBackground();
     	
-        if (RewriteHelper.getPoint(playerCl, RewriteHelper.AuroraCognition.id)) {
+        if (RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraCognition.id)) {
         	mc.renderEngine.bindTexture(ResourceHelper.bg1);
         	func_146110_a((int)(width*0.05), (int)(height*0.05), 0, 0, (int)(width*0.9), (int)(height*0.8), (int)(width*0.9), (int)(height*0.8));
         } else {
@@ -195,11 +195,11 @@ public class GUIRewriteEnsure extends GuiScreen {
 	    } else if (button == btnYes) {
     		RewriteNetwork.rewriteChannel.sendToServer(RewriteNetwork.createLearnSkillPacket(skillNum));
     		if (skillNum == RewriteHelper.AuroraCognition.id) {
-	    		RewriteHelper.setPoint_First(playerCl);
+	    		RewriteHelper.initializeSkills(playerCl);
 	    	} else {
 	    		if (RewriteHelper.getAuroraPoint(playerCl) > RewriteHelper.getAuroraRequired(skillNum)) {
 	    			RewriteHelper.modifyAuroraPoint(playerCl, -RewriteHelper.getAuroraRequired(skillNum));
-	    			RewriteHelper.setPoint(playerCl, skillNum, true);
+	    			RewriteHelper.learnSkill(playerCl, skillNum, true);
 	    		}
 	    	}
 	        mc.displayGuiScreen(parentScreen);

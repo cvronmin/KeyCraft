@@ -34,15 +34,15 @@ public class SubscribeKeyListener {
 	    	EntityPlayer player = MainHelper.getPlayerCl();
     		ItemStack held = player.getHeldItem();
     		if (held == null) {
-    			if (RewriteHelper.getPoint(player, RewriteHelper.AuroraBlade.id) && RewriteHelper.getAuroraPoint(player) > 1) {
+    			if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraBlade.id) && RewriteHelper.getAuroraPoint(player) > 1) {
 	    			RewriteHelper.modifyAuroraPoint(player, -1);
 	    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraBlade, 1));
-	    		} else if (RewriteHelper.getPoint(player, RewriteHelper.AuroraTrident.id) && RewriteHelper.getAuroraPoint(player) > 1) {
+	    		} else if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraTrident.id) && RewriteHelper.getAuroraPoint(player) > 1) {
 	    			RewriteHelper.modifyAuroraPoint(player, -1);
 	    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraTrident, 1));
 	    		}
 	    	} else if (held.getItem() == Items.iron_sword) {
-	    		if (RewriteHelper.getPoint(player, RewriteHelper.SuperVibration.id) && RewriteHelper.getAuroraPoint(player) > 1) {
+	    		if (RewriteHelper.hasSkill(player, RewriteHelper.SuperVibration.id) && RewriteHelper.getAuroraPoint(player) > 1) {
 	    			RewriteHelper.setShakingSwordDamage(player, held.getItemDamage());
 	    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.ShakingSword, 1));
 	    			RewriteHelper.modifyAuroraPoint(player, -1);

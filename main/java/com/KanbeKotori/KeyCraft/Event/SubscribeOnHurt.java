@@ -7,13 +7,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSword;
 import net.minecraftforge.event.entity.living.*;
 
-public class SubscribeOnBlock {
+public class SubscribeOnHurt {
     
     @SubscribeEvent
-    public void Block_HandSonic(LivingHurtEvent event) {
+    public void OnHurt(LivingHurtEvent event) {
         if(event.entityLiving instanceof EntityPlayer) {
     		EntityPlayer entityPlayer = (EntityPlayer)event.entityLiving;
-    		if (RewriteHelper.getPoint(entityPlayer, RewriteHelper.ParryProficient.id) && entityPlayer.isUsingItem()) {
+    		if (RewriteHelper.hasSkill(entityPlayer, RewriteHelper.ParryProficient.id) && entityPlayer.isUsingItem()) {
     			if (entityPlayer.getItemInUse().getItem() instanceof ItemSword) {
     				int level = entityPlayer.getFoodStats().getFoodLevel();
     				if (level >= 1) {

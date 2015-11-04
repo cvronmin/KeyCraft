@@ -54,14 +54,14 @@ public class RewriteHelper {
 			AuroraActivation, AuroraSurge, AuroraRegeneration };
 	
 	/** 学习欧若拉认知，获得100欧若拉点 */
-	public static void setPoint_First(EntityPlayer player) {
+	public static void initializeSkills(EntityPlayer player) {
 		setAuroraPoint(player, 100);
-		setPoint(player, AuroraCognition.id, true);
+		learnSkill(player, AuroraCognition.id, true);
 	}
 	
 	/** 判断有没有欧若拉认知 */
-	public static boolean hasFirstSet(EntityPlayer player) {
-		return getPoint(player, AuroraCognition.id);
+	public static boolean hasInitialized(EntityPlayer player) {
+		return hasSkill(player, AuroraCognition.id);
 	}
 	
 	/** 取欧若拉点 */
@@ -87,7 +87,7 @@ public class RewriteHelper {
 	}
 	
 	/** 学习\取消技能，如果在服务端会发同步包 */
-	public static void setPoint(EntityPlayer player, int skill, boolean PuP) {
+	public static void learnSkill(EntityPlayer player, int skill, boolean PuP) {
 		final String name = "Skill" + String.format("%03d", skill);
 		player.getEntityData().setBoolean(name, PuP);
 		if (player instanceof EntityPlayerMP) {
@@ -96,7 +96,7 @@ public class RewriteHelper {
 	}
 
 	/** 判断有没有技能 */
-	public static boolean getPoint(EntityPlayer player, int skill) {
+	public static boolean hasSkill(EntityPlayer player, int skill) {
 		final String name = "Skill" + String.format("%03d", skill);
 		return player.getEntityData().getBoolean(name);
 	}
@@ -112,10 +112,10 @@ public class RewriteHelper {
 	}
 
 	/** 用于复活后恢复技能数据 */
-	public static void CLONE(EntityPlayer _old, EntityPlayer _new) {
+	public static void cloneSkills(EntityPlayer _old, EntityPlayer _new) {
 		setAuroraPoint(_new, getAuroraPoint(_old));
 		for (Skill i : SKILLS) {
-			setPoint(_new, i.id, getPoint(_old, i.id));
+			learnSkill(_new, i.id, hasSkill(_old, i.id));
 		}
 	}
 	

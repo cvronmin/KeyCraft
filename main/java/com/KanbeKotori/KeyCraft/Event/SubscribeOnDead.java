@@ -11,7 +11,7 @@ public class SubscribeOnDead {
     public void OnDeadClone(PlayerEvent.Clone event) {
 		EntityPlayer _old = event.original;
 		EntityPlayer _new = event.entityPlayer;
-		RewriteHelper.CLONE(_old, _new);
+		RewriteHelper.cloneSkills(_old, _new);
 	}
 
 }

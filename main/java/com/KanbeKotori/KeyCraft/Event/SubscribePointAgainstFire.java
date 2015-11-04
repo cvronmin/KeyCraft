@@ -67,27 +67,27 @@ public class SubscribePointAgainstFire {
 		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)event.entityLiving;
 			if (event.source.damageType.equals("lava")) {
-				if (RewriteHelper.getPoint(player, RewriteHelper.FireResistMax.id)) {
+				if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistMax.id)) {
     				event.setCanceled(true); 
     				isCD_mention(player);
     				if (isCD_buff_fire(player)) {
     					player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 1200));
     				}
-    			} else if (RewriteHelper.getPoint(player, RewriteHelper.FireResistUp.id)) {
+    			} else if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistUp.id)) {
     				event.setCanceled(true);
     				isCD_against_lava(player);
     			}
     		} else if (event.source.damageType.equals("inFire") || event.source.damageType.equals("onFire")) {
-    			if (RewriteHelper.getPoint(player, RewriteHelper.FireResistMax.id)) {
+    			if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistMax.id)) {
     				event.setCanceled(true); 
     				isCD_mention(player);
     				if (isCD_buff_fire(player)) {
     					player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 1200));
     				}
-    			} else if (RewriteHelper.getPoint(player, RewriteHelper.FireResistUp.id)) {
+    			} else if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistUp.id)) {
     				event.setCanceled(true);
     				isCD_mention(player);
-    			} else if (RewriteHelper.getPoint(player, RewriteHelper.FireResist.id)) {
+    			} else if (RewriteHelper.hasSkill(player, RewriteHelper.FireResist.id)) {
     				event.setCanceled(true);
     				isCD_against_fire(player);
     			}

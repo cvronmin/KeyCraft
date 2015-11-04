@@ -26,7 +26,7 @@ public class GUIRewrite extends GuiScreen {
 
     @Override
     public void initGui() {
-    	if (!RewriteHelper.getPoint(playerCl, RewriteHelper.AuroraCognition.id)) {
+    	if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraCognition.id)) {
     		buttonList.add(btnSkill000 = new GuiButton(0, (int)(width * 0.5 - 32), (int)(height*0.4), 64, 64, ""));
     	} else {
     		buttonList.add(btnSkillHunting = new GuiButton(1, (int)(width * 0.25 - 32), (int)(height*0.4), 64, 64, ""));
@@ -38,7 +38,7 @@ public class GUIRewrite extends GuiScreen {
     @Override
     public void drawScreen(int par1, int par2, float par3) {
         drawDefaultBackground();
-        if (RewriteHelper.getPoint(playerCl, RewriteHelper.AuroraCognition.id)) {
+        if (RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraCognition.id)) {
         	mc.renderEngine.bindTexture(ResourceHelper.bg1);
         	func_146110_a((int)(width*0.05), (int)(height*0.05), 0, 0, (int)(width*0.9), (int)(height*0.8), (int)(width*0.9), (int)(height*0.8));
         } else {
@@ -54,29 +54,29 @@ public class GUIRewrite extends GuiScreen {
     	super.drawScreen(par1,par2,par3);
     	
         String point;
-        if (RewriteHelper.getPoint(playerCl, RewriteHelper.AuroraCognition.id)) {
+        if (RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraCognition.id)) {
         	point = RewriteHelper.getAuroraPoint(playerCl) + "";
         } else {
         	point = "???";
         }
         drawString(fontRendererObj, "Your Aurora Point:" + point, (int)(width*0.5), (int)(height*0.2), 0xFFFFFF);
 
-        if (!RewriteHelper.getPoint(playerCl, RewriteHelper.AuroraCognition.id)) {
+        if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraCognition.id)) {
         	mc.renderEngine.bindTexture(ResourceHelper.icon000);
     		func_146110_a((int)(width * 0.5 - 32), (int)(height * 0.4), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.category.title0"), (int)(width * 0.5), (int)(height * 0.7), 0xFFFFFF);
         }
-        if (RewriteHelper.getPoint(playerCl, RewriteHelper.AuroraCognition.id)) {
+        if (RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraCognition.id)) {
         	mc.renderEngine.bindTexture(ResourceHelper.category1);
         	func_146110_a((int)(width * 0.25 - 32), (int)(height * 0.4), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.category.title1"), (int)(width * 0.25), (int)(height * 0.7), 0xFFFFFF);
         }
-        if (RewriteHelper.getPoint(playerCl, RewriteHelper.AuroraCognition.id)) {
+        if (RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraCognition.id)) {
         	mc.renderEngine.bindTexture(ResourceHelper.category2);
         	func_146110_a((int)(width * 0.5 - 32), (int)(height * 0.4), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.category.title2"), (int)(width * 0.5), (int)(height * 0.7), 0xFFFFFF);
         }
-        if (RewriteHelper.getPoint(playerCl, RewriteHelper.AuroraCognition.id)) {
+        if (RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraCognition.id)) {
         	mc.renderEngine.bindTexture(ResourceHelper.category3);
         	func_146110_a((int)(width * 0.75 - 32), (int)(height * 0.4), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.category.title3"), (int)(width * 0.75), (int)(height * 0.7), 0xFFFFFF);
@@ -87,7 +87,7 @@ public class GUIRewrite extends GuiScreen {
     @Override
 	protected void actionPerformed(GuiButton button) {
 		if (button == btnSkill000) {
-	    	if (!RewriteHelper.hasFirstSet(playerCl)) {
+	    	if (!RewriteHelper.hasInitialized(playerCl)) {
 	    		mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.AuroraCognition.id));
 	    	}
     	} else if (button == btnSkillHunting) {
