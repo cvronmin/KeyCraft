@@ -15,7 +15,7 @@ public class SubscribeCheating {
 	
 	@SubscribeEvent
     public void GodsBless(ServerChatEvent event) {
-        if(event.message.equals("/Kotori")) {
+        if(event.message.toLowerCase().equals("kotori")) {
         	event.setCanceled(true);
             EntityPlayerMP player = event.player;
             if (!player.worldObj.isRemote) {
