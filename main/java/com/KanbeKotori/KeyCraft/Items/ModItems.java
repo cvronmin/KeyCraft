@@ -27,10 +27,7 @@ public class ModItems {
     public static Item WirePole;
     
     public static void InitItems() {
-    	//
-    	// Init skills
-    	//
-    	
+    	// 注册技能生成的物品
     	ShakingSword = new PointShakingSword();
     	ShakingSword.setUnlocalizedName("ShakingSword").setTextureName("keycraft:PointShakingSword").setCreativeTab(null);
     	GameRegistry.registerItem(ShakingSword, "ShakingSword");
@@ -43,10 +40,7 @@ public class ModItems {
 		AuroraBlade.setUnlocalizedName("AuroraBlade").setTextureName("keycraft:PointAuroraBlade").setCreativeTab(null);
     	GameRegistry.registerItem(AuroraBlade, "AuroraBlade");
     	
-    	//
-    	// Init food
-    	//
-    	
+    	// 注册食物
     	SanaeBread = (new ItemCallbackFood(20))
     			.setCallback(new ItemCallbackFood.ICallback(){
 					public void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
@@ -97,10 +91,7 @@ public class ModItems {
     	GameRegistry.registerItem(BreadWithJam, "BreadWithJam");
     	GameRegistry.addShapelessRecipe(new ItemStack(BreadWithJam), new Object[] { SanaeBread, AkikoJam });
     	
-    	//
-    	// Init other items
-    	//
-    	
+    	// 注册其他物品
     	Baseball = (new ItemBaseball())
     			.setMaxStackSize(16)
     			.setUnlocalizedName("Baseball").setTextureName("keycraft:Baseball").setCreativeTab(KeyCraft.CreativeTab);

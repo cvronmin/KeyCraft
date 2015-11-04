@@ -18,40 +18,6 @@ import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 public class SubscribeAuroraRecycle {
 	
 	@SubscribeEvent
-	public void Aurora_Recycle(PlayerTickEvent event) {
-		EntityPlayer player = event.player;
-		ItemStack held = player.getHeldItem();
-		
-		ItemStack itemstack;
-		for (int i = 0; i < player.inventory.mainInventory.length; i++) {
-			if ((itemstack = player.inventory.mainInventory[i]) != null) {
-				if (itemstack.getItem() == ModItems.AuroraTrident) {
-					if (itemstack != held) {
-						double pp = (double)itemstack.getItemDamage() / itemstack.getMaxDamage();
-						if (!player.worldObj.isRemote) {
-							player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recycletrident")));
-						}
-						EventOnAuroraRecycle EventOnAuroraRecycle = new EventOnAuroraRecycle(player, pp);
-			            MinecraftForge.EVENT_BUS.post(EventOnAuroraRecycle);
-			            player.inventory.mainInventory[i] = null;
-					}
-				} else if (itemstack.getItem() == ModItems.AuroraBlade) {
-					if (itemstack != held) {
-						double pp = (double)itemstack.getItemDamage() / itemstack.getMaxDamage();
-						if (!player.worldObj.isRemote) {
-							player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recycleblade")));
-						}
-						EventOnAuroraRecycle EventOnAuroraRecycle = new EventOnAuroraRecycle(player, pp);
-			            MinecraftForge.EVENT_BUS.post(EventOnAuroraRecycle);
-			            player.inventory.mainInventory[i] = null;
-					}
-				}	
-			}
-		}
-		
-	}
-	
-	@SubscribeEvent
 	public void Aurora_Recycle(EventOnAuroraRecycle event) {
 		EntityPlayer player = event.entityPlayer;
 		if (event.proportion == 0) {

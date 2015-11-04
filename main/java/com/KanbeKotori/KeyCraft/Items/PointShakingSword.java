@@ -9,13 +9,16 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
 
 public class PointShakingSword extends ItemSword {
 	
@@ -41,6 +44,23 @@ public class PointShakingSword extends ItemSword {
 	@Override
     public boolean hasEffect(ItemStack p_77636_1_) {
         return true;
+    }
+	
+	@Override
+	public void onUpdate(ItemStack stack, World world, Entity entity, int index, boolean isCurrentItem) {
+		if (entity instanceof EntityPlayer && !isCurrentItem) {
+			EntityPlayer player = (EntityPlayer)entity;
+			if (!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.useshakingsword")));
+			}
+			player.inventory.mainInventory[index] = new ItemStack(Items.iron_sword, 1, RewriteHelper.getShakingSwordDamage(player));
+		}
+	}
+	
+	@Override
+	public boolean onDroppedByPlayer(ItemStack item, EntityPlayer player) {
+		player.setCurrentItemOrArmor(0, new ItemStack(Items.iron_sword, 1, RewriteHelper.getShakingSwordDamage(player)));
+        return false;
     }
 	
 	@Override

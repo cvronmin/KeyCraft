@@ -1,5 +1,6 @@
 package com.KanbeKotori.KeyCraft.Event;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -90,7 +91,10 @@ public class SubscribePointAutoBuff {
 	@SubscribeEvent
 	public void Point_AutoBuffResistance(LivingAttackEvent event) {
 		if (event.entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)event.entity;
+			Entity entity = event.source.getEntity();
+			if (!(entity instanceof EntityPlayer))
+				return;
+			EntityPlayer player = (EntityPlayer)entity;
 			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("mob") || event.source.damageType.equals("player")) {
 				if (RewriteHelper.hasSkill(player, RewriteHelper.BattleReadiness.id) && isCD_Buff_Resistance()) {
 					player.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1));
@@ -105,7 +109,10 @@ public class SubscribePointAutoBuff {
 	@SubscribeEvent
 	public void Point_AutoBuffPower(LivingAttackEvent event) {
 		if (event.source.damageType.equals("arrow")) {
-			EntityPlayer player = (EntityPlayer)event.entity;
+			Entity entity = event.source.getEntity();
+			if (!(entity instanceof EntityPlayer))
+				return;
+			EntityPlayer player = (EntityPlayer)entity;
 			if (RewriteHelper.hasSkill(player, RewriteHelper.BruteForce.id) && isCD_Buff_Power()) {
 				player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 400, 1));
 				if (!player.worldObj.isRemote) {

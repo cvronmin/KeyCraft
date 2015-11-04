@@ -2,6 +2,7 @@ package com.KanbeKotori.KeyCraft.Event;
 
 import com.KanbeKotori.KeyCraft.Helper.*;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.StatCollector;
@@ -52,7 +53,10 @@ public class SubscribePointAgainstMagic {
 	@SubscribeEvent
 	public void PointAgainstMagic(LivingAttackEvent event) {
 		if (event.entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)event.entity;
+			Entity entity = event.source.getEntity();
+			if (!(entity instanceof EntityPlayer))
+				return;
+			EntityPlayer player = (EntityPlayer)entity;
 			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("explosion")) {
 				if (RewriteHelper.hasSkill(player, RewriteHelper.UltimateHardening.id)) {
     				event.setCanceled(true);

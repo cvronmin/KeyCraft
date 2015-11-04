@@ -9,6 +9,7 @@ import com.google.common.collect.Sets;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
@@ -17,6 +18,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
 
 public class PointAuroraBlade extends ItemTool {
 	
@@ -96,6 +98,31 @@ public class PointAuroraBlade extends ItemTool {
 	public void addInformation(ItemStack stack, EntityPlayer player, List information, boolean p_77624_4_) {
 		information.add(StatCollector.translateToLocal("keycraft.item.intro2_1"));
 		information.add(StatCollector.translateToLocal("keycraft.item.intro2_2"));
+	}
+	
+	@Override
+	public void onUpdate(ItemStack stack, World world, Entity player, int index, boolean isCurrentItem) {
+		if (player instanceof EntityPlayer && !isCurrentItem) {
+			((EntityPlayer)player).inventory.mainInventory[index] = null;
+			recycle(stack, (EntityPlayer)player);
+		}
+	}
+	
+	@SubscribeEvent
+	public void onDropped(ItemTossEvent event) {
+		if (event.entityItem.getEntityItem().getItem() instanceof PointAuroraBlade) {
+			event.setCanceled(true);
+			recycle(event.entityItem.getEntityItem(), event.player);
+		}
+    }
+	
+	public void recycle(ItemStack stack, EntityPlayer player) {
+		double pp = (double)stack.getItemDamage() / stack.getMaxDamage();
+		if (!player.worldObj.isRemote) {
+			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recycleblade")));
+		}
+		EventOnAuroraRecycle EventOnAuroraRecycle = new EventOnAuroraRecycle(player, pp);
+        MinecraftForge.EVENT_BUS.post(EventOnAuroraRecycle);
 	}
 	
 	@SubscribeEvent
