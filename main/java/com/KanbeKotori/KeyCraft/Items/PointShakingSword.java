@@ -57,10 +57,20 @@ public class PointShakingSword extends ItemSword {
 		}
 	}
 	
-	@Override
-	public boolean onDroppedByPlayer(ItemStack item, EntityPlayer player) {
-		player.setCurrentItemOrArmor(0, new ItemStack(Items.iron_sword, 1, RewriteHelper.getShakingSwordDamage(player)));
-        return false;
+	@SubscribeEvent
+	public void onDropped(ItemTossEvent event) {
+		if (event.entityItem.getEntityItem().getItem() instanceof PointShakingSword) {
+			EntityPlayer player = event.player;
+			if (!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.useshakingsword")));
+			}
+			ItemStack stack = new ItemStack(Items.iron_sword, 1, RewriteHelper.getShakingSwordDamage(player));
+			if (player.inventory.addItemStackToInventory(stack)) {
+				event.setCanceled(true);
+			} else {
+				event.entityItem.setEntityItemStack(stack);
+			}
+		}
     }
 	
 	@Override
