@@ -11,11 +11,11 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class SubscribePointAgainstMagic {
 	
-	/** 判断Skill331-『抗爆炸外壳』是否已经CD，但是不会同步，死亡会重置CD。 */
+	/** 判断Skill331-『抗爆炸外壳』是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
 	public boolean isCD_against_arrow(EntityPlayer player) {
-		if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_AgArrow") >= 5000) {
-    		player.getEntityData().setLong("LastTime_AgArrow", System.currentTimeMillis());
-			RewriteHelper.modifyAuroraPoint(player, -1);
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_AgArrow") >= 5 * 20) {
+    		player.getEntityData().setLong("LastTime_AgArrow", time);
     		if (!player.worldObj.isRemote) {
 				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstexplosion")));
 			}
@@ -24,11 +24,11 @@ public class SubscribePointAgainstMagic {
     	return false;
     }
 	
-	/** 判断Skill332-『抗魔法外壳』是否已经CD，但是不会同步，死亡会重置CD。 */
+	/** 判断Skill332-『抗魔法外壳』是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
 	public boolean isCD_against_magic(EntityPlayer player) {
-		if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_AgMagic") >= 30000) {
-    		player.getEntityData().setLong("LastTime_AgMagic", System.currentTimeMillis());
-			RewriteHelper.modifyAuroraPoint(player, -1);
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_AgMagic") >= 30 * 20) {
+    		player.getEntityData().setLong("LastTime_AgMagic", time);
     		if (!player.worldObj.isRemote) {
 				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagic")));
 			}
@@ -37,10 +37,11 @@ public class SubscribePointAgainstMagic {
     	return false;
     }
 	
-	/** 判断Skill333-『终极硬化外壳』是否已经CD，但是不会同步，死亡会重置CD。 */
+	/** 判断Skill333-『终极硬化外壳』是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
 	public boolean isCD_against_magic_plus(EntityPlayer player) {
-		if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_AgMagicPlus") >= 30000) {
-    		player.getEntityData().setLong("LastTime_AgMagicPlus", System.currentTimeMillis());
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_AgMagicPlus") >= 30 * 20) {
+    		player.getEntityData().setLong("LastTime_AgMagicPlus", time);
     		if (!player.worldObj.isRemote) {
 				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagicplus")));
 			}
@@ -60,7 +61,9 @@ public class SubscribePointAgainstMagic {
     				isCD_against_magic_plus(player);
     			} else if (RewriteHelper.hasSkill(player, RewriteHelper.ExplosionResist.id)) {
     				event.setCanceled(true);
-    				isCD_against_arrow(player);
+    				if (isCD_against_arrow(player)) {
+    					RewriteHelper.modifyAuroraPoint(player, -1);
+    				}
     			}
     		} else if (event.source.damageType.equals("magic") || event.source.damageType.equals("indirectMagic")) {
     			if (RewriteHelper.hasSkill(player, RewriteHelper.UltimateHardening.id)) {
@@ -68,7 +71,9 @@ public class SubscribePointAgainstMagic {
     				isCD_against_magic_plus(player);
     			} else if (RewriteHelper.hasSkill(player, RewriteHelper.MagicResist.id)) {
     				event.setCanceled(true);
-    				isCD_against_magic(player);
+    				if (isCD_against_magic(player)) {
+    					RewriteHelper.modifyAuroraPoint(player, -1);
+    				}
     			}
     		} 
 		}

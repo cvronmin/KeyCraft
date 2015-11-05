@@ -23,10 +23,11 @@ import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class SubscribePointAutoBuff {
 	
-	/** 判断Skill200-『紧急防护』是否已经CD，但是不会同步，死亡会重置CD。 */
+	/** 判断Skill200-『紧急防护』是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
 	public boolean isCD_Buff_ER(EntityPlayer player) {
-    	if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_ER") >= 300000) {
-    		player.getEntityData().setLong("LastTime_ER", System.currentTimeMillis());
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_ER") >= 300 * 20) {
+    		player.getEntityData().setLong("LastTime_ER", time);
     		if (!player.worldObj.isRemote) {
 				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.er")));
 			}
@@ -39,14 +40,15 @@ public class SubscribePointAutoBuff {
 	@SubscribeEvent
 	public void Point_AutoSpeedUp(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
+		if (!RewriteHelper.hasSkill(player, RewriteHelper.HuntingRhythm.id)) {
+			return;
+		}
+		
 		List entities = player.worldObj.getEntitiesWithinAABB(EntityLiving.class, AxisAlignedBB.getBoundingBox(player.posX-8.0D, player.posY-2.0D, player.posZ-8.0D, player.posX+8.0D, player.posY+2.0D, player.posZ+8.0D));
 		for (Iterator iterator = entities.iterator(); iterator.hasNext(); ) {
 			EntityLiving entity = (EntityLiving)iterator.next();
 			if(!entity.equals(player)) {
-				if (RewriteHelper.hasSkill(player, RewriteHelper.HuntingRhythm.id)) {
-					player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 100));
-				}
-				return ;
+				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 100));
 			}
 		}
 	}

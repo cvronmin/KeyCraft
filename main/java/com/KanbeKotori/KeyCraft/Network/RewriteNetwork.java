@@ -52,7 +52,7 @@ public class RewriteNetwork {
 		
 		/** 玩家复活处理 */
 		@SubscribeEvent
-		public void onPlayerLoggedIn(PlayerRespawnEvent event) {
+		public void onPlayerRespawn(PlayerRespawnEvent event) {
 			EntityPlayer player = event.player;
 			if (player instanceof EntityPlayerMP) {
 				// 同步技能数据

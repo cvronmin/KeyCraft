@@ -13,17 +13,21 @@ import net.minecraft.util.StatCollector;
 import net.minecraftforge.event.entity.living.*;
 
 public class SubscribeOnHurt {
-	
-	public long last_Buff_Resistance = 0;
-	
-	public boolean isCD_Buff_Resistance() {
-    	if (System.currentTimeMillis() - last_Buff_Resistance >= 30000) {
-    		last_Buff_Resistance = System.currentTimeMillis();
+
+	/** 判断Skill211-『战斗准备』是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
+	public boolean isCD_Buff_Resistance(EntityPlayer player) {
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_BattleReadiness") >= 30 * 20) {
+    		player.getEntityData().setLong("LastTime_BattleReadiness", time);
+			if (!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.resistance")));
+			}
     		return true;
     	}
     	return false;
     }
-    
+
+	/** 玩家因为Skill233-『格挡精通』而免除某些伤害 */
     @SubscribeEvent
     public void OnHurt(LivingHurtEvent event) {
         if(event.entityLiving instanceof EntityPlayer) {
@@ -40,16 +44,14 @@ public class SubscribeOnHurt {
     	}
     }
     
+    /** 玩家因为Skill211-『战斗准备』而加buff */
 	@SubscribeEvent
 	public void Point_AutoBuffResistance(LivingHurtEvent event) {
 		if (event.entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)event.entity;
 			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("mob") || event.source.damageType.equals("player")) {
-				if (RewriteHelper.hasSkill(player, RewriteHelper.BattleReadiness.id) && isCD_Buff_Resistance()) {
+				if (RewriteHelper.hasSkill(player, RewriteHelper.BattleReadiness.id) && isCD_Buff_Resistance(player)) {
 					player.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1));
-					if (!player.worldObj.isRemote) {
-						player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.resistance")));
-					}
 				}
 			}
 		}

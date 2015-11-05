@@ -17,14 +17,14 @@ public class SubscribePointAutoRecovery {
 	@SubscribeEvent
 	public void Point_AuroraAutoRecover(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
-		if (!player.worldObj.isRemote) {
+		// 随机事件只发生在服务器
+		if (player.worldObj.isRemote || !RewriteHelper.hasSkill(player, RewriteHelper.AuroraRegeneration.id)) {
 			return;
 		}
-		if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraRegeneration.id)) {
-			if (new Random().nextInt(2400) == 1200) {
-				RewriteHelper.modifyAuroraPoint(player, 1);
-				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.aurorarecovery")));
-			}
+		
+		if (new Random().nextInt(2400) == 1200) {
+			RewriteHelper.modifyAuroraPoint(player, 1);
+			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.aurorarecovery")));
 		}
 	}
 

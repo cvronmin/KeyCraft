@@ -24,7 +24,7 @@ public class SubscribeOnDead {
 			newData.setBoolean(name, RewriteHelper.hasSkill(_old, i.id));
 		}
 		
-		// 复活后同步
+		// 复活后同步，@RewriteNetwork.SendSyncPacket.onPlayerRespawn
 	}
 
 }

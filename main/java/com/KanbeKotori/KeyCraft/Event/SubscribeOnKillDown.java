@@ -18,7 +18,7 @@ public class SubscribeOnKillDown {
 	
 	@SubscribeEvent
     public void Point_AuroraRob(LivingDeathEvent event) {
-		if (!(event.source.damageType.equals("player"))) {
+		if (!(event.source.getEntity() instanceof EntityPlayer)) {
 			return;
 		}
 		EntityPlayer player = (EntityPlayer)event.source.getEntity();
@@ -29,9 +29,6 @@ public class SubscribeOnKillDown {
 		if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraRob.id)) {
 			if (new Random().nextInt(16) == 8) {
 				RewriteHelper.modifyAuroraPoint(player, 1);
-				player.addChatMessage(new ChatComponentText("true"));
-			} else {
-				player.addChatMessage(new ChatComponentText("false"));
 			}
 		}
 	}

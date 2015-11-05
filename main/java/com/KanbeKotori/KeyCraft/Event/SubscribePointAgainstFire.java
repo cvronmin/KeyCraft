@@ -13,11 +13,11 @@ import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class SubscribePointAgainstFire {
 	
-	/** 判断Skill321-『抗火』是否已经CD，但是不会同步，死亡会重置CD。 */
+	/** 判断Skill321-『抗火』是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
 	public boolean isCD_against_fire(EntityPlayer player) {
-		if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_AgFire") >= 60000) {
-    		player.getEntityData().setLong("LastTime_AgFire", System.currentTimeMillis());
-			RewriteHelper.modifyAuroraPoint(player, -1);
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_AgFire") >= 60 * 20) {
+    		player.getEntityData().setLong("LastTime_AgFire", time);
     		if (!player.worldObj.isRemote) {
 				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfire")));
 			}
@@ -26,11 +26,11 @@ public class SubscribePointAgainstFire {
     	return false;
     }
 	
-	/** 判断Skill322-『抗火UP』是否已经CD，但是不会同步，死亡会重置CD。 */
+	/** 判断Skill322-『抗火UP』是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
 	public boolean isCD_against_lava(EntityPlayer player) {
-		if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_AgLava") >= 30000) {
-    		player.getEntityData().setLong("LastTime_AgLava", System.currentTimeMillis());
-			RewriteHelper.modifyAuroraPoint(player, -1);
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_AgLava") >= 30 * 20) {
+    		player.getEntityData().setLong("LastTime_AgLava", time);
     		if (!player.worldObj.isRemote) {
 				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfireplus")));
 			}
@@ -39,10 +39,11 @@ public class SubscribePointAgainstFire {
     	return false;
     }
 	
-	/** 判断Skill322-『抗火UP』\Skill323-『抗火MAX』导致的无损耗无视伤害是否已经CD，但是不会同步，死亡会重置CD。 */
+	/** 判断Skill322-『抗火UP』\Skill323-『抗火MAX』导致的无损耗无视伤害是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
 	public boolean isCD_mention(EntityPlayer player) {
-		if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_IgnoreFire") >= 30000) {
-    		player.getEntityData().setLong("LastTime_IgnoreFire", System.currentTimeMillis());
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_IgnoreFire") >= 30 * 20) {
+    		player.getEntityData().setLong("LastTime_IgnoreFire", time);
     		if (!player.worldObj.isRemote) {
 				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfiremax")));
 			}
@@ -62,7 +63,9 @@ public class SubscribePointAgainstFire {
     				isCD_mention(player);
     			} else if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistUp.id)) {
     				event.setCanceled(true);
-    				isCD_against_lava(player);
+    				if (isCD_against_lava(player)) {
+    					RewriteHelper.modifyAuroraPoint(player, -1);
+    				}
     			}
     		} else if (event.source.damageType.equals("inFire") || event.source.damageType.equals("onFire")) {
     			if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistUp.id)) {
@@ -70,7 +73,9 @@ public class SubscribePointAgainstFire {
     				isCD_mention(player);
     			} else if (RewriteHelper.hasSkill(player, RewriteHelper.FireResist.id)) {
     				event.setCanceled(true);
-    				isCD_against_fire(player);
+    				if (isCD_against_fire(player)) {
+    					RewriteHelper.modifyAuroraPoint(player, -1);
+    				}
     			}
     		} 
 		}
