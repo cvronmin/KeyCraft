@@ -15,6 +15,18 @@ public class ResourceHelper {
 	public static ResourceLocation category3 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_category_3.png");
 	
 	public static ResourceLocation icon000 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_000.png"); 
+	public static ResourceLocation icon100 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_100.png"); 
+	public static ResourceLocation icon111 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_111.png"); 
+	public static ResourceLocation icon112 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_112.png"); 
+	public static ResourceLocation icon121 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_121.png"); 
+	public static ResourceLocation icon122 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_122.png");
+	public static ResourceLocation icon123 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_123.png");
+	public static ResourceLocation icon131 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_131.png"); 
+	public static ResourceLocation icon132 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_132.png"); 
+	public static ResourceLocation icon133 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_133.png");
+	public static ResourceLocation icon141 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_141.png"); 
+	public static ResourceLocation icon142 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_142.png"); 
+	public static ResourceLocation icon143 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_143.png"); 
 	public static ResourceLocation icon200 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_200.png"); 
 	public static ResourceLocation icon211 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_211.png"); 
 	public static ResourceLocation icon212 = new ResourceLocation(KeyCraft.MODID, "textures/icons/skill_212.png"); 

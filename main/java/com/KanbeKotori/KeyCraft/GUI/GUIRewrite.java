@@ -91,7 +91,7 @@ public class GUIRewrite extends GuiScreen {
 	    		mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.AuroraCognition.id));
 	    	}
     	} else if (button == btnSkillHunting) {
-    		
+    		mc.displayGuiScreen(new GUIRewrite_Hunting(getThisScreen()));
 	    } else if (button == btnSkillLogging) {
 	    	mc.displayGuiScreen(new GUIRewrite_Logging(getThisScreen()));
 	    } else if (button == btnSkillPolluting) {
