@@ -11,6 +11,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 import cpw.mods.fml.common.network.FMLEventChannel;
 import cpw.mods.fml.common.network.FMLNetworkEvent.ClientCustomPacketEvent;
 import cpw.mods.fml.common.network.FMLNetworkEvent.ServerConnectionFromClientEvent;
@@ -38,7 +39,7 @@ public class RewriteNetwork {
 	public static final int LEARN_SKILL_CODE = 2;
 	public static final int USE_SKILL_CODE = 3;
 	
-	public static class SubscribePlayerLoggedIn {
+	public static class SendSyncPacket {
 		/** 服务器玩家登陆处理 */
 		@SubscribeEvent
 		public void onPlayerLoggedIn(PlayerLoggedInEvent event) {
@@ -47,6 +48,17 @@ public class RewriteNetwork {
 			// 同步技能数据
 			rewriteChannel.sendTo(createSyncAuroraPointPacket(player), (EntityPlayerMP)player);
 			rewriteChannel.sendTo(createSyncSkillPacket(player), (EntityPlayerMP)player);
+		}
+		
+		/** 玩家复活处理 */
+		@SubscribeEvent
+		public void onPlayerLoggedIn(PlayerRespawnEvent event) {
+			EntityPlayer player = event.player;
+			if (player instanceof EntityPlayerMP) {
+				// 同步技能数据
+				rewriteChannel.sendTo(createSyncAuroraPointPacket(player), (EntityPlayerMP)player);
+				rewriteChannel.sendTo(createSyncSkillPacket(player), (EntityPlayerMP)player);
+			}
 		}
 	}
 	

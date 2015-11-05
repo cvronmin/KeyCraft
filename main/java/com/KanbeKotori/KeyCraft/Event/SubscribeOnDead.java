@@ -16,17 +16,15 @@ public class SubscribeOnDead {
     public void OnDeadClone(PlayerEvent.Clone event) {
 		final EntityPlayer _old = event.original;
 		final EntityPlayer _new = event.entityPlayer;
-		
-		RewriteHelper.setAuroraPoint(_new, RewriteHelper.getAuroraPoint(_old));
+
 		final NBTTagCompound newData = _new.getEntityData();
+		newData.setInteger("SkillPoint", RewriteHelper.getAuroraPoint(_old));
 		for (Skill i : RewriteHelper.SKILLS) {
 			final String name = "Skill" + String.format("%03d", i.id);
 			newData.setBoolean(name, RewriteHelper.hasSkill(_old, i.id));
 		}
 		
-		if (_new instanceof EntityPlayerMP) {
-			RewriteNetwork.rewriteChannel.sendTo(RewriteNetwork.createSyncSkillPacket(_new), (EntityPlayerMP)_new);
-		}
+		// 复活后同步
 	}
 
 }
