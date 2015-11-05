@@ -27,7 +27,7 @@ public class PointAuroraTrident extends ItemSword {
 	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		if (stack.getItemDamage() >= 64) {
+		if (stack.getItemDamage() >= this.getMaxDamage()) {
 			EntityPlayer player = (EntityPlayer)attacker;
 			World world = player.getEntityWorld();
 			if(!world.isRemote) {
@@ -47,7 +47,7 @@ public class PointAuroraTrident extends ItemSword {
 	        return true;
 	    }
 		
-		if (stack.getItemDamage() >= 64) {
+		if (stack.getItemDamage() >= this.getMaxDamage()) {
 			EntityPlayer player = (EntityPlayer)entity;
 			World world = player.getEntityWorld();
 			if(!world.isRemote) {
