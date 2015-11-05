@@ -22,13 +22,12 @@ import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 public class SubscribePointAutoBuff {
 
 	public long last_Buff_ER = 0;
-	public long last_Buff_Resistance = 0;
 	public long last_Buff_MoreHealth = 0;
 	public long last_Buff_Power = 0;
 	public long last_Buff_Continuous = 0;
 	
 	public boolean isCD_Buff_ER() {
-    	if (System.currentTimeMillis() - last_Buff_ER >= 300000) {
+    	if (System.currentTimeMillis() - last_Buff_ER >= 600000) {
     		last_Buff_ER = System.currentTimeMillis();
     		return true;
     	}
@@ -38,14 +37,6 @@ public class SubscribePointAutoBuff {
 	public boolean isCD_Buff_Power() {
     	if (System.currentTimeMillis() - last_Buff_Power >= 30000) {
     		last_Buff_Power = System.currentTimeMillis();
-    		return true;
-    	}
-    	return false;
-    }
-	
-	public boolean isCD_Buff_Resistance() {
-    	if (System.currentTimeMillis() - last_Buff_Resistance >= 30000) {
-    		last_Buff_Resistance = System.currentTimeMillis();
     		return true;
     	}
     	return false;
@@ -107,33 +98,12 @@ public class SubscribePointAutoBuff {
 	}
 	
 	@SubscribeEvent
-	public void Point_AutoBuffResistance(LivingAttackEvent event) {
-		if (event.entity instanceof EntityPlayer) {
-			Entity entity = event.source.getEntity();
-			if (!(entity instanceof EntityPlayer))
-				return;
-			EntityPlayer player = (EntityPlayer)entity;
-			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("mob") || event.source.damageType.equals("player")) {
-				if (RewriteHelper.hasSkill(player, RewriteHelper.BattleReadiness.id) && isCD_Buff_Resistance()) {
-					player.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1));
-					if (!player.worldObj.isRemote) {
-						player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.resistance")));
-					}
-				}
-			}
-		}
-	}
-	
-	@SubscribeEvent
 	public void Point_AutoBuffPower(LivingAttackEvent event) {
-		if (event.source.damageType.equals("arrow")) {
-			Entity entity = event.source.getEntity();
-			if (!(entity instanceof EntityPlayer))
-				return;
-			EntityPlayer player = (EntityPlayer)entity;
+		if (event.source.damageType.equals("player")) {
+			EntityPlayer player = MainHelper.getPlayerCl();
 			if (RewriteHelper.hasSkill(player, RewriteHelper.BruteForce.id) && isCD_Buff_Power()) {
-				player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 400, 1));
-				if (!player.worldObj.isRemote) {
+				player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 600, 1));
+				if (player.worldObj.isRemote) {
 					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.power")));
 				}
 			}

@@ -31,7 +31,7 @@ public class RewriteHelper {
 	public static final Skill PoisonAttach			= new Skill(222, 10);
 	public static final Skill WitherAttach			= new Skill(223, 20);
 	public static final Skill SuperVibration		= new Skill(231, 10);
-	public static final Skill BruteForce			= new Skill(232, 10);
+	public static final Skill BruteForce			= new Skill(232, 20);
 	public static final Skill ParryProficient		= new Skill(233, 20);
 	public static final Skill LifeSuck				= new Skill(241, 20);
 	public static final Skill PowerDown				= new Skill(242, 20);
