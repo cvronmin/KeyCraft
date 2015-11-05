@@ -96,8 +96,8 @@ public class PointAuroraBlade extends ItemTool {
 	
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List information, boolean p_77624_4_) {
-		information.add(StatCollector.translateToLocal("keycraft.item.intro2_1"));
-		information.add(StatCollector.translateToLocal("keycraft.item.intro2_2"));
+		information.add(StatCollector.translateToLocal("keycraft.item.intro312_1"));
+		information.add(StatCollector.translateToLocal("keycraft.item.intro312_2"));
 	}
 	
 	@Override

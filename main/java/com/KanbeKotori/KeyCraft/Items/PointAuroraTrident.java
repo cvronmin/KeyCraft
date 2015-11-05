@@ -88,8 +88,8 @@ public class PointAuroraTrident extends ItemSword {
 	
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List information, boolean p_77624_4_) {
-		information.add(StatCollector.translateToLocal("keycraft.item.intro1_1"));
-		information.add(StatCollector.translateToLocal("keycraft.item.intro1_2"));
+		information.add(StatCollector.translateToLocal("keycraft.item.intro311_1"));
+		information.add(StatCollector.translateToLocal("keycraft.item.intro311_2"));
 	}
 
 }
