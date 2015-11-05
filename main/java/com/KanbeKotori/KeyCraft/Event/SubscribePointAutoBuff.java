@@ -22,7 +22,6 @@ import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 public class SubscribePointAutoBuff {
 
 	public long last_Buff_ER = 0;
-	public long last_Buff_MoreHealth = 0;
 	public long last_Buff_Power = 0;
 	public long last_Buff_Continuous = 0;
 	
@@ -37,14 +36,6 @@ public class SubscribePointAutoBuff {
 	public boolean isCD_Buff_Power() {
     	if (System.currentTimeMillis() - last_Buff_Power >= 30000) {
     		last_Buff_Power = System.currentTimeMillis();
-    		return true;
-    	}
-    	return false;
-    }
-	
-	public boolean isCD_Buff_MoreHealth() {
-    	if (System.currentTimeMillis() - last_Buff_MoreHealth >= 0x7FFFFFFF) {
-    		last_Buff_MoreHealth = System.currentTimeMillis();
     		return true;
     	}
     	return false;
@@ -92,7 +83,8 @@ public class SubscribePointAutoBuff {
 	@SubscribeEvent
 	public void Point_MoreHealth(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
-		if (RewriteHelper.hasSkill(player, RewriteHelper.PhysiqueUp.id) && isCD_Buff_MoreHealth()) {
+		if (RewriteHelper.hasSkill(player, RewriteHelper.PhysiqueUp.id)) {
+			if (player.isPotionActive(Potion.field_76434_w)) return;
 			player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 0x7FFFFFFF, 4));
 		}
 	}
