@@ -1,6 +1,10 @@
 package com.KanbeKotori.KeyCraft.Event;
 
+import java.util.Iterator;
+import java.util.List;
+
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -63,6 +67,20 @@ public class SubscribePointAutoBuff {
     	return false;
     }
 	
+	@SubscribeEvent
+	public void Point_AutoSpeedUp(PlayerTickEvent event) {
+		EntityPlayer player = event.player;
+		List entities = player.worldObj.getEntitiesWithinAABB(EntityLiving.class, AxisAlignedBB.getBoundingBox(player.posX-8.0D, player.posY-2.0D, player.posZ-8.0D, player.posX+8.0D, player.posY+2.0D, player.posZ+8.0D));
+		for (Iterator iterator = entities.iterator(); iterator.hasNext(); ) {
+			EntityLiving entity = (EntityLiving)iterator.next();
+			if(!entity.equals(player)) {
+				if (RewriteHelper.hasSkill(player, RewriteHelper.HuntingRhythm.id)) {
+					player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 100));
+				}
+				return ;
+			}
+		}
+	}
 	
 	@SubscribeEvent
 	public void Point_ER(PlayerTickEvent event) {

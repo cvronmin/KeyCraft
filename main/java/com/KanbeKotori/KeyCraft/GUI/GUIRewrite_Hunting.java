@@ -9,16 +9,16 @@ public class GUIRewrite_Hunting extends GuiScreen {
 	
 	public GuiScreen parentScreen;
 	
-	private GuiButton btnSkill100; // 
-	private GuiButton btnSkill111; // 
+	private GuiButton btnSkill100; // 狩猎律动
+	private GuiButton btnSkill111; // 血之陷阱
 	private GuiButton btnSkill112; // 
-	private GuiButton btnSkill121; // 
-	private GuiButton btnSkill122; // 
-	private GuiButton btnSkill123; // 
-	private GuiButton btnSkill131; //
-	private GuiButton btnSkill132; // 
-	private GuiButton btnSkill133; // 
-	private GuiButton btnSkill141; // 
+	private GuiButton btnSkill121; // 枪械精通
+	private GuiButton btnSkill122; // 快速射击
+	private GuiButton btnSkill123; // 子弹风暴
+	private GuiButton btnSkill131; // 投掷物精通
+	private GuiButton btnSkill132; // 路易斯之枪
+	private GuiButton btnSkill133; // 杀人字典
+	private GuiButton btnSkill141; // 快速蓄力
 	private GuiButton btnSkill142; // 
 	private GuiButton btnSkill143; // 
 	
@@ -31,24 +31,24 @@ public class GUIRewrite_Hunting extends GuiScreen {
     @Override
 	public void initGui() {
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraCognition.id))
-			buttonList.add(btnSkill100 = new GuiButton(RewriteHelper.UrgentProtect.id, (int)(width * 0.2 - 16), (int)(height * 0.4), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.UrgentProtect.id))
+			buttonList.add(btnSkill100 = new GuiButton(RewriteHelper.HuntingRhythm.id, (int)(width * 0.2 - 16), (int)(height * 0.4), 32, 32, ""));
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
 			buttonList.add(btnSkill111 = new GuiButton(RewriteHelper.BattleReadiness.id, (int)(width * 0.2 - 16), (int)(height * 0.55), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.BattleReadiness.id))
 			buttonList.add(btnSkill112 = new GuiButton(RewriteHelper.PhysiqueUp.id, (int)(width * 0.2 - 16), (int)(height * 0.7), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.UrgentProtect.id))
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
 			buttonList.add(btnSkill121 = new GuiButton(RewriteHelper.FireAttach.id, (int)(width * 0.4 - 16), (int)(height * 0.4), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.FireAttach.id))
 			buttonList.add(btnSkill122 = new GuiButton(RewriteHelper.PoisonAttach.id, (int)(width * 0.4 - 16), (int)(height * 0.55), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.PoisonAttach.id))
 			buttonList.add(btnSkill123 = new GuiButton(RewriteHelper.WitherAttach.id, (int)(width * 0.4 - 16), (int)(height * 0.7), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.UrgentProtect.id))
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
 			buttonList.add(btnSkill131 = new GuiButton(RewriteHelper.SuperVibration.id, (int)(width * 0.6 - 16), (int)(height * 0.4), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.SuperVibration.id))
 			buttonList.add(btnSkill132 = new GuiButton(RewriteHelper.BruteForce.id, (int)(width * 0.6 - 16), (int)(height * 0.55), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.BruteForce.id))
 			buttonList.add(btnSkill133 = new GuiButton(RewriteHelper.ParryProficient.id, (int)(width * 0.6 - 16), (int)(height * 0.7), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.UrgentProtect.id))
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
 			buttonList.add(btnSkill141 = new GuiButton(RewriteHelper.LifeSuck.id, (int)(width * 0.8 - 16), (int)(height * 0.4), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.LifeSuck.id))
 			buttonList.add(btnSkill142 = new GuiButton(RewriteHelper.PowerDown.id, (int)(width * 0.8 - 16), (int)(height * 0.55), 32, 32, ""));
@@ -85,7 +85,7 @@ public class GUIRewrite_Hunting extends GuiScreen {
    			mc.renderEngine.bindTexture(ResourceHelper.icon100);
    			func_146110_a((int)(width * 0.2 - 16), (int)(height * 0.4), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.UrgentProtect.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon111);
    			func_146110_a((int)(width * 0.2 - 16), (int)(height * 0.55), 0, 0, 32, 32, 32, 32);
    		}
@@ -94,7 +94,7 @@ public class GUIRewrite_Hunting extends GuiScreen {
    			func_146110_a((int)(width * 0.2 - 16), (int)(height * 0.7), 0, 0, 32, 32, 32, 32);
    		}
    		
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.UrgentProtect.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon121);
    			func_146110_a((int)(width * 0.4 - 16), (int)(height * 0.4), 0, 0, 32, 32, 32, 32);
    		}
@@ -107,7 +107,7 @@ public class GUIRewrite_Hunting extends GuiScreen {
    			func_146110_a((int)(width * 0.4 - 16), (int)(height * 0.7), 0, 0, 32, 32, 32, 32);
    		}
    		
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.UrgentProtect.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon131);
    			func_146110_a((int)(width * 0.6 - 16), (int)(height * 0.4), 0, 0, 32, 32, 32, 32);
    		}
@@ -120,7 +120,7 @@ public class GUIRewrite_Hunting extends GuiScreen {
    			func_146110_a((int)(width * 0.6 - 16), (int)(height * 0.7), 0, 0, 32, 32, 32, 32);
    		}
    		
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.UrgentProtect.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon141);
    			func_146110_a((int)(width * 0.8 - 16), (int)(height * 0.4), 0, 0, 32, 32, 32, 32);
    		}
@@ -138,8 +138,8 @@ public class GUIRewrite_Hunting extends GuiScreen {
    @Override
 	protected void actionPerformed(GuiButton button) {
 	   if (button == btnSkill100) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.UrgentProtect.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.UrgentProtect.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.HuntingRhythm.id));
 		   }
 	   } else if (button == btnSkill111) {
 		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.BattleReadiness.id)) {

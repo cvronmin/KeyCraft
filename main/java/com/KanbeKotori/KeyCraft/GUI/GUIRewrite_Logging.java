@@ -19,7 +19,7 @@ public class GUIRewrite_Logging  extends GuiScreen {
 	private GuiButton btnSkill232; // 蛮力
 	private GuiButton btnSkill233; // 格挡精通
 	private GuiButton btnSkill241; // 生命虹吸
-	private GuiButton btnSkill242; // 力量衰弱
+	private GuiButton btnSkill242; // 力量削弱
 	private GuiButton btnSkill243; // 欧若拉掠夺
 	
 	private EntityPlayer playerCl = MainHelper.getPlayerCl();

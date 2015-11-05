@@ -7,6 +7,7 @@ keycraft.gui.button.yes=升级，消耗
 keycraft.gui.button.cancel=取消
 
 keycraft.gui.ensure.title000=欧若拉认知
+keycraft.gui.ensure.title100=狩猎律动
 keycraft.gui.ensure.title200=紧急防护
 keycraft.gui.ensure.title211=战斗准备
 keycraft.gui.ensure.title212=体质提升
@@ -34,6 +35,7 @@ keycraft.gui.ensure.title343=欧若拉再生
 
 keycraft.gui.ensure.intro000_1=欧若拉，即生命与奇迹之力，其浓度极高时表现为极光色。
 keycraft.gui.ensure.intro000_2=愿意消耗的话，什么事都能办成的吧。
+keycraft.gui.ensure.intro100=因为经常狩猎，当周围存在生物时会敏锐的发现，并提升自己的速度。
 keycraft.gui.ensure.intro200_1=面对危机时，可以大幅提升自己的身体素质和恢复力。
 keycraft.gui.ensure.intro200_2=不过考虑到性价比，简直是在浪费欧若拉。
 keycraft.gui.ensure.intro211=在战斗中以欧若拉强化身体，以提升伤害抗性。

@@ -47,72 +47,81 @@ public class GUIRewriteEnsure extends GuiScreen {
         mc.renderEngine.bindTexture(ResourceHelper.logo);
     	func_146110_a((int)(width*0.1), (int)(height*0.1), 0, 0, 128, 57, 128, 57);
     	
-    	if (skillNum == RewriteHelper.AuroraCognition.id) {
+    	/*
+    	 * 根据技能序号显示对应说明。
+    	 * 有的说明是一行，有的是两行。
+    	 */
+    	if (skillNum == RewriteHelper.AuroraCognition.id) {			// Skill000-欧若拉认知
         	mc.renderEngine.bindTexture(ResourceHelper.icon000);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title000"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro000_1"), width/2, (int)(height*0.45), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro000_2"), width/2, (int)(height*0.6), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.UrgentProtect.id) {
+    	} else if (skillNum == RewriteHelper.HuntingRhythm.id) {	// Skill100-狩猎律动
+        	mc.renderEngine.bindTexture(ResourceHelper.icon100);
+        	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title100"), width/2, (int)(height*0.3), 0xFFFFFF);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro100"), width/2, (int)(height*0.45), 0xFFFFFF);
+    	} else if (skillNum == RewriteHelper.UrgentProtect.id) {	// Skill200-紧急防护
         	mc.renderEngine.bindTexture(ResourceHelper.icon200);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title200"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro200_1"), width/2, (int)(height*0.45), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro200_2"), width/2, (int)(height*0.6), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.BattleReadiness.id) {
+    	} else if (skillNum == RewriteHelper.BattleReadiness.id) {	// Skill211-战斗准备
         	mc.renderEngine.bindTexture(ResourceHelper.icon211);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title211"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro211"), width/2, (int)(height*0.45), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.PhysiqueUp.id) {
+    	} else if (skillNum == RewriteHelper.PhysiqueUp.id) {		// Skill212-体质提升
         	mc.renderEngine.bindTexture(ResourceHelper.icon212);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title212"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro212_1"), width/2, (int)(height*0.45), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro212_2"), width/2, (int)(height*0.6), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.FireAttach.id) {
+    	} else if (skillNum == RewriteHelper.FireAttach.id) {		// Skill221-火焰附加
         	mc.renderEngine.bindTexture(ResourceHelper.icon221);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title221"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro221"), width/2, (int)(height*0.45), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.PoisonAttach.id) {
+    	} else if (skillNum == RewriteHelper.PoisonAttach.id) {		// Skill222-剧毒附加
         	mc.renderEngine.bindTexture(ResourceHelper.icon222);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title222"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro222"), width/2, (int)(height*0.45), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.WitherAttach.id) {
+    	} else if (skillNum == RewriteHelper.WitherAttach.id) {		// Skill223-凋零附加
         	mc.renderEngine.bindTexture(ResourceHelper.icon223);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title223"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro223"), width/2, (int)(height*0.45), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.SuperVibration.id) {
+    	} else if (skillNum == RewriteHelper.SuperVibration.id) {	// Skill231-超振动
         	mc.renderEngine.bindTexture(ResourceHelper.icon231);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title231"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro231_1"), width/2, (int)(height*0.45), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro231_2"), width/2, (int)(height*0.6), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.BruteForce.id) {
+    	} else if (skillNum == RewriteHelper.BruteForce.id) {		// Skill232-蛮力
         	mc.renderEngine.bindTexture(ResourceHelper.icon232);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title232"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro232"), width/2, (int)(height*0.45), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.ParryProficient.id) {
+    	} else if (skillNum == RewriteHelper.ParryProficient.id) {	// Skill233-格挡精通
         	mc.renderEngine.bindTexture(ResourceHelper.icon233);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title233"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro233_1"), width/2, (int)(height*0.45), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro233_2"), width/2, (int)(height*0.6), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.LifeSuck.id) {
+    	} else if (skillNum == RewriteHelper.LifeSuck.id) {			// Skill241-生命虹吸
         	mc.renderEngine.bindTexture(ResourceHelper.icon241);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title241"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro241"), width/2, (int)(height*0.45), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.PowerDown.id) {
+    	} else if (skillNum == RewriteHelper.PowerDown.id) {		// Skill242-力量削弱
         	mc.renderEngine.bindTexture(ResourceHelper.icon242);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title242"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro242"), width/2, (int)(height*0.45), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.AuroraRob.id) {
+    	} else if (skillNum == RewriteHelper.AuroraRob.id) {		// Skill243-欧若拉掠夺
         	mc.renderEngine.bindTexture(ResourceHelper.icon243);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title243"), width/2, (int)(height*0.3), 0xFFFFFF);
@@ -194,7 +203,7 @@ public class GUIRewriteEnsure extends GuiScreen {
 	        mc.displayGuiScreen(parentScreen);
 	    } else if (button == btnYes) {
     		RewriteNetwork.rewriteChannel.sendToServer(RewriteNetwork.createLearnSkillPacket(skillNum));
-    		if (skillNum == RewriteHelper.AuroraCognition.id) {
+    		if (skillNum == RewriteHelper.AuroraCognition.id) {		// 如果是初始技能Skill000-欧若拉认知
 	    		RewriteHelper.initializeSkills(playerCl);
 	    	} else {
 	    		if (RewriteHelper.getAuroraPoint(playerCl) > RewriteHelper.getAuroraRequired(skillNum)) {
