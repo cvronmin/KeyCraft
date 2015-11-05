@@ -84,18 +84,19 @@ public class SubscribePointAutoBuff {
 	public void Point_MoreHealth(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
 		if (RewriteHelper.hasSkill(player, RewriteHelper.PhysiqueUp.id)) {
-			if (player.isPotionActive(Potion.field_76434_w)) return;
-			player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 0x7FFFFFFF, 4));
+			if (!player.isPotionActive(Potion.field_76434_w)) {
+				player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 0x7FFFFFFF, 4));
+			}
 		}
 	}
 	
 	@SubscribeEvent
 	public void Point_AutoBuffPower(LivingAttackEvent event) {
-		if (event.source.damageType.equals("player")) {
-			EntityPlayer player = MainHelper.getPlayerCl();
+		if (event.source.getEntity() instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)event.source.getEntity();
 			if (RewriteHelper.hasSkill(player, RewriteHelper.BruteForce.id) && isCD_Buff_Power()) {
 				player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 600, 1));
-				if (player.worldObj.isRemote) {
+				if (!player.worldObj.isRemote) {
 					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.power")));
 				}
 			}

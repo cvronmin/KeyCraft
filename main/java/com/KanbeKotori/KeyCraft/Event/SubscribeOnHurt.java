@@ -43,7 +43,7 @@ public class SubscribeOnHurt {
 	@SubscribeEvent
 	public void Point_AutoBuffResistance(LivingHurtEvent event) {
 		if (event.entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.entity;
+			EntityPlayer player = (EntityPlayer)event.entity;
 			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("mob") || event.source.damageType.equals("player")) {
 				if (RewriteHelper.hasSkill(player, RewriteHelper.BattleReadiness.id) && isCD_Buff_Resistance()) {
 					player.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1));
