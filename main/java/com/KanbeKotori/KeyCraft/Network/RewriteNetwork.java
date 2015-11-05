@@ -33,6 +33,7 @@ public class RewriteNetwork {
 	public static final String REWRITE_CHANNEL = "REWRITE_CHANNEL";
 	public static FMLEventChannel rewriteChannel;
 
+	public static final int SYNC_AURORA_POINT_CODE = 0;
 	public static final int SYNC_SKILL_CODE = 1;
 	public static final int LEARN_SKILL_CODE = 2;
 	public static final int USE_SKILL_CODE = 3;
@@ -44,6 +45,7 @@ public class RewriteNetwork {
 			EntityPlayer player = event.player;
 			
 			// 同步技能数据
+			rewriteChannel.sendTo(createSyncAuroraPointPacket(player), (EntityPlayerMP)player);
 			rewriteChannel.sendTo(createSyncSkillPacket(player), (EntityPlayerMP)player);
 		}
 	}
@@ -100,14 +102,16 @@ public class RewriteNetwork {
 	/** 客户端封包处理 */
 	@SubscribeEvent
 	public void onClientPacket(ClientCustomPacketEvent event) {
+		EntityPlayer player = MainHelper.getPlayerCl();
+		
 		ByteBufInputStream stream = new ByteBufInputStream(event.packet.payload());
 		try {
-			int code = stream.readInt();
-			
-			switch (code) {
-			case SYNC_SKILL_CODE:
-				EntityPlayer player = MainHelper.getPlayerCl();
+			switch (stream.readInt()) {
+			case SYNC_AURORA_POINT_CODE:
 				RewriteHelper.setAuroraPoint(player, stream.readInt());
+				break;
+				
+			case SYNC_SKILL_CODE:
 				for (int i = 0; i < RewriteHelper.SKILLS.length; i++) {
 					RewriteHelper.learnSkill(player, RewriteHelper.SKILLS[i].id, stream.readBoolean());
 				}
@@ -122,12 +126,26 @@ public class RewriteNetwork {
 	
 	////////////////////////////////// 创建封包用的函数 //////////////////////////////////
 	
+	public static FMLProxyPacket createSyncAuroraPointPacket(EntityPlayer player) {
+		ByteBufOutputStream stream = new ByteBufOutputStream(Unpooled.buffer());
+		FMLProxyPacket packet = null;
+		try {
+			stream.writeInt(SYNC_AURORA_POINT_CODE);
+			stream.writeInt(RewriteHelper.getAuroraPoint(player));
+			
+			packet = new FMLProxyPacket(stream.buffer(), REWRITE_CHANNEL);
+			stream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return packet;
+	}
+	
 	public static FMLProxyPacket createSyncSkillPacket(EntityPlayer player) {
 		ByteBufOutputStream stream = new ByteBufOutputStream(Unpooled.buffer());
 		FMLProxyPacket packet = null;
 		try {
 			stream.writeInt(SYNC_SKILL_CODE);
-			stream.writeInt(RewriteHelper.getAuroraPoint(player));
 			for (RewriteHelper.Skill i : RewriteHelper.SKILLS) {
 				stream.writeBoolean(RewriteHelper.hasSkill(player, i.id));
 			}

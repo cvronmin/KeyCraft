@@ -73,7 +73,7 @@ public class RewriteHelper {
 	public static void setAuroraPoint(EntityPlayer player, int point) {
 		player.getEntityData().setInteger("SkillPoint", point < 0 ? 0 : point);
 		if (player instanceof EntityPlayerMP) {
-			RewriteNetwork.rewriteChannel.sendTo(RewriteNetwork.createSyncSkillPacket(player), (EntityPlayerMP)player);
+			RewriteNetwork.rewriteChannel.sendTo(RewriteNetwork.createSyncAuroraPointPacket(player), (EntityPlayerMP)player);
 		}
 	}
 	
@@ -82,7 +82,7 @@ public class RewriteHelper {
 		int newPoint = getAuroraPoint(player) + point;
 		player.getEntityData().setInteger("SkillPoint", newPoint < 0 ? 0 : newPoint);
 		if (player instanceof EntityPlayerMP) {
-			RewriteNetwork.rewriteChannel.sendTo(RewriteNetwork.createSyncSkillPacket(player), (EntityPlayerMP)player);
+			RewriteNetwork.rewriteChannel.sendTo(RewriteNetwork.createSyncAuroraPointPacket(player), (EntityPlayerMP)player);
 		}
 	}
 	
@@ -109,14 +109,6 @@ public class RewriteHelper {
 			}
 		}
 		return 0x7FFFFFFF;
-	}
-
-	/** 用于复活后恢复技能数据 */
-	public static void cloneSkills(EntityPlayer _old, EntityPlayer _new) {
-		setAuroraPoint(_new, getAuroraPoint(_old));
-		for (Skill i : SKILLS) {
-			learnSkill(_new, i.id, hasSkill(_old, i.id));
-		}
 	}
 	
 	public static void setShakingSwordDamage(EntityPlayer player, int damage) {
