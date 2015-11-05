@@ -13,13 +13,13 @@ import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class SubscribePointAutoRecovery {
 	
+	/** 给予玩家Skill343-『欧若拉再生』的欧若拉点数 */
 	@SubscribeEvent
 	public void Point_AuroraAutoRecover(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
 		if (!player.worldObj.isRemote) {
 			return;
 		}
-		
 		if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraRegeneration.id)) {
 			if (new Random().nextInt(2400) == 1200) {
 				RewriteHelper.modifyAuroraPoint(player, 1);

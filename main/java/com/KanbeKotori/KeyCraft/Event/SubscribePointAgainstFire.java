@@ -13,55 +13,45 @@ import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class SubscribePointAgainstFire {
 	
-	private long last_against_fire = 0;
-	private long last_against_lava = 0;
-	private long last_buff_fire = 0;
-	private long last_mention = 0;
-	
+	/** 判断Skill321-『抗火』是否已经CD，但是不会同步，死亡会重置CD。 */
 	public boolean isCD_against_fire(EntityPlayer player) {
-    	if (System.currentTimeMillis() - last_against_fire >= 60000) {
-    		last_against_fire = System.currentTimeMillis();
-    		RewriteHelper.modifyAuroraPoint(player, -1);
-    		if (!player.worldObj.isRemote) {
-        		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfire")));
-    		}
-    		return true;
-    	}
-    	return false;
-    }
-	
-	public boolean isCD_against_lava(EntityPlayer player) {
-    	if (System.currentTimeMillis() - last_against_lava >= 30000) {
-    		last_against_lava = System.currentTimeMillis();
-    		//last_against_fire = last_against_lava;
+		if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_AgFire") >= 60000) {
+    		player.getEntityData().setLong("LastTime_AgFire", System.currentTimeMillis());
 			RewriteHelper.modifyAuroraPoint(player, -1);
     		if (!player.worldObj.isRemote) {
-        		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstlava")));
-    		}
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfire")));
+			}
     		return true;
     	}
     	return false;
     }
 	
-	public boolean isCD_mention(EntityPlayer player) {
-    	if (System.currentTimeMillis() - last_mention >= 30000) {
-    		last_mention = System.currentTimeMillis();
+	/** 判断Skill322-『抗火UP』是否已经CD，但是不会同步，死亡会重置CD。 */
+	public boolean isCD_against_lava(EntityPlayer player) {
+		if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_AgLava") >= 30000) {
+    		player.getEntityData().setLong("LastTime_AgLava", System.currentTimeMillis());
+			RewriteHelper.modifyAuroraPoint(player, -1);
     		if (!player.worldObj.isRemote) {
-    			player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfireplus")));
-    		}
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfireplus")));
+			}
     		return true;
     	}
     	return false;
     }
 	
-	public boolean isCD_buff_fire(EntityPlayer player) {
-    	if (System.currentTimeMillis() - last_buff_fire >= 60000) {
-    		last_buff_fire = System.currentTimeMillis();
+	/** 判断Skill322-『抗火UP』\Skill323-『抗火MAX』导致的无损耗无视伤害是否已经CD，但是不会同步，死亡会重置CD。 */
+	public boolean isCD_mention(EntityPlayer player) {
+		if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_IgnoreFire") >= 30000) {
+    		player.getEntityData().setLong("LastTime_IgnoreFire", System.currentTimeMillis());
+    		if (!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfiremax")));
+			}
     		return true;
     	}
     	return false;
     }
 	
+	/** 玩家因为Skill321-『抗火』\Skill322-『抗火UP』\Skill323-『抗火MAX』而免除某些伤害 */
 	@SubscribeEvent
 	public void PointAgainstFireAndLava(LivingHurtEvent event) {
 		if (event.entityLiving instanceof EntityPlayer) {
@@ -70,22 +60,13 @@ public class SubscribePointAgainstFire {
 				if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistMax.id)) {
     				event.setCanceled(true); 
     				isCD_mention(player);
-    				if (isCD_buff_fire(player)) {
-    					player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 1200));
-    				}
     			} else if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistUp.id)) {
     				event.setCanceled(true);
     				isCD_against_lava(player);
     			}
     		} else if (event.source.damageType.equals("inFire") || event.source.damageType.equals("onFire")) {
-    			if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistMax.id)) {
+    			if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistUp.id)) {
     				event.setCanceled(true); 
-    				isCD_mention(player);
-    				if (isCD_buff_fire(player)) {
-    					player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 1200));
-    				}
-    			} else if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistUp.id)) {
-    				event.setCanceled(true);
     				isCD_mention(player);
     			} else if (RewriteHelper.hasSkill(player, RewriteHelper.FireResist.id)) {
     				event.setCanceled(true);

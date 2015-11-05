@@ -52,4 +52,19 @@ public class SubscribeOnAttack {
     	}
 	}
 	
+	@SubscribeEvent
+	public void Point_AutoBuffPower(LivingAttackEvent event) {
+		if (event.source.getEntity() instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)event.source.getEntity();
+			if (RewriteHelper.hasSkill(player, RewriteHelper.BruteForce.id)) {
+				if (!player.isPotionActive(Potion.damageBoost)) {
+					player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 600, 1));
+					if (!player.worldObj.isRemote) {
+						player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.power")));
+					}
+				}
+			}
+		}
+	}
+	
 }

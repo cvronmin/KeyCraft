@@ -6,58 +6,58 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.StatCollector;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.*;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class SubscribePointAgainstMagic {
 	
-	private long last_against_arrow = 0;
-	private long last_against_magic = 0;
-	private long last_mention = 0;
-	
+	/** 判断Skill331-『抗爆炸外壳』是否已经CD，但是不会同步，死亡会重置CD。 */
 	public boolean isCD_against_arrow(EntityPlayer player) {
-    	if (System.currentTimeMillis() - last_against_arrow >= 10000) {
-    		last_against_arrow = System.currentTimeMillis();
+		if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_AgArrow") >= 5000) {
+    		player.getEntityData().setLong("LastTime_AgArrow", System.currentTimeMillis());
 			RewriteHelper.modifyAuroraPoint(player, -1);
     		if (!player.worldObj.isRemote) {
-        		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstarrow")));
-    		}
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstexplosion")));
+			}
     		return true;
     	}
     	return false;
     }
 	
+	/** 判断Skill332-『抗魔法外壳』是否已经CD，但是不会同步，死亡会重置CD。 */
 	public boolean isCD_against_magic(EntityPlayer player) {
-    	if (System.currentTimeMillis() - last_against_magic >= 30000) {
-    		last_against_magic = System.currentTimeMillis();
+		if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_AgMagic") >= 30000) {
+    		player.getEntityData().setLong("LastTime_AgMagic", System.currentTimeMillis());
 			RewriteHelper.modifyAuroraPoint(player, -1);
     		if (!player.worldObj.isRemote) {
-        		player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagic")));
-    		}
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagic")));
+			}
     		return true;
     	}
     	return false;
     }
 	
-	public boolean isCD_mention(EntityPlayer player) {
-    	if (System.currentTimeMillis() - last_mention >= 30000) {
-    		last_mention = System.currentTimeMillis();
+	/** 判断Skill333-『终极硬化外壳』是否已经CD，但是不会同步，死亡会重置CD。 */
+	public boolean isCD_against_magic_plus(EntityPlayer player) {
+		if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_AgMagicPlus") >= 30000) {
+    		player.getEntityData().setLong("LastTime_AgMagicPlus", System.currentTimeMillis());
     		if (!player.worldObj.isRemote) {
-    			player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagicplus")));
-    		}
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagicplus")));
+			}
     		return true;
     	}
     	return false;
     }
 	
+	/** 玩家因为Skill331-『抗爆炸外壳』\Skill332-『抗魔法外壳』\Skill333-『终极硬化外壳』而免除某些伤害 */
 	@SubscribeEvent
-	public void PointAgainstMagic(LivingAttackEvent event) {
+	public void PointAgainstMagic(LivingHurtEvent event) {
 		if(event.entityLiving instanceof EntityPlayer) {
     		EntityPlayer player = (EntityPlayer)event.entityLiving;
 			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("explosion") || event.source.damageType.equals("explosion.player")) {
 				if (RewriteHelper.hasSkill(player, RewriteHelper.UltimateHardening.id)) {
     				event.setCanceled(true);
-    				isCD_mention(player);
+    				isCD_against_magic_plus(player);
     			} else if (RewriteHelper.hasSkill(player, RewriteHelper.ExplosionResist.id)) {
     				event.setCanceled(true);
     				isCD_against_arrow(player);
@@ -65,7 +65,7 @@ public class SubscribePointAgainstMagic {
     		} else if (event.source.damageType.equals("magic") || event.source.damageType.equals("indirectMagic")) {
     			if (RewriteHelper.hasSkill(player, RewriteHelper.UltimateHardening.id)) {
     				event.setCanceled(true);
-    				isCD_mention(player);
+    				isCD_against_magic_plus(player);
     			} else if (RewriteHelper.hasSkill(player, RewriteHelper.MagicResist.id)) {
     				event.setCanceled(true);
     				isCD_against_magic(player);

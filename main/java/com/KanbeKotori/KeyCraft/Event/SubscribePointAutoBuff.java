@@ -6,6 +6,7 @@ import java.util.List;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -15,40 +16,26 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 
 import com.KanbeKotori.KeyCraft.Helper.*;
 import com.KanbeKotori.KeyCraft.Items.ModItems;
+import com.KanbeKotori.KeyCraft.Network.RewriteNetwork;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class SubscribePointAutoBuff {
-
-	public long last_Buff_ER = 0;
-	public long last_Buff_Power = 0;
-	public long last_Buff_Continuous = 0;
 	
-	public boolean isCD_Buff_ER() {
-    	if (System.currentTimeMillis() - last_Buff_ER >= 600000) {
-    		last_Buff_ER = System.currentTimeMillis();
+	/** 判断Skill200-『紧急防护』是否已经CD，但是不会同步，死亡会重置CD。 */
+	public boolean isCD_Buff_ER(EntityPlayer player) {
+    	if (System.currentTimeMillis() - player.getEntityData().getLong("LastTime_ER") >= 300000) {
+    		player.getEntityData().setLong("LastTime_ER", System.currentTimeMillis());
+    		if (!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.er")));
+			}
     		return true;
     	}
     	return false;
     }
 	
-	public boolean isCD_Buff_Power() {
-    	if (System.currentTimeMillis() - last_Buff_Power >= 30000) {
-    		last_Buff_Power = System.currentTimeMillis();
-    		return true;
-    	}
-    	return false;
-    }
-	
-	public boolean isCD_Buff_Continuous() {
-    	if (System.currentTimeMillis() - last_Buff_Continuous >= 3000) {
-    		last_Buff_Continuous = System.currentTimeMillis();
-    		return true;
-    	}
-    	return false;
-    }
-	
+	/** 给予玩家Skill100-『狩猎律动』的速度Buff */
 	@SubscribeEvent
 	public void Point_AutoSpeedUp(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
@@ -64,22 +51,21 @@ public class SubscribePointAutoBuff {
 		}
 	}
 	
+	/** 给予玩家Skill200-『紧急防护』的速度Buff */
 	@SubscribeEvent
 	public void Point_ER(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
 		if (RewriteHelper.hasSkill(player, RewriteHelper.UrgentProtect.id) && player.getHealth() <= 6 && RewriteHelper.getAuroraPoint(player) > 5) {
-			if (isCD_Buff_ER()) {
+			if (isCD_Buff_ER(player)) {
 	    		RewriteHelper.modifyAuroraPoint(player, -5);
 				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 200, 1));
 				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 200, 4));
 				player.addPotionEffect(new PotionEffect(Potion.resistance.id, 200, 1));
-				if (!player.worldObj.isRemote) {
-					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.er")));
-				}
 			}
 		}
 	}
 	
+	/** 给予玩家Skill212-『体质提升』的生命提升Buff */
 	@SubscribeEvent
 	public void Point_MoreHealth(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
@@ -90,31 +76,20 @@ public class SubscribePointAutoBuff {
 		}
 	}
 	
-	@SubscribeEvent
-	public void Point_AutoBuffPower(LivingAttackEvent event) {
-		if (event.source.getEntity() instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)event.source.getEntity();
-			if (RewriteHelper.hasSkill(player, RewriteHelper.BruteForce.id) && isCD_Buff_Power()) {
-				player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 600, 1));
-				if (!player.worldObj.isRemote) {
-					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.power")));
-				}
-			}
-		}
-	}
-	
+	/** 给予玩家Skill341-『欧若拉激活』\Skill342-『欧若拉涌动』的生命回复Buff */
 	@SubscribeEvent
 	public void Point_AutoHeal(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
-		if (player.getHealth() < 20) {
-			if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraSurge.id) && isCD_Buff_Continuous()) {
-				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 80, 1));
-			} else if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraActivation.id) && isCD_Buff_Continuous()) {
-				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 80));
+		if (player.getHealth() < 20 && !player.isPotionActive(Potion.regeneration)) {
+			if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraSurge.id)) {
+				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 100, 1));
+			} else if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraActivation.id)) {
+				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 100));
 			}
 		}
 	}
 	
+	/** 给予玩家Skill过多导致的欧若拉暴走的速度和跳跃提升Buff */
 	@SubscribeEvent
 	public void Point_Burst(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
@@ -124,12 +99,13 @@ public class SubscribePointAutoBuff {
 			&& RewriteHelper.hasSkill(player, RewriteHelper.FireResistMax.id) 
 			&& RewriteHelper.hasSkill(player, RewriteHelper.UltimateHardening.id) 
 			&& RewriteHelper.hasSkill(player, RewriteHelper.AuroraRegeneration.id) 
-			&& isCD_Buff_Continuous()) {
-			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 80, 255));
-			player.addPotionEffect(new PotionEffect(Potion.jump.id, 80, 99));
+			) {
+			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 100, 255));
+			player.addPotionEffect(new PotionEffect(Potion.jump.id, 100, 99));
 		}
 	}
 	
+	/** 给予玩家持有电线杆子时没有Skill232-『蛮力』的缓慢Buff */
 	@SubscribeEvent
 	public void Overweight(PlayerTickEvent event) {
 		EntityPlayer player = event.player;

@@ -16,6 +16,7 @@ import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class SubscribeShakingSwordUsing {
 	
+	/** 玩家在使用Skill231-『超振动』后将铁剑返还给玩家 */
 	@SubscribeEvent
     public void usedShakingSword(EventOnShakingSwordUse event) {
 		EntityPlayer player = event.entityPlayer;

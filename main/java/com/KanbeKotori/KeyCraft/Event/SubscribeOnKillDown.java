@@ -4,7 +4,9 @@ import java.util.Random;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.StatCollector;
 import net.minecraftforge.event.entity.living.*;
 
 import com.KanbeKotori.KeyCraft.Helper.*;
@@ -16,7 +18,7 @@ public class SubscribeOnKillDown {
 	
 	@SubscribeEvent
     public void Point_AuroraRob(LivingDeathEvent event) {
-		if (!(event.source.getEntity() instanceof EntityPlayer)) {
+		if (!(event.source.damageType.equals("player"))) {
 			return;
 		}
 		EntityPlayer player = (EntityPlayer)event.source.getEntity();
@@ -27,6 +29,9 @@ public class SubscribeOnKillDown {
 		if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraRob.id)) {
 			if (new Random().nextInt(16) == 8) {
 				RewriteHelper.modifyAuroraPoint(player, 1);
+				player.addChatMessage(new ChatComponentText("true"));
+			} else {
+				player.addChatMessage(new ChatComponentText("false"));
 			}
 		}
 	}
