@@ -28,7 +28,7 @@ public class SubscribePointAgainstMagic {
     }
 	
 	public boolean isCD_against_magic(EntityPlayer player) {
-    	if (System.currentTimeMillis() - last_against_magic >= 10000) {
+    	if (System.currentTimeMillis() - last_against_magic >= 30000) {
     		last_against_magic = System.currentTimeMillis();
 			RewriteHelper.modifyAuroraPoint(player, -1);
     		if (!player.worldObj.isRemote) {
@@ -52,12 +52,9 @@ public class SubscribePointAgainstMagic {
 	
 	@SubscribeEvent
 	public void PointAgainstMagic(LivingAttackEvent event) {
-		if (event.entity instanceof EntityPlayer) {
-			Entity entity = event.source.getEntity();
-			if (!(entity instanceof EntityPlayer))
-				return;
-			EntityPlayer player = (EntityPlayer)entity;
-			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("explosion")) {
+		if(event.entityLiving instanceof EntityPlayer) {
+    		EntityPlayer player = (EntityPlayer)event.entityLiving;
+			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("explosion") || event.source.damageType.equals("explosion.player")) {
 				if (RewriteHelper.hasSkill(player, RewriteHelper.UltimateHardening.id)) {
     				event.setCanceled(true);
     				isCD_mention(player);
