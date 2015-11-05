@@ -135,8 +135,8 @@ public class SubscribePointAutoBuff {
 		ItemStack held = player.getHeldItem();
 		if (held != null) {
 			if (held.getItem() == ModItems.WirePole) {
-				if (!RewriteHelper.hasSkill(player, RewriteHelper.BruteForce.id) && isCD_Buff_Continuous()) {
-					player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 80, 1)); 	
+				if (!RewriteHelper.hasSkill(player, RewriteHelper.BruteForce.id)) {
+					player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 1)); 	
 				}
 			}
 		}

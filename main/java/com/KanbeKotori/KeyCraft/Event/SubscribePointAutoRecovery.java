@@ -6,6 +6,8 @@ import com.KanbeKotori.KeyCraft.Helper.*;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.StatCollector;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
@@ -21,6 +23,7 @@ public class SubscribePointAutoRecovery {
 		if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraRegeneration.id)) {
 			if (new Random().nextInt(2400) == 1200) {
 				RewriteHelper.modifyAuroraPoint(player, 1);
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.aurorarecovery")));
 			}
 		}
 	}
