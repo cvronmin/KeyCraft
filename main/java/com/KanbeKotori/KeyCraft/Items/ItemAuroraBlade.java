@@ -20,11 +20,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 
-public class PointAuroraBlade extends ItemTool {
+public class ItemAuroraBlade extends ItemTool {
 	
 	public static final HashSet<String> HARVESTABLE = Sets.newHashSet("axe", "pickaxe", "shovel");
 	
-	public PointAuroraBlade() {
+	public ItemAuroraBlade() {
 		super(4.0f, ToolMaterialHelper.Aurora2, new HashSet());
 	}
 	
@@ -46,53 +46,17 @@ public class PointAuroraBlade extends ItemTool {
 			 return super.canHarvestBlock(block, itemStack);
 		 }
 	 }
-	
-	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		if (stack.getItemDamage() >= this.getMaxDamage()) {
-			EntityPlayer player = (EntityPlayer)attacker;
-			World world = player.getEntityWorld();
-			if(!world.isRemote) {
-				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.breakblade")));
-				EventOnAuroraBreak EventOnAuroraBreak = new EventOnAuroraBreak(player);
-	            MinecraftForge.EVENT_BUS.post(EventOnAuroraBreak);
-		    }	
-		}
 		
-		stack.damageItem(1, attacker);
-		return true;
-	}
-	
-	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World worldIn, Block blockIn, int posX, int posY ,int posZ, EntityLivingBase entity) {
-		if(worldIn.isRemote) {
-	        return true;
-	    }
-		
-		if (stack.getItemDamage() >= this.getMaxDamage()) {
-			EntityPlayer player = (EntityPlayer)entity;
-			World world = player.getEntityWorld();
-			if(!world.isRemote) {
-				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.breakblade")));
-				EventOnAuroraBreak EventOnAuroraBreak = new EventOnAuroraBreak(player);
-	            MinecraftForge.EVENT_BUS.post(EventOnAuroraBreak);
-		    }	
-		}
-		
-		stack.damageItem(1, entity);
-		return true;
-	}
-	
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-        player.setItemInUse(stack, 72000);
-        return stack;
-    }
+	    player.setItemInUse(stack, 72000);
+	    return stack;
+	}
 	
 	@Override
 	public EnumAction getItemUseAction(ItemStack p_77661_1_) {
-        return EnumAction.block;
-    }
+	    return EnumAction.block;
+	}
 	
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List information, boolean p_77624_4_) {
@@ -100,6 +64,37 @@ public class PointAuroraBlade extends ItemTool {
 		information.add(StatCollector.translateToLocal("keycraft.item.intro312_2"));
 	}
 	
+	 /** 物品损坏+1，如果被破坏则给debuff */
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		if (stack.getItemDamage() >= this.getMaxDamage()) {
+			EntityPlayer player = (EntityPlayer)attacker;
+			RewriteHelper.breakAurora(player);
+			if(!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.breakblade")));
+		    }	
+		}
+		
+		stack.damageItem(1, attacker);
+		return true;
+	}
+
+	 /** 物品损坏+1，如果被破坏则给debuff */
+	@Override
+	public boolean onBlockDestroyed(ItemStack stack, World worldIn, Block blockIn, int posX, int posY ,int posZ, EntityLivingBase entity) {
+		if (stack.getItemDamage() >= this.getMaxDamage()) {
+			EntityPlayer player = (EntityPlayer)entity;
+			RewriteHelper.breakAurora(player);
+			if(!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.breakblade")));
+		    }	
+		}
+		
+		stack.damageItem(1, entity);
+		return true;
+	}
+	
+	/** 切换当前物品后回收欧若拉 */
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity player, int index, boolean isCurrentItem) {
 		if (player instanceof EntityPlayer && !isCurrentItem) {
@@ -108,30 +103,20 @@ public class PointAuroraBlade extends ItemTool {
 		}
 	}
 	
+	/** 丢弃后回收欧若拉 */
 	@SubscribeEvent
 	public void onDropped(ItemTossEvent event) {
-		if (event.entityItem.getEntityItem().getItem() instanceof PointAuroraBlade) {
+		if (event.entityItem.getEntityItem().getItem() instanceof ItemAuroraBlade) {
 			event.setCanceled(true);
 			recycle(event.entityItem.getEntityItem(), event.player);
 		}
     }
 	
 	public void recycle(ItemStack stack, EntityPlayer player) {
-		double pp = (double)stack.getItemDamage() / stack.getMaxDamage();
 		if (!player.worldObj.isRemote) {
 			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recycleblade")));
 		}
-		EventOnAuroraRecycle EventOnAuroraRecycle = new EventOnAuroraRecycle(player, pp);
-        MinecraftForge.EVENT_BUS.post(EventOnAuroraRecycle);
+		RewriteHelper.recycleAurora(player, (double)stack.getItemDamage() / (double)stack.getMaxDamage());
 	}
-	
-	@SubscribeEvent
-    public void brokenAurora(EventOnAuroraBreak event) {
-		EntityPlayer attacker = event.entityPlayer;
-        attacker.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 6000, 1));
-        attacker.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 6000, 3));
-        attacker.addPotionEffect(new PotionEffect(Potion.confusion.id, 6000));
-        attacker.addPotionEffect(new PotionEffect(Potion.weakness.id, 6000, 3));
-    }
 
 }

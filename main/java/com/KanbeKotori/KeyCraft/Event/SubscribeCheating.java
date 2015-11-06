@@ -32,6 +32,7 @@ public class SubscribeCheating {
         			final String name = "Skill" + String.format("%03d", i.id);
         			player.getEntityData().setBoolean(name, false);
         		}
+                RewriteNetwork.rewriteChannel.sendTo(RewriteNetwork.createSyncSkillPacket(player), player);
                 player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.cheat2")));
             }
         }

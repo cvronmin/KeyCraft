@@ -20,18 +20,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 
-public class PointShakingSword extends ItemSword {
+public class ItemShakingSword extends ItemSword {
 	
-	public PointShakingSword() {
+	public ItemShakingSword() {
 		super(ToolMaterialHelper.ShakingSword);
-	}
-	
-	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		EntityPlayer player = (EntityPlayer)attacker;
-		EventOnShakingSwordUse EventOnShakingSwordUse = new EventOnShakingSwordUse(player);
-		MinecraftForge.EVENT_BUS.post(EventOnShakingSwordUse);	
-		return true;
 	}
 	
 	@Override
@@ -47,24 +39,43 @@ public class PointShakingSword extends ItemSword {
     }
 	
 	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List information, boolean p_77624_4_) {
+		information.add(StatCollector.translateToLocal("keycraft.item.intro231_1"));
+		information.add(StatCollector.translateToLocal("keycraft.item.intro231_2"));
+	}
+	
+	/** 玩家在使用Skill231-『超振动』后将铁剑返还给玩家 */
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		EntityPlayer player = (EntityPlayer)attacker;
+		if (!player.worldObj.isRemote) {
+			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.useshakingsword")));
+		}
+		player.setCurrentItemOrArmor(0, new ItemStack(Items.iron_sword, 1, stack.getItemDamage()));
+		return true;
+	}
+	
+	/** 切换当前物品后将铁剑返还给玩家 */
+	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int index, boolean isCurrentItem) {
 		if (entity instanceof EntityPlayer && !isCurrentItem) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if (!player.worldObj.isRemote) {
 				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.useshakingsword")));
 			}
-			player.inventory.mainInventory[index] = new ItemStack(Items.iron_sword, 1, RewriteHelper.getShakingSwordDamage(player));
+			player.inventory.mainInventory[index] = new ItemStack(Items.iron_sword, 1, stack.getItemDamage());
 		}
 	}
 	
+	/** 丢弃后将铁剑返还给玩家 */
 	@SubscribeEvent
 	public void onDropped(ItemTossEvent event) {
-		if (event.entityItem.getEntityItem().getItem() instanceof PointShakingSword) {
+		if (event.entityItem.getEntityItem().getItem() instanceof ItemShakingSword) {
 			EntityPlayer player = event.player;
 			if (!player.worldObj.isRemote) {
 				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.useshakingsword")));
 			}
-			ItemStack stack = new ItemStack(Items.iron_sword, 1, RewriteHelper.getShakingSwordDamage(player));
+			ItemStack stack = new ItemStack(Items.iron_sword, 1, event.entityItem.getEntityItem().getItemDamage());
 			if (player.inventory.addItemStackToInventory(stack)) {
 				event.setCanceled(true);
 			} else {
@@ -72,11 +83,5 @@ public class PointShakingSword extends ItemSword {
 			}
 		}
     }
-	
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List information, boolean p_77624_4_) {
-		information.add(StatCollector.translateToLocal("keycraft.item.intro231_1"));
-		information.add(StatCollector.translateToLocal("keycraft.item.intro231_2"));
-	}
 
 }

@@ -203,15 +203,7 @@ public class GUIRewriteEnsure extends GuiScreen {
 		if (button == btnCancel) {
 	        mc.displayGuiScreen(parentScreen);
 	    } else if (button == btnYes) {
-    		RewriteNetwork.rewriteChannel.sendToServer(RewriteNetwork.createLearnSkillPacket(skillNum));
-    		if (skillNum == RewriteHelper.AuroraCognition.id) {		// 如果是初始技能Skill000-欧若拉认知
-	    		RewriteHelper.initializeSkills(playerCl);
-	    	} else {
-	    		if (RewriteHelper.getAuroraPoint(playerCl) > RewriteHelper.getAuroraRequired(skillNum)) {
-	    			RewriteHelper.modifyAuroraPoint(playerCl, -RewriteHelper.getAuroraRequired(skillNum));
-	    			RewriteHelper.learnSkill(playerCl, skillNum, true);
-	    		}
-	    	}
+    		RewriteHelper.learnSkill(playerCl, skillNum);
 	        mc.displayGuiScreen(parentScreen);
     	}
 	}

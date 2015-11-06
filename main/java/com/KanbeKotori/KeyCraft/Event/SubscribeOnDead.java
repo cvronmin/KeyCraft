@@ -29,7 +29,7 @@ public class SubscribeOnDead {
 			final String name = "Skill" + String.format("%03d", i.id);
 			newData.setBoolean(name, RewriteHelper.hasSkill(_old, i.id));
 		}
-				
+		
 		// 复活或切换世界后同步，@RewriteNetwork.SendSyncPacket.onPlayerRespawn
 	}
 

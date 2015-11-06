@@ -4,11 +4,18 @@ import java.util.*;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.*;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.ServerConfigurationManager;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.StatCollector;
 
 import com.KanbeKotori.KeyCraft.Helper.*;
+import com.KanbeKotori.KeyCraft.Items.ModItems;
 import com.KanbeKotori.KeyCraft.Network.RewriteNetwork;
 
 public class RewriteHelper {
@@ -112,14 +119,84 @@ public class RewriteHelper {
 		return 0x7FFFFFFF;
 	}
 	
-	public static void setShakingSwordDamage(EntityPlayer player, int damage) {
-		final String name = "ShakingSwordDamage";
-		player.getEntityData().setInteger(name, damage);
+	/** 学习技能 */
+	public static void learnSkill(EntityPlayer player, int skillId) {
+		if (player.worldObj.isRemote) {
+			RewriteNetwork.rewriteChannel.sendToServer(RewriteNetwork.createLearnSkillPacket(skillId));
+		}
+		
+		if (skillId == AuroraCognition.id) {
+    		initializeSkills(player);
+    	} else {
+    		int point = getAuroraRequired(skillId);
+    		if (getAuroraPoint(player) > point) {
+    			modifyAuroraPoint(player, -point);
+    			learnSkill(player, skillId, true);
+    		}
+    	}
 	}
 	
-	public static int getShakingSwordDamage(EntityPlayer player) {
-		final String name = "ShakingSwordDamage";
-		return player.getEntityData().getInteger(name);
+	/** 使用技能 */
+	public static void useSkill(EntityPlayer player) {
+		if (player.worldObj.isRemote) {
+			RewriteNetwork.rewriteChannel.sendToServer(RewriteNetwork.createUseSkillPacket());
+		}
+		
+		ItemStack held = player.getHeldItem();
+		if (held == null) {
+			if (hasSkill(player, AuroraBlade.id)
+				&& getAuroraPoint(player) > 1
+				) {				// 实现玩家Skill312-『欧若拉之刃』的效果。
+    			modifyAuroraPoint(player, -1);
+    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraBlade, 1));
+    			if (!player.worldObj.isRemote) {
+        			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.callblade")));
+    			}
+    		} else if (hasSkill(player, AuroraTrident.id)
+    				   && getAuroraPoint(player) > 1
+    				   ) {		// 实现玩家Skill311-『欧若拉三叉戟』的效果。
+    			modifyAuroraPoint(player, -1);
+    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraTrident, 1));
+    			if (!player.worldObj.isRemote) {
+    				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.calltrident")));
+    			}
+    		}
+    	} else if (held.getItem() == Items.iron_sword) {	// 实现玩家Skill231-『超振动』的效果。
+    		if (hasSkill(player, SuperVibration.id)
+    			&& getAuroraPoint(player) > 1
+    			) {
+    			player.setCurrentItemOrArmor(0, new ItemStack(ModItems.ShakingSword, 1, held.getItemDamage()));
+    			modifyAuroraPoint(player, -1);
+    			if (!player.worldObj.isRemote) {
+    				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.shakingsword")));
+    			}
+    		}
+    	}
 	}
+	
+	/** 回收欧若拉三叉戟或剑 */
+	public static void recycleAurora(EntityPlayer player, double proportion) {
+		if (proportion == 0) {
+			RewriteHelper.modifyAuroraPoint(player, 1);
+		} else {
+			if (!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.recyclerate") 
+									  + String.format("%.3f", proportion)));
+			}
+			int time = (int)(6000 * proportion);
+			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, time, 1));
+			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, time, 3));
+			player.addPotionEffect(new PotionEffect(Potion.confusion.id, time));
+			player.addPotionEffect(new PotionEffect(Potion.weakness.id, time, 3));
+		}
+	}
+	
+	/** 欧若拉三叉戟或剑被破坏后给debuff */
+	public static void breakAurora(EntityPlayer player) {
+		player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 6000, 1));
+        player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 6000, 3));
+        player.addPotionEffect(new PotionEffect(Potion.confusion.id, 6000));
+        player.addPotionEffect(new PotionEffect(Potion.weakness.id, 6000, 3));
+    }
 	
 }

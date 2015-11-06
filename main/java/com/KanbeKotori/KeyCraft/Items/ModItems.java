@@ -28,15 +28,15 @@ public class ModItems {
     
     public static void InitItems() {
     	// 注册技能生成的物品
-    	ShakingSword = new PointShakingSword();
+    	ShakingSword = new ItemShakingSword();
     	ShakingSword.setUnlocalizedName("ShakingSword").setTextureName("keycraft:PointShakingSword").setCreativeTab(null);
     	GameRegistry.registerItem(ShakingSword, "ShakingSword");
     	
-    	AuroraTrident = new PointAuroraTrident();
+    	AuroraTrident = new ItemAuroraTrident();
     	AuroraTrident.setUnlocalizedName("AuroraTrident").setTextureName("keycraft:PointAuroraTrident").setCreativeTab(null);
     	GameRegistry.registerItem(AuroraTrident, "AuroraTrident");
     	
-    	AuroraBlade = new PointAuroraBlade();
+    	AuroraBlade = new ItemAuroraBlade();
 		AuroraBlade.setUnlocalizedName("AuroraBlade").setTextureName("keycraft:PointAuroraBlade").setCreativeTab(null);
     	GameRegistry.registerItem(AuroraBlade, "AuroraBlade");
     	

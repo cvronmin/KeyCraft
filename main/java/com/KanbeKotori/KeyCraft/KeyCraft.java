@@ -73,16 +73,12 @@ public class KeyCraft {
     	MinecraftForge.EVENT_BUS.register(new SubscribePointAutoBuff());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnDead());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnHurt());
-    	MinecraftForge.EVENT_BUS.register(new SubscribeShakingSwordUsing());
-    	MinecraftForge.EVENT_BUS.register(new PointAuroraBlade());
-    	MinecraftForge.EVENT_BUS.register(new PointAuroraTrident());
-    	MinecraftForge.EVENT_BUS.register(new PointShakingSword());
-    	MinecraftForge.EVENT_BUS.register(new SubscribeAuroraRecycle());
+    	MinecraftForge.EVENT_BUS.register(new ItemAuroraBlade());
+    	MinecraftForge.EVENT_BUS.register(new ItemAuroraTrident());
+    	MinecraftForge.EVENT_BUS.register(new ItemShakingSword());
 
-    	FMLCommonHandler.instance().bus().register(new SubscribeShakingSwordUsing());
     	FMLCommonHandler.instance().bus().register(new SubscribePointAutoBuff());
     	FMLCommonHandler.instance().bus().register(new SubscribePointAutoRecovery());
-    	FMLCommonHandler.instance().bus().register(new SubscribeAuroraRecycle());
     }
     
     @EventHandler
