@@ -12,6 +12,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class SubscribeOnAttack {
 	
+	/** 实现玩家Skill221-『火焰附加』的效果。 */
 	@SubscribeEvent
 	public void AttackWithFire(LivingAttackEvent event) {
 		if (event.source.getEntity() instanceof EntityPlayer) {
@@ -22,6 +23,7 @@ public class SubscribeOnAttack {
     	}
 	}
 	
+	/** 实现玩家Skill222-『剧毒附加』的效果。 */
 	@SubscribeEvent
 	public void AttackWithPoison(LivingAttackEvent event) {
 		if (event.source.getEntity() instanceof EntityPlayer) {
@@ -32,6 +34,7 @@ public class SubscribeOnAttack {
     	}
 	}
 	
+	/** 实现玩家Skill223-『凋零附加』的效果。 */
 	@SubscribeEvent
 	public void AttackWithWither(LivingAttackEvent event) {
 		if (event.source.getEntity() instanceof EntityPlayer) {
@@ -42,16 +45,7 @@ public class SubscribeOnAttack {
     	}
 	}
 	
-	@SubscribeEvent
-	public void AttackWithLifeDrawing(LivingAttackEvent event) {
-		if (event.source.getEntity() instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)event.source.getEntity();
-			if (RewriteHelper.hasSkill(player, RewriteHelper.LifeSuck.id)) {
-				player.setHealth(player.getHealth() + 2);
-	    	}
-    	}
-	}
-	
+	/** 给予玩家Skill232-『蛮力』的力量Buff */
 	@SubscribeEvent
 	public void Point_AutoBuffPower(LivingAttackEvent event) {
 		if (event.source.getEntity() instanceof EntityPlayer) {
@@ -65,6 +59,17 @@ public class SubscribeOnAttack {
 				}
 			}
 		}
+	}
+	
+	/** 实现玩家Skill241-『生命虹吸』的效果。 */
+	@SubscribeEvent
+	public void AttackWithLifeDrawing(LivingAttackEvent event) {
+		if (event.source.getEntity() instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)event.source.getEntity();
+			if (RewriteHelper.hasSkill(player, RewriteHelper.LifeSuck.id)) {
+				player.setHealth(player.getHealth() + 2);
+	    	}
+    	}
 	}
 	
 }

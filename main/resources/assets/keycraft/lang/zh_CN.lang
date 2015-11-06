@@ -78,6 +78,7 @@ keycraft.prompt.resistance=已经做好战斗准备。
 keycraft.prompt.power=力量强化已开启。
 keycraft.prompt.shakingsword=你手中的长剑开始急速振动起来。
 keycraft.prompt.useshakingsword=振动的长剑渐渐平息了下来。
+keycraft.prompt.aurorarob=你抢夺了微量的欧若拉
 keycraft.prompt.calltrident=你用欧若拉制作了一把三叉戟。
 keycraft.prompt.callblade=你用欧若拉制作了一把剑。
 keycraft.prompt.breakrident=你用欧若拉制作的三叉戟断掉了。
@@ -93,8 +94,8 @@ keycraft.prompt.againstmagic=欧若拉的力量从魔法的破坏中保护了你
 keycraft.prompt.againstmagicplus=食屎啦你！
 keycraft.prompt.aurorarecovery=你回复了微量的欧若拉。
 
-
 keycraft.prompt.cheat1=获得100欧若拉点。
+keycraft.prompt.cheat2=重置所有欧若拉点数和技能。
 
 keycraft.item.intro231_1=超振动中的铁剑，看起来非常危险。
 keycraft.item.intro231_2=要小心脱手。
