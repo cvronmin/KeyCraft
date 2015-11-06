@@ -10,6 +10,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 import cpw.mods.fml.common.network.FMLEventChannel;
@@ -40,25 +41,30 @@ public class RewriteNetwork {
 	public static final int USE_SKILL_CODE = 3;
 	
 	public static class SendSyncPacket {
+		/** 发同步包 */
+		protected static void syncSkills(EntityPlayer player) {
+			if (player instanceof EntityPlayerMP) {
+				rewriteChannel.sendTo(createSyncAuroraPointPacket(player), (EntityPlayerMP)player);
+				rewriteChannel.sendTo(createSyncSkillPacket(player), (EntityPlayerMP)player);
+			}
+		}
+		
 		/** 服务器玩家登陆处理 */
 		@SubscribeEvent
 		public void onPlayerLoggedIn(PlayerLoggedInEvent event) {
-			EntityPlayer player = event.player;
-			
-			// 同步技能数据
-			rewriteChannel.sendTo(createSyncAuroraPointPacket(player), (EntityPlayerMP)player);
-			rewriteChannel.sendTo(createSyncSkillPacket(player), (EntityPlayerMP)player);
+			syncSkills(event.player);
 		}
 		
 		/** 玩家复活处理 */
 		@SubscribeEvent
 		public void onPlayerRespawn(PlayerRespawnEvent event) {
-			EntityPlayer player = event.player;
-			if (player instanceof EntityPlayerMP) {
-				// 同步技能数据
-				rewriteChannel.sendTo(createSyncAuroraPointPacket(player), (EntityPlayerMP)player);
-				rewriteChannel.sendTo(createSyncSkillPacket(player), (EntityPlayerMP)player);
-			}
+			syncSkills(event.player);
+		}
+		
+		/** 玩家切换世界处理 */
+		@SubscribeEvent
+		public void onPlayerChangeDimension(PlayerChangedDimensionEvent event) {
+			syncSkills(event.player);
 		}
 	}
 	

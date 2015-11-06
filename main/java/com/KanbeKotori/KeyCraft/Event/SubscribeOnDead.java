@@ -11,22 +11,10 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class SubscribeOnDead {
-	
-	/** 
-	 * 计算合适的新玩家的欧若拉点数。
-	 * 如果玩家因转换世界而发动克隆，点数不变；
-	 * 否则扣除10点欧若拉（如果足够的话）。
-	 */
-	private int getPointAppropriate(EntityPlayer _old) {
-		int point_old = RewriteHelper.getAuroraPoint(_old);
-		if (_old.isDead)
-			return Math.max(point_old - 10, 0);
-		return point_old;
-	}
 
 	/**
 	 * 在玩家死亡时将旧玩家的所有Skill以及欧若拉点数克隆给Respawn以后的新玩家
-	 * 在切换世界时也会调用
+	 * 在从末地回到主世界时也会调用PlayerEvent.Clone和PlayerRespawnEvent，而不会调用PlayerChangedDimensionEvent
 	 */
 	@SubscribeEvent
     public void OnDeadClone(PlayerEvent.Clone event) {
@@ -34,14 +22,15 @@ public class SubscribeOnDead {
 		final EntityPlayer _new = event.entityPlayer;
 
 		final NBTTagCompound newData = _new.getEntityData();
-		// 设置新玩家欧若拉点数
-		newData.setInteger("SkillPoint", getPointAppropriate(_old));
+		// 设置新玩家欧若拉点数，切换世界点数不变，死亡减10
+		final int newAuroraPoint = event.wasDeath ? Math.max(RewriteHelper.getAuroraPoint(_old) - 10, 0) : RewriteHelper.getAuroraPoint(_old);
+		newData.setInteger("SkillPoint", newAuroraPoint);
 		for (Skill i : RewriteHelper.SKILLS) {
 			final String name = "Skill" + String.format("%03d", i.id);
 			newData.setBoolean(name, RewriteHelper.hasSkill(_old, i.id));
 		}
 				
-		// 复活后同步，@RewriteNetwork.SendSyncPacket.onPlayerRespawn
+		// 复活或切换世界后同步，@RewriteNetwork.SendSyncPacket.onPlayerRespawn
 	}
 
 }
