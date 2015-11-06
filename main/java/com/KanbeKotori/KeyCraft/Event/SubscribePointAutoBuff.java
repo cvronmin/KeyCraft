@@ -40,15 +40,16 @@ public class SubscribePointAutoBuff {
 	@SubscribeEvent
 	public void Point_AutoSpeedUp(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
-		if (!RewriteHelper.hasSkill(player, RewriteHelper.HuntingRhythm.id)) {
-			return;
-		}
-		
-		List entities = player.worldObj.getEntitiesWithinAABB(EntityLiving.class, AxisAlignedBB.getBoundingBox(player.posX-8.0D, player.posY-2.0D, player.posZ-8.0D, player.posX+8.0D, player.posY+2.0D, player.posZ+8.0D));
-		for (Iterator iterator = entities.iterator(); iterator.hasNext(); ) {
-			EntityLiving entity = (EntityLiving)iterator.next();
-			if(!entity.equals(player)) {
-				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 100));
+		if (RewriteHelper.hasSkill(player, RewriteHelper.HuntingRhythm.id)
+			&& player.isPotionActive(Potion.moveSpeed)
+			) {
+			List entities = player.worldObj.getEntitiesWithinAABB(EntityLiving.class, AxisAlignedBB.getBoundingBox(player.posX-8.0D, player.posY-2.0D, player.posZ-8.0D, player.posX+8.0D, player.posY+2.0D, player.posZ+8.0D));
+			for (Iterator iterator = entities.iterator(); iterator.hasNext(); ) {
+				EntityLiving entity = (EntityLiving)iterator.next();
+				if(!entity.equals(player)) {
+					player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 100));
+					return;
+				}
 			}
 		}
 	}
@@ -57,13 +58,15 @@ public class SubscribePointAutoBuff {
 	@SubscribeEvent
 	public void Point_ER(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
-		if (RewriteHelper.hasSkill(player, RewriteHelper.UrgentProtect.id) && player.getHealth() <= 6 && RewriteHelper.getAuroraPoint(player) > 5) {
-			if (isCD_Buff_ER(player)) {
-	    		RewriteHelper.modifyAuroraPoint(player, -5);
-				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 200, 1));
-				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 200, 4));
-				player.addPotionEffect(new PotionEffect(Potion.resistance.id, 200, 1));
-			}
+		if (RewriteHelper.hasSkill(player, RewriteHelper.UrgentProtect.id)
+			&& player.getHealth() <= 6
+			&& RewriteHelper.getAuroraPoint(player) > 5
+			&& isCD_Buff_ER(player)
+			) {
+	    	RewriteHelper.modifyAuroraPoint(player, -5);
+			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 200, 1));
+			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 200, 4));
+			player.addPotionEffect(new PotionEffect(Potion.resistance.id, 200, 1));
 		}
 	}
 	
@@ -71,10 +74,10 @@ public class SubscribePointAutoBuff {
 	@SubscribeEvent
 	public void Point_MoreHealth(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
-		if (RewriteHelper.hasSkill(player, RewriteHelper.PhysiqueUp.id)) {
-			if (!player.isPotionActive(Potion.field_76434_w)) {
-				player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 0x7FFFFFFF, 4));
-			}
+		if (RewriteHelper.hasSkill(player, RewriteHelper.PhysiqueUp.id)
+			&& !player.isPotionActive(Potion.field_76434_w)
+			) {
+			player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 0x7FFFFFFF, 4));
 		}
 	}
 	
@@ -82,7 +85,9 @@ public class SubscribePointAutoBuff {
 	@SubscribeEvent
 	public void Point_AutoHeal(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
-		if (player.getHealth() < 20 && !player.isPotionActive(Potion.regeneration)) {
+		if (player.getHealth() < 20
+			&& !player.isPotionActive(Potion.regeneration)
+			) {
 			if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraSurge.id)) {
 				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 100, 1));
 			} else if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraActivation.id)) {
@@ -107,16 +112,16 @@ public class SubscribePointAutoBuff {
 		}
 	}
 	
-	/** 给予玩家持有电线杆子时没有Skill232-『蛮力』的缓慢Buff */
+	/** 给予玩家持有电线杆子时没有Skill232-『蛮力』的缓慢Debuff */
 	@SubscribeEvent
 	public void Overweight(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
-		ItemStack held = player.getHeldItem();
-		if (held != null) {
-			if (held.getItem() == ModItems.WirePole) {
-				if (!RewriteHelper.hasSkill(player, RewriteHelper.BruteForce.id)) {
-					player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 1)); 	
-				}
+		if (!RewriteHelper.hasSkill(player, RewriteHelper.BruteForce.id)) {
+			ItemStack held = player.getHeldItem();
+			if (held != null
+				&& held.getItem() == ModItems.WirePole
+				) {
+				player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 1)); 
 			}
 		}
 	}

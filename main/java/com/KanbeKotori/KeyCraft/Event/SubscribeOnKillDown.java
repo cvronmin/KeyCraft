@@ -18,16 +18,12 @@ public class SubscribeOnKillDown {
 	
 	@SubscribeEvent
     public void Point_AuroraRob(LivingDeathEvent event) {
-		if (!(event.source.getEntity() instanceof EntityPlayer)) {
-			return;
-		}
-		EntityPlayer player = (EntityPlayer)event.source.getEntity();
-		if (!(player instanceof EntityPlayerMP)) {
-			return;
-		}
-		
-		if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraRob.id)) {
-			if (new Random().nextInt(16) == 8) {
+		if ((event.source.getEntity() instanceof EntityPlayer)) {
+			EntityPlayer player = (EntityPlayer)event.source.getEntity();
+			if (!player.worldObj.isRemote // 随机事件只发生在服务器
+				&& RewriteHelper.hasSkill(player, RewriteHelper.AuroraRob.id)
+				&& new Random().nextInt(16) == 8
+				) {
 				RewriteHelper.modifyAuroraPoint(player, 1);
 			}
 		}

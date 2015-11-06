@@ -31,15 +31,16 @@ public class SubscribeOnHurt {
     @SubscribeEvent
     public void OnHurt(LivingHurtEvent event) {
         if(event.entityLiving instanceof EntityPlayer) {
-    		EntityPlayer entityPlayer = (EntityPlayer)event.entityLiving;
-    		if (RewriteHelper.hasSkill(entityPlayer, RewriteHelper.ParryProficient.id) && entityPlayer.isUsingItem()) {
-    			if (entityPlayer.getItemInUse().getItem() instanceof ItemSword) {
-    				int level = entityPlayer.getFoodStats().getFoodLevel();
-    				if (level >= 1) {
-    					event.setCanceled(true);
-    					entityPlayer.getFoodStats().setFoodLevel(level - 1);
-    				}
-    			}
+    		EntityPlayer player = (EntityPlayer)event.entityLiving;
+    		if (RewriteHelper.hasSkill(player, RewriteHelper.ParryProficient.id)
+    			&& player.isUsingItem()
+    			&& player.getItemInUse().getItem() instanceof ItemSword
+    			) {
+				int level = player.getFoodStats().getFoodLevel();
+				if (level >= 1) {
+					event.setCanceled(true);
+					player.getFoodStats().setFoodLevel(level - 1);
+				}
     		}
     	}
     }
@@ -49,10 +50,13 @@ public class SubscribeOnHurt {
 	public void Point_AutoBuffResistance(LivingHurtEvent event) {
 		if (event.entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)event.entity;
-			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("mob") || event.source.damageType.equals("player")) {
-				if (RewriteHelper.hasSkill(player, RewriteHelper.BattleReadiness.id) && isCD_Buff_Resistance(player)) {
-					player.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1));
-				}
+			if ((event.source.damageType.equals("arrow")
+				|| event.source.damageType.equals("mob")
+				|| event.source.damageType.equals("player"))
+				&& RewriteHelper.hasSkill(player, RewriteHelper.BattleReadiness.id)
+				&& isCD_Buff_Resistance(player)
+				) {
+				player.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1));
 			}
 		}
 	}
