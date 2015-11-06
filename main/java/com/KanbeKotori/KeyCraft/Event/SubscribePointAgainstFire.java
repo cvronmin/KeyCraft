@@ -67,7 +67,9 @@ public class SubscribePointAgainstFire {
     					RewriteHelper.modifyAuroraPoint(player, -1);
     				}
     			}
-    		} else if (event.source.damageType.equals("inFire") || event.source.damageType.equals("onFire")) {
+    		} else if (event.source.damageType.equals("inFire")
+    				   || event.source.damageType.equals("onFire")
+    				   ) {
     			if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistUp.id)) {
     				event.setCanceled(true); 
     				isCD_mention(player);

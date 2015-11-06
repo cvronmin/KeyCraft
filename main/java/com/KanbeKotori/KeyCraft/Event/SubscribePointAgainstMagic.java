@@ -55,7 +55,10 @@ public class SubscribePointAgainstMagic {
 	public void PointAgainstMagic(LivingHurtEvent event) {
 		if(event.entityLiving instanceof EntityPlayer) {
     		EntityPlayer player = (EntityPlayer)event.entityLiving;
-			if (event.source.damageType.equals("arrow") || event.source.damageType.equals("explosion") || event.source.damageType.equals("explosion.player")) {
+			if (event.source.damageType.equals("arrow")
+				|| event.source.damageType.equals("explosion")
+				|| event.source.damageType.equals("explosion.player")
+				) {
 				if (RewriteHelper.hasSkill(player, RewriteHelper.UltimateHardening.id)) {
     				event.setCanceled(true);
     				isCD_against_magic_plus(player);
@@ -65,7 +68,9 @@ public class SubscribePointAgainstMagic {
     					RewriteHelper.modifyAuroraPoint(player, -1);
     				}
     			}
-    		} else if (event.source.damageType.equals("magic") || event.source.damageType.equals("indirectMagic")) {
+    		} else if (event.source.damageType.equals("magic")
+    				   || event.source.damageType.equals("indirectMagic")
+    				   ) {
     			if (RewriteHelper.hasSkill(player, RewriteHelper.UltimateHardening.id)) {
     				event.setCanceled(true);
     				isCD_against_magic_plus(player);

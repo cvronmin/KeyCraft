@@ -41,7 +41,7 @@ public class SubscribePointAutoBuff {
 	public void Point_AutoSpeedUp(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
 		if (RewriteHelper.hasSkill(player, RewriteHelper.HuntingRhythm.id)
-			&& player.isPotionActive(Potion.moveSpeed)
+			&& !player.isPotionActive(Potion.moveSpeed)
 			) {
 			List entities = player.worldObj.getEntitiesWithinAABB(EntityLiving.class, AxisAlignedBB.getBoundingBox(player.posX-8.0D, player.posY-2.0D, player.posZ-8.0D, player.posX+8.0D, player.posY+2.0D, player.posZ+8.0D));
 			for (Iterator iterator = entities.iterator(); iterator.hasNext(); ) {
