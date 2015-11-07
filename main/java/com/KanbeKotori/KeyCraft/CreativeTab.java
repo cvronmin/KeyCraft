@@ -1,5 +1,6 @@
 package com.KanbeKotori.KeyCraft;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -12,6 +13,6 @@ public class CreativeTab extends CreativeTabs {
 
 	@Override
 	public Item getTabIconItem() {
-		return Items.apple;
+		return GameRegistry.findItem(KeyCraft.MODID, "SanaeBread");
 	}
 }

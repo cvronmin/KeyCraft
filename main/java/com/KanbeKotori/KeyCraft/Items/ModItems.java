@@ -29,15 +29,15 @@ public class ModItems {
     public static void InitItems() {
     	// 注册技能生成的物品
     	ShakingSword = new ItemShakingSword();
-    	ShakingSword.setUnlocalizedName("ShakingSword").setTextureName("keycraft:PointShakingSword").setCreativeTab(null);
+    	ShakingSword.setUnlocalizedName("ShakingSword").setTextureName("keycraft:ShakingSword").setCreativeTab(null);
     	GameRegistry.registerItem(ShakingSword, "ShakingSword");
     	
     	AuroraTrident = new ItemAuroraTrident();
-    	AuroraTrident.setUnlocalizedName("AuroraTrident").setTextureName("keycraft:PointAuroraTrident").setCreativeTab(null);
+    	AuroraTrident.setUnlocalizedName("AuroraTrident").setTextureName("keycraft:AuroraTrident").setCreativeTab(null);
     	GameRegistry.registerItem(AuroraTrident, "AuroraTrident");
     	
     	AuroraBlade = new ItemAuroraBlade();
-		AuroraBlade.setUnlocalizedName("AuroraBlade").setTextureName("keycraft:PointAuroraBlade").setCreativeTab(null);
+		AuroraBlade.setUnlocalizedName("AuroraBlade").setTextureName("keycraft:AuroraBlade").setCreativeTab(null);
     	GameRegistry.registerItem(AuroraBlade, "AuroraBlade");
     	
     	// 注册食物
@@ -99,7 +99,7 @@ public class ModItems {
     	GameRegistry.addRecipe(new ItemStack(Baseball, 4), new Object[] { " A ", "ABA", " A ", 'A', Items.leather, 'B', Blocks.planks });
     	
     	WirePole = (new ItemWirePole())
-    			.setUnlocalizedName("WirePole").setTextureName("keycraft:ItemWirePole").setCreativeTab(KeyCraft.CreativeTab);
+    			.setUnlocalizedName("WirePole").setTextureName("keycraft:WirePole").setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(WirePole, "WirePole");
     	GameRegistry.addRecipe(new ItemStack(WirePole), new Object[] { "ABA", "ABA", "ABA", 'A', Blocks.stone, 'B', Items.iron_ingot });
     	ToolMaterialHelper.WirePole.setRepairItem(new ItemStack(Items.iron_ingot));
