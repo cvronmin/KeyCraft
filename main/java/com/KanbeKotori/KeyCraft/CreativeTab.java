@@ -13,6 +13,6 @@ public class CreativeTab extends CreativeTabs {
 
 	@Override
 	public Item getTabIconItem() {
-		return GameRegistry.findItem(KeyCraft.MODID, "SanaeBread");
+		return GameRegistry.findItem(KeyCraft.MODID, "AuroraBlade");
 	}
 }

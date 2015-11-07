@@ -63,7 +63,7 @@ public class ModItems {
     			.setCallback(new ItemCallbackFood.ICallback(){
 					public void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 						if (!world.isRemote) {
-							player.setFire(5);
+							player.setFire(30);
 				        }
 					}
 		    	})
@@ -74,10 +74,11 @@ public class ModItems {
     																   'B', Items.blaze_powder, 'C', Items.bowl });
     	
     	PizzaJam = (new ItemFood(4, false))
-    			.setPotionEffect(Potion.field_76443_y.id, 60, -1, 1.0F)
+    			.setPotionEffect(Potion.field_76443_y.id, 30, -1, 1.0F)
+    			.setPotionEffect(Potion.confusion.id, 30, 3, 1.0F)
     			.setUnlocalizedName("PizzaJam").setTextureName("keycraft:PizzaJam").setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(PizzaJam, "PizzaJam");
-    	GameRegistry.addRecipe(new ItemStack(PizzaJam), new Object[] { "AAA", "ABA", "AAA", 'A', Blocks.red_flower, 'B', Items.glass_bottle });
+    	GameRegistry.addRecipe(new ItemStack(PizzaJam), new Object[] { "AAA", "ABA", "ACA", 'A', Items.sugar, 'B', Items.glass_bottle, 'C', new ItemStack(Items.dye, 1, 1) });
     	
     	AkikoJam = (new ItemFood(4, false))
     			.setPotionEffect(Potion.confusion.id, 20, 3, 1.0F)
