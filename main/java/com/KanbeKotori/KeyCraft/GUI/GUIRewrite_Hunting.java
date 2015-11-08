@@ -43,7 +43,7 @@ public class GUIRewrite_Hunting extends GuiScreen {
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.PoisonAttach.id))
 			buttonList.add(btnSkill123 = new GuiButton(RewriteHelper.WitherAttach.id, (int)(width * 0.4 - 16), (int)(height * 0.7), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
-			buttonList.add(btnSkill131 = new GuiButton(RewriteHelper.SuperVibration.id, (int)(width * 0.6 - 16), (int)(height * 0.4), 32, 32, ""));
+			buttonList.add(btnSkill131 = new GuiButton(RewriteHelper.MissileProficient.id, (int)(width * 0.6 - 16), (int)(height * 0.4), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.SuperVibration.id))
 			buttonList.add(btnSkill132 = new GuiButton(RewriteHelper.BruteForce.id, (int)(width * 0.6 - 16), (int)(height * 0.55), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.BruteForce.id))
@@ -162,7 +162,7 @@ public class GUIRewrite_Hunting extends GuiScreen {
 			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.WitherAttach.id));
 		   }
 	   } else if (button == btnSkill131) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.SuperVibration.id)) {
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.MissileProficient.id)) {
 			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.SuperVibration.id));
 		   }
 	   } else if (button == btnSkill132) {

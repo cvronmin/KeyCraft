@@ -31,6 +31,7 @@ public class RewriteHelper {
 	
 	public static final Skill AuroraCognition		= new Skill(000, 0);
 	public static final Skill HuntingRhythm			= new Skill(100, 5);
+	public static final Skill MissileProficient		= new Skill(131, 15);
 	public static final Skill UrgentProtect			= new Skill(200, 5);
 	public static final Skill BattleReadiness		= new Skill(211, 25);
 	public static final Skill PhysiqueUp			= new Skill(212, 40);

@@ -62,6 +62,11 @@ public class GUIRewriteEnsure extends GuiScreen {
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title100"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro100"), width/2, (int)(height*0.45), 0xFFFFFF);
+    	} else if (skillNum == RewriteHelper.MissileProficient.id) {	// Skill131-投掷物精通
+        	mc.renderEngine.bindTexture(ResourceHelper.icon100);
+        	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title131"), width/2, (int)(height*0.3), 0xFFFFFF);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro131"), width/2, (int)(height*0.45), 0xFFFFFF);
     	} else if (skillNum == RewriteHelper.UrgentProtect.id) {	// Skill200-紧急防护
         	mc.renderEngine.bindTexture(ResourceHelper.icon200);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);

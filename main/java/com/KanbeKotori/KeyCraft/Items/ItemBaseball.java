@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.KanbeKotori.KeyCraft.Entities.EntityBaseball;
 import com.KanbeKotori.KeyCraft.Helper.*;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.item.*;
@@ -14,6 +15,11 @@ public class ItemBaseball extends Item {
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+		
+		if (!RewriteHelper.hasSkill(player, RewriteHelper.MissileProficient.id)) {
+			return stack;
+		}
+		
         if (!player.capabilities.isCreativeMode) {
             stack.stackSize--;
         }
