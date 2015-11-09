@@ -1,5 +1,7 @@
 package com.KanbeKotori.KeyCraft;
 
+import com.KanbeKotori.KeyCraft.Items.ModItems;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
@@ -13,6 +15,6 @@ public class CreativeTab extends CreativeTabs {
 
 	@Override
 	public Item getTabIconItem() {
-		return GameRegistry.findItem(KeyCraft.MODID, "AuroraBlade");
+		return ModItems.AuroraBlade;
 	}
 }
