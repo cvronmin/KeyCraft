@@ -23,32 +23,40 @@ public class ModItems {
     public static Item AkikoJam;
     public static Item BreadWithJam;
     
+    public static Item AuroraIronIngot;
+    
     public static Item Baseball;
     public static Item WirePole;
     
     public static void InitItems() {
     	// 注册技能生成的物品
-    	ShakingSword = new ItemShakingSword();
-    	ShakingSword.setUnlocalizedName("ShakingSword").setTextureName("keycraft:ShakingSword").setCreativeTab(null);
+    	ShakingSword = new ItemShakingSword()
+    				.setUnlocalizedName("ShakingSword")
+    				.setTextureName("keycraft:ShakingSword")
+    				.setCreativeTab(null);
     	GameRegistry.registerItem(ShakingSword, "ShakingSword");
     	
-    	AuroraTrident = new ItemAuroraTrident();
-    	AuroraTrident.setUnlocalizedName("AuroraTrident").setTextureName("keycraft:AuroraTrident").setCreativeTab(null);
+    	AuroraTrident = new ItemAuroraTrident()
+    				 .setUnlocalizedName("AuroraTrident")
+    				 .setTextureName("keycraft:AuroraTrident")
+    				 .setCreativeTab(null);
     	GameRegistry.registerItem(AuroraTrident, "AuroraTrident");
     	
-    	AuroraBlade = new ItemAuroraBlade();
-		AuroraBlade.setUnlocalizedName("AuroraBlade").setTextureName("keycraft:AuroraBlade").setCreativeTab(null);
+    	AuroraBlade = new ItemAuroraBlade()
+    			   .setUnlocalizedName("AuroraBlade")
+    			   .setTextureName("keycraft:AuroraBlade")
+    			   .setCreativeTab(null);
     	GameRegistry.registerItem(AuroraBlade, "AuroraBlade");
     	
     	// 注册食物
     	SanaeBread = (new ItemCallbackFood(20))
-    			.setCallback(new ItemCallbackFood.ICallback(){
-					public void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
-						if (!world.isRemote) {
-				            player.setHealth(1);
-				        }
-					}
-		    	})
+    			  .setCallback(new ItemCallbackFood.ICallback() {
+    				  public void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
+    					  if (!world.isRemote) {
+    						  player.setHealth(1);
+    					  }
+    				  }
+    			  })
     			.setUnlocalizedName("SanaeBread").setTextureName("keycraft:SanaeBread").setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(SanaeBread, "SanaeBread");
     	GameRegistry.addRecipe(new ItemStack(SanaeBread), new Object[] { "AAA", "ABA", "AAA", 'A', Items.rotten_flesh, 'B', Items.bread });
@@ -88,11 +96,19 @@ public class ModItems {
     	
     	BreadWithJam = (new ItemBreadWithJam(-20))
     			.setPotionEffect(Potion.confusion.id, 60, 3, 1.0F)
-    			.setUnlocalizedName("BreadWithJam").setTextureName("keycraft:SanaeBread").setCreativeTab(KeyCraft.CreativeTab);
+    			.setUnlocalizedName("BreadWithJam")
+    			.setTextureName("keycraft:SanaeBread")
+    			.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(BreadWithJam, "BreadWithJam");
     	GameRegistry.addShapelessRecipe(new ItemStack(BreadWithJam), new Object[] { SanaeBread, AkikoJam });
     	
     	// 注册其他物品
+    	AuroraIronIngot = new Item()
+    			  .setUnlocalizedName("AuroraIronIngot")
+    			  .setTextureName("keycraft:AuroraIronIngot")
+    			  .setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(AuroraIronIngot, "AuroraIronIngot");
+    	
     	Baseball = (new ItemBaseball())
     			.setMaxStackSize(16)
     			.setUnlocalizedName("Baseball").setTextureName("keycraft:Baseball").setCreativeTab(KeyCraft.CreativeTab);
@@ -103,7 +119,7 @@ public class ModItems {
     			.setUnlocalizedName("WirePole").setTextureName("keycraft:WirePole").setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(WirePole, "WirePole");
     	GameRegistry.addRecipe(new ItemStack(WirePole), new Object[] { "ABA", "ABA", "ABA", 'A', Blocks.stone, 'B', Items.iron_ingot });
-    	ToolMaterialHelper.WirePole.setRepairItem(new ItemStack(Items.iron_ingot));
+    	ToolMaterialHelper.WirePole.setRepairItem(new ItemStack(Blocks.stone));
     }
 
 }
