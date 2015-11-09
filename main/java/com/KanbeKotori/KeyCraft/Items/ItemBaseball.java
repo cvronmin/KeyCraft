@@ -15,7 +15,6 @@ public class ItemBaseball extends Item {
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		
 		if (!RewriteHelper.hasSkill(player, RewriteHelper.MissileProficient.id)) {
 			return stack;
 		}

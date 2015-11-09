@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.*;
 import net.minecraft.item.*;
 import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 public class ModItems {
@@ -73,9 +74,13 @@ public class ModItems {
     	GameRegistry.addRecipe(new ItemStack(MapoTofu), new Object[] { "ABA", "ACA", "AAA", 'A', new ItemStack(Items.dye, 1, 1), 
     																   'B', Items.blaze_powder, 'C', Items.bowl });
     	
-    	PizzaJam = (new ItemFood(4, false))
-    			.setPotionEffect(Potion.field_76443_y.id, 30, -1, 1.0F)
-    			.setPotionEffect(Potion.confusion.id, 30, 3, 1.0F)
+    	PizzaJam = (new ItemCallbackFood(4))
+    			.setCallback(new ItemCallbackFood.ICallback(){
+					public void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
+						player.addPotionEffect(new PotionEffect(Potion.field_76443_y.id, 30 * 20, -1));
+						player.addPotionEffect(new PotionEffect(Potion.confusion.id, 30 * 20, 3));
+					}
+		    	})
     			.setUnlocalizedName("PizzaJam").setTextureName("keycraft:PizzaJam").setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(PizzaJam, "PizzaJam");
     	GameRegistry.addRecipe(new ItemStack(PizzaJam), new Object[] { "AAA", "ABA", "ACA", 'A', Items.sugar, 'B', Items.glass_bottle, 'C', new ItemStack(Items.dye, 1, 1) });
