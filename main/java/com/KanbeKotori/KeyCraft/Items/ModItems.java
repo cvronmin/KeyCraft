@@ -25,6 +25,8 @@ public class ModItems {
     public static Item BreadWithJam;
     
     public static Item AuroraIronIngot;
+    public static Item HolyBreaker;
+
     
     public static Item Baseball;
     public static Item WirePole;
@@ -108,11 +110,19 @@ public class ModItems {
     	GameRegistry.addShapelessRecipe(new ItemStack(BreadWithJam), new Object[] { SanaeBread, AkikoJam });
     	
     	// 注册其他物品
-    	AuroraIronIngot = new Item()
-    			  .setUnlocalizedName("AuroraIronIngot")
-    			  .setTextureName("keycraft:AuroraIronIngot")
-    			  .setCreativeTab(KeyCraft.CreativeTab);
+    	AuroraIronIngot = new ItemAuroraIronIngot()
+    				.setUnlocalizedName("AuroraIronIngot")
+    				.setTextureName("keycraft:AuroraIronIngot")
+    				.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(AuroraIronIngot, "AuroraIronIngot");
+    	
+    	HolyBreaker = new ItemHolyBreaker()
+    			.setUnlocalizedName("HolyBreaker")
+    			.setTextureName("keycraft:HolyBreaker")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(HolyBreaker, "HolyBreaker");
+    	ToolMaterialHelper.HolyBreaker.setRepairItem(new ItemStack(Items.nether_star));
+    	GameRegistry.addRecipe(new ItemStack(HolyBreaker), new Object[] { "ABA", "ACA", " C ", 'A', ModItems.AuroraIronIngot, 'B', Items.nether_star, 'C', Blocks.obsidian });
     	
     	Baseball = (new ItemBaseball())
     			.setMaxStackSize(16)

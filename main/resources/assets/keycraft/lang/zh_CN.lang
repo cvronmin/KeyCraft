@@ -82,7 +82,8 @@ keycraft.prompt.resistance=已经做好战斗准备。
 keycraft.prompt.power=力量强化已开启。
 keycraft.prompt.shakingsword=你手中的长剑开始急速振动起来。
 keycraft.prompt.useshakingsword=振动的长剑渐渐平息了下来。
-keycraft.prompt.aurorarob=你抢夺了微量的欧若拉
+keycraft.prompt.aurorarob=你抢夺了微量的欧若拉。
+keycraft.prompt.aurorainjection=你将欧若拉注入到手中的物品中。
 keycraft.prompt.calltrident=你用欧若拉制作了一把三叉戟。
 keycraft.prompt.callblade=你用欧若拉制作了一把剑。
 keycraft.prompt.breakrident=你用欧若拉制作的三叉戟断掉了。
@@ -100,6 +101,7 @@ keycraft.prompt.aurorarecovery=你回复了微量的欧若拉。
 
 keycraft.prompt.cheat1=获得100欧若拉点。
 keycraft.prompt.cheat2=重置所有欧若拉点数和技能。
+keycraft.prompt.holybreak=神圣的碎碎！
 
 keycraft.item.intro231_1=超振动中的铁剑，看起来非常危险。
 keycraft.item.intro231_2=要小心脱手。
@@ -108,6 +110,8 @@ keycraft.item.intro311_2=要记住不要脱手或用爆掉哦~
 keycraft.item.intro312_1=用欧若拉制作而成的剑，适用于砍树，开山，削人等等。
 keycraft.item.intro312_2=要记住不要脱手或用爆掉哦~
 
+keycraft.item.intro_auroraironingot=在普通的铁中注入欧若拉获得的一种神秘的材料。
+keycraft.item.intro_holybreaker=神圣的碎碎(不
 keycraft.item.intro_baseball_1=优质棒球，蓝色品质，5G一件。
 keycraft.item.intro_baseball_2=习得技能No.131『投掷物精通』后可用于投掷。
 keycraft.item.intro_baseball_3=习得技能No.232『蛮力』后升级为『音速喵喵球』。
@@ -125,6 +129,7 @@ item.PizzaJam.name=乙坂家秘制披萨酱
 item.AkikoJam.name=秋子秘制果酱
 item.BreadWithJam.name=？？？
 
-item.AuroraIron.name=欧若拉铁
+item.AuroraIronIngot.name=欧若拉铁
+item.HolyBreaker.name=Holy Breaker
 item.Baseball.name=棒球
 item.WirePole.name=电线杆子

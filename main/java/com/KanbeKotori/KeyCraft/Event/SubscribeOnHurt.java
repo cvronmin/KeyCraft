@@ -1,6 +1,7 @@
 package com.KanbeKotori.KeyCraft.Event;
 
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.KanbeKotori.KeyCraft.Items.ModItems;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.Entity;
@@ -34,7 +35,8 @@ public class SubscribeOnHurt {
     		EntityPlayer player = (EntityPlayer)event.entityLiving;
     		if (RewriteHelper.hasSkill(player, RewriteHelper.ParryProficient.id)
     			&& player.isUsingItem()
-    			&& player.getItemInUse().getItem() instanceof ItemSword
+    			&& (player.getItemInUse().getItem() instanceof ItemSword
+    			|| player.getItemInUse().getItem().equals(ModItems.AuroraBlade) )
     			) {
 				int level = player.getFoodStats().getFoodLevel();
 				if (level >= 1) {
