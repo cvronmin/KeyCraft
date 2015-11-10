@@ -23,7 +23,7 @@ import net.minecraftforge.event.entity.item.ItemTossEvent;
 public class ItemShakingSword extends ItemSword {
 	
 	public ItemShakingSword() {
-		super(ToolMaterialHelper.ShakingSword);
+		super(MaterialHelper.ShakingSword);
 	}
 	
 	@Override

@@ -20,7 +20,7 @@ public class ItemHolyBreaker extends ItemTool {
 public static final HashSet<String> HARVESTABLE = Sets.newHashSet("axe", "pickaxe", "shovel");
 	
 	public ItemHolyBreaker() {
-		super(4.0f, ToolMaterialHelper.HolyBreaker, new HashSet());
+		super(4.0f, MaterialHelper.HolyBreaker, new HashSet());
 	}
 	
 	@SideOnly(Side.CLIENT)

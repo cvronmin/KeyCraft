@@ -4,6 +4,7 @@ import com.KanbeKotori.KeyCraft.*;
 import com.KanbeKotori.KeyCraft.Helper.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.*;
 import net.minecraft.item.*;
@@ -25,6 +26,10 @@ public class ModItems {
     public static Item BreadWithJam;
     
     public static Item AuroraIronIngot;
+    public static Item AuroraIronHelmet;
+    public static Item AuroraIronChestPlate;
+    public static Item AuroraIronLeggings;
+    public static Item AuroraIronBoots;
     public static Item HolyBreaker;
     
     public static Item Baseball;
@@ -115,12 +120,40 @@ public class ModItems {
     			.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(AuroraIronIngot, "AuroraIronIngot");
     	
+    	AuroraIronHelmet = new Armors_AuroraIron(0)
+    				.setUnlocalizedName("AuroraIronHelmet")
+    				.setTextureName("keycraft:AuroraIronHelmet")
+    				.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(AuroraIronHelmet, "AuroraIronHelmet");
+    	MainHelper.addEnchantedRecipe(AuroraIronHelmet, Enchantment.respiration, 1, new Object[] { "AAA", "A A", 'A', ModItems.AuroraIronIngot });
+    	
+    	AuroraIronChestPlate = new Armors_AuroraIron(1)
+		.setUnlocalizedName("AuroraIronChestPlate")
+		.setTextureName("keycraft:AuroraIronChestPlate")
+		.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(AuroraIronChestPlate, "AuroraIronChestPlate");
+    	MainHelper.addEnchantedRecipe(AuroraIronChestPlate, Enchantment.thorns, 1, new Object[] { "A A", "AAA", "AAA", 'A', ModItems.AuroraIronIngot });
+    	
+    	AuroraIronLeggings = new Armors_AuroraIron(2)
+    				.setUnlocalizedName("AuroraIronLeggings")
+    				.setTextureName("keycraft:AuroraIronLeggings")
+    				.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(AuroraIronLeggings, "AuroraIronLeggings");
+    	MainHelper.addEnchantedRecipe(AuroraIronLeggings, Enchantment.protection, 1, new Object[] { "AAA", "A A", "A A", 'A', ModItems.AuroraIronIngot });
+    	
+    	AuroraIronBoots = new Armors_AuroraIron(3)
+    				.setUnlocalizedName("AuroraIronBoots")
+    				.setTextureName("keycraft:AuroraIronBoots")
+    				.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(AuroraIronBoots, "AuroraIronBoots");
+    	MainHelper.addEnchantedRecipe(AuroraIronBoots, Enchantment.featherFalling, 1, new Object[] { "A A", "A A", 'A', ModItems.AuroraIronIngot });
+    	
     	HolyBreaker = new ItemHolyBreaker()
     			.setUnlocalizedName("HolyBreaker")
     			.setTextureName("keycraft:HolyBreaker")
     			.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(HolyBreaker, "HolyBreaker");
-    	ToolMaterialHelper.HolyBreaker.setRepairItem(new ItemStack(Items.nether_star));
+    	MaterialHelper.HolyBreaker.setRepairItem(new ItemStack(Items.nether_star));
     	GameRegistry.addRecipe(new ItemStack(HolyBreaker), new Object[] { "ABA", "ACA", " C ", 'A', ModItems.AuroraIronIngot, 'B', Items.nether_star, 'C', Blocks.obsidian });
     	
     	Baseball = (new ItemBaseball())
@@ -133,7 +166,7 @@ public class ModItems {
     			.setUnlocalizedName("WirePole").setTextureName("keycraft:WirePole").setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(WirePole, "WirePole");
     	GameRegistry.addRecipe(new ItemStack(WirePole), new Object[] { "ABA", "ABA", "ABA", 'A', Blocks.stone, 'B', Items.iron_ingot });
-    	ToolMaterialHelper.WirePole.setRepairItem(new ItemStack(Blocks.stone));
+    	MaterialHelper.WirePole.setRepairItem(new ItemStack(Blocks.stone));
     }
 
 }

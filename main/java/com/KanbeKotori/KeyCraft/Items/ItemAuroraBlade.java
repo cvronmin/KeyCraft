@@ -25,7 +25,7 @@ public class ItemAuroraBlade extends ItemTool {
 	public static final HashSet<String> HARVESTABLE = Sets.newHashSet("axe", "pickaxe", "shovel");
 	
 	public ItemAuroraBlade() {
-		super(4.0f, ToolMaterialHelper.Aurora2, new HashSet());
+		super(4.0f, MaterialHelper.Aurora2, new HashSet());
 	}
 	
 	@Override

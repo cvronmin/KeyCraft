@@ -4,7 +4,7 @@ import java.util.*;
 
 import com.KanbeKotori.KeyCraft.Helper.MainHelper;
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
-import com.KanbeKotori.KeyCraft.Helper.ToolMaterialHelper;
+import com.KanbeKotori.KeyCraft.Helper.MaterialHelper;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 public class ItemWirePole extends ItemSword {
 
 	public ItemWirePole() {
-		super(ToolMaterialHelper.WirePole);
+		super(MaterialHelper.WirePole);
 	}
 	
 	@Override

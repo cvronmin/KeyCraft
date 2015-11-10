@@ -3,7 +3,7 @@ package com.KanbeKotori.KeyCraft.Items;
 import java.util.List;
 
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
-import com.KanbeKotori.KeyCraft.Helper.ToolMaterialHelper;
+import com.KanbeKotori.KeyCraft.Helper.MaterialHelper;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
@@ -21,7 +21,7 @@ import net.minecraftforge.event.entity.item.ItemTossEvent;
 public class ItemAuroraTrident extends ItemSword {
 
 	public ItemAuroraTrident() {
-		super(ToolMaterialHelper.Aurora1);
+		super(MaterialHelper.Aurora1);
 	}
 	
 	@Override
