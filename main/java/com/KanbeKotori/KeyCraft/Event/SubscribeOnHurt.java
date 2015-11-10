@@ -1,6 +1,7 @@
 package com.KanbeKotori.KeyCraft.Event;
 
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.KanbeKotori.KeyCraft.Items.ItemAuroraBlade;
 import com.KanbeKotori.KeyCraft.Items.ModItems;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -36,7 +37,7 @@ public class SubscribeOnHurt {
     		if (RewriteHelper.hasSkill(player, RewriteHelper.ParryProficient.id)
     			&& player.isUsingItem()
     			&& (player.getItemInUse().getItem() instanceof ItemSword
-    			|| player.getItemInUse().getItem().equals(ModItems.AuroraBlade) )
+    			|| player.getItemInUse().getItem() instanceof ItemAuroraBlade)
     			) {
 				int level = player.getFoodStats().getFoodLevel();
 				if (level >= 1) {

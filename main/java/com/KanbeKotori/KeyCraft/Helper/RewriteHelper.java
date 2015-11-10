@@ -166,10 +166,10 @@ public class RewriteHelper {
     		if (held.getItem() == Items.iron_ingot) {	// 实现玩家Skill300-『欧若拉掌控』的效果。
     			int num = held.stackSize;
     			if (hasSkill(player, AuroraControl.id)
-    					&& getAuroraPoint(player) > num
-    					) {
+    				&& getAuroraPoint(player) > num
+    				) {
     				player.setCurrentItemOrArmor(0, new ItemStack(ModItems.AuroraIronIngot, num));
-    				modifyAuroraPoint(player, -1 * num);
+    				modifyAuroraPoint(player, -num);
     				if (!player.worldObj.isRemote) {
     					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.aurorainjection")));
     				}

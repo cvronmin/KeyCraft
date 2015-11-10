@@ -31,18 +31,17 @@ public static final HashSet<String> HARVESTABLE = Sets.newHashSet("axe", "pickax
 	
 	@Override
 	public float getDigSpeed(ItemStack stack, Block block, int meta) {
-		 if (HARVESTABLE.contains(block.getHarvestTool(meta))) {
-			 return efficiencyOnProperMaterial;
-		 } else {
-			 return super.getDigSpeed(stack, block, meta);
-		 }
-		 
-	 }
+		if (HARVESTABLE.contains(block.getHarvestTool(meta))) {
+			return efficiencyOnProperMaterial;
+		} else {
+			return super.getDigSpeed(stack, block, meta);
+		}
+	}
 	 
 	 @Override
-	 public boolean canHarvestBlock(Block block, ItemStack itemStack) {
-			 return true;
-	 }
+	public boolean canHarvestBlock(Block block, ItemStack itemStack) {
+		return true;
+	}
 	
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List information, boolean p_77624_4_) {
@@ -52,9 +51,12 @@ public static final HashSet<String> HARVESTABLE = Sets.newHashSet("axe", "pickax
 	 /** 10%±©»÷ */
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		if (attacker instanceof EntityPlayer && new Random().nextInt(10) == 5) {
+		if (!attacker.worldObj.isRemote
+			&& attacker instanceof EntityPlayer
+			&& new Random().nextInt(10) == 5
+			){
 			EntityPlayer player = (EntityPlayer)attacker;
-			target.attackEntityFrom(DamageSource.causePlayerDamage(player), 0x7FFFFFFF);
+			target.attackEntityFrom(DamageSource.causePlayerDamage(player), 0x6FFFFFFF);
 			stack.damageItem(10, attacker);
 			player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.holybreak")));
 			return true;

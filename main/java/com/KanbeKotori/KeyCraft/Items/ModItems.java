@@ -26,7 +26,6 @@ public class ModItems {
     
     public static Item AuroraIronIngot;
     public static Item HolyBreaker;
-
     
     public static Item Baseball;
     public static Item WirePole;
@@ -34,32 +33,32 @@ public class ModItems {
     public static void InitItems() {
     	// 注册技能生成的物品
     	ShakingSword = new ItemShakingSword()
-    				.setUnlocalizedName("ShakingSword")
-    				.setTextureName("keycraft:ShakingSword")
-    				.setCreativeTab(null);
+    			.setUnlocalizedName("ShakingSword")
+    			.setTextureName("keycraft:ShakingSword")
+    			.setCreativeTab(null);
     	GameRegistry.registerItem(ShakingSword, "ShakingSword");
     	
     	AuroraTrident = new ItemAuroraTrident()
-    				 .setUnlocalizedName("AuroraTrident")
-    				 .setTextureName("keycraft:AuroraTrident")
-    				 .setCreativeTab(null);
+    			.setUnlocalizedName("AuroraTrident")
+    			.setTextureName("keycraft:AuroraTrident")
+    			.setCreativeTab(null);
     	GameRegistry.registerItem(AuroraTrident, "AuroraTrident");
     	
     	AuroraBlade = new ItemAuroraBlade()
-    			   .setUnlocalizedName("AuroraBlade")
-    			   .setTextureName("keycraft:AuroraBlade")
-    			   .setCreativeTab(null);
+    			.setUnlocalizedName("AuroraBlade")
+    			.setTextureName("keycraft:AuroraBlade")
+    			.setCreativeTab(null);
     	GameRegistry.registerItem(AuroraBlade, "AuroraBlade");
     	
     	// 注册食物
     	SanaeBread = (new ItemCallbackFood(20))
-    			  .setCallback(new ItemCallbackFood.ICallback() {
-    				  public void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
-    					  if (!world.isRemote) {
-    						  player.setHealth(1);
-    					  }
-    				  }
-    			  })
+    			.setCallback(new ItemCallbackFood.ICallback() {
+    				public void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
+    					if (!world.isRemote) {
+    						player.setHealth(1);
+    					}
+    				}
+    			})
     			.setUnlocalizedName("SanaeBread").setTextureName("keycraft:SanaeBread").setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(SanaeBread, "SanaeBread");
     	GameRegistry.addRecipe(new ItemStack(SanaeBread), new Object[] { "AAA", "ABA", "AAA", 'A', Items.rotten_flesh, 'B', Items.bread });
@@ -111,9 +110,9 @@ public class ModItems {
     	
     	// 注册其他物品
     	AuroraIronIngot = new ItemAuroraIronIngot()
-    				.setUnlocalizedName("AuroraIronIngot")
-    				.setTextureName("keycraft:AuroraIronIngot")
-    				.setCreativeTab(KeyCraft.CreativeTab);
+    			.setUnlocalizedName("AuroraIronIngot")
+    			.setTextureName("keycraft:AuroraIronIngot")
+    			.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(AuroraIronIngot, "AuroraIronIngot");
     	
     	HolyBreaker = new ItemHolyBreaker()
