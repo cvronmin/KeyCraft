@@ -26,10 +26,14 @@ public class ModItems {
     public static Item BreadWithJam;
     
     public static Item AuroraIronIngot;
+    
     public static Item AuroraIronHelmet;
     public static Item AuroraIronChestPlate;
     public static Item AuroraIronLeggings;
     public static Item AuroraIronBoots;
+    
+    public static Item AuroraIronSword;
+    
     public static Item HolyBreaker;
     
     public static Item Baseball;
@@ -147,6 +151,13 @@ public class ModItems {
     				.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(AuroraIronBoots, "AuroraIronBoots");
     	MainHelper.addEnchantedRecipe(AuroraIronBoots, Enchantment.featherFalling, 1, new Object[] { "A A", "A A", 'A', ModItems.AuroraIronIngot });
+    	
+    	AuroraIronSword = new ItemAuroraIronSword()
+    				.setUnlocalizedName("AuroraIronSword")
+    				.setTextureName("keycraft:AuroraIronSword")
+    				.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(AuroraIronSword, "AuroraIronSword");
+    	MainHelper.addEnchantedRecipe(AuroraIronSword, Enchantment.sharpness, 1, new Object[] { "A", "A", "B", 'A', ModItems.AuroraIronIngot, 'B', Items.stick });
     	
     	HolyBreaker = new ItemHolyBreaker()
     			.setUnlocalizedName("HolyBreaker")

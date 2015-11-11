@@ -12,7 +12,7 @@ public class Armors_AuroraIron extends ItemArmor {
 
 	/** position代表护甲位置，0为头盔，1为胸甲，2为护腿，3为靴子。 */
 	public Armors_AuroraIron(int position) {
-		super(MaterialHelper.AuroraIron, 0, position);
+		super(MaterialHelper.AuroraIronArmor, 0, position);
 		this.pos = position;
 	}
 
