@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) Nulla Development Group, 2014-2015
  * 本作品版权由Nulla开发组所有。
  * Developed by Kanbe-Kotori & xfgryujk.
@@ -19,11 +19,8 @@ import com.KanbeKotori.KeyCraft.Entities.EntityBaseball;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
+import net.minecraft.init.*;
+import net.minecraft.item.*;
 import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;

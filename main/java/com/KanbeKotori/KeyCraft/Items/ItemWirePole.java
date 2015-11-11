@@ -2,17 +2,13 @@ package com.KanbeKotori.KeyCraft.Items;
 
 import java.util.*;
 
-import com.KanbeKotori.KeyCraft.Helper.MainHelper;
-import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
-import com.KanbeKotori.KeyCraft.Helper.MaterialHelper;
+import com.KanbeKotori.KeyCraft.Helper.*;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 
 public class ItemWirePole extends ItemSword {
