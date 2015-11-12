@@ -43,6 +43,9 @@ public class ModItems {
     public static Item AuroraIronLeggings;
     public static Item AuroraIronBoots;
     
+    public static Item AuroraIronAxe;
+    public static Item AuroraIronPickaxe;
+    public static Item AuroraIronShovel;
     public static Item AuroraIronSword;
     
     public static Item HolyBreaker;
@@ -162,6 +165,28 @@ public class ModItems {
     				.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(AuroraIronBoots, "AuroraIronBoots");
     	MainHelper.addEnchantedRecipe(AuroraIronBoots, Enchantment.featherFalling, 1, new Object[] { "A A", "A A", 'A', ModItems.AuroraIronIngot });
+    	
+    	AuroraIronAxe = new ItemAuroraIronAxe()
+    				.setUnlocalizedName("AuroraIronAxe")
+    				.setTextureName("keycraft:AuroraIronAxe")
+    				.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(AuroraIronAxe, "AuroraIronAxe");
+    	MainHelper.addEnchantedRecipe(AuroraIronAxe, Enchantment.efficiency, 1, new Object[] { "AA", "AB", " B" , 'A', ModItems.AuroraIronIngot, 'B', Items.stick });
+
+    	AuroraIronPickaxe = new ItemAuroraIronPickaxe()
+    					.setUnlocalizedName("AuroraIronPickaxe")
+    					.setTextureName("keycraft:AuroraIronPickaxe")
+    					.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(AuroraIronPickaxe, "AuroraIronPickaxe");
+    	MainHelper.addEnchantedRecipe(AuroraIronPickaxe, Enchantment.fortune, 1, new Object[] { "AAA", " B ", " B ", 'A', ModItems.AuroraIronIngot, 'B', Items.stick });
+
+    	AuroraIronShovel = new ItemAuroraIronShovel()
+    				.setUnlocalizedName("AuroraIronShovel")
+    				.setTextureName("keycraft:AuroraIronShovel")
+    				.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(AuroraIronShovel, "AuroraIronShovel");
+    	MainHelper.addEnchantedRecipe(AuroraIronShovel, Enchantment.unbreaking, 1, new Object[] { "A", "B", "B", 'A', ModItems.AuroraIronIngot, 'B', Items.stick });
+
     	
     	AuroraIronSword = new ItemAuroraIronSword()
     				.setUnlocalizedName("AuroraIronSword")
