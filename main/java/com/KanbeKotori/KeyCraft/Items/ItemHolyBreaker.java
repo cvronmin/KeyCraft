@@ -13,6 +13,7 @@
 package com.KanbeKotori.KeyCraft.Items;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -21,6 +22,7 @@ import com.google.common.collect.Sets;
 
 import cpw.mods.fml.relauncher.*;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
@@ -74,6 +76,23 @@ public static final HashSet<String> HARVESTABLE = Sets.newHashSet("axe", "pickax
 		}
 		stack.damageItem(2, attacker);
 		return true;
+	}
+	
+	@Override
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+		if (!RewriteHelper.hasSkill(player, RewriteHelper.BruteForce.id)) {
+			return stack;
+		}
+		
+		List entities = player.worldObj.getEntitiesWithinAABB(EntityLiving.class, AxisAlignedBB.getBoundingBox(player.posX-8.0D, player.posY-8.0D, player.posZ-8.0D, player.posX+8.0D, player.posY+8.0D, player.posZ+8.0D));
+		for (Iterator iterator = entities.iterator(); iterator.hasNext(); ) {
+			EntityLiving entity = (EntityLiving)iterator.next();
+			if(!entity.equals(player)) {
+				entity.attackEntityFrom(DamageSource.causePlayerDamage(player), 10.0F);
+			}
+		}
+		stack.damageItem(32, player);
+		return stack;
 	}
 
 }

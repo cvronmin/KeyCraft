@@ -44,6 +44,7 @@ public class ModItems {
     public static Item AuroraIronBoots;
     
     public static Item AuroraIronAxe;
+    public static Item AuroraIronHoe;
     public static Item AuroraIronPickaxe;
     public static Item AuroraIronShovel;
     public static Item AuroraIronSword;
@@ -173,6 +174,14 @@ public class ModItems {
     	GameRegistry.registerItem(AuroraIronAxe, "AuroraIronAxe");
     	MainHelper.addEnchantedRecipe(AuroraIronAxe, Enchantment.efficiency, 1, new Object[] { "AA", "AB", " B" , 'A', ModItems.AuroraIronIngot, 'B', Items.stick });
 
+    	AuroraIronHoe = new ItemAuroraIronHoe()
+		.setUnlocalizedName("AuroraIronHoe")
+		.setTextureName("keycraft:AuroraIronHoe")
+		.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(AuroraIronHoe, "AuroraIronHoe");
+    	MainHelper.addEnchantedRecipe(AuroraIronHoe, Enchantment.looting, 1, new Object[] { "AA", " B", " B" , 'A', ModItems.AuroraIronIngot, 'B', Items.stick });
+
+    	
     	AuroraIronPickaxe = new ItemAuroraIronPickaxe()
     					.setUnlocalizedName("AuroraIronPickaxe")
     					.setTextureName("keycraft:AuroraIronPickaxe")
