@@ -38,9 +38,87 @@ public class SubscribeOnHurt {
     	return false;
     }
 
+	/** 判断Skill321-『抗火』是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
+	public boolean isCD_against_fire(EntityPlayer player) {
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_AgFire") >= 60 * 20) {
+    		player.getEntityData().setLong("LastTime_AgFire", time);
+    		if (!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfire")));
+			}
+    		return true;
+    	}
+    	return false;
+    }
+	
+	/** 判断Skill322-『抗火UP』是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
+	public boolean isCD_against_lava(EntityPlayer player) {
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_AgLava") >= 30 * 20) {
+    		player.getEntityData().setLong("LastTime_AgLava", time);
+    		if (!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfireplus")));
+			}
+    		return true;
+    	}
+    	return false;
+    }
+	
+	/** 判断Skill322-『抗火UP』\Skill323-『抗火MAX』导致的无损耗无视伤害是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
+	public boolean isCD_mention(EntityPlayer player) {
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_IgnoreFire") >= 30 * 20) {
+    		player.getEntityData().setLong("LastTime_IgnoreFire", time);
+    		if (!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstfiremax")));
+			}
+    		return true;
+    	}
+    	return false;
+    }
+
+	/** 判断Skill331-『抗爆炸外壳』是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
+	public boolean isCD_against_arrow(EntityPlayer player) {
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_AgArrow") >= 5 * 20) {
+    		player.getEntityData().setLong("LastTime_AgArrow", time);
+    		if (!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstexplosion")));
+			}
+    		return true;
+    	}
+    	return false;
+    }
+	
+	/** 判断Skill332-『抗魔法外壳』是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
+	public boolean isCD_against_magic(EntityPlayer player) {
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_AgMagic") >= 30 * 20) {
+    		player.getEntityData().setLong("LastTime_AgMagic", time);
+    		if (!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagic")));
+			}
+    		return true;
+    	}
+    	return false;
+    }
+	
+	/** 判断Skill333-『终极硬化外壳』是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
+	public boolean isCD_against_magic_plus(EntityPlayer player) {
+		final long time = player.worldObj.getTotalWorldTime();
+    	if (time - player.getEntityData().getLong("LastTime_AgMagicPlus") >= 30 * 20) {
+    		player.getEntityData().setLong("LastTime_AgMagicPlus", time);
+    		if (!player.worldObj.isRemote) {
+				player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.againstmagicplus")));
+			}
+    		return true;
+    	}
+    	return false;
+    }
+	
 	/** 玩家因为Skill233-『格挡精通』而免除某些伤害 */
     @SubscribeEvent
-    public void OnHurt(LivingHurtEvent event) {
+    public void Point_Block(LivingHurtEvent event) {
         if(event.entityLiving instanceof EntityPlayer) {
     		EntityPlayer player = (EntityPlayer)event.entityLiving;
     		if (RewriteHelper.hasSkill(player, RewriteHelper.ParryProficient.id)
@@ -70,6 +148,71 @@ public class SubscribeOnHurt {
 				) {
 				player.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1));
 			}
+		}
+	}
+		
+	/** 玩家因为Skill321-『抗火』\Skill322-『抗火UP』\Skill323-『抗火MAX』而免除某些伤害 */
+	@SubscribeEvent
+	public void PointAgainstFireAndLava(LivingHurtEvent event) {
+		if (event.entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)event.entityLiving;
+			if (event.source.damageType.equals("lava")) {
+				if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistMax.id)) {
+    				event.setCanceled(true); 
+    				isCD_mention(player);
+    			} else if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistUp.id)) {
+    				event.setCanceled(true);
+    				if (isCD_against_lava(player)) {
+    					RewriteHelper.modifyAuroraPoint(player, -1);
+    				}
+    			}
+    		} else if (event.source.damageType.equals("inFire")
+    				   || event.source.damageType.equals("onFire")
+    				   ) {
+    			if (RewriteHelper.hasSkill(player, RewriteHelper.FireResistUp.id)) {
+    				event.setCanceled(true); 
+    				isCD_mention(player);
+    			} else if (RewriteHelper.hasSkill(player, RewriteHelper.FireResist.id)) {
+    				event.setCanceled(true);
+    				if (isCD_against_fire(player)) {
+    					RewriteHelper.modifyAuroraPoint(player, -1);
+    				}
+    			}
+    		} 
+		}
+	}
+		
+	/** 玩家因为Skill331-『抗爆炸外壳』\Skill332-『抗魔法外壳』\Skill333-『终极硬化外壳』而免除某些伤害 */
+	@SubscribeEvent
+	public void PointAgainstMagic(LivingHurtEvent event) {
+		if(event.entityLiving instanceof EntityPlayer) {
+    		EntityPlayer player = (EntityPlayer)event.entityLiving;
+			if (event.source.damageType.equals("arrow")
+				|| event.source.damageType.equals("explosion")
+				|| event.source.damageType.equals("explosion.player")
+				) {
+				if (RewriteHelper.hasSkill(player, RewriteHelper.UltimateHardening.id)) {
+    				event.setCanceled(true);
+    				isCD_against_magic_plus(player);
+    			} else if (RewriteHelper.hasSkill(player, RewriteHelper.ExplosionResist.id)) {
+    				event.setCanceled(true);
+    				if (isCD_against_arrow(player)) {
+    					RewriteHelper.modifyAuroraPoint(player, -1);
+    				}
+    			}
+    		} else if (event.source.damageType.equals("magic")
+    				   || event.source.damageType.equals("indirectMagic")
+    				   ) {
+    			if (RewriteHelper.hasSkill(player, RewriteHelper.UltimateHardening.id)) {
+    				event.setCanceled(true);
+    				isCD_against_magic_plus(player);
+    			} else if (RewriteHelper.hasSkill(player, RewriteHelper.MagicResist.id)) {
+    				event.setCanceled(true);
+    				if (isCD_against_magic(player)) {
+    					RewriteHelper.modifyAuroraPoint(player, -1);
+    				}
+    			}
+    		} 
 		}
 	}
 

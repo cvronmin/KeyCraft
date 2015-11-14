@@ -65,8 +65,6 @@ public class KeyCraft {
     	MinecraftForge.EVENT_BUS.register(new SubscribeCheating());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnAttack());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnKillDown());
-    	MinecraftForge.EVENT_BUS.register(new SubscribePointAgainstFire());
-    	MinecraftForge.EVENT_BUS.register(new SubscribePointAgainstMagic());
     	MinecraftForge.EVENT_BUS.register(new SubscribePointAutoBuff());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnDead());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnHurt());
