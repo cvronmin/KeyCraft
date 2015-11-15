@@ -22,8 +22,8 @@ public class GUIRewrite_Hunting extends GuiScreen {
 	public GuiScreen parentScreen;
 	
 	private GuiButton btnSkill100; // 狩猎律动
-	private GuiButton btnSkill111; // 血之陷阱
-	private GuiButton btnSkill112; // 
+	private GuiButton btnSkill111; // 陷阱精通
+	private GuiButton btnSkill112; // 血之陷阱
 	private GuiButton btnSkill121; // 枪械精通
 	private GuiButton btnSkill122; // 快速射击
 	private GuiButton btnSkill123; // 子弹风暴

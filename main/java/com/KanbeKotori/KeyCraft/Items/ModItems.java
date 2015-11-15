@@ -214,12 +214,16 @@ public class ModItems {
     	
     	Baseball = (new ItemBaseball())
     			.setMaxStackSize(16)
-    			.setUnlocalizedName("Baseball").setTextureName("keycraft:Baseball").setCreativeTab(KeyCraft.CreativeTab);
+    			.setUnlocalizedName("Baseball")
+    			.setTextureName("keycraft:Baseball")
+    			.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(Baseball, "Baseball");
     	GameRegistry.addRecipe(new ItemStack(Baseball, 4), new Object[] { " A ", "ABA", " A ", 'A', Items.leather, 'B', Blocks.planks });
     	
     	WirePole = (new ItemWirePole())
-    			.setUnlocalizedName("WirePole").setTextureName("keycraft:WirePole").setCreativeTab(KeyCraft.CreativeTab);
+    			.setUnlocalizedName("WirePole")
+    			.setTextureName("keycraft:WirePole")
+    			.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(WirePole, "WirePole");
     	GameRegistry.addRecipe(new ItemStack(WirePole), new Object[] { "ABA", "ABA", "ABA", 'A', Blocks.stone, 'B', Items.iron_ingot });
     	MaterialHelper.WirePole.setRepairItem(new ItemStack(Blocks.stone));

@@ -12,6 +12,7 @@
  */
 package com.KanbeKotori.KeyCraft;
 
+import com.KanbeKotori.KeyCraft.Blocks.ModBlocks;
 import com.KanbeKotori.KeyCraft.Event.*;
 import com.KanbeKotori.KeyCraft.Items.*;
 import com.KanbeKotori.KeyCraft.*;
@@ -34,7 +35,7 @@ public class KeyCraft {
 	
 	public static final String MODID = "keycraft";
 	public static final String MODNAME = "KeyCraft";
-    public static final String VERSION = "Demo-3.1.1";
+    public static final String VERSION = "Demo-3.1.1-δ";
     
     @SidedProxy(clientSide = "com.KanbeKotori.KeyCraft.ClientProxy",
             	serverSide = "com.KanbeKotori.KeyCraft.CommonProxy")
@@ -51,6 +52,8 @@ public class KeyCraft {
     	
     	// 注册物品
     	ModItems.InitItems();
+    	
+    	ModBlocks.InitBlocks();
     	
     	// 注册实体
     	int modID = 1;

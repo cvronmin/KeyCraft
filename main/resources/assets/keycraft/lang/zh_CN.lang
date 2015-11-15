@@ -77,6 +77,7 @@ keycraft.gui.ensure.intro342=通过进一步加快身体中欧若拉的流速，
 keycraft.gui.ensure.intro343_1=通过直接强化自己的身体来吸收空气中的微量欧若拉。
 keycraft.gui.ensure.intro343_2=不过已经做到这一步的话，会要付出代价的吧。
 
+keycraft.prompt.yourtrap=这是你布下的陷阱！
 keycraft.prompt.er=欧若拉紧急防护已启动。
 keycraft.prompt.resistance=已经做好战斗准备。
 keycraft.prompt.power=力量强化已开启。
@@ -142,3 +143,6 @@ item.AuroraIronSword.name=欧若拉铁剑
 item.HolyBreaker.name=Holy Breaker
 item.Baseball.name=棒球
 item.WirePole.name=电线杆子
+
+tile.BloodTrap.name=血之陷阱
+
