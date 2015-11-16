@@ -45,9 +45,9 @@ public class GUIRewrite_Hunting extends GuiScreen {
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraCognition.id))
 			buttonList.add(btnSkill100 = new GuiButton(RewriteHelper.HuntingRhythm.id, (int)(width * 0.2 - 16), (int)(height * 0.4), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
-			buttonList.add(btnSkill111 = new GuiButton(RewriteHelper.BattleReadiness.id, (int)(width * 0.2 - 16), (int)(height * 0.55), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.BattleReadiness.id))
-			buttonList.add(btnSkill112 = new GuiButton(RewriteHelper.PhysiqueUp.id, (int)(width * 0.2 - 16), (int)(height * 0.7), 32, 32, ""));
+			buttonList.add(btnSkill111 = new GuiButton(RewriteHelper.TrapProficient.id, (int)(width * 0.2 - 16), (int)(height * 0.55), 32, 32, ""));
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.TrapProficient.id))
+			buttonList.add(btnSkill112 = new GuiButton(RewriteHelper.BloodTrap.id, (int)(width * 0.2 - 16), (int)(height * 0.7), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
 			buttonList.add(btnSkill121 = new GuiButton(RewriteHelper.FireAttach.id, (int)(width * 0.4 - 16), (int)(height * 0.4), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.FireAttach.id))
@@ -101,7 +101,7 @@ public class GUIRewrite_Hunting extends GuiScreen {
    			mc.renderEngine.bindTexture(ResourceHelper.icon111);
    			func_146110_a((int)(width * 0.2 - 16), (int)(height * 0.55), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.BattleReadiness.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.TrapProficient.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon112);
    			func_146110_a((int)(width * 0.2 - 16), (int)(height * 0.7), 0, 0, 32, 32, 32, 32);
    		}
@@ -154,12 +154,12 @@ public class GUIRewrite_Hunting extends GuiScreen {
 			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.HuntingRhythm.id));
 		   }
 	   } else if (button == btnSkill111) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.BattleReadiness.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.BattleReadiness.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.TrapProficient.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.TrapProficient.id));
 		   }
 	   } else if (button == btnSkill112) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.PhysiqueUp.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.PhysiqueUp.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.BloodTrap.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.BloodTrap.id));
 		   }
 	   } else if (button == btnSkill121) {
 		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.FireAttach.id)) {
