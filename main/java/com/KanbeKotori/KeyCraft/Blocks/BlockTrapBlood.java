@@ -24,9 +24,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
-public class BlockBloodTrap extends BlockTraps {
+public class BlockTrapBlood extends BlockTraps {
 
-	protected BlockBloodTrap(EntityLivingBase layer) {
+	protected BlockTrapBlood(EntityLivingBase layer) {
 		super(layer);
 		this.owner = layer;
 	}

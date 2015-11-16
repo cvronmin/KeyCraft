@@ -149,5 +149,6 @@ item.HolyBreaker.name=Holy Breaker
 item.Baseball.name=棒球
 item.WirePole.name=电线杆子
 
+tile.NormalTrap.name=普通陷阱
 tile.BloodTrap.name=血之陷阱
 
