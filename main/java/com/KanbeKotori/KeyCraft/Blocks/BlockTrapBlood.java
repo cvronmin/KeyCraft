@@ -40,7 +40,7 @@ public class BlockTrapBlood extends BlockTraps {
 			if (!RewriteHelper.hasSkill(player, RewriteHelper.BloodTrap.id)) {
 				world.setBlockToAir(posX, posY, posZ);
 				stack.stackSize++;
-				if (owner instanceof EntityPlayer && world.isRemote)	{
+				if (world.isRemote)	{
 					player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.notrapskill")));
 				}
 			}

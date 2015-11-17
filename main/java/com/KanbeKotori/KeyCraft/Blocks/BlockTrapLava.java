@@ -14,15 +14,16 @@ package com.KanbeKotori.KeyCraft.Blocks;
 
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
 
-public class BlockTrapNormal extends BlockTraps {
+public class BlockTrapLava extends BlockTraps {
 
-	protected BlockTrapNormal(EntityLivingBase layer) {
+	protected BlockTrapLava(EntityLivingBase layer) {
 		super(layer);
 		this.owner = layer;
 	}
@@ -48,7 +49,7 @@ public class BlockTrapNormal extends BlockTraps {
     public void onEntityWalking(World world, int posX, int posY, int posZ, Entity entity) {
         super.onEntityWalking(world, posX, posY, posZ, entity);
         if (!entity.equals(owner)) {
-        	world.setBlockToAir(posX, posY, posZ);
+        	world.setBlock(posX, posY, posZ, Blocks.lava);
         } else {
         	if (owner instanceof EntityPlayer && world.isRemote)	{
         		((EntityPlayer) owner).addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.yourtrap")));

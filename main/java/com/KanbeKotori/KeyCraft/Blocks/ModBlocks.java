@@ -23,8 +23,9 @@ import net.minecraft.item.ItemStack;
 public class ModBlocks {
 	
     public static Block NormalTrap;
+    public static Block LavaTrap;
+    public static Block CactusTrap;
     public static Block BloodTrap;
-
 
     public static void InitBlocks() {
     	NormalTrap = new BlockTrapNormal(null)
@@ -38,6 +39,27 @@ public class ModBlocks {
     	GameRegistry.addRecipe(new ItemStack(NormalTrap), new Object[] { " A ", "BCB", " B ", 'A', Blocks.wooden_pressure_plate, 'B', Items.iron_ingot, 'C', Blocks.glass });
     	GameRegistry.addRecipe(new ItemStack(NormalTrap), new Object[] { " A ", "BCB", " B ", 'A', Blocks.stone_pressure_plate, 'B', Items.iron_ingot, 'C', Blocks.glass });
 
+    	LavaTrap = new BlockTrapLava(null)
+    		.setBlockName("LavaTrap")
+    		.setBlockTextureName("keycraft:LavaTrap")
+    		.setHardness(1.5F)
+    		.setResistance(10.0F)
+    		.setLightLevel(1)
+    		.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerBlock(LavaTrap, "LavaTrap");
+    	GameRegistry.addShapelessRecipe(new ItemStack(LavaTrap), new Object[] { ModBlocks.NormalTrap, Items.lava_bucket });
+    	
+    	CactusTrap = new BlockTrapCactus(null)
+				.setBlockName("LavaTrap")
+				.setBlockTextureName("keycraft:CactusTrap")
+				.setHardness(1.5F)
+				.setResistance(10.0F)
+				.setLightLevel(1)
+				.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerBlock(CactusTrap, "CactusTrap");
+    	GameRegistry.addShapelessRecipe(new ItemStack(CactusTrap), new Object[] { ModBlocks.NormalTrap, Blocks.cactus });
+	
+    	
     	BloodTrap = new BlockTrapBlood(null)
     		.setBlockName("BloodTrap")
     		.setBlockTextureName("keycraft:BloodTrap")
