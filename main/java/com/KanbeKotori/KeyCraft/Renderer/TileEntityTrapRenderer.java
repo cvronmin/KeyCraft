@@ -18,18 +18,17 @@ public class TileEntityTrapRenderer extends TileEntitySpecialRenderer {
 	public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float p_147500_8_) {
 		TileEntityTrap tile = (TileEntityTrap)tileEntity;
 		Block block = Block.getBlockById(tile.fakeBlockID);
-		if (block == null) {
+		if (block == Blocks.air) {
 			block = ModBlocks.NormalTrap;
 		}
 
 		// 渲染失败，自己想办法
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float)x + 0.5F, (float)y, (float)z + 0.5F);
+		Tessellator.instance.startDrawingQuads();
 		RenderBlocks renderer = new RenderBlocks(tile.getWorldObj());
 		renderer.setRenderBoundsFromBlock(block);
 		renderer.setOverrideBlockTexture(renderer.getBlockIcon(block));
 		renderer.renderStandardBlock(block, tile.xCoord, tile.yCoord, tile.zCoord);
-        GL11.glPopMatrix();
+		Tessellator.instance.draw();
 	}
 
 }

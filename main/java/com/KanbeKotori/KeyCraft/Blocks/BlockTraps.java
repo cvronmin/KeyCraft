@@ -28,13 +28,9 @@ import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
 import cpw.mods.fml.relauncher.*;
 
 public abstract class BlockTraps extends Block implements ITileEntityProvider {
-	
-	protected EntityLivingBase owner;
-	protected IIcon icon;
 
 	protected BlockTraps(EntityLivingBase layer) {
 		super(Material.rock);
-		this.owner = layer;
 	}
 	
 	/** 当方块被放置时调用此方法。 */
@@ -62,7 +58,7 @@ public abstract class BlockTraps extends Block implements ITileEntityProvider {
 				tile.markDirty();
 			}
 		}
-    	return false;
+    	return true;
     }
 	
 	@Override

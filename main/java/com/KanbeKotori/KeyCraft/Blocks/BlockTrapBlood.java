@@ -20,6 +20,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
@@ -28,13 +29,11 @@ public class BlockTrapBlood extends BlockTraps {
 
 	protected BlockTrapBlood(EntityLivingBase layer) {
 		super(layer);
-		this.owner = layer;
 	}
 	
 	/** 当方块被放置时调用此方法。 */
 	@Override
     public void onBlockPlacedBy(World world, int posX, int posY, int posZ, EntityLivingBase entity, ItemStack stack) {
-		this.owner = entity;
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if (!RewriteHelper.hasSkill(player, RewriteHelper.BloodTrap.id)) {
@@ -51,19 +50,21 @@ public class BlockTrapBlood extends BlockTraps {
 	@Override
     public void onEntityWalking(World world, int posX, int posY, int posZ, Entity entity) {
         super.onEntityWalking(world, posX, posY, posZ, entity);
-        if (!entity.equals(owner)) {
+        TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(posX, posY, posZ);
+        if (entity instanceof EntityPlayer && ((EntityPlayer)entity).getDisplayName().equals(tile.ownerName)) {
+        	if (!world.isRemote) {
+        		((EntityPlayer)entity).addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.yourtrap")));
+        	}
+        } else {
         	world.setBlockToAir(posX, posY, posZ);
         	DamageSource source;
-        	if (owner instanceof EntityPlayer)	{
+        	EntityPlayer owner = world.getPlayerEntityByName(tile.ownerName);
+        	if (owner != null) {
         		source = DamageSource.causePlayerDamage((EntityPlayer)owner);
         	} else {
         		source = DamageSource.magic;
         	}
         	entity.attackEntityFrom(source, 30.0F);
-        } else {
-        	if (owner instanceof EntityPlayer && world.isRemote)	{
-        		((EntityPlayer) owner).addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.yourtrap")));
-        	}
         }
     }
 
