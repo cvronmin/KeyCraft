@@ -51,6 +51,7 @@ public class BlockTrapNormal extends BlockTraps {
         		((EntityPlayer)entity).addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.yourtrap")));
         	}
         } else {
+        	world.removeTileEntity(posX, posY, posZ);
         	world.setBlockToAir(posX, posY, posZ);
         }
     }

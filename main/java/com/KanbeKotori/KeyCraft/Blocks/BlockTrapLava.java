@@ -52,6 +52,7 @@ public class BlockTrapLava extends BlockTraps {
         		((EntityPlayer)entity).addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.yourtrap")));
         	}
         } else {
+        	world.removeTileEntity(posX, posY, posZ);
         	world.setBlock(posX, posY, posZ, Blocks.lava);
         }
     }

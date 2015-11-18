@@ -56,7 +56,6 @@ public class BlockTrapBlood extends BlockTraps {
         		((EntityPlayer)entity).addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.yourtrap")));
         	}
         } else {
-        	world.setBlockToAir(posX, posY, posZ);
         	DamageSource source;
         	EntityPlayer owner = world.getPlayerEntityByName(tile.ownerName);
         	if (owner != null) {
@@ -65,6 +64,8 @@ public class BlockTrapBlood extends BlockTraps {
         		source = DamageSource.magic;
         	}
         	entity.attackEntityFrom(source, 30.0F);
+        	world.removeTileEntity(posX, posY, posZ);
+        	world.setBlockToAir(posX, posY, posZ);
         }
     }
 

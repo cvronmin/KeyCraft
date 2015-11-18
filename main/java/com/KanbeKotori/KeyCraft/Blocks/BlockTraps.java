@@ -63,6 +63,7 @@ public abstract class BlockTraps extends Block implements ITileEntityProvider {
     	return true;
     }
 	
+	/** 原版也不用这个方法。。 */
 	@Override
 	@SideOnly(Side.CLIENT)
     public IIcon getIcon(IBlockAccess world, int posX, int posY, int posZ, int side) {
