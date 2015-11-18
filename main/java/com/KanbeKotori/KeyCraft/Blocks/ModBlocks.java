@@ -52,7 +52,7 @@ public class ModBlocks {
     	GameRegistry.addShapelessRecipe(new ItemStack(LavaTrap), new Object[] { ModBlocks.NormalTrap, Items.lava_bucket });
     	
     	CactusTrap = new BlockTrapCactus(null)
-				.setBlockName("LavaTrap")
+				.setBlockName("CactusTrap")
 				.setBlockTextureName("keycraft:CactusTrap")
 				.setHardness(1.5F)
 				.setResistance(10.0F)

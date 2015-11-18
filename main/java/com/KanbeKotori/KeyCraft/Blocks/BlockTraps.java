@@ -15,12 +15,14 @@ package com.KanbeKotori.KeyCraft.Blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.*;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
@@ -60,6 +62,16 @@ public abstract class BlockTraps extends Block implements ITileEntityProvider {
 		}
     	return true;
     }
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+    public IIcon getIcon(IBlockAccess world, int posX, int posY, int posZ, int side) {
+        TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(posX, posY, posZ);
+        Block block = Block.getBlockById(tile.fakeBlockID);
+        int meta = world.getBlockMetadata(posX, posY, posZ);
+        return block.getIcon(side, meta);
+    }
+
 	
 	@Override
 	public boolean isOpaqueCube() {
