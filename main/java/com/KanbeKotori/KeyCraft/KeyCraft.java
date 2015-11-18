@@ -53,6 +53,7 @@ public class KeyCraft {
     	// 注册物品
     	ModItems.InitItems();
     	
+    	// 注册方块
     	ModBlocks.InitBlocks();
     	
     	// 注册实体

@@ -13,7 +13,9 @@
 package com.KanbeKotori.KeyCraft.Blocks;
 
 import com.KanbeKotori.KeyCraft.KeyCraft;
+import com.KanbeKotori.KeyCraft.Renderer.TileEntityTrapRenderer;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -69,5 +71,8 @@ public class ModBlocks {
     		.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerBlock(BloodTrap, "BloodTrap");
     		
+    	// ×¢²áTileEntity
+    	
+    	ClientRegistry.registerTileEntity(TileEntityTrap.class, "TileEntityTrap", new TileEntityTrapRenderer());
     }
 }
