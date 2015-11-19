@@ -64,14 +64,14 @@ public abstract class BlockTraps extends Block implements ITileEntityProvider {
     }
 	
 	/** 原版也不用这个方法。。 */
-	@Override
+	/*@Override
 	@SideOnly(Side.CLIENT)
     public IIcon getIcon(IBlockAccess world, int posX, int posY, int posZ, int side) {
         TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(posX, posY, posZ);
         Block block = Block.getBlockById(tile.fakeBlockID);
         int meta = world.getBlockMetadata(posX, posY, posZ);
         return block.getIcon(side, meta);
-    }
+    }*/
 
 	
 	@Override
