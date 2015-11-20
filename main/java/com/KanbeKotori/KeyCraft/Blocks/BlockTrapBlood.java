@@ -34,6 +34,7 @@ public class BlockTrapBlood extends BlockTraps {
 	/** 当方块被放置时调用此方法。 */
 	@Override
     public void onBlockPlacedBy(World world, int posX, int posY, int posZ, EntityLivingBase entity, ItemStack stack) {
+		super.onBlockPlacedBy(world, posX, posY, posZ, entity, stack);
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			if (!RewriteHelper.hasSkill(player, RewriteHelper.BloodTrap.id)) {

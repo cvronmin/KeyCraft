@@ -18,6 +18,7 @@ import net.minecraftforge.common.MinecraftForge;
 import com.KanbeKotori.KeyCraft.Entities.EntityBaseball;
 import com.KanbeKotori.KeyCraft.Event.*;
 import com.KanbeKotori.KeyCraft.Items.ModItems;
+import com.KanbeKotori.KeyCraft.Renderer.BlockTrapRenderer;
 
 import cpw.mods.fml.client.registry.*;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -40,6 +41,7 @@ public class ClientProxy extends CommonProxy {
 		
 		// ×¢²áäÖÈ¾Æ÷
 		RenderingRegistry.registerEntityRenderingHandler(EntityBaseball.class, new RenderSnowball(ModItems.Baseball));
+		RenderingRegistry.registerBlockHandler(new BlockTrapRenderer());
 	}
 	 
 	public void postInit(FMLPostInitializationEvent event) {

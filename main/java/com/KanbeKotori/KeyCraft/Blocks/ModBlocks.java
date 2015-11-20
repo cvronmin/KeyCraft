@@ -73,6 +73,6 @@ public class ModBlocks {
     		
     	// ×¢²áTileEntity
     	
-    	ClientRegistry.registerTileEntity(TileEntityTrap.class, "TileEntityTrap", new TileEntityTrapRenderer());
+    	GameRegistry.registerTileEntity(TileEntityTrap.class, "TileEntityTrap");
     }
 }

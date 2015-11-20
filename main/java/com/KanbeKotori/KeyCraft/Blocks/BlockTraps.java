@@ -26,6 +26,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.KanbeKotori.KeyCraft.Renderer.BlockTrapRenderer;
 
 import cpw.mods.fml.relauncher.*;
 
@@ -37,7 +38,15 @@ public abstract class BlockTraps extends Block implements ITileEntityProvider {
 	
 	/** 当方块被放置时调用此方法。 */
 	@Override
-    public void onBlockPlacedBy(World world, int posX, int posY, int posZ, EntityLivingBase entity, ItemStack stack) {}
+    public void onBlockPlacedBy(World world, int posX, int posY, int posZ, EntityLivingBase entity, ItemStack stack)
+	{
+		TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(posX, posY, posZ);
+		tile.fakeBlockID = getIdFromBlock(this);
+		if (entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)entity;
+			tile.ownerName = player.getDisplayName();
+		}
+	}
 	
 	/** 当实体走过方块时调用此方法。 */
 	@Override
@@ -46,33 +55,32 @@ public abstract class BlockTraps extends Block implements ITileEntityProvider {
 	/** 当方块被右击时调用此方法。 */
 	@Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
+		boolean updated = false;
+		
 		TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(x, y, z);
 		if (tile.ownerName.isEmpty()) {
 			tile.ownerName = player.getDisplayName();
-			tile.markDirty();
+			updated = true;
 		}
 		
 		ItemStack held = player.getHeldItem();
-		if (player.getDisplayName().equals(tile.ownerName) && held != null) {
+		if (player.getDisplayName().equals(tile.ownerName)
+			&& held != null
+			) {
 			Block block = Block.getBlockFromItem(held.getItem());
 			if (block != null) {
 				tile.fakeBlockID = Block.getIdFromBlock(block);
-				tile.markDirty();
+				world.setBlockMetadataWithNotify(x, y, z, held.getItemDamage(), 2);
+				updated = true;
 			}
 		}
-    	return true;
+		
+		if (updated) {
+			world.markBlockForUpdate(x, y, z);
+			tile.markDirty();
+		}
+    	return updated;
     }
-	
-	/** 原版也不用这个方法。。 */
-	/*@Override
-	@SideOnly(Side.CLIENT)
-    public IIcon getIcon(IBlockAccess world, int posX, int posY, int posZ, int side) {
-        TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(posX, posY, posZ);
-        Block block = Block.getBlockById(tile.fakeBlockID);
-        int meta = world.getBlockMetadata(posX, posY, posZ);
-        return block.getIcon(side, meta);
-    }*/
-
 	
 	@Override
 	public boolean isOpaqueCube() {
@@ -86,7 +94,7 @@ public abstract class BlockTraps extends Block implements ITileEntityProvider {
 
 	@Override
 	public int getRenderType() {
-        return -1;
+        return BlockTrapRenderer.RENDER_ID;
     }
     
     public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
