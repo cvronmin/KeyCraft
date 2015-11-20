@@ -16,7 +16,7 @@ public class TileEntityTrap extends TileEntity {
 	public String ownerName;
 	public int fakeBlockID;
 	
-	TileEntityTrap() {
+	public TileEntityTrap() {
 		ownerName = "";
 		fakeBlockID = 0;
 	}
