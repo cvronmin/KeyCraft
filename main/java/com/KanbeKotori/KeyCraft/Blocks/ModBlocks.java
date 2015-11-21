@@ -13,7 +13,6 @@
 package com.KanbeKotori.KeyCraft.Blocks;
 
 import com.KanbeKotori.KeyCraft.KeyCraft;
-import com.KanbeKotori.KeyCraft.Renderer.*;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;

@@ -76,7 +76,10 @@ public abstract class BlockTraps extends Block implements ITileEntityProvider {
 		}
 		
 		if (updated) {
-			world.markBlockForUpdate(x, y, z);
+			// 客户端在接收到同步包后更新方块
+			if (!world.isRemote) {
+				world.markBlockForUpdate(x, y, z);
+			}
 			tile.markDirty();
 		}
     	return updated;

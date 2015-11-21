@@ -26,6 +26,11 @@ public class TileEntityTrap extends TileEntity {
         super.readFromNBT(data);
         ownerName = data.getString("ownerName");
         fakeBlockID = data.getInteger("fakeBlockID");
+        
+        // 客户端更新方块
+        if (worldObj != null && worldObj.isRemote) {
+        	worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+        }
     }
 
 	@Override
@@ -41,5 +46,10 @@ public class TileEntityTrap extends TileEntity {
 	    writeToNBT(tagCompound);
 	    return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, tagCompound);
 	}
+	
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+		readFromNBT(pkt.func_148857_g());
+    }
 	
 }
