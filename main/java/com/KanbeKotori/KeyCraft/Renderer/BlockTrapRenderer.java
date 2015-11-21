@@ -82,10 +82,7 @@ public class BlockTrapRenderer implements ISimpleBlockRenderingHandler {
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
 		TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(x, y, z);
-		Block fakeBlock = Block.getBlockById(tile.fakeBlockID);
-		if (fakeBlock == Blocks.air) {
-			fakeBlock = block;
-		}
+		Block fakeBlock = tile.getFakeBlock();
 		
 		boolean res = false;
 		if (fakeBlock.getRenderType() == RENDER_ID) {

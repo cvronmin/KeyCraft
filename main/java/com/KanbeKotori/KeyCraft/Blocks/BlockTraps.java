@@ -25,6 +25,8 @@ import net.minecraft.util.*;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import java.util.List;
+
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
 import com.KanbeKotori.KeyCraft.Renderer.BlockTrapRenderer;
 
@@ -35,6 +37,12 @@ public abstract class BlockTraps extends Block implements ITileEntityProvider {
 	protected BlockTraps(EntityLivingBase layer) {
 		super(Material.rock);
 	}
+	
+	// 主逻辑 //////////////////////////////////////////////////////////////////
+    
+    public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+        return new TileEntityTrap();
+    }
 	
 	/** 当方块被放置时调用此方法。 */
 	@Override
@@ -84,7 +92,64 @@ public abstract class BlockTraps extends Block implements ITileEntityProvider {
 		}
     	return updated;
     }
+
+	// 碰撞盒 //////////////////////////////////////////////////////////////////
 	
+	/** 设置方块界限 */
+	@Override
+	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
+		TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(x, y, z);
+		Block fakeBlock = tile.getFakeBlock();
+		if (fakeBlock == this) {
+			super.setBlockBoundsBasedOnState(world, x, y, z);
+		} else {
+			fakeBlock.setBlockBoundsBasedOnState(world, x, y, z);
+		}
+	}
+	
+	/** 设置方块碰撞盒 */
+	@Override
+	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, List list, Entity entity) {
+		TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(x, y, z);
+		Block fakeBlock = tile.getFakeBlock();
+		if (fakeBlock == this) {
+			super.addCollisionBoxesToList(world, x, y, z, mask, list, entity);
+		} else {
+			fakeBlock.addCollisionBoxesToList(world, x, y, z, mask, list, entity);
+		}
+    }
+	
+	/** 取方块碰撞盒 */
+	@Override
+	 public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
+		TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(x, y, z);
+		if (tile == null) {
+			return super.getCollisionBoundingBoxFromPool(world, x, y, z);
+		}
+		Block fakeBlock = tile.getFakeBlock();
+		if (fakeBlock == this) {
+			return super.getCollisionBoundingBoxFromPool(world, x, y, z);
+		} else {
+			return fakeBlock.getCollisionBoundingBoxFromPool(world, x, y, z);
+		}
+	 }
+	
+	/** 取选择碰撞盒 */
+	@SideOnly(Side.CLIENT)
+	@Override
+    public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z)
+    {
+		TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(x, y, z);
+		Block fakeBlock = tile.getFakeBlock();
+		if (fakeBlock == this) {
+			return super.getSelectedBoundingBoxFromPool(world, x, y, z);
+		} else {
+			return fakeBlock.getSelectedBoundingBoxFromPool(world, x, y, z);
+		}
+    }
+	
+	// 渲染 //////////////////////////////////////////////////////////////////
+
 	@Override
 	public boolean isOpaqueCube() {
 		return false;
@@ -98,10 +163,6 @@ public abstract class BlockTraps extends Block implements ITileEntityProvider {
 	@Override
 	public int getRenderType() {
         return BlockTrapRenderer.RENDER_ID;
-    }
-    
-    public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-        return new TileEntityTrap();
     }
 
 }

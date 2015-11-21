@@ -21,6 +21,14 @@ public class TileEntityTrap extends TileEntity {
 		fakeBlockID = 0;
 	}
 	
+	public Block getFakeBlock() {
+		Block fakeBlock = Block.getBlockById(fakeBlockID);
+		if (fakeBlock == Blocks.air) {
+			fakeBlock = this.getBlockType();
+		}
+		return fakeBlock;
+	}
+	
 	@Override
 	public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
