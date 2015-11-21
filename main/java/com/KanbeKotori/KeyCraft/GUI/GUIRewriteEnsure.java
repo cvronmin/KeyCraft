@@ -82,7 +82,8 @@ public class GUIRewriteEnsure extends GuiScreen {
         	mc.renderEngine.bindTexture(ResourceHelper.icon112);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title112"), width/2, (int)(height*0.3), 0xFFFFFF);
-        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro112"), width/2, (int)(height*0.45), 0xFFFFFF);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro112_1"), width/2, (int)(height*0.45), 0xFFFFFF);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro112_2"), width/2, (int)(height*0.6), 0xFFFFFF);
     	} else if (skillNum == RewriteHelper.MissileProficient.id) {	// Skill131-投掷物精通
         	mc.renderEngine.bindTexture(ResourceHelper.icon100);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);

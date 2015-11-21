@@ -26,6 +26,7 @@ public class ModBlocks {
     public static Block NormalTrap;
     public static Block LavaTrap;
     public static Block CactusTrap;
+    public static Block TNTTrap;
     public static Block BloodTrap;
 
     public static void InitBlocks() {
@@ -60,7 +61,16 @@ public class ModBlocks {
     	GameRegistry.registerBlock(CactusTrap, "CactusTrap");
     	GameRegistry.addShapelessRecipe(new ItemStack(CactusTrap), new Object[] { ModBlocks.NormalTrap, Blocks.cactus });
 	
-    	
+    	TNTTrap = new BlockTrapTNT(null)
+		.setBlockName("TNTTrap")
+		.setBlockTextureName("keycraft:TNTTrap")
+		.setHardness(1.5F)
+		.setResistance(10.0F)
+		.setLightLevel(1)
+		.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerBlock(TNTTrap, "TNTTrap");
+    	GameRegistry.addShapelessRecipe(new ItemStack(TNTTrap), new Object[] { ModBlocks.NormalTrap, Blocks.tnt });
+
     	BloodTrap = new BlockTrapBlood(null)
     		.setBlockName("BloodTrap")
     		.setBlockTextureName("keycraft:BloodTrap")

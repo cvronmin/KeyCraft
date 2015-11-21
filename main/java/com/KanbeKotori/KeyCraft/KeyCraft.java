@@ -12,11 +12,11 @@
  */
 package com.KanbeKotori.KeyCraft;
 
-import com.KanbeKotori.KeyCraft.Blocks.ModBlocks;
+import com.KanbeKotori.KeyCraft.Blocks.*;
 import com.KanbeKotori.KeyCraft.Event.*;
 import com.KanbeKotori.KeyCraft.Items.*;
 import com.KanbeKotori.KeyCraft.*;
-import com.KanbeKotori.KeyCraft.Entities.EntityBaseball;
+import com.KanbeKotori.KeyCraft.Entities.*;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,7 +35,7 @@ public class KeyCraft {
 	
 	public static final String MODID = "keycraft";
 	public static final String MODNAME = "KeyCraft";
-    public static final String VERSION = "Demo-3.1.1-¦Ä";
+    public static final String VERSION = "Demo-3.1.3";
     
     @SidedProxy(clientSide = "com.KanbeKotori.KeyCraft.ClientProxy",
             	serverSide = "com.KanbeKotori.KeyCraft.CommonProxy")
