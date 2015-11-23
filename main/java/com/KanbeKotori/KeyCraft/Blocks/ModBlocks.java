@@ -27,6 +27,7 @@ public class ModBlocks {
     public static Block LavaTrap;
     public static Block CactusTrap;
     public static Block TNTTrap;
+    public static Block BlowUpTrap;
     public static Block BloodTrap;
 
     public static void InitBlocks() {
@@ -70,6 +71,16 @@ public class ModBlocks {
 		.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerBlock(TNTTrap, "TNTTrap");
     	GameRegistry.addShapelessRecipe(new ItemStack(TNTTrap), new Object[] { ModBlocks.NormalTrap, Blocks.tnt });
+    	
+    	BlowUpTrap = new BlockTrapBlowUp(null)
+		.setBlockName("BlowUpTrap")
+		.setBlockTextureName("keycraft:BlowUpTrap")
+		.setHardness(1.5F)
+		.setResistance(10.0F)
+		.setLightLevel(1)
+		.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerBlock(BlowUpTrap, "BlowUpTrap");
+    	GameRegistry.addShapelessRecipe(new ItemStack(BlowUpTrap), new Object[] { ModBlocks.NormalTrap, Blocks.piston, Items.gunpowder });
 
     	BloodTrap = new BlockTrapBlood(null)
     		.setBlockName("BloodTrap")

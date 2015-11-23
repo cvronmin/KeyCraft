@@ -1,31 +1,25 @@
-/**
- * Copyright (c) Nulla Development Group, 2014-2015
- * 本作品版权由Nulla开发组所有。
- * Developed by Kanbe-Kotori & xfgryujk.
- * 本作品由 Kanbe-Kotori & xfgryujk 合作开发。
- * This project is open-source, and it is distributed under
- * the terms of GNU General Public License. You can modify
- * and distribute freely as long as you follow the license.
- * 本项目是一个开源项目，且遵循GNU通用公共授权协议。
- * 在遵照该协议的情况下，您可以自由传播和修改。
- * http://www.gnu.org/licenses/gpl.html
- */
 package com.KanbeKotori.KeyCraft.Blocks;
 
-import net.minecraft.entity.*;
-import net.minecraft.entity.item.EntityTNTPrimed;
+import java.util.Iterator;
+import java.util.List;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
 
-public class BlockTrapLava extends BlockTraps {
+public class BlockTrapBlowUp extends BlockTraps {
 
-	protected BlockTrapLava(EntityLivingBase layer) {
+	protected BlockTrapBlowUp(EntityLivingBase layer) {
 		super(layer);
 	}
 	
@@ -55,16 +49,22 @@ public class BlockTrapLava extends BlockTraps {
         		((EntityPlayer)entity).addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.yourtrap")));
         	}
         } else {
+        	entity.setVelocity(entity.motionX, entity.motionY + 5.0F, entity.motionZ);
         	world.removeTileEntity(posX, posY, posZ);
-        	world.setBlock(posX, posY, posZ, Blocks.lava);
+        	world.setBlockToAir(posX, posY, posZ);
         }
     }
 	
-	/** 当方块被炸烂时 流下岩浆。 */
+	/** 当方块被炸烂时 直接造成伤害。 */
     public void onBlockDestroyedByExplosion(World world, int posX, int posY, int posZ, Explosion exp) {
         if (!world.isRemote) {
+            TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(posX, posY, posZ);
+        	List entities = world.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(posX - 8.0D, posY - 8.0D, posZ - 8.0D, posX + 8.0D, posY + 8.0D, posZ + 8.0D));
+    		for (Iterator iterator = entities.iterator(); iterator.hasNext(); ) {
+    			EntityLivingBase entity = (EntityLivingBase)iterator.next();
+            	entity.setVelocity(entity.motionX, entity.motionY + 5.0F, entity.motionZ);
+    		}
         	world.removeTileEntity(posX, posY, posZ);
-            world.setBlock(posX, posY, posZ, Blocks.lava);
         }
     }
 

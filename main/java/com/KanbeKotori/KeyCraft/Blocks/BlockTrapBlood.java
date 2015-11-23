@@ -12,6 +12,9 @@
  */
 package com.KanbeKotori.KeyCraft.Blocks;
 
+import java.util.Iterator;
+import java.util.List;
+
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
 
 import cpw.mods.fml.relauncher.*;
@@ -23,6 +26,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
 public class BlockTrapBlood extends BlockTraps {
@@ -57,16 +61,22 @@ public class BlockTrapBlood extends BlockTraps {
         		((EntityPlayer)entity).addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.yourtrap")));
         	}
         } else {
-        	DamageSource source;
-        	EntityPlayer owner = world.getPlayerEntityByName(tile.ownerName);
-        	if (owner != null) {
-        		source = DamageSource.causePlayerDamage((EntityPlayer)owner);
-        	} else {
-        		source = DamageSource.magic;
-        	}
-        	entity.attackEntityFrom(source, 30.0F);
+			entity.attackEntityFrom(DamageSource.magic, 40.0F);
         	world.removeTileEntity(posX, posY, posZ);
         	world.setBlockToAir(posX, posY, posZ);
+        }
+    }
+	
+	/** 当方块被炸烂时 直接造成伤害。 */
+    public void onBlockDestroyedByExplosion(World world, int posX, int posY, int posZ, Explosion exp) {
+        if (!world.isRemote) {
+            TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(posX, posY, posZ);
+        	List entities = world.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(posX - 8.0D, posY - 8.0D, posZ - 8.0D, posX + 8.0D, posY + 8.0D, posZ + 8.0D));
+    		for (Iterator iterator = entities.iterator(); iterator.hasNext(); ) {
+    			EntityLivingBase entity = (EntityLivingBase)iterator.next();
+    			entity.attackEntityFrom(DamageSource.magic, 40.0F);
+    		}
+        	world.removeTileEntity(posX, posY, posZ);
         }
     }
 

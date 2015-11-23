@@ -108,6 +108,7 @@ keycraft.prompt.aurorarecovery=你回复了微量的欧若拉。
 
 keycraft.prompt.cheat1=获得100欧若拉点。
 keycraft.prompt.cheat2=重置所有欧若拉点数和技能。
+keycraft.prompt.cheat3=获得生命回复和生命提升。
 keycraft.prompt.holybreak=神圣的碎碎！
 
 keycraft.item.intro231_1=超振动中的铁剑，看起来非常危险。
@@ -154,5 +155,6 @@ tile.NormalTrap.name=普通陷阱
 tile.LavaTrap.name=岩浆陷阱
 tile.CactusTrap.name=仙人掌陷阱
 tile.TNTTrap.name=TNT陷阱
+tile.BlowUpTrap.name=击飞陷阱
 tile.BloodTrap.name=血之陷阱
 

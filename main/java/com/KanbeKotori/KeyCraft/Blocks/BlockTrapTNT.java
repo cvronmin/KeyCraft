@@ -2,11 +2,13 @@ package com.KanbeKotori.KeyCraft.Blocks;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.StatCollector;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
@@ -45,7 +47,17 @@ public class BlockTrapTNT extends BlockTraps {
         } else {
 			world.removeTileEntity(posX, posY, posZ);
         	world.setBlockToAir(posX, posY, posZ);
-        	world.createExplosion(null, posX, posY, posZ, 10.0f, true);
+        	world.createExplosion(world.getPlayerEntityByName(tile.ownerName), posX, posY, posZ, 10.0f, true);
+        }
+    }
+	
+	/** 当方块被炸烂时 产生连锁爆炸。 */
+    public void onBlockDestroyedByExplosion(World world, int posX, int posY, int posZ, Explosion exp) {
+        if (!world.isRemote) {
+            EntityTNTPrimed entitytntprimed = new EntityTNTPrimed(world, posX + 0.5F, posY + 0.5F, posZ + 0.5F, exp.getExplosivePlacedBy());
+            entitytntprimed.fuse = world.rand.nextInt(entitytntprimed.fuse / 4) + entitytntprimed.fuse / 8;
+            world.spawnEntityInWorld(entitytntprimed);
+        	world.removeTileEntity(posX, posY, posZ);
         }
     }
 

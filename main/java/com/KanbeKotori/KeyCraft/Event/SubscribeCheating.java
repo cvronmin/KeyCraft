@@ -17,6 +17,8 @@ import com.KanbeKotori.KeyCraft.Helper.RewriteHelper.Skill;
 import com.KanbeKotori.KeyCraft.Network.RewriteNetwork;
 
 import net.minecraft.entity.player.*;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraftforge.event.ServerChatEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -43,6 +45,14 @@ public class SubscribeCheating {
         		}
                 RewriteNetwork.rewriteChannel.sendTo(RewriteNetwork.createSyncSkillPacket(player), player);
                 player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.cheat2")));
+            }
+        } else if(event.message.toLowerCase().equals("kagari")) {
+        	event.setCanceled(true);
+            EntityPlayerMP player = event.player;
+            if (!player.worldObj.isRemote) {
+    			player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 0x7FFFFFFF, 94));
+				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 0x7FFFFFFF, 9));
+                player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.cheat3")));
             }
         }
     }
