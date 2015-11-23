@@ -84,13 +84,11 @@ public class BlockTrapRenderer implements ISimpleBlockRenderingHandler {
 		TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(x, y, z);
 		Block fakeBlock = tile.getFakeBlock();
 		
-		boolean res = false;
+		boolean res;
 		if (fakeBlock.getRenderType() == RENDER_ID) {
 			res = renderer.renderStandardBlock(fakeBlock, x, y, z);
 		} else {
-			renderer.setOverrideBlockTexture(renderer.getBlockIcon(fakeBlock, world, x, y, z, 0));
 			res = renderer.renderBlockByRenderType(fakeBlock, x, y, z);
-			renderer.clearOverrideBlockTexture();
 		}
 		
 		return res;
