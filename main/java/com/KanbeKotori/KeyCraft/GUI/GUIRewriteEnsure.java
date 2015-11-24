@@ -189,17 +189,17 @@ public class GUIRewriteEnsure extends GuiScreen {
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title323"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro323_1"), width/2, (int)(height*0.45), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro323_2"), width/2, (int)(height*0.6), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.ExplosionResist.id) {
+    	} else if (skillNum == RewriteHelper.CuringFog.id) {
         	mc.renderEngine.bindTexture(ResourceHelper.icon331);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title331"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro331"), width/2, (int)(height*0.45), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.MagicResist.id) {
+    	} else if (skillNum == RewriteHelper.HealingFog.id) {
         	mc.renderEngine.bindTexture(ResourceHelper.icon332);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title332"), width/2, (int)(height*0.3), 0xFFFFFF);
-        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro332"), width/2, (int)(height*0.45), 0xFFFFFF);
-    	} else if (skillNum == RewriteHelper.UltimateHardening.id) {
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro332_1"), width/2, (int)(height*0.45), 0xFFFFFF);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro332_2"), width/2, (int)(height*0.6), 0xFFFFFF);    	} else if (skillNum == RewriteHelper.HurtingFog.id) {
         	mc.renderEngine.bindTexture(ResourceHelper.icon333);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title333"), width/2, (int)(height*0.3), 0xFFFFFF);

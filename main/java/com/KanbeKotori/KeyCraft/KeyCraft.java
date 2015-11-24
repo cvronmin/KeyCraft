@@ -35,7 +35,7 @@ public class KeyCraft {
 	
 	public static final String MODID = "keycraft";
 	public static final String MODNAME = "KeyCraft";
-    public static final String VERSION = "Demo-3.1.3";
+    public static final String VERSION = "Demo-3.1.3-¦Ã";
     
     @SidedProxy(clientSide = "com.KanbeKotori.KeyCraft.ClientProxy",
             	serverSide = "com.KanbeKotori.KeyCraft.CommonProxy")
@@ -69,15 +69,14 @@ public class KeyCraft {
     	MinecraftForge.EVENT_BUS.register(new SubscribeCheating());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnAttack());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnKillDown());
-    	MinecraftForge.EVENT_BUS.register(new SubscribePointAutoBuff());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnDead());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnHurt());
     	MinecraftForge.EVENT_BUS.register(new ItemAuroraBlade());
     	MinecraftForge.EVENT_BUS.register(new ItemAuroraTrident());
     	MinecraftForge.EVENT_BUS.register(new ItemShakingSword());
 
-    	FMLCommonHandler.instance().bus().register(new SubscribePointAutoBuff());
-    	FMLCommonHandler.instance().bus().register(new SubscribePointAutoRecovery());
+    	FMLCommonHandler.instance().bus().register(new SubscribeOnTick_Buff());
+    	FMLCommonHandler.instance().bus().register(new SubscribeOnTick_Effect());
     }
     
     @EventHandler

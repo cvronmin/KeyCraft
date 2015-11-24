@@ -62,16 +62,16 @@ public class RewriteHelper {
 	public static final Skill FireResist			= new Skill(321, 5);
 	public static final Skill FireResistUp			= new Skill(322, 5);
 	public static final Skill FireResistMax			= new Skill(323, 20);
-	public static final Skill ExplosionResist		= new Skill(331, 10);
-	public static final Skill MagicResist			= new Skill(332, 10);
-	public static final Skill UltimateHardening		= new Skill(333, 30);
+	public static final Skill CuringFog				= new Skill(331, 15);
+	public static final Skill HealingFog			= new Skill(332, 15);
+	public static final Skill HurtingFog			= new Skill(333, 15);
 	public static final Skill AuroraActivation		= new Skill(341, 20);
 	public static final Skill AuroraSurge			= new Skill(342, 20);
 	public static final Skill AuroraRegeneration	= new Skill(343, 40);
 	
 	public static final Skill SKILLS[] = { AuroraCognition, HuntingRhythm, TrapProficient, BloodTrap, MissileProficient, UrgentProtect, UrgentProtect, BattleReadiness, PhysiqueUp, FireAttach, PoisonAttach, 
 			WitherAttach, SuperVibration, BruteForce, ParryProficient, LifeSuck, PowerDown, AuroraRob, AuroraControl, AuroraTrident, 
-			AuroraBlade, FireResist, FireResistUp, FireResistMax, FireResistMax, ExplosionResist, MagicResist, UltimateHardening, 
+			AuroraBlade, FireResist, FireResistUp, FireResistMax, FireResistMax, CuringFog, HealingFog, HurtingFog, 
 			AuroraActivation, AuroraSurge, AuroraRegeneration };
 	
 	/** 学习欧若拉认知，获得100欧若拉点 */

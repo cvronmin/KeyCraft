@@ -29,7 +29,7 @@ import com.KanbeKotori.KeyCraft.Network.RewriteNetwork;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class SubscribePointAutoBuff {
+public class SubscribeOnTick_Buff {
 	
 	/** 判断Skill200-『紧急防护』是否已经CD，但是不会同步，死亡或切换世界会重置CD。 */
 	public boolean isCD_Buff_ER(EntityPlayer player) {
@@ -112,7 +112,7 @@ public class SubscribePointAutoBuff {
 			&& RewriteHelper.hasSkill(player, RewriteHelper.WitherAttach.id)
 			&& RewriteHelper.hasSkill(player, RewriteHelper.AuroraRob.id)
 			&& RewriteHelper.hasSkill(player, RewriteHelper.FireResistMax.id) 
-			&& RewriteHelper.hasSkill(player, RewriteHelper.UltimateHardening.id) 
+			&& RewriteHelper.hasSkill(player, RewriteHelper.HurtingFog.id) 
 			&& RewriteHelper.hasSkill(player, RewriteHelper.AuroraRegeneration.id) 
 			) {
 			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 100, 255));

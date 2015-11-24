@@ -29,9 +29,9 @@ public class GUIRewrite_Polluting extends GuiScreen {
 	private GuiButton btnSkill321; // øπª
 	private GuiButton btnSkill322; // øπªUP
 	private GuiButton btnSkill323; // øπªMAX
-	private GuiButton btnSkill331; // øπ±¨’®Õ‚ø«
-	private GuiButton btnSkill332; // øπƒß∑®Õ‚ø«
-	private GuiButton btnSkill333; // ÷’º´”≤ªØÕ‚ø«
+	private GuiButton btnSkill331; // ÷Œ”˙÷ÆŒÌ
+	private GuiButton btnSkill332; // ÷Œ¡∆÷ÆŒÌ
+	private GuiButton btnSkill333; // π•ª˜÷ÆŒÌ
 	private GuiButton btnSkill341; // ≈∑»Ù¿≠º§ªÓ
 	private GuiButton btnSkill342; // ≈∑»Ù¿≠”ø∂Ø
 	private GuiButton btnSkill343; // ≈∑»Ù¿≠‘Ÿ…˙
@@ -61,11 +61,11 @@ public class GUIRewrite_Polluting extends GuiScreen {
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.FireResistUp.id))
 			buttonList.add(btnSkill323 = new GuiButton(RewriteHelper.FireResistMax.id, (int)(width * 0.4 - 16), (int)(height * 0.7), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraControl.id))
-			buttonList.add(btnSkill331 = new GuiButton(RewriteHelper.ExplosionResist.id, (int)(width * 0.6 - 16), (int)(height * 0.4), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.ExplosionResist.id))
-			buttonList.add(btnSkill332 = new GuiButton(RewriteHelper.MagicResist.id, (int)(width * 0.6 - 16), (int)(height * 0.55), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.MagicResist.id))
-			buttonList.add(btnSkill333 = new GuiButton(RewriteHelper.UltimateHardening.id, (int)(width * 0.6 - 16), (int)(height * 0.7), 32, 32, ""));
+			buttonList.add(btnSkill331 = new GuiButton(RewriteHelper.CuringFog.id, (int)(width * 0.6 - 16), (int)(height * 0.4), 32, 32, ""));
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.CuringFog.id))
+			buttonList.add(btnSkill332 = new GuiButton(RewriteHelper.HealingFog.id, (int)(width * 0.6 - 16), (int)(height * 0.55), 32, 32, ""));
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HealingFog.id))
+			buttonList.add(btnSkill333 = new GuiButton(RewriteHelper.HurtingFog.id, (int)(width * 0.6 - 16), (int)(height * 0.7), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraControl.id))
 			buttonList.add(btnSkill341 = new GuiButton(RewriteHelper.AuroraActivation.id, (int)(width * 0.8 - 16), (int)(height * 0.4), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraActivation.id))
@@ -129,11 +129,11 @@ public class GUIRewrite_Polluting extends GuiScreen {
    			mc.renderEngine.bindTexture(ResourceHelper.icon331);
    			func_146110_a((int)(width * 0.6 - 16), (int)(height * 0.4), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.ExplosionResist.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.CuringFog.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon332);
    			func_146110_a((int)(width * 0.6 - 16), (int)(height * 0.55), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.MagicResist.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HealingFog.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon333);
    			func_146110_a((int)(width * 0.6 - 16), (int)(height * 0.7), 0, 0, 32, 32, 32, 32);
    		}
@@ -180,16 +180,16 @@ public class GUIRewrite_Polluting extends GuiScreen {
 			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.FireResistMax.id));
 		   }
 	   } else if (button == btnSkill331) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.ExplosionResist.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.ExplosionResist.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.CuringFog.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.CuringFog.id));
 		   }
 	   } else if (button == btnSkill332) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.MagicResist.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.MagicResist.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.HealingFog.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.HealingFog.id));
 		   }
 	   } else if (button == btnSkill333) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.UltimateHardening.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.UltimateHardening.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.HurtingFog.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.HurtingFog.id));
 		   }
 	   } else if (button == btnSkill341) {
 		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraActivation.id)) {

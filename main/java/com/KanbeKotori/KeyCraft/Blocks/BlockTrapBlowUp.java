@@ -55,7 +55,7 @@ public class BlockTrapBlowUp extends BlockTraps {
         }
     }
 	
-	/** 当方块被炸烂时 直接造成伤害。 */
+	/** 当方块被炸烂时 直接吹飞。 */
     public void onBlockDestroyedByExplosion(World world, int posX, int posY, int posZ, Explosion exp) {
         if (!world.isRemote) {
             TileEntityTrap tile = (TileEntityTrap)world.getTileEntity(posX, posY, posZ);
