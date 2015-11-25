@@ -85,7 +85,7 @@ public class SubscribeOnTick_Buff {
 		if (RewriteHelper.hasSkill(player, RewriteHelper.PhysiqueUp.id)
 			&& !player.isPotionActive(Potion.field_76434_w)
 			) {
-			player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 0x7FFFFFFF, 4));
+			player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 0x7FFFFFFF, 2));
 		}
 	}
 	

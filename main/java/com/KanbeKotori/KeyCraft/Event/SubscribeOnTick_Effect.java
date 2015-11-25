@@ -29,13 +29,13 @@ import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class SubscribeOnTick_Effect {
 	
-	/** 实现Skill331-『治愈之雾』的效果 */
+	/** 实现Skill331-『治愈之雾』的效果。 */
 	@SubscribeEvent
 	public void Point_CuringFog(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
 		if (!player.worldObj.isRemote // 随机事件只发生在服务器
 			&& RewriteHelper.hasSkill(player, RewriteHelper.CuringFog.id)
-			&& new Random().nextInt(2400) == 1200
+			&& new Random().nextInt(2400) == 600
 			) {
 			List entities = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(player.posX-3.0D, player.posY-2.0D, player.posZ-3.0D, player.posX+3.0D, player.posY+2.0D, player.posZ+3.0D));
     		for (Iterator iterator = entities.iterator(); iterator.hasNext(); ) {
@@ -52,7 +52,7 @@ public class SubscribeOnTick_Effect {
 		}
 	}
 	
-	/** 实现Skill332-『治疗之雾』的效果 */
+	/** 实现Skill332-『治疗之雾』的效果。 */
 	@SubscribeEvent
 	public void Point_HealingFog(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
@@ -69,13 +69,13 @@ public class SubscribeOnTick_Effect {
 		}
 	}
 	
-	/** 实现Skill333-『伤害之雾』的效果 */
+	/** 实现Skill333-『伤害之雾』的效果。 */
 	@SubscribeEvent
 	public void Point_HurtingFog(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
 		if (!player.worldObj.isRemote // 随机事件只发生在服务器
 			&& RewriteHelper.hasSkill(player, RewriteHelper.HurtingFog.id)
-			&& new Random().nextInt(2400) == 1200
+			&& new Random().nextInt(2400) == 1800
 			) {
 			List entities = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(player.posX-3.0D, player.posY-2.0D, player.posZ-3.0D, player.posX+3.0D, player.posY+2.0D, player.posZ+3.0D));
     		for (Iterator iterator = entities.iterator(); iterator.hasNext(); ) {

@@ -71,6 +71,7 @@ public class KeyCraft {
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnKillDown());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnDead());
     	MinecraftForge.EVENT_BUS.register(new SubscribeOnHurt());
+    	MinecraftForge.EVENT_BUS.register(new SubscribeOnHUDDraw());
     	MinecraftForge.EVENT_BUS.register(new ItemAuroraBlade());
     	MinecraftForge.EVENT_BUS.register(new ItemAuroraTrident());
     	MinecraftForge.EVENT_BUS.register(new ItemShakingSword());
