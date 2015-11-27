@@ -45,7 +45,9 @@ public class SubscribeOnHUDDraw {
 	        String hp = "Health: " + health + " / " + maxhealth;
 	        FontRenderer fontRenderer = mc.fontRenderer;
 	        int color = 0xFFFFFF;
-	        if (health != maxhealth) {color = 0xFF0000;}
+	        if (health <= maxhealth * 0.25) {color = 0xFF0000;}
+	        else if (health <= maxhealth * 0.5) {color = 0xFFFF00;}
+	        else if (health > maxhealth) {color = 0x00FF00;}
 	        fontRenderer.drawStringWithShadow(hp, width / 2 - 91, height - 39, color);
 	        fontRenderer.drawString("", 0, 0, 0xFFFFFF);	//³õÊ¼»¯×²îÑ¼¦       
 	        mc.renderEngine.bindTexture(Gui.icons);

@@ -33,7 +33,7 @@ public class SubscribeOnKillDown {
 			if (!player.worldObj.isRemote // 随机事件只发生在服务器
 				&& RewriteHelper.hasSkill(player, RewriteHelper.AuroraRob.id)
 				) {
-				if (new Random().nextInt(16) == 8) {
+				if (new Random().nextInt(32) == 16) {
 					RewriteHelper.modifyAuroraPoint(player, 1);
 					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.aurorarob")));
 				} else {

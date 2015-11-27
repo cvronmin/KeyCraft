@@ -25,6 +25,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class SubscribeOnTick_Effect {
@@ -32,10 +33,14 @@ public class SubscribeOnTick_Effect {
 	/** 实现Skill331-『治愈之雾』的效果。 */
 	@SubscribeEvent
 	public void Point_CuringFog(PlayerTickEvent event) {
+		if (event.phase == Phase.END) {
+			return;
+		}
+		
 		EntityPlayer player = event.player;
 		if (!player.worldObj.isRemote // 随机事件只发生在服务器
 			&& RewriteHelper.hasSkill(player, RewriteHelper.CuringFog.id)
-			&& new Random().nextInt(2400) == 600
+			&& new Random().nextInt(1200) == 600
 			) {
 			List entities = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(player.posX-3.0D, player.posY-2.0D, player.posZ-3.0D, player.posX+3.0D, player.posY+2.0D, player.posZ+3.0D));
     		for (Iterator iterator = entities.iterator(); iterator.hasNext(); ) {
@@ -55,10 +60,14 @@ public class SubscribeOnTick_Effect {
 	/** 实现Skill332-『治疗之雾』的效果。 */
 	@SubscribeEvent
 	public void Point_HealingFog(PlayerTickEvent event) {
+		if (event.phase == Phase.END) {
+			return;
+		}
+		
 		EntityPlayer player = event.player;
 		if (!player.worldObj.isRemote // 随机事件只发生在服务器
 			&& RewriteHelper.hasSkill(player, RewriteHelper.HealingFog.id)
-			&& new Random().nextInt(2400) == 1200
+			&& new Random().nextInt(2400) == 800
 			) {
 			List entities = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(player.posX-3.0D, player.posY-2.0D, player.posZ-3.0D, player.posX+3.0D, player.posY+2.0D, player.posZ+3.0D));
     		for (Iterator iterator = entities.iterator(); iterator.hasNext(); ) {
@@ -72,10 +81,14 @@ public class SubscribeOnTick_Effect {
 	/** 实现Skill333-『伤害之雾』的效果。 */
 	@SubscribeEvent
 	public void Point_HurtingFog(PlayerTickEvent event) {
+		if (event.phase == Phase.END) {
+			return;
+		}
+		
 		EntityPlayer player = event.player;
 		if (!player.worldObj.isRemote // 随机事件只发生在服务器
 			&& RewriteHelper.hasSkill(player, RewriteHelper.HurtingFog.id)
-			&& new Random().nextInt(2400) == 1800
+			&& new Random().nextInt(2400) == 1600
 			) {
 			List entities = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(player.posX-3.0D, player.posY-2.0D, player.posZ-3.0D, player.posX+3.0D, player.posY+2.0D, player.posZ+3.0D));
     		for (Iterator iterator = entities.iterator(); iterator.hasNext(); ) {
@@ -89,6 +102,10 @@ public class SubscribeOnTick_Effect {
 	/** 给予玩家Skill343-『欧若拉再生』的欧若拉点数 */
 	@SubscribeEvent
 	public void Point_AuroraAutoRecover(PlayerTickEvent event) {
+		if (event.phase == Phase.END) {
+			return;
+		}
+		
 		EntityPlayer player = event.player;
 		if (!player.worldObj.isRemote // 随机事件只发生在服务器
 			&& RewriteHelper.hasSkill(player, RewriteHelper.AuroraRegeneration.id)
