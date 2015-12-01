@@ -30,8 +30,8 @@ public class GUIRewrite_Hunting extends GuiScreen {
 	private GuiButton btnSkill131; // 投掷物精通
 	private GuiButton btnSkill132; // 路易斯之枪
 	private GuiButton btnSkill133; // 杀人字典
-	private GuiButton btnSkill141; // 快速蓄力
-	private GuiButton btnSkill142; // 
+	private GuiButton btnSkill141; // 
+	private GuiButton btnSkill142; // 夜视
 	private GuiButton btnSkill143; // 
 	
 	private EntityPlayer playerCl = MainHelper.getPlayerCl();
@@ -56,9 +56,9 @@ public class GUIRewrite_Hunting extends GuiScreen {
 			buttonList.add(btnSkill123 = new GuiButton(RewriteHelper.WitherAttach.id, (int)(width * 0.4 - 16), (int)(height * 0.7), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
 			buttonList.add(btnSkill131 = new GuiButton(RewriteHelper.MissileProficient.id, (int)(width * 0.6 - 16), (int)(height * 0.4), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.SuperVibration.id))
-			buttonList.add(btnSkill132 = new GuiButton(RewriteHelper.BruteForce.id, (int)(width * 0.6 - 16), (int)(height * 0.55), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.BruteForce.id))
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.MissileProficient.id))
+			buttonList.add(btnSkill132 = new GuiButton(RewriteHelper.JavelinOfLouis.id, (int)(width * 0.6 - 16), (int)(height * 0.55), 32, 32, ""));
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.JavelinOfLouis.id))
 			buttonList.add(btnSkill133 = new GuiButton(RewriteHelper.ParryProficient.id, (int)(width * 0.6 - 16), (int)(height * 0.7), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
 			buttonList.add(btnSkill141 = new GuiButton(RewriteHelper.LifeSuck.id, (int)(width * 0.8 - 16), (int)(height * 0.4), 32, 32, ""));
@@ -123,11 +123,11 @@ public class GUIRewrite_Hunting extends GuiScreen {
    			mc.renderEngine.bindTexture(ResourceHelper.icon131);
    			func_146110_a((int)(width * 0.6 - 16), (int)(height * 0.4), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.SuperVibration.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.MissileProficient.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon132);
    			func_146110_a((int)(width * 0.6 - 16), (int)(height * 0.55), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.BruteForce.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.JavelinOfLouis.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon133);
    			func_146110_a((int)(width * 0.6 - 16), (int)(height * 0.7), 0, 0, 32, 32, 32, 32);
    		}
@@ -175,11 +175,11 @@ public class GUIRewrite_Hunting extends GuiScreen {
 		   }
 	   } else if (button == btnSkill131) {
 		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.MissileProficient.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.SuperVibration.id));
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.MissileProficient.id));
 		   }
 	   } else if (button == btnSkill132) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.BruteForce.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.BruteForce.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.JavelinOfLouis.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.JavelinOfLouis.id));
 		   }
 	   } else if (button == btnSkill133) {
 		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.ParryProficient.id)) {

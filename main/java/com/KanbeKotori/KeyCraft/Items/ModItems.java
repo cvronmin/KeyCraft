@@ -235,6 +235,7 @@ public class ModItems {
     			.setTextureName("keycraft:Javelin")
     			.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(Javelin, "Javelin");
+    	GameRegistry.addRecipe(new ItemStack(Javelin), new Object[] { "A  ", " A ", "  A", 'A', Items.iron_ingot });
     }
 
 }

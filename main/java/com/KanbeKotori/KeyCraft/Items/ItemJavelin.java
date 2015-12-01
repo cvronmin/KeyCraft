@@ -43,9 +43,9 @@ public class ItemJavelin extends ItemBow {
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
     {
-        //if (RewriteHelper.hasSkill(player, RewriteHelper.JavelinOfLouis.id)) {
+        if (RewriteHelper.hasSkill(player, RewriteHelper.JavelinOfLouis.id)) {
             player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
-        //}
+        }
 
         return stack;
     }
