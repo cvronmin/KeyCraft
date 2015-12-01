@@ -39,10 +39,10 @@ public class RenderJavelin extends Render {
             GL11.glRotatef(90.0F, 1.0F, 0.0F, 0.0F);
             GL11.glNormal3f(0.0F, 0.0F, f10);
             tessellator.startDrawingQuads();
-            tessellator.addVertexWithUV(-8.0D, -2.0D, 0.0D,  0.0D / 16.0D, 13.0D / 16.0D); // 左下
-            tessellator.addVertexWithUV( 8.0D, -2.0D, 0.0D, 13.0D / 16.0D,  0.0D / 16.0D); // 左上
-            tessellator.addVertexWithUV( 8.0D,  2.0D, 0.0D, 16.0D / 16.0D,  3.0D / 16.0D); // 右上
-            tessellator.addVertexWithUV(-8.0D,  2.0D, 0.0D,  3.0D / 16.0D, 16.0D / 16.0D); // 右下
+            tessellator.addVertexWithUV(-3.25D, -0.5D, 0.0D,  1.0D / 16.0D, 14.0D / 16.0D); // 左下
+            tessellator.addVertexWithUV( 3.25D, -0.5D, 0.0D, 14.0D / 16.0D,  1.0D / 16.0D); // 左上
+            tessellator.addVertexWithUV( 3.25D,  0.5D, 0.0D, 16.0D / 16.0D,  3.0D / 16.0D); // 右上
+            tessellator.addVertexWithUV(-3.25D,  0.5D, 0.0D,  3.0D / 16.0D, 16.0D / 16.0D); // 右下
             tessellator.draw();
         }
 
