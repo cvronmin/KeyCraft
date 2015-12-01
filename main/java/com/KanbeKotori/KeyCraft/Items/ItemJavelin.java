@@ -32,7 +32,11 @@ public class ItemJavelin extends ItemBow {
         speed *= 3.0F;
 		
 		if (!world.isRemote) {
-			world.spawnEntityInWorld(new EntityJavelin(world, player, speed));
+	        if (RewriteHelper.hasSkill(player, RewriteHelper.JavelinOfLouis.id)) {
+	        	world.spawnEntityInWorld(new EntityJavelin(world, player, speed, true));
+	        } else {
+	        	world.spawnEntityInWorld(new EntityJavelin(world, player, speed, false));
+	        }
 		}
 		if (!player.capabilities.isCreativeMode) {
             stack.stackSize--;
@@ -43,7 +47,7 @@ public class ItemJavelin extends ItemBow {
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
     {
-        if (RewriteHelper.hasSkill(player, RewriteHelper.JavelinOfLouis.id)) {
+        if (RewriteHelper.hasSkill(player, RewriteHelper.MissileProficient.id)) {
             player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
         }
 

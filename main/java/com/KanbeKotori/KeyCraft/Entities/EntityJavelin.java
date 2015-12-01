@@ -10,8 +10,8 @@ import net.minecraft.world.World;
 public class EntityJavelin extends EntityThrowable {
 
 	/** 相对于弓箭的速度 */
-	protected static final float SPEED = 2.0F;
-	protected static final float DAMAGE = 10.0F;
+	protected static float SPEED = 1.5F;
+	protected static float DAMAGE = 10.0F;
 
 	public EntityJavelin(World world) {
 		super(world);
@@ -19,10 +19,15 @@ public class EntityJavelin extends EntityThrowable {
         this.setSize(0.5F, 0.5F);
 	}
 	
-	public EntityJavelin(World world, EntityLivingBase thrower, float speed) {
+	public EntityJavelin(World world, EntityLivingBase thrower, float speed, boolean hasSkill) {
 		super(world, thrower);
 		this.renderDistanceWeight = 10.0D;
         this.setSize(0.5F, 0.5F);
+        if (hasSkill) {
+        	this.DAMAGE = 20.0F;
+        	this.SPEED = 2.0F;
+        }
+        this.DAMAGE /= (speed/3);
         
         // 重新设置位置和速度
         this.setLocationAndAngles(thrower.posX, thrower.posY + (double)thrower.getEyeHeight(), thrower.posZ, thrower.rotationYaw, thrower.rotationPitch);
