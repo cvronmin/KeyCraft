@@ -55,7 +55,7 @@ public class EntityBaseball extends EntityThrowable {
         		target.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, thrower), 
         										  RewriteHelper.hasSkill((EntityPlayer)thrower, RewriteHelper.BruteForce.id) ? SPEED_HAS_SKILL : DAMAGE_NO_SKILL);
         	} else {
-        		target.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, thrower), DAMAGE_NO_SKILL);
+        		target.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, thrower == null ? this : thrower), DAMAGE_NO_SKILL);
         	}
         }
 

@@ -151,6 +151,7 @@ item.AuroraIronSword.name=欧若拉铁剑
 item.HolyBreaker.name=Holy Breaker
 item.Baseball.name=棒球
 item.WirePole.name=电线杆子
+item.Javelin.name=路易斯之枪
 
 tile.NormalTrap.name=普通陷阱
 tile.LavaTrap.name=岩浆陷阱

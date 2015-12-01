@@ -59,6 +59,7 @@ public class KeyCraft {
     	// ×¢²áÊµÌå
     	int modID = 1;
     	EntityRegistry.registerModEntity(EntityBaseball.class, "EntityBaseball", modID++, this, 128, 1, true);
+    	EntityRegistry.registerModEntity(EntityJavelin.class, "EntityJavelin", modID++, this, 128, 1, true);
     }
     
     @EventHandler

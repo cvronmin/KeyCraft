@@ -53,6 +53,7 @@ public class ModItems {
     
     public static Item Baseball;
     public static Item WirePole;
+    public static Item Javelin;
     
     public static void InitItems() {
     	// 注册技能生成的物品
@@ -227,6 +228,13 @@ public class ModItems {
     	GameRegistry.registerItem(WirePole, "WirePole");
     	GameRegistry.addRecipe(new ItemStack(WirePole), new Object[] { "ABA", "ABA", "ABA", 'A', Blocks.stone, 'B', Items.iron_ingot });
     	MaterialHelper.WirePole.setRepairItem(new ItemStack(Blocks.stone));
+    	
+    	Javelin = (new ItemJavelin())
+    			.setMaxStackSize(16)
+    			.setUnlocalizedName("Javelin")
+    			.setTextureName("keycraft:Javelin")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(Javelin, "Javelin");
     }
 
 }

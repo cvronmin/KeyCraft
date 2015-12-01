@@ -16,9 +16,11 @@ import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.KanbeKotori.KeyCraft.Entities.EntityBaseball;
+import com.KanbeKotori.KeyCraft.Entities.EntityJavelin;
 import com.KanbeKotori.KeyCraft.Event.*;
 import com.KanbeKotori.KeyCraft.Items.ModItems;
 import com.KanbeKotori.KeyCraft.Renderer.BlockTrapRenderer;
+import com.KanbeKotori.KeyCraft.Renderer.RenderJavelin;
 
 import cpw.mods.fml.client.registry.*;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -41,6 +43,7 @@ public class ClientProxy extends CommonProxy {
 		
 		// ×¢²áäÖÈ¾Æ÷
 		RenderingRegistry.registerEntityRenderingHandler(EntityBaseball.class, new RenderSnowball(ModItems.Baseball));
+		RenderingRegistry.registerEntityRenderingHandler(EntityJavelin.class, new RenderJavelin());
 		RenderingRegistry.registerBlockHandler(new BlockTrapRenderer());
 	}
 	 
