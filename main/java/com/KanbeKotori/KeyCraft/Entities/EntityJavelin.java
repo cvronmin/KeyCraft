@@ -1,6 +1,9 @@
 package com.KanbeKotori.KeyCraft.Entities;
 
+import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -10,8 +13,10 @@ import net.minecraft.world.World;
 public class EntityJavelin extends EntityThrowable {
 
 	/** 相对于弓箭的速度 */
-	protected static float SPEED = 1.5F;
-	protected static float DAMAGE = 10.0F;
+	protected static final float SPEED_NO_SKILL = 1.5F;
+	protected static final float SPEED_HAS_SKILL = 2.0F;
+	protected static final float DAMAGE_NO_SKILL = 10.0F;
+	protected static final float DAMAGE_HAS_SKILL = 20.0F;
 
 	public EntityJavelin(World world) {
 		super(world);
@@ -19,15 +24,15 @@ public class EntityJavelin extends EntityThrowable {
         this.setSize(0.5F, 0.5F);
 	}
 	
-	public EntityJavelin(World world, EntityLivingBase thrower, float speed, boolean hasSkill) {
+	public EntityJavelin(World world, EntityLivingBase thrower, float speed) {
 		super(world, thrower);
 		this.renderDistanceWeight = 10.0D;
         this.setSize(0.5F, 0.5F);
-        if (hasSkill) {
-        	this.DAMAGE = 20.0F;
-        	this.SPEED = 2.0F;
+        
+        float speed2 = SPEED_NO_SKILL;
+        if (thrower instanceof EntityPlayer && RewriteHelper.hasSkill((EntityPlayer)thrower, RewriteHelper.JavelinOfLouis.id)) {
+        	speed2 = SPEED_HAS_SKILL;
         }
-        this.DAMAGE /= (speed/3);
         
         // 重新设置位置和速度
         this.setLocationAndAngles(thrower.posX, thrower.posY + (double)thrower.getEyeHeight(), thrower.posZ, thrower.rotationYaw, thrower.rotationPitch);
@@ -39,13 +44,21 @@ public class EntityJavelin extends EntityThrowable {
         this.motionX = (double)(-MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI));
         this.motionZ = (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI));
         this.motionY = (double)(-MathHelper.sin(this.rotationPitch / 180.0F * (float)Math.PI));
-        this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, speed * SPEED, 0.0F);
+        this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, speed * speed2, 0.0F);
     }
 	
 	protected void onImpact(MovingObjectPosition target) {
         if (target.entityHit != null) {
         	EntityLivingBase thrower = this.getThrower();
-        	target.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, thrower == null ? this : thrower), DAMAGE);
+        	
+        	float damage = DAMAGE_NO_SKILL;
+            if (thrower instanceof EntityPlayer && RewriteHelper.hasSkill((EntityPlayer)thrower, RewriteHelper.JavelinOfLouis.id)) {
+            	damage = DAMAGE_HAS_SKILL;
+            }
+            float speed = (float)Math.sqrt(motionX * motionX + motionY * motionY + motionZ * motionZ);
+            damage = damage * speed / 5.8F;
+            
+        	target.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, thrower == null ? this : thrower), damage);
         }
 
         if (!this.worldObj.isRemote) {

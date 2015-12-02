@@ -32,11 +32,7 @@ public class ItemJavelin extends ItemBow {
         speed *= 3.0F;
 		
 		if (!world.isRemote) {
-	        if (RewriteHelper.hasSkill(player, RewriteHelper.JavelinOfLouis.id)) {
-	        	world.spawnEntityInWorld(new EntityJavelin(world, player, speed, true));
-	        } else {
-	        	world.spawnEntityInWorld(new EntityJavelin(world, player, speed, false));
-	        }
+			world.spawnEntityInWorld(new EntityJavelin(world, player, speed));
 		}
 		if (!player.capabilities.isCreativeMode) {
             stack.stackSize--;
