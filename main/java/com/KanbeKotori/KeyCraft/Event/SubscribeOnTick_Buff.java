@@ -62,6 +62,31 @@ public class SubscribeOnTick_Buff {
 		}
 	}
 	
+	/** 给予玩家Skill141-『异次元感知』的夜视Buff */
+	@SubscribeEvent
+	public void Point_OtherWorldPerception(PlayerTickEvent event) {
+		EntityPlayer player = event.player;
+		if (RewriteHelper.hasSkill(player, RewriteHelper.OtherWorldPerception.id)
+			&& !player.isPotionActive(Potion.nightVision)
+			&& !player.worldObj.provider.isSurfaceWorld()
+			) {
+			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 1200));
+		}
+	}
+	
+	/** 给予玩家Skill142-『夜视』的夜视Buff */
+	@SubscribeEvent
+	public void Point_Nightvision(PlayerTickEvent event) {
+		EntityPlayer player = event.player;
+		if (RewriteHelper.hasSkill(player, RewriteHelper.Nightvision.id)
+			&& !player.isPotionActive(Potion.nightVision)
+			&& !player.worldObj.provider.isDaytime()
+			&& player.worldObj.provider.isSurfaceWorld()
+			) {
+			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 1200));
+		}
+	}
+	
 	/** 给予玩家Skill200-『紧急防护』的速度Buff */
 	@SubscribeEvent
 	public void Point_ER(PlayerTickEvent event) {
@@ -93,7 +118,7 @@ public class SubscribeOnTick_Buff {
 	@SubscribeEvent
 	public void Point_AutoHeal(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
-		if (player.getHealth() < 20
+		if (player.getHealth() < player.getEntityAttribute(SharedMonsterAttributes.maxHealth).getAttributeValue()
 			&& !player.isPotionActive(Potion.regeneration)
 			) {
 			if (RewriteHelper.hasSkill(player, RewriteHelper.AuroraSurge.id)) {

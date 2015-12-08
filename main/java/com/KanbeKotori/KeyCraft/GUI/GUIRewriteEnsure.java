@@ -94,6 +94,17 @@ public class GUIRewriteEnsure extends GuiScreen {
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title132"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro132"), width/2, (int)(height*0.45), 0xFFFFFF);
+    	} else if (skillNum == RewriteHelper.OtherWorldPerception.id) {	// Skill141-异世界感知
+        	mc.renderEngine.bindTexture(ResourceHelper.icon141);
+        	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title141"), width/2, (int)(height*0.3), 0xFFFFFF);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro141_1"), width/2, (int)(height*0.45), 0xFFFFFF);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro141_2"), width/2, (int)(height*0.6), 0xFFFFFF);
+    	} else if (skillNum == RewriteHelper.Nightvision.id) {	// Skill142-夜视
+        	mc.renderEngine.bindTexture(ResourceHelper.icon142);
+        	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title142"), width/2, (int)(height*0.3), 0xFFFFFF);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro142"), width/2, (int)(height*0.45), 0xFFFFFF);
     	} else if (skillNum == RewriteHelper.UrgentProtect.id) {	// Skill200-紧急防护
         	mc.renderEngine.bindTexture(ResourceHelper.icon200);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);

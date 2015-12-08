@@ -45,6 +45,9 @@ public class RewriteHelper {
 	public static final Skill BloodTrap				= new Skill(112, 20);
 	public static final Skill MissileProficient		= new Skill(131, 10);
 	public static final Skill JavelinOfLouis		= new Skill(132, 10);
+	public static final Skill OtherWorldPerception	= new Skill(141, 15);
+	public static final Skill Nightvision			= new Skill(142, 15);
+	public static final Skill EnergyPointUsage		= new Skill(143, 20);
 	public static final Skill UrgentProtect			= new Skill(200, 5);
 	public static final Skill BattleReadiness		= new Skill(211, 25);
 	public static final Skill PhysiqueUp			= new Skill(212, 40);
@@ -71,16 +74,17 @@ public class RewriteHelper {
 	public static final Skill AuroraRegeneration	= new Skill(343, 40);
 	
 	public static final Skill SKILLS[] = { AuroraCognition,
-		HuntingRhythm, 		TrapProficient, 	BloodTrap,
-		MissileProficient, 	JavelinOfLouis,
-		UrgentProtect, 		BattleReadiness, 	PhysiqueUp,
-		FireAttach, 		PoisonAttach, 		WitherAttach,
-		SuperVibration, 	BruteForce, 		ParryProficient,
-		LifeSuck, 			PowerDown, 			AuroraRob,
-		AuroraControl,		AuroraTrident, 		AuroraBlade,
-		FireResist, 		FireResistUp, 		FireResistMax,
-		CuringFog, 			HealingFog, 		HurtingFog, 
-		AuroraActivation, 	AuroraSurge, 		AuroraRegeneration
+		HuntingRhythm, 			TrapProficient, 	BloodTrap,
+		MissileProficient, 		JavelinOfLouis,
+		OtherWorldPerception,	Nightvision,		EnergyPointUsage,
+		UrgentProtect, 			BattleReadiness, 	PhysiqueUp,
+		FireAttach, 			PoisonAttach, 		WitherAttach,
+		SuperVibration, 		BruteForce, 		ParryProficient,
+		LifeSuck, 				PowerDown, 			AuroraRob,
+		AuroraControl,			AuroraTrident, 		AuroraBlade,
+		FireResist, 			FireResistUp, 		FireResistMax,
+		CuringFog, 				HealingFog, 		HurtingFog, 
+		AuroraActivation, 		AuroraSurge, 		AuroraRegeneration
 		};
 	
 	/** 学习欧若拉认知，获得100欧若拉点 */

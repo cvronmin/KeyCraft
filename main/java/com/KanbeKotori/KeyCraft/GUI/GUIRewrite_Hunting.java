@@ -30,9 +30,9 @@ public class GUIRewrite_Hunting extends GuiScreen {
 	private GuiButton btnSkill131; // 投掷物精通
 	private GuiButton btnSkill132; // 路易斯之枪
 	private GuiButton btnSkill133; // 杀人字典
-	private GuiButton btnSkill141; // 
+	private GuiButton btnSkill141; // 异次元感知
 	private GuiButton btnSkill142; // 夜视
-	private GuiButton btnSkill143; // 
+	private GuiButton btnSkill143; // 能量点利用
 	
 	private EntityPlayer playerCl = MainHelper.getPlayerCl();
 	
@@ -61,11 +61,11 @@ public class GUIRewrite_Hunting extends GuiScreen {
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.JavelinOfLouis.id))
 			buttonList.add(btnSkill133 = new GuiButton(RewriteHelper.ParryProficient.id, (int)(width * 0.6 - 16), (int)(height * 0.7), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
-			buttonList.add(btnSkill141 = new GuiButton(RewriteHelper.LifeSuck.id, (int)(width * 0.8 - 16), (int)(height * 0.4), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.LifeSuck.id))
-			buttonList.add(btnSkill142 = new GuiButton(RewriteHelper.PowerDown.id, (int)(width * 0.8 - 16), (int)(height * 0.55), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.PowerDown.id))
-			buttonList.add(btnSkill143 = new GuiButton(RewriteHelper.AuroraRob.id, (int)(width * 0.8 - 16), (int)(height * 0.7), 32, 32, ""));
+			buttonList.add(btnSkill141 = new GuiButton(RewriteHelper.OtherWorldPerception.id, (int)(width * 0.8 - 16), (int)(height * 0.4), 32, 32, ""));
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.OtherWorldPerception.id))
+			buttonList.add(btnSkill142 = new GuiButton(RewriteHelper.Nightvision.id, (int)(width * 0.8 - 16), (int)(height * 0.55), 32, 32, ""));
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.Nightvision.id))
+			buttonList.add(btnSkill143 = new GuiButton(RewriteHelper.EnergyPointUsage.id, (int)(width * 0.8 - 16), (int)(height * 0.7), 32, 32, ""));
 	}
 
     @Override
@@ -136,11 +136,11 @@ public class GUIRewrite_Hunting extends GuiScreen {
    			mc.renderEngine.bindTexture(ResourceHelper.icon141);
    			func_146110_a((int)(width * 0.8 - 16), (int)(height * 0.4), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.LifeSuck.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.OtherWorldPerception.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon142);
    			func_146110_a((int)(width * 0.8 - 16), (int)(height * 0.55), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.PowerDown.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.Nightvision.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon143);
    			func_146110_a((int)(width * 0.8 - 16), (int)(height * 0.7), 0, 0, 32, 32, 32, 32);
    		}
@@ -186,16 +186,16 @@ public class GUIRewrite_Hunting extends GuiScreen {
 			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.ParryProficient.id));
 		   }
 	   } else if (button == btnSkill141) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.LifeSuck.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.LifeSuck.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.OtherWorldPerception.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.OtherWorldPerception.id));
 		   }
 	   } else if (button == btnSkill142) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.PowerDown.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.PowerDown.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.Nightvision.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.Nightvision.id));
 		   }
 	   } else if (button == btnSkill143) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.AuroraRob.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.AuroraRob.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.EnergyPointUsage.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.EnergyPointUsage.id));
 		   }
 	   }
 	}

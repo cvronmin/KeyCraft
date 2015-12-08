@@ -77,6 +77,19 @@ public class SubscribeOnHurt {
     	return false;
     }
 	
+	/** 玩家因为Skill141-『异次元感知』而免除某些伤害 */
+    @SubscribeEvent
+    public void Point_OtherWorldPerception(LivingHurtEvent event) {
+        if(event.entityLiving instanceof EntityPlayer) {
+    		EntityPlayer player = (EntityPlayer)event.entityLiving;
+    		if (RewriteHelper.hasSkill(player, RewriteHelper.OtherWorldPerception.id)
+    			&& event.source.damageType.equals("outOfWorld")
+    			) {
+				event.setCanceled(true);
+    		}
+    	}
+    }
+	
 	/** 玩家因为Skill233-『格挡精通』而免除某些伤害 */
     @SubscribeEvent
     public void Point_Block(LivingHurtEvent event) {
