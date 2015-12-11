@@ -77,7 +77,7 @@ public class SubscribeOnHurt {
     	return false;
     }
 	
-	/** 玩家因为Skill141-『异次元感知』而免除某些伤害 */
+	/** 玩家因为Skill141-『异次元感知』而免除outOfWorld伤害 */
     @SubscribeEvent
     public void Point_OtherWorldPerception(LivingHurtEvent event) {
         if(event.entityLiving instanceof EntityPlayer) {

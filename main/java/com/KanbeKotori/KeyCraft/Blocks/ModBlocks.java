@@ -23,6 +23,8 @@ import net.minecraft.item.ItemStack;
 
 public class ModBlocks {
 	
+	public static Block EnergyPoint;
+	
     public static Block NormalTrap;
     public static Block LavaTrap;
     public static Block CactusTrap;
@@ -31,12 +33,21 @@ public class ModBlocks {
     public static Block BloodTrap;
 
     public static void InitBlocks() {
+    	EnergyPoint = new BlockEnergyPoint()
+    		.setBlockName("EnergyPoint")
+    		.setBlockTextureName("keycraft:EnergyPoint")
+    		.setHardness(1.5F)
+			.setResistance(10.0F)
+			.setLightLevel(1.0F)
+			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerBlock(EnergyPoint, "EnergyPoint");
+    	
     	NormalTrap = new BlockTrapNormal(null)
     		.setBlockName("NormalTrap")
     		.setBlockTextureName("keycraft:NormalTrap")
     		.setHardness(1.5F)
     		.setResistance(10.0F)
-    		.setLightLevel(1)
+    		.setLightLevel(0.1F)
     		.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerBlock(NormalTrap, "NormalTrap");
     	GameRegistry.addRecipe(new ItemStack(NormalTrap), new Object[] { " A ", "BCB", " B ", 'A', Blocks.wooden_pressure_plate, 'B', Items.iron_ingot, 'C', Blocks.glass });
@@ -47,7 +58,7 @@ public class ModBlocks {
     		.setBlockTextureName("keycraft:LavaTrap")
     		.setHardness(1.5F)
     		.setResistance(10.0F)
-    		.setLightLevel(1)
+    		.setLightLevel(0.1F)
     		.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerBlock(LavaTrap, "LavaTrap");
     	GameRegistry.addShapelessRecipe(new ItemStack(LavaTrap), new Object[] { ModBlocks.NormalTrap, Items.lava_bucket });
@@ -57,7 +68,7 @@ public class ModBlocks {
 				.setBlockTextureName("keycraft:CactusTrap")
 				.setHardness(1.5F)
 				.setResistance(10.0F)
-				.setLightLevel(1)
+				.setLightLevel(0.1F)
 				.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerBlock(CactusTrap, "CactusTrap");
     	GameRegistry.addShapelessRecipe(new ItemStack(CactusTrap), new Object[] { ModBlocks.NormalTrap, Blocks.cactus });
@@ -67,7 +78,7 @@ public class ModBlocks {
 		.setBlockTextureName("keycraft:TNTTrap")
 		.setHardness(1.5F)
 		.setResistance(10.0F)
-		.setLightLevel(1)
+		.setLightLevel(0.1F)
 		.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerBlock(TNTTrap, "TNTTrap");
     	GameRegistry.addShapelessRecipe(new ItemStack(TNTTrap), new Object[] { ModBlocks.NormalTrap, Blocks.tnt });
@@ -77,7 +88,7 @@ public class ModBlocks {
 		.setBlockTextureName("keycraft:BlowUpTrap")
 		.setHardness(1.5F)
 		.setResistance(10.0F)
-		.setLightLevel(1)
+		.setLightLevel(0.1F)
 		.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerBlock(BlowUpTrap, "BlowUpTrap");
     	GameRegistry.addShapelessRecipe(new ItemStack(BlowUpTrap), new Object[] { ModBlocks.NormalTrap, Blocks.piston, Items.gunpowder });
@@ -87,7 +98,7 @@ public class ModBlocks {
     		.setBlockTextureName("keycraft:BloodTrap")
     		.setHardness(1.5F)
     		.setResistance(10.0F)
-    		.setLightLevel(1)
+    		.setLightLevel(0.1F)
     		.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerBlock(BloodTrap, "BloodTrap");
     		

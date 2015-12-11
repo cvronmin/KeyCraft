@@ -105,6 +105,11 @@ public class GUIRewriteEnsure extends GuiScreen {
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title142"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro142"), width/2, (int)(height*0.45), 0xFFFFFF);
+    	} else if (skillNum == RewriteHelper.EnergyPointUsage.id) {	// Skill143-能量点利用
+        	mc.renderEngine.bindTexture(ResourceHelper.icon143);
+        	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title143"), width/2, (int)(height*0.3), 0xFFFFFF);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro143"), width/2, (int)(height*0.45), 0xFFFFFF);
     	} else if (skillNum == RewriteHelper.UrgentProtect.id) {	// Skill200-紧急防护
         	mc.renderEngine.bindTexture(ResourceHelper.icon200);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
