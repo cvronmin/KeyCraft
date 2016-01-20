@@ -15,6 +15,7 @@ package com.KanbeKotori.KeyCraft.Items;
 import com.KanbeKotori.KeyCraft.KeyCraft;
 import com.KanbeKotori.KeyCraft.Entities.EntityBaseball;
 import com.KanbeKotori.KeyCraft.Entities.EntityJavelin;
+import com.KanbeKotori.KeyCraft.Event.EventThrowing;
 import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
 
 import cpw.mods.fml.relauncher.Side;
@@ -44,7 +45,10 @@ public class ItemJavelin extends ItemBow {
         speed *= 3.0F;
 		
 		if (!world.isRemote) {
-			world.spawnEntityInWorld(new EntityJavelin(world, player, speed));
+			EntityJavelin entityJavelin = new EntityJavelin(world, player, speed);
+			world.spawnEntityInWorld(entityJavelin);
+			EventThrowing event = new EventThrowing(player, entityJavelin);
+			MinecraftForge.EVENT_BUS.post(event);
 		}
 		if (!player.capabilities.isCreativeMode) {
             stack.stackSize--;

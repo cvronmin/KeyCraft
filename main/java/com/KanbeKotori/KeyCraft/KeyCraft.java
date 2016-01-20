@@ -35,7 +35,7 @@ public class KeyCraft {
 	
 	public static final String MODID = "keycraft";
 	public static final String MODNAME = "KeyCraft";
-    public static final String VERSION = "Demo-3.1.3-¦Ã";
+    public static final String VERSION = "Demo-3.4.3-pre";
     
     @SidedProxy(clientSide = "com.KanbeKotori.KeyCraft.ClientProxy",
             	serverSide = "com.KanbeKotori.KeyCraft.CommonProxy")
@@ -76,6 +76,7 @@ public class KeyCraft {
     	MinecraftForge.EVENT_BUS.register(new ItemAuroraBlade());
     	MinecraftForge.EVENT_BUS.register(new ItemAuroraTrident());
     	MinecraftForge.EVENT_BUS.register(new ItemShakingSword());
+    	MinecraftForge.EVENT_BUS.register(new SubscribeThrowing());
 
     	FMLCommonHandler.instance().bus().register(new SubscribeOnTick_Buff());
     	FMLCommonHandler.instance().bus().register(new SubscribeOnTick_Effect());

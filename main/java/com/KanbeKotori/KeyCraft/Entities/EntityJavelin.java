@@ -27,8 +27,8 @@ public class EntityJavelin extends EntityThrowable {
 	/** 相对于弓箭的速度 */
 	protected static final float SPEED_NO_SKILL = 1.5F;
 	protected static final float SPEED_HAS_SKILL = 2.0F;
-	protected static final float DAMAGE_NO_SKILL = 10.0F;
-	protected static final float DAMAGE_HAS_SKILL = 20.0F;
+	protected static final float DAMAGE_NO_SKILL = 25.0F;
+	protected static final float DAMAGE_HAS_SKILL = 50.0F;
 
 	public EntityJavelin(World world) {
 		super(world);

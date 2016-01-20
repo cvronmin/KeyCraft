@@ -2,13 +2,18 @@ package com.KanbeKotori.KeyCraft.Blocks;
 
 import java.util.Random;
 
-import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.KanbeKotori.KeyCraft.Helper.*;
 import com.KanbeKotori.KeyCraft.Renderer.*;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class BlockEnergyPoint extends Block {
@@ -31,15 +36,12 @@ public class BlockEnergyPoint extends Block {
     	}
     }
 	
+	@SideOnly(Side.CLIENT)
 	@Override
-    public boolean renderAsNormalBlock() {
-        return false;
+    public IIcon getIcon(int side, int meta) {
+		EntityPlayer player = MainHelper.getPlayerCl();
+		boolean flag = RewriteHelper.hasSkill(player, RewriteHelper.EnergyPointUsage.id);
+		return flag? this.blockIcon:Blocks.stone.getIcon(side, meta);
     }
-
-	@Override
-	public int getRenderType() {
-        return BlockEnergyPointRenderer.RENDER_ID;
-    }
-
 
 }

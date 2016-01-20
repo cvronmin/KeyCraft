@@ -45,6 +45,7 @@ public class RewriteHelper {
 	public static final Skill BloodTrap				= new Skill(112, 20);
 	public static final Skill MissileProficient		= new Skill(131, 10);
 	public static final Skill JavelinOfLouis		= new Skill(132, 10);
+	public static final Skill DeadlyDictionary		= new Skill(133, 20);
 	public static final Skill OtherWorldPerception	= new Skill(141, 15);
 	public static final Skill Nightvision			= new Skill(142, 15);
 	public static final Skill EnergyPointUsage		= new Skill(143, 20);

@@ -83,7 +83,8 @@ public class SubscribeOnTick_Buff {
 			&& !player.worldObj.provider.isDaytime()
 			&& player.worldObj.provider.isSurfaceWorld()
 			) {
-			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 1200));
+			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 11000));
+            player.addChatComponentMessage(new ChatComponentText("The night starts."));
 		}
 	}
 	
