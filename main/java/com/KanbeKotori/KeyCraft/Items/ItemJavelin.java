@@ -57,8 +57,7 @@ public class ItemJavelin extends ItemBow {
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
-    {
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
         if (RewriteHelper.hasSkill(player, RewriteHelper.MissileProficient.id)) {
             player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
         }

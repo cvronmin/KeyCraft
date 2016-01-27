@@ -29,7 +29,7 @@ public class GUIRewrite_Hunting extends GuiScreen {
 	private GuiButton btnSkill123; // 子弹风暴
 	private GuiButton btnSkill131; // 投掷物精通
 	private GuiButton btnSkill132; // 路易斯之枪
-	private GuiButton btnSkill133; // 杀人字典
+	private GuiButton btnSkill133; // 致命字典
 	private GuiButton btnSkill141; // 异次元感知
 	private GuiButton btnSkill142; // 夜视
 	private GuiButton btnSkill143; // 能量点利用
@@ -59,7 +59,7 @@ public class GUIRewrite_Hunting extends GuiScreen {
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.MissileProficient.id))
 			buttonList.add(btnSkill132 = new GuiButton(RewriteHelper.JavelinOfLouis.id, (int)(width * 0.6 - 16), (int)(height * 0.55), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.JavelinOfLouis.id))
-			buttonList.add(btnSkill133 = new GuiButton(RewriteHelper.ParryProficient.id, (int)(width * 0.6 - 16), (int)(height * 0.7), 32, 32, ""));
+			buttonList.add(btnSkill133 = new GuiButton(RewriteHelper.DeadlyDictionary.id, (int)(width * 0.6 - 16), (int)(height * 0.7), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
 			buttonList.add(btnSkill141 = new GuiButton(RewriteHelper.OtherWorldPerception.id, (int)(width * 0.8 - 16), (int)(height * 0.4), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.OtherWorldPerception.id))
@@ -182,8 +182,8 @@ public class GUIRewrite_Hunting extends GuiScreen {
 			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.JavelinOfLouis.id));
 		   }
 	   } else if (button == btnSkill133) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.ParryProficient.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.ParryProficient.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.DeadlyDictionary.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.DeadlyDictionary.id));
 		   }
 	   } else if (button == btnSkill141) {
 		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.OtherWorldPerception.id)) {

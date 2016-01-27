@@ -43,6 +43,9 @@ public class RewriteHelper {
 	public static final Skill HuntingRhythm			= new Skill(100, 5);
 	public static final Skill TrapProficient		= new Skill(111, 10);
 	public static final Skill BloodTrap				= new Skill(112, 20);
+	public static final Skill skill121				= new Skill(121, 10);
+	public static final Skill skill122				= new Skill(122, 10);
+	public static final Skill skill123				= new Skill(123, 10);
 	public static final Skill MissileProficient		= new Skill(131, 10);
 	public static final Skill JavelinOfLouis		= new Skill(132, 10);
 	public static final Skill DeadlyDictionary		= new Skill(133, 20);
@@ -76,7 +79,8 @@ public class RewriteHelper {
 	
 	public static final Skill SKILLS[] = { AuroraCognition,
 		HuntingRhythm, 			TrapProficient, 	BloodTrap,
-		MissileProficient, 		JavelinOfLouis,
+		/*121,*/				/*122,*/			/*123,*/
+		MissileProficient, 		JavelinOfLouis,		DeadlyDictionary,
 		OtherWorldPerception,	Nightvision,		EnergyPointUsage,
 		UrgentProtect, 			BattleReadiness, 	PhysiqueUp,
 		FireAttach, 			PoisonAttach, 		WitherAttach,

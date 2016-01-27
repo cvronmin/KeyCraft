@@ -54,6 +54,10 @@ public class ModItems {
     public static Item Baseball;
     public static Item WirePole;
     public static Item Javelin;
+    public static Item Dictionary;
+    public static Item DictionaryOfWorld;
+    public static Item DictionaryOfNether;
+    public static Item DictionaryOfEnd;
     
     public static void InitItems() {
     	// 注册技能生成的物品
@@ -236,6 +240,41 @@ public class ModItems {
     			.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(Javelin, "Javelin");
     	GameRegistry.addRecipe(new ItemStack(Javelin), new Object[] { "A  ", " A ", "  A", 'A', Items.iron_ingot });
+    	
+    	Dictionary = (new ItemDictionary())
+    			.setUnlocalizedName("Dictionary")
+    			.setTextureName("keycraft:Dictionary")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(Dictionary, "Dictionary");
+    	GameRegistry.addRecipe(new ItemStack(Dictionary), new Object[] { " AA", "ABB", " AA", 'A', Items.leather, 'B', Items.paper });
+    	GameRegistry.addRecipe(new ItemStack(Dictionary), new Object[] { "AA ", "BBA", "AA ", 'A', Items.leather, 'B', Items.paper });
+    	
+    	DictionaryOfWorld = (new ItemDictionaryOfWorld())
+    			.setUnlocalizedName("DictionaryOfWorld")
+    			.setTextureName("keycraft:Dictionary")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(DictionaryOfWorld, "DictionaryOfWorld");
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfWorld), new Object[] { "CAA", "ABB", " AA", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.grass });
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfWorld), new Object[] { "AAC", "BBA", "AA ", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.grass });
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfWorld), new Object[] { "A", "B", 'A', Blocks.grass, 'B', Dictionary });
+    	
+    	DictionaryOfNether = (new ItemDictionaryOfNether())
+    			.setUnlocalizedName("DictionaryOfNether")
+    			.setTextureName("keycraft:Dictionary")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(DictionaryOfNether, "DictionaryOfNether");
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfNether), new Object[] { "CAA", "ABB", " AA", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.netherrack });
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfNether), new Object[] { "AAC", "BBA", "AA ", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.netherrack });
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfNether), new Object[] { "A", "B", 'A', Blocks.netherrack, 'B', Dictionary });
+    	
+    	DictionaryOfEnd = (new ItemDictionaryOfEnd())
+    			.setUnlocalizedName("DictionaryOfEnd")
+    			.setTextureName("keycraft:Dictionary")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(DictionaryOfEnd, "DictionaryOfEnd");
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfEnd), new Object[] { "CAA", "ABB", " AA", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.end_stone });
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfEnd), new Object[] { "AAC", "BBA", "AA ", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.end_stone });
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfEnd), new Object[] { "A", "B", 'A', Blocks.end_stone, 'B', Dictionary });
     }
 
 }
