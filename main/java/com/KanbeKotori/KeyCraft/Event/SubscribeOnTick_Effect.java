@@ -10,13 +10,13 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Event;
+package com.kanbekotori.keycraft.event;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import com.KanbeKotori.KeyCraft.Helper.*;
+import com.kanbekotori.keycraft.helper.*;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;

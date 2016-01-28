@@ -10,10 +10,10 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Event;
+package com.kanbekotori.keycraft.event;
 
-import com.KanbeKotori.KeyCraft.Helper.MainHelper;
-import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.kanbekotori.keycraft.helper.MainHelper;
+import com.kanbekotori.keycraft.helper.RewriteHelper;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;

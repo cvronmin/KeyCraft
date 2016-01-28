@@ -10,10 +10,10 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Items;
+package com.kanbekotori.keycraft.items;
 
-import com.KanbeKotori.KeyCraft.*;
-import com.KanbeKotori.KeyCraft.Helper.*;
+import com.kanbekotori.keycraft.*;
+import com.kanbekotori.keycraft.helper.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.enchantment.Enchantment;
@@ -58,6 +58,7 @@ public class ModItems {
     public static Item DictionaryOfWorld;
     public static Item DictionaryOfNether;
     public static Item DictionaryOfEnd;
+    public static Item Gun;
     
     public static void InitItems() {
     	// 注册技能生成的物品
@@ -275,6 +276,15 @@ public class ModItems {
     	GameRegistry.addRecipe(new ItemStack(DictionaryOfEnd), new Object[] { "CAA", "ABB", " AA", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.end_stone });
     	GameRegistry.addRecipe(new ItemStack(DictionaryOfEnd), new Object[] { "AAC", "BBA", "AA ", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.end_stone });
     	GameRegistry.addRecipe(new ItemStack(DictionaryOfEnd), new Object[] { "A", "B", 'A', Blocks.end_stone, 'B', Dictionary });
+ 
+    	Gun = (new ItemGun())
+    			.setUnlocalizedName("Gun")
+    			.setTextureName("keycraft:Gun")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(Gun, "Gun");
+    	GameRegistry.addRecipe(new ItemStack(Gun), new Object[] { "AAA", " BA", "  A", 'A', Items.iron_ingot, 'B', Blocks.wooden_button });
+    	GameRegistry.addRecipe(new ItemStack(Gun), new Object[] { "AAA", "AB ", "A  ", 'A', Items.iron_ingot, 'B', Blocks.wooden_button });
+
     }
 
 }

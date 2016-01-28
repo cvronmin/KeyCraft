@@ -51,6 +51,7 @@ keycraft.gui.ensure.intro112_1=你创造性的将欧若拉与陷阱结合起来�
 keycraft.gui.ensure.intro112_2=但为什么血之陷阱是欧若拉颜色而非血红的呢(笑
 keycraft.gui.ensure.intro131=手之所及，皆为武器。吃我棒球投掷啦！
 keycraft.gui.ensure.intro132=瑚太朗偷学来的技能，简单地说就是使劲把长枪扔出去(笑
+keycraft.gui.ensure.intro133=扔出非常沉重的字典攻击，被砸中可不是闹着玩的。
 keycraft.gui.ensure.intro141_1=当你身处于其他位面中，也能获得洞察一切的力量。
 keycraft.gui.ensure.intro141_2=并且能够完全避免OutOfWorld伤害，所以不要轻易掉下基岩哦(不
 keycraft.gui.ensure.intro142=就是夜视啦，懒得写什么说明了(不
@@ -120,6 +121,7 @@ keycraft.prompt.aurorarecovery=你回复了微量的欧若拉。
 keycraft.prompt.cheat1=获得100欧若拉点。
 keycraft.prompt.cheat2=重置所有欧若拉点数和技能。
 keycraft.prompt.cheat3=获得生命回复和生命提升。
+keycraft.prompt.cheat4=获得全部技能。
 keycraft.prompt.holybreak=神圣的碎碎！
 
 keycraft.item.intro231_1=超振动中的铁剑，看起来非常危险。
@@ -130,10 +132,12 @@ keycraft.item.intro312_1=用欧若拉制作而成的剑，适用于砍树，开�
 keycraft.item.intro312_2=要记住不要脱手或用爆掉哦~
 
 keycraft.item.intro_auroraironingot=在普通的铁中注入欧若拉获得的一种神秘的材料。
-keycraft.item.intro_holybreaker=神圣的碎碎(不
 keycraft.item.intro_baseball_1=优质棒球，蓝色品质，5G一件。
 keycraft.item.intro_baseball_2=习得技能No.131『投掷物精通』后可用于投掷。
 keycraft.item.intro_baseball_3=习得技能No.232『蛮力』后升级为『音速喵喵球』。
+keycraft.item.intro_dictionary_1=非常沉重的一本字典，可以用来砸人。
+keycraft.item.intro_dictionary_2=习得技能No.131『投掷物精通』后可以扔出去。
+keycraft.item.intro_holybreaker=神圣的碎碎(不
 keycraft.item.intro_WirePole_1=很常见、非常沉重的电线杆子。
 keycraft.item.intro_WirePole_2=习得技能No.232『蛮力』后可右键使用『横扫』。
 

@@ -10,13 +10,13 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft;
+package com.kanbekotori.keycraft;
 
-import com.KanbeKotori.KeyCraft.Blocks.*;
-import com.KanbeKotori.KeyCraft.Event.*;
-import com.KanbeKotori.KeyCraft.Items.*;
-import com.KanbeKotori.KeyCraft.*;
-import com.KanbeKotori.KeyCraft.Entities.*;
+import com.kanbekotori.keycraft.*;
+import com.kanbekotori.keycraft.blocks.*;
+import com.kanbekotori.keycraft.entities.*;
+import com.kanbekotori.keycraft.event.*;
+import com.kanbekotori.keycraft.items.*;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,10 +35,10 @@ public class KeyCraft {
 	
 	public static final String MODID = "keycraft";
 	public static final String MODNAME = "KeyCraft";
-    public static final String VERSION = "Demo-3.4.3-pre";
+    public static final String VERSION = "Demo-3.4.3-pre3";
     
-    @SidedProxy(clientSide = "com.KanbeKotori.KeyCraft.ClientProxy",
-            	serverSide = "com.KanbeKotori.KeyCraft.CommonProxy")
+    @SidedProxy(clientSide = "com.kanbekotori.keycraft.ClientProxy",
+            	serverSide = "com.kanbekotori.keycraft.CommonProxy")
     public static CommonProxy proxy;
  
     @Instance("KeyCraft")
@@ -61,6 +61,7 @@ public class KeyCraft {
     	EntityRegistry.registerModEntity(EntityBaseball.class, "EntityBaseball", modID++, this, 128, 1, true);
     	EntityRegistry.registerModEntity(EntityJavelin.class, "EntityJavelin", modID++, this, 128, 1, true);
     	EntityRegistry.registerModEntity(EntityDictionary.class, "EntityDictionary", modID++, this, 128, 1, true);
+    	EntityRegistry.registerModEntity(EntityBullet.class, "EntityBullet", modID++, this, 128, 1, true);
     }
     
     @EventHandler

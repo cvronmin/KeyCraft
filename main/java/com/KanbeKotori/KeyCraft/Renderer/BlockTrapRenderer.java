@@ -10,12 +10,12 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Renderer;
+package com.kanbekotori.keycraft.renderer;
 
 import org.lwjgl.opengl.GL11;
 
-import com.KanbeKotori.KeyCraft.Blocks.ModBlocks;
-import com.KanbeKotori.KeyCraft.Blocks.TileEntityTrap;
+import com.kanbekotori.keycraft.blocks.ModBlocks;
+import com.kanbekotori.keycraft.blocks.TileEntityTrap;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;

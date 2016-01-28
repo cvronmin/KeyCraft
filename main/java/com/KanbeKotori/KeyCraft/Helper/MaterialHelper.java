@@ -10,7 +10,7 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Helper;
+package com.kanbekotori.keycraft.helper;
 
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraft.item.Item.ToolMaterial;

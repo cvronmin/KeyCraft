@@ -10,12 +10,12 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Items;
+package com.kanbekotori.keycraft.items;
 
 import java.util.List;
 
-import com.KanbeKotori.KeyCraft.Event.*;
-import com.KanbeKotori.KeyCraft.Helper.*;
+import com.kanbekotori.keycraft.event.*;
+import com.kanbekotori.keycraft.helper.*;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.*;

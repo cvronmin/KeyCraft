@@ -10,11 +10,11 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.GUI;
+package com.kanbekotori.keycraft.gui;
 
-import com.KanbeKotori.KeyCraft.KeyCraft;
-import com.KanbeKotori.KeyCraft.Helper.*;
-import com.KanbeKotori.KeyCraft.Network.RewriteNetwork;
+import com.kanbekotori.keycraft.KeyCraft;
+import com.kanbekotori.keycraft.helper.*;
+import com.kanbekotori.keycraft.network.RewriteNetwork;
 
 import net.minecraft.client.gui.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -94,6 +94,11 @@ public class GUIRewriteEnsure extends GuiScreen {
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title132"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro132"), width/2, (int)(height*0.45), 0xFFFFFF);
+    	} else if (skillNum == RewriteHelper.DeadlyDictionary.id) {	// Skill133-致命字典
+        	mc.renderEngine.bindTexture(ResourceHelper.icon133);
+        	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title133"), width/2, (int)(height*0.3), 0xFFFFFF);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro133"), width/2, (int)(height*0.45), 0xFFFFFF);
     	} else if (skillNum == RewriteHelper.OtherWorldPerception.id) {	// Skill141-异世界感知
         	mc.renderEngine.bindTexture(ResourceHelper.icon141);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);

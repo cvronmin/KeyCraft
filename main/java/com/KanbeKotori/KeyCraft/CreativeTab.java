@@ -10,9 +10,9 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft;
+package com.kanbekotori.keycraft;
 
-import com.KanbeKotori.KeyCraft.Items.ModItems;
+import com.kanbekotori.keycraft.items.ModItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;

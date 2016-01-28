@@ -10,13 +10,13 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Items;
+package com.kanbekotori.keycraft.items;
 
-import com.KanbeKotori.KeyCraft.KeyCraft;
-import com.KanbeKotori.KeyCraft.Entities.EntityBaseball;
-import com.KanbeKotori.KeyCraft.Entities.EntityJavelin;
-import com.KanbeKotori.KeyCraft.Event.EventThrowing;
-import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.kanbekotori.keycraft.KeyCraft;
+import com.kanbekotori.keycraft.entities.EntityBaseball;
+import com.kanbekotori.keycraft.entities.EntityJavelin;
+import com.kanbekotori.keycraft.event.EventThrowing;
+import com.kanbekotori.keycraft.helper.RewriteHelper;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

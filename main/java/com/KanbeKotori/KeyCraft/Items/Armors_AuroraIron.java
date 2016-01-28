@@ -10,10 +10,10 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Items;
+package com.kanbekotori.keycraft.items;
 
-import com.KanbeKotori.KeyCraft.KeyCraft;
-import com.KanbeKotori.KeyCraft.Helper.MaterialHelper;
+import com.kanbekotori.keycraft.KeyCraft;
+import com.kanbekotori.keycraft.helper.MaterialHelper;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.*;

@@ -10,9 +10,9 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Blocks;
+package com.kanbekotori.keycraft.blocks;
 
-import com.KanbeKotori.KeyCraft.KeyCraft;
+import com.kanbekotori.keycraft.KeyCraft;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;

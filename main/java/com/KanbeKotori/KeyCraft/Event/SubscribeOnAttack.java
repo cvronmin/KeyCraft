@@ -10,14 +10,14 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Event;
+package com.kanbekotori.keycraft.event;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.*;
 import net.minecraft.util.*;
 import net.minecraftforge.event.entity.living.*;
 
-import com.KanbeKotori.KeyCraft.Helper.*;
+import com.kanbekotori.keycraft.helper.*;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 

@@ -10,7 +10,7 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Blocks;
+package com.kanbekotori.keycraft.blocks;
 
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,7 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
-import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.kanbekotori.keycraft.helper.RewriteHelper;
 
 public class BlockTrapCactus extends BlockTraps {
 

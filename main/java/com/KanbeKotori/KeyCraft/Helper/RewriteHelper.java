@@ -10,7 +10,7 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Helper;
+package com.kanbekotori.keycraft.helper;
 
 import java.util.*;
 
@@ -24,9 +24,9 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.ServerConfigurationManager;
 import net.minecraft.util.*;
 
-import com.KanbeKotori.KeyCraft.Helper.*;
-import com.KanbeKotori.KeyCraft.Items.ModItems;
-import com.KanbeKotori.KeyCraft.Network.RewriteNetwork;
+import com.kanbekotori.keycraft.helper.*;
+import com.kanbekotori.keycraft.items.ModItems;
+import com.kanbekotori.keycraft.network.RewriteNetwork;
 
 public class RewriteHelper {
 	

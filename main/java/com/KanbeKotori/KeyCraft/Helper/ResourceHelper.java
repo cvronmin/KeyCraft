@@ -10,11 +10,11 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Helper;
+package com.kanbekotori.keycraft.helper;
 
 import net.minecraft.util.ResourceLocation;
 
-import com.KanbeKotori.KeyCraft.KeyCraft;
+import com.kanbekotori.keycraft.KeyCraft;
 
 public class ResourceHelper {
 	

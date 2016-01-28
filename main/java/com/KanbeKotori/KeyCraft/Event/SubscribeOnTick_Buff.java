@@ -10,7 +10,7 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Event;
+package com.kanbekotori.keycraft.event;
 
 import java.util.*;
 
@@ -22,9 +22,9 @@ import net.minecraft.util.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 
-import com.KanbeKotori.KeyCraft.Helper.*;
-import com.KanbeKotori.KeyCraft.Items.ModItems;
-import com.KanbeKotori.KeyCraft.Network.RewriteNetwork;
+import com.kanbekotori.keycraft.helper.*;
+import com.kanbekotori.keycraft.items.ModItems;
+import com.kanbekotori.keycraft.network.RewriteNetwork;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -93,7 +93,8 @@ public class SubscribeOnTick_Buff {
 	public void Point_ER(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
 		if (RewriteHelper.hasSkill(player, RewriteHelper.UrgentProtect.id)
-			&& player.getHealth() <= 6
+			&& player.getHealth() > 0
+			&& player.getHealth() <= player.getEntityAttribute(SharedMonsterAttributes.maxHealth).getAttributeValue() * 0.25
 			&& RewriteHelper.getAuroraPoint(player) > 5
 			&& isCD_Buff_ER(player)
 			) {

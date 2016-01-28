@@ -10,7 +10,7 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Event;
+package com.kanbekotori.keycraft.event;
 
 import java.util.Random;
 
@@ -18,8 +18,8 @@ import net.minecraft.entity.player.*;
 import net.minecraft.util.*;
 import net.minecraftforge.event.entity.living.*;
 
-import com.KanbeKotori.KeyCraft.Helper.*;
-import com.KanbeKotori.KeyCraft.Network.RewriteNetwork;
+import com.kanbekotori.keycraft.helper.*;
+import com.kanbekotori.keycraft.network.RewriteNetwork;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 

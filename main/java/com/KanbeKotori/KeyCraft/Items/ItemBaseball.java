@@ -10,12 +10,12 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Items;
+package com.kanbekotori.keycraft.items;
 
 import java.util.List;
 
-import com.KanbeKotori.KeyCraft.Entities.EntityBaseball;
-import com.KanbeKotori.KeyCraft.Helper.*;
+import com.kanbekotori.keycraft.entities.EntityBaseball;
+import com.kanbekotori.keycraft.helper.*;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySnowball;

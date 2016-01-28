@@ -10,15 +10,15 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.GUI;
+package com.kanbekotori.keycraft.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.*;
 
-import com.KanbeKotori.KeyCraft.KeyCraft;
-import com.KanbeKotori.KeyCraft.Helper.*;
+import com.kanbekotori.keycraft.KeyCraft;
+import com.kanbekotori.keycraft.helper.*;
 
 public class GUIRewrite extends GuiScreen {
 	

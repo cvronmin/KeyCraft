@@ -10,9 +10,9 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Entities;
+package com.kanbekotori.keycraft.entities;
 
-import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.kanbekotori.keycraft.helper.RewriteHelper;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityBlaze;

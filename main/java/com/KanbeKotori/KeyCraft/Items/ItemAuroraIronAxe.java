@@ -10,7 +10,7 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Items;
+package com.kanbekotori.keycraft.items;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,7 +19,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.world.World;
 
-import com.KanbeKotori.KeyCraft.Helper.MaterialHelper;
+import com.kanbekotori.keycraft.helper.MaterialHelper;
 
 public class ItemAuroraIronAxe extends ItemAxe {
 	
