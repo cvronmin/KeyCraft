@@ -44,6 +44,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityDictionary.class, new RenderSnowball(ModItems.Dictionary));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());
 		RenderingRegistry.registerEntityRenderingHandler(EntityJavelin.class, new RenderJavelin());
+		RenderingRegistry.registerEntityRenderingHandler(EntityKagariCannon.class, new RenderKagariCannon());
 		RenderingRegistry.registerBlockHandler(new BlockTrapRenderer());
 	}
 	 

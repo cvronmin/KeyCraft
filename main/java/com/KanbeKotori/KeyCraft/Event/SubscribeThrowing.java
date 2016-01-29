@@ -12,6 +12,7 @@
  */
 package com.kanbekotori.keycraft.event;
 
+import com.kanbekotori.keycraft.entities.EntityThrowableWithoutGravity;
 import com.kanbekotori.keycraft.renderer.EntityFXJavelin;
 
 import net.minecraft.client.Minecraft;
@@ -27,7 +28,7 @@ public class SubscribeThrowing {
 	@SubscribeEvent
     public void Point_AuroraRob(EventThrowing event) {
 		EntityPlayer player = event.entityPlayer;
-		EntityThrowable entitythrowing = event.throwing;
+		EntityThrowableWithoutGravity entitythrowing = event.throwing;
 	    for(int i = 0; i < 10; i++)
 	    {
 	        Minecraft.getMinecraft().effectRenderer.addEffect(new EntityFXJavelin(entitythrowing.worldObj, entitythrowing.posX, entitythrowing.posY,entitythrowing.posZ,

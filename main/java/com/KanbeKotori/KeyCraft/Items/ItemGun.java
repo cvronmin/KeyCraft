@@ -23,14 +23,18 @@ public class ItemGun extends Item {
 	
 	@Override
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		/*if (!RewriteHelper.hasSkill(player, RewriteHelper.DeadlyDictionary.id)) {
+		if (!RewriteHelper.hasSkill(player, RewriteHelper.Shooting.id)) {
 			return stack;
-		}*/
+		}
 
         world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-        if (!world.isRemote) {
+        /*if (!world.isRemote) {
         	world.spawnEntityInWorld(new EntityBullet(world, player));
+        }*/
+        
+        if (!world.isRemote) {
+    	world.spawnEntityInWorld(new EntityKagariCannon(world, player));
         }
 
         return stack;

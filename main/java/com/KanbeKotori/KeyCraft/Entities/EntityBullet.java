@@ -7,13 +7,13 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class EntityBullet extends EntityThrowable {
+public class EntityBullet extends EntityThrowableWithoutGravity {
 
-	protected static final float SPEED = 10.0F;
+	protected static final float SPEED = 10F;
 	protected static final float DAMAGE = 1.0F;
 	
 	public EntityBullet(World world) {
-        super(world);
+        super(world, 0.1F, 0.1F);
     }
 	
 	public EntityBullet(World world, EntityLivingBase thrower) {

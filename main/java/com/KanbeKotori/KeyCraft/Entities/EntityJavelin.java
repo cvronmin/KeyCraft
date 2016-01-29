@@ -22,7 +22,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class EntityJavelin extends EntityThrowable {
+public class EntityJavelin extends EntityThrowableWithoutGravity {
 
 	/** 相对于弓箭的速度 */
 	protected static final float SPEED_NO_SKILL = 1.5F;
@@ -31,9 +31,8 @@ public class EntityJavelin extends EntityThrowable {
 	protected static final float DAMAGE_HAS_SKILL = 50.0F;
 
 	public EntityJavelin(World world) {
-		super(world);
+		super(world, 0.5F, 0.5F);
 		this.renderDistanceWeight = 10.0D;
-        this.setSize(0.5F, 0.5F);
 	}
 	
 	public EntityJavelin(World world, EntityLivingBase thrower, float speed) {

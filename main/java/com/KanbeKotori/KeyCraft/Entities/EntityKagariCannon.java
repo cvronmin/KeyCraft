@@ -1,38 +1,19 @@
-/**
- * Copyright (c) Nulla Development Group, 2014-2015
- * 本作品版权由Nulla开发组所有。
- * Developed by Kanbe-Kotori & xfgryujk.
- * 本作品由 Kanbe-Kotori & xfgryujk 合作开发。
- * This project is open-source, and it is distributed under
- * the terms of GNU General Public License. You can modify
- * and distribute freely as long as you follow the license.
- * 本项目是一个开源项目，且遵循GNU通用公共授权协议。
- * 在遵照该协议的情况下，您可以自由传播和修改。
- * http://www.gnu.org/licenses/gpl.html
- */
 package com.kanbekotori.keycraft.entities;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 
-import com.kanbekotori.keycraft.helper.RewriteHelper;
+public class EntityKagariCannon extends EntityThrowableWithoutGravity {
 
-public class EntityDictionary extends EntityThrowable {
-
-	protected static final float SPEED = 3.0F;
-	protected static final float DAMAGE = 50.0F;
+	protected static final float SPEED = 0.002F;
+	protected static final float DAMAGE = 100F;
 	
-	public EntityDictionary(World world) {
-        super(world);
-        this.setSize(2F, 2F);
+	public EntityKagariCannon(World world) {
+        super(world, 100F, 100F);
     }
 	
-	public EntityDictionary(World world, EntityLivingBase thrower) {
+	public EntityKagariCannon(World world, EntityLivingBase thrower) {
         super(world, thrower);
         
         // 重新设置位置和速度
