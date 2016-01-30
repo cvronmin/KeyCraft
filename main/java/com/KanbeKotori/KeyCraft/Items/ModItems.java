@@ -22,6 +22,7 @@ import net.minecraft.init.*;
 import net.minecraft.item.*;
 import net.minecraft.potion.*;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class ModItems {
 	
@@ -58,6 +59,7 @@ public class ModItems {
     public static Item DictionaryOfWorld;
     public static Item DictionaryOfNether;
     public static Item DictionaryOfEnd;
+    public static Item Violin;
     public static Item Gun;
     
     public static void InitItems() {
@@ -277,6 +279,13 @@ public class ModItems {
     	GameRegistry.addRecipe(new ItemStack(DictionaryOfEnd), new Object[] { "AAC", "BBA", "AA ", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.end_stone });
     	GameRegistry.addRecipe(new ItemStack(DictionaryOfEnd), new Object[] { "A", "B", 'A', Blocks.end_stone, 'B', Dictionary });
  
+    	Violin = (new ItemViolin())
+    			.setUnlocalizedName("Violin")
+    			.setTextureName("keycraft:Violin")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(Violin, "Violin");
+	    GameRegistry.addRecipe(new ShapedOreRecipe(Violin, new Object[] { " A ", "ABA", "ABA", 'A', "logWood", 'B', Items.string }));
+    	
     	Gun = (new ItemGun())
     			.setUnlocalizedName("Gun")
     			.setTextureName("keycraft:Gun")

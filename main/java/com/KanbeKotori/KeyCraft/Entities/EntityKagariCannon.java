@@ -6,11 +6,11 @@ import net.minecraft.world.World;
 
 public class EntityKagariCannon extends EntityThrowableWithoutGravity {
 
-	protected static final float SPEED = 0.002F;
+	protected static final float SPEED = 0.2F;
 	protected static final float DAMAGE = 100F;
 	
 	public EntityKagariCannon(World world) {
-        super(world, 100F, 100F);
+        super(world, 0.25F, 0.25F);
     }
 	
 	public EntityKagariCannon(World world, EntityLivingBase thrower) {

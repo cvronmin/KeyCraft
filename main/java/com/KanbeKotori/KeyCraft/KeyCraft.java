@@ -80,6 +80,7 @@ public class KeyCraft {
     	MinecraftForge.EVENT_BUS.register(new ItemAuroraTrident());
     	MinecraftForge.EVENT_BUS.register(new ItemShakingSword());
     	MinecraftForge.EVENT_BUS.register(new SubscribeThrowing());
+    	MinecraftForge.EVENT_BUS.register(new SubscribeUseViolin());
 
     	FMLCommonHandler.instance().bus().register(new SubscribeOnTick_Buff());
     	FMLCommonHandler.instance().bus().register(new SubscribeOnTick_Effect());

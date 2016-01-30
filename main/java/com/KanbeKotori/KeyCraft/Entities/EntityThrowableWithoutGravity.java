@@ -232,6 +232,8 @@ public abstract class EntityThrowableWithoutGravity  extends Entity implements I
         this.motionZ *= (double)f2;
         //this.motionY -= (double)f3;
         this.setPosition(this.posX, this.posY, this.posZ);
+        if (this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ <= 0.0064F)
+        	this.setDead();
     }
 
     /**

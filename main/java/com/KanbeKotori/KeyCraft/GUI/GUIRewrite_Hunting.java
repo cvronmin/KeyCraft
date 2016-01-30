@@ -50,8 +50,8 @@ public class GUIRewrite_Hunting extends GuiScreen {
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.TrapProficient.id))
 			buttonList.add(btnSkill112 = new GuiButton(RewriteHelper.BloodTrap.id, (int)(width * 0.2 - 16), (int)(height * 0.7), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
-			buttonList.add(btnSkill121 = new GuiButton(RewriteHelper.skill121.id, (int)(width * 0.4 - 16), (int)(height * 0.4), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.skill121.id))
+			buttonList.add(btnSkill121 = new GuiButton(RewriteHelper.ViolinAttack.id, (int)(width * 0.4 - 16), (int)(height * 0.4), 32, 32, ""));
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.ViolinAttack.id))
 			buttonList.add(btnSkill122 = new GuiButton(RewriteHelper.Shooting.id, (int)(width * 0.4 - 16), (int)(height * 0.55), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.Shooting.id))
 			buttonList.add(btnSkill123 = new GuiButton(RewriteHelper.skill123.id, (int)(width * 0.4 - 16), (int)(height * 0.7), 32, 32, ""));
@@ -163,8 +163,8 @@ public class GUIRewrite_Hunting extends GuiScreen {
 			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.BloodTrap.id));
 		   }
 	   } else if (button == btnSkill121) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.skill121.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.skill121.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.ViolinAttack.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.ViolinAttack.id));
 		   }
 	   } else if (button == btnSkill122) {
 		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.Shooting.id)) {

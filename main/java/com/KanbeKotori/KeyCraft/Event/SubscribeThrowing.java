@@ -12,8 +12,8 @@
  */
 package com.kanbekotori.keycraft.event;
 
+import com.kanbekotori.keycraft.entities.EntityFXJavelin;
 import com.kanbekotori.keycraft.entities.EntityThrowableWithoutGravity;
-import com.kanbekotori.keycraft.renderer.EntityFXJavelin;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -26,11 +26,10 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public class SubscribeThrowing {
 	
 	@SubscribeEvent
-    public void Point_AuroraRob(EventThrowing event) {
+    public void onThrowing(EventThrowing event) {
 		EntityPlayer player = event.entityPlayer;
 		EntityThrowableWithoutGravity entitythrowing = event.throwing;
-	    for(int i = 0; i < 10; i++)
-	    {
+	    for(int i = 0; i < 8; i++) {
 	        Minecraft.getMinecraft().effectRenderer.addEffect(new EntityFXJavelin(entitythrowing.worldObj, entitythrowing.posX, entitythrowing.posY,entitythrowing.posZ,
 	        		Vec3.createVectorHelper(entitythrowing.motionX,
 	        				entitythrowing.motionY, 
