@@ -1,13 +1,13 @@
 /**
  * Copyright (c) Nulla Development Group, 2014-2015
- * 本作品版权由Nulla�?发组�?有�??
+ * 本作品版权由Nulla开发组所有。
  * Developed by Kanbe-Kotori & xfgryujk.
- * 本作品由 Kanbe-Kotori & xfgryujk 合作�?发�??
+ * 本作品由 Kanbe-Kotori & xfgryujk 合作开发。
  * This project is open-source, and it is distributed under
  * the terms of GNU General Public License. You can modify
  * and distribute freely as long as you follow the license.
- * 本项目是�?个开源项目，且遵循GNU通用公共授权协议�?
- * 在遵照该协议的情况下，您可以自由传播和修改�??
+ * 本项目是一个开源项目，且遵循GNU通用公共授权协议。
+ * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
 package com.kanbekotori.keycraft.entities;
@@ -35,13 +35,14 @@ public class EntityFXJavelin extends EntityFX {
 		direction.rotateAroundX((rand.nextFloat() - 0.5f) * PI6);
 		direction.rotateAroundZ((rand.nextFloat() - 0.5f) * PI6);
 		setVelocity(direction.xCoord * speed, direction.yCoord * speed, direction.zCoord * speed);
-		this.particleMaxAge = (int)(50f / (this.rand.nextFloat() * 0.75f + 0.25f));
 		this.particleGravity = 0.0f;
 		//this.particleRed = 1.0f;
 		//this.particleGreen = 0.0f;
 		//this.particleBlue = 0.0f;
 		this.particleAlpha = 1.0f;
 		this.particleScale = 1.0f;
+		this.particleMaxAge = (int)(50f / (this.rand.nextFloat() * 0.75f + 0.25f));
+		this.noClip = true;
 	}
 
 	@Override
