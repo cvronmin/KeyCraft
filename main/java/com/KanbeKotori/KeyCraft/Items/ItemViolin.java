@@ -37,5 +37,10 @@ public class ItemViolin extends Item {
 		
 		return stack;
 	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List information, boolean p_77624_4_) {
+		information.add(StatCollector.translateToLocal("keycraft.item.intro_violin"));
+	}
 
 }

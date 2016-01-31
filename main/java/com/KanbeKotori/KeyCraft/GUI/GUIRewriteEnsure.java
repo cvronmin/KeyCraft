@@ -94,6 +94,11 @@ public class GUIRewriteEnsure extends GuiScreen {
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title122"), width/2, (int)(height*0.3), 0xFFFFFF);
         	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro122"), width/2, (int)(height*0.45), 0xFFFFFF);
+    	} else if (skillNum == RewriteHelper.Cream_KagariCannon.id) {	// Skill123-奶油☆篝酱的大炮
+        	mc.renderEngine.bindTexture(ResourceHelper.icon123);
+        	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.title123"), width/2, (int)(height*0.3), 0xFFFFFF);
+        	drawCenteredString(fontRendererObj, StatCollector.translateToLocal("keycraft.gui.ensure.intro123"), width/2, (int)(height*0.45), 0xFFFFFF);
     	} else if (skillNum == RewriteHelper.MissileProficient.id) {	// Skill131-投掷物精通
         	mc.renderEngine.bindTexture(ResourceHelper.icon131);
         	func_146110_a((int)(width * 0.7 - 32), (int)(height * 0.1), 0, 0, 64, 64, 64, 64);

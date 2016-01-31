@@ -15,16 +15,17 @@ public class EntityFXViolin extends EntityFX {
 
 	public EntityFXViolin(World world, double posX, double posY, double posZ) {
 		super(world, posX, posY, posZ);
-		double speed = 0.1D;
+		double speed = 0.2D;
 		double direction = 2 * Math.PI * rand.nextFloat();
 		setVelocity(Math.sin(direction) * speed, 0, Math.cos(direction) * speed);
-		this.particleMaxAge = 40;
+		this.particleMaxAge = 75;
 		this.particleGravity = 0.0f;
 		this.particleRed = rand.nextFloat();
 		this.particleGreen = rand.nextFloat();
 		this.particleBlue = rand.nextFloat();
 		this.particleAlpha = 1.0f;
 		this.particleScale = 2.0f;
+		this.noClip = true;
 	}
 
 	@Override

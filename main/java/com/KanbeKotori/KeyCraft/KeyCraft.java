@@ -35,7 +35,7 @@ public class KeyCraft {
 	
 	public static final String MODID = "keycraft";
 	public static final String MODNAME = "KeyCraft";
-    public static final String VERSION = "Demo-3.4.3-pre3";
+    public static final String VERSION = "Pre-1.0";
     
     @SidedProxy(clientSide = "com.kanbekotori.keycraft.ClientProxy",
             	serverSide = "com.kanbekotori.keycraft.CommonProxy")

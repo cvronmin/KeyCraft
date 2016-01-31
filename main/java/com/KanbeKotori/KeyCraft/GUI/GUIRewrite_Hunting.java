@@ -54,7 +54,7 @@ public class GUIRewrite_Hunting extends GuiScreen {
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.ViolinAttack.id))
 			buttonList.add(btnSkill122 = new GuiButton(RewriteHelper.Shooting.id, (int)(width * 0.4 - 16), (int)(height * 0.55), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.Shooting.id))
-			buttonList.add(btnSkill123 = new GuiButton(RewriteHelper.skill123.id, (int)(width * 0.4 - 16), (int)(height * 0.7), 32, 32, ""));
+			buttonList.add(btnSkill123 = new GuiButton(RewriteHelper.Cream_KagariCannon.id, (int)(width * 0.4 - 16), (int)(height * 0.7), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
 			buttonList.add(btnSkill131 = new GuiButton(RewriteHelper.MissileProficient.id, (int)(width * 0.6 - 16), (int)(height * 0.4), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.MissileProficient.id))
@@ -111,11 +111,11 @@ public class GUIRewrite_Hunting extends GuiScreen {
    			mc.renderEngine.bindTexture(ResourceHelper.icon121);
    			func_146110_a((int)(width * 0.4 - 16), (int)(height * 0.4), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.FireAttach.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.ViolinAttack.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon122);
    			func_146110_a((int)(width * 0.4 - 16), (int)(height * 0.55), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.PoisonAttach.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.Shooting.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon123);
    			func_146110_a((int)(width * 0.4 - 16), (int)(height * 0.7), 0, 0, 32, 32, 32, 32);
    		}
@@ -171,8 +171,8 @@ public class GUIRewrite_Hunting extends GuiScreen {
 			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.Shooting.id));
 		   }
 	   } else if (button == btnSkill123) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.skill123.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.skill123.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.Cream_KagariCannon.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.Cream_KagariCannon.id));
 		   }
 	   } else if (button == btnSkill131) {
 		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.MissileProficient.id)) {

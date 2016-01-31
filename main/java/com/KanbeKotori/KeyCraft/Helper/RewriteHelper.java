@@ -44,8 +44,8 @@ public class RewriteHelper {
 	public static final Skill TrapProficient		= new Skill(111, 10);
 	public static final Skill BloodTrap				= new Skill(112, 20);
 	public static final Skill ViolinAttack			= new Skill(121, 10);
-	public static final Skill Shooting				= new Skill(122, 10);
-	public static final Skill skill123				= new Skill(123, 10);
+	public static final Skill Shooting				= new Skill(122, 20);
+	public static final Skill Cream_KagariCannon	= new Skill(123, 20);
 	public static final Skill MissileProficient		= new Skill(131, 10);
 	public static final Skill JavelinOfLouis		= new Skill(132, 10);
 	public static final Skill DeadlyDictionary		= new Skill(133, 20);
@@ -79,7 +79,7 @@ public class RewriteHelper {
 	
 	public static final Skill SKILLS[] = { AuroraCognition,
 		HuntingRhythm, 			TrapProficient, 	BloodTrap,
-		ViolinAttack,			Shooting,			/*123,*/
+		ViolinAttack,			Shooting,			Cream_KagariCannon,
 		MissileProficient, 		JavelinOfLouis,		DeadlyDictionary,
 		OtherWorldPerception,	Nightvision,		EnergyPointUsage,
 		UrgentProtect, 			BattleReadiness, 	PhysiqueUp,
@@ -213,6 +213,18 @@ public class RewriteHelper {
     				modifyAuroraPoint(player, -1);
     				if (!player.worldObj.isRemote) {
     					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.shakingsword")));
+    				}
+    			}
+    		}
+    		if (held.getItem() == Items.string) {	// 实现玩家Skill123-『奶油☆篝酱的大炮』的效果。
+    			int num = held.stackSize;
+    			if (hasSkill(player, AuroraControl.id)
+    				&& getAuroraPoint(player) > num
+    				) {
+    				player.setCurrentItemOrArmor(0, new ItemStack(ModItems.MiracleRibbon, num));
+    				modifyAuroraPoint(player, -num);
+    				if (!player.worldObj.isRemote) {
+    					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.aurorainjection")));
     				}
     			}
     		}

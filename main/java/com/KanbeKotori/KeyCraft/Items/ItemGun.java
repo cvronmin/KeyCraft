@@ -16,6 +16,7 @@ import com.kanbekotori.keycraft.entities.*;
 import com.kanbekotori.keycraft.helper.RewriteHelper;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.world.World;
 
@@ -27,15 +28,24 @@ public class ItemGun extends Item {
 			return stack;
 		}
 
+		if (player.inventory.hasItem(ModItems.MiracleRibbon) && RewriteHelper.hasSkill(player, RewriteHelper.Cream_KagariCannon.id)) {
+			if (!player.capabilities.isCreativeMode)
+				player.inventory.consumeInventoryItem(ModItems.MiracleRibbon);
+			
+	        world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+
+			if (!world.isRemote) {
+		    	world.spawnEntityInWorld(new EntityKagariCannon(world, player));
+		    }
+			
+	        return stack;
+		}
+		
         world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
         if (!world.isRemote) {
         	world.spawnEntityInWorld(new EntityBullet(world, player));
         }
-        
-        /*if (!world.isRemote) {
-    	world.spawnEntityInWorld(new EntityKagariCannon(world, player));
-        }*/
 
         return stack;
     }

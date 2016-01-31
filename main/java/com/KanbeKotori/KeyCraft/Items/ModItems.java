@@ -61,6 +61,7 @@ public class ModItems {
     public static Item DictionaryOfEnd;
     public static Item Violin;
     public static Item Gun;
+    public static Item MiracleRibbon;
     
     public static void InitItems() {
     	// 注册技能生成的物品
@@ -294,6 +295,12 @@ public class ModItems {
     	GameRegistry.addRecipe(new ItemStack(Gun), new Object[] { "AAA", " BA", "  A", 'A', Items.iron_ingot, 'B', Blocks.wooden_button });
     	GameRegistry.addRecipe(new ItemStack(Gun), new Object[] { "AAA", "AB ", "A  ", 'A', Items.iron_ingot, 'B', Blocks.wooden_button });
 
+    	MiracleRibbon = (new Item())
+    			.setUnlocalizedName("MiracleRibbon")
+    			.setTextureName("keycraft:MiracleRibbon")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(MiracleRibbon, "MiracleRibbon");
+    	
     }
 
 }
