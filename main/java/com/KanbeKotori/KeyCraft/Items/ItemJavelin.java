@@ -10,12 +10,13 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Items;
+package com.kanbekotori.keycraft.items;
 
-import com.KanbeKotori.KeyCraft.KeyCraft;
-import com.KanbeKotori.KeyCraft.Entities.EntityBaseball;
-import com.KanbeKotori.KeyCraft.Entities.EntityJavelin;
-import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.kanbekotori.keycraft.KeyCraft;
+import com.kanbekotori.keycraft.entities.EntityBaseball;
+import com.kanbekotori.keycraft.entities.EntityJavelin;
+import com.kanbekotori.keycraft.event.EventThrowing;
+import com.kanbekotori.keycraft.helper.RewriteHelper;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -44,7 +45,10 @@ public class ItemJavelin extends ItemBow {
         speed *= 3.0F;
 		
 		if (!world.isRemote) {
-			world.spawnEntityInWorld(new EntityJavelin(world, player, speed));
+			EntityJavelin entityJavelin = new EntityJavelin(world, player, speed);
+			world.spawnEntityInWorld(entityJavelin);
+			EventThrowing event = new EventThrowing(player, entityJavelin);
+			MinecraftForge.EVENT_BUS.post(event);
 		}
 		if (!player.capabilities.isCreativeMode) {
             stack.stackSize--;
@@ -53,8 +57,7 @@ public class ItemJavelin extends ItemBow {
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
-    {
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
         if (RewriteHelper.hasSkill(player, RewriteHelper.MissileProficient.id)) {
             player.setItemInUse(stack, this.getMaxItemUseDuration(stack));
         }

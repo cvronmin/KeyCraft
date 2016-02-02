@@ -10,11 +10,11 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Event;
+package com.kanbekotori.keycraft.event;
 
-import com.KanbeKotori.KeyCraft.Helper.*;
-import com.KanbeKotori.KeyCraft.Helper.RewriteHelper.Skill;
-import com.KanbeKotori.KeyCraft.Network.RewriteNetwork;
+import com.kanbekotori.keycraft.helper.*;
+import com.kanbekotori.keycraft.helper.RewriteHelper.Skill;
+import com.kanbekotori.keycraft.network.RewriteNetwork;
 
 import net.minecraft.entity.player.*;
 import net.minecraft.potion.Potion;
@@ -46,13 +46,25 @@ public class SubscribeCheating {
                 RewriteNetwork.rewriteChannel.sendTo(RewriteNetwork.createSyncSkillPacket(player), player);
                 player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.cheat2")));
             }
-        } else if(event.message.toLowerCase().equals("kagari")) {
+        } else if(event.message.toLowerCase().equals("sakuya")) {
         	event.setCanceled(true);
             EntityPlayerMP player = event.player;
             if (!player.worldObj.isRemote) {
     			player.addPotionEffect(new PotionEffect(Potion.field_76434_w.id, 0x7FFFFFFF, 94));
 				player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 0x7FFFFFFF, 9));
                 player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.cheat3")));
+            }
+        } else if(event.message.toLowerCase().equals("kagari")) {
+        	event.setCanceled(true);
+            EntityPlayerMP player = event.player;
+            if (!player.worldObj.isRemote) {
+                RewriteHelper.setAuroraPoint(player, 100);
+                for (Skill i : RewriteHelper.SKILLS) {
+        			final String name = "Skill" + String.format("%03d", i.id);
+        			player.getEntityData().setBoolean(name, true);
+        		}
+                RewriteNetwork.rewriteChannel.sendTo(RewriteNetwork.createSyncSkillPacket(player), player);
+                player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.cheat4")));
             }
         }
     }

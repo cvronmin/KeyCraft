@@ -10,9 +10,9 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Entities;
+package com.kanbekotori.keycraft.entities;
 
-import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.kanbekotori.keycraft.helper.RewriteHelper;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -21,7 +21,7 @@ import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
-public class EntityBaseball extends EntityThrowable {
+public class EntityBaseball extends EntityThrowableWithoutGravity {
 
 	protected static final float SPEED_NO_SKILL = 3.0F;
 	protected static final float SPEED_HAS_SKILL = 10.0F;
@@ -29,7 +29,7 @@ public class EntityBaseball extends EntityThrowable {
 	protected static final float DAMAGE_HAS_SKILL = 10.0F;
 	
 	public EntityBaseball(World world) {
-        super(world);
+        super(world, 0.25f, 0.25F);
     }
 	
 	public EntityBaseball(World world, EntityLivingBase thrower) {

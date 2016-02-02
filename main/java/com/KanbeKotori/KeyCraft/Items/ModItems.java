@@ -10,10 +10,10 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Items;
+package com.kanbekotori.keycraft.items;
 
-import com.KanbeKotori.KeyCraft.*;
-import com.KanbeKotori.KeyCraft.Helper.*;
+import com.kanbekotori.keycraft.*;
+import com.kanbekotori.keycraft.helper.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.enchantment.Enchantment;
@@ -22,6 +22,7 @@ import net.minecraft.init.*;
 import net.minecraft.item.*;
 import net.minecraft.potion.*;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class ModItems {
 	
@@ -54,6 +55,13 @@ public class ModItems {
     public static Item Baseball;
     public static Item WirePole;
     public static Item Javelin;
+    public static Item Dictionary;
+    public static Item DictionaryOfWorld;
+    public static Item DictionaryOfNether;
+    public static Item DictionaryOfEnd;
+    public static Item Violin;
+    public static Item Gun;
+    public static Item MiracleRibbon;
     
     public static void InitItems() {
     	// 注册技能生成的物品
@@ -236,6 +244,63 @@ public class ModItems {
     			.setCreativeTab(KeyCraft.CreativeTab);
     	GameRegistry.registerItem(Javelin, "Javelin");
     	GameRegistry.addRecipe(new ItemStack(Javelin), new Object[] { "A  ", " A ", "  A", 'A', Items.iron_ingot });
+    	
+    	Dictionary = (new ItemDictionary())
+    			.setUnlocalizedName("Dictionary")
+    			.setTextureName("keycraft:Dictionary")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(Dictionary, "Dictionary");
+    	GameRegistry.addRecipe(new ItemStack(Dictionary), new Object[] { " AA", "ABB", " AA", 'A', Items.leather, 'B', Items.paper });
+    	GameRegistry.addRecipe(new ItemStack(Dictionary), new Object[] { "AA ", "BBA", "AA ", 'A', Items.leather, 'B', Items.paper });
+    	
+    	DictionaryOfWorld = (new ItemDictionaryOfWorld())
+    			.setUnlocalizedName("DictionaryOfWorld")
+    			.setTextureName("keycraft:Dictionary")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(DictionaryOfWorld, "DictionaryOfWorld");
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfWorld), new Object[] { "CAA", "ABB", " AA", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.grass });
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfWorld), new Object[] { "AAC", "BBA", "AA ", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.grass });
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfWorld), new Object[] { "A", "B", 'A', Blocks.grass, 'B', Dictionary });
+    	
+    	DictionaryOfNether = (new ItemDictionaryOfNether())
+    			.setUnlocalizedName("DictionaryOfNether")
+    			.setTextureName("keycraft:Dictionary")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(DictionaryOfNether, "DictionaryOfNether");
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfNether), new Object[] { "CAA", "ABB", " AA", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.netherrack });
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfNether), new Object[] { "AAC", "BBA", "AA ", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.netherrack });
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfNether), new Object[] { "A", "B", 'A', Blocks.netherrack, 'B', Dictionary });
+    	
+    	DictionaryOfEnd = (new ItemDictionaryOfEnd())
+    			.setUnlocalizedName("DictionaryOfEnd")
+    			.setTextureName("keycraft:Dictionary")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(DictionaryOfEnd, "DictionaryOfEnd");
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfEnd), new Object[] { "CAA", "ABB", " AA", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.end_stone });
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfEnd), new Object[] { "AAC", "BBA", "AA ", 'A', Items.leather, 'B', Items.paper, 'C', Blocks.end_stone });
+    	GameRegistry.addRecipe(new ItemStack(DictionaryOfEnd), new Object[] { "A", "B", 'A', Blocks.end_stone, 'B', Dictionary });
+ 
+    	Violin = (new ItemViolin())
+    			.setUnlocalizedName("Violin")
+    			.setTextureName("keycraft:Violin")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(Violin, "Violin");
+	    GameRegistry.addRecipe(new ShapedOreRecipe(Violin, new Object[] { " A ", "ABA", "ABA", 'A', "logWood", 'B', Items.string }));
+    	
+    	Gun = (new ItemGun())
+    			.setUnlocalizedName("Gun")
+    			.setTextureName("keycraft:Gun")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(Gun, "Gun");
+    	GameRegistry.addRecipe(new ItemStack(Gun), new Object[] { "AAA", " BA", "  A", 'A', Items.iron_ingot, 'B', Blocks.wooden_button });
+    	GameRegistry.addRecipe(new ItemStack(Gun), new Object[] { "AAA", "AB ", "A  ", 'A', Items.iron_ingot, 'B', Blocks.wooden_button });
+
+    	MiracleRibbon = (new Item())
+    			.setUnlocalizedName("MiracleRibbon")
+    			.setTextureName("keycraft:MiracleRibbon")
+    			.setCreativeTab(KeyCraft.CreativeTab);
+    	GameRegistry.registerItem(MiracleRibbon, "MiracleRibbon");
+    	
     }
 
 }

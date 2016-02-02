@@ -10,12 +10,12 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Network;
+package com.kanbekotori.keycraft.network;
 
 import java.io.IOException;
 
-import com.KanbeKotori.KeyCraft.Helper.*;
-import com.KanbeKotori.KeyCraft.Items.ModItems;
+import com.kanbekotori.keycraft.helper.*;
+import com.kanbekotori.keycraft.items.ModItems;
 
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
@@ -27,7 +27,6 @@ import cpw.mods.fml.common.network.FMLNetworkEvent.*;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.internal.FMLProxyPacket;
 import io.netty.buffer.*;
-import io.netty.buffer.Unpooled;
 import net.minecraft.entity.player.*;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

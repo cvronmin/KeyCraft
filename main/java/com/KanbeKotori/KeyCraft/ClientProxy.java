@@ -10,17 +10,15 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft;
+package com.kanbekotori.keycraft;
 
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraftforge.common.MinecraftForge;
 
-import com.KanbeKotori.KeyCraft.Entities.EntityBaseball;
-import com.KanbeKotori.KeyCraft.Entities.EntityJavelin;
-import com.KanbeKotori.KeyCraft.Event.*;
-import com.KanbeKotori.KeyCraft.Items.ModItems;
-import com.KanbeKotori.KeyCraft.Renderer.BlockTrapRenderer;
-import com.KanbeKotori.KeyCraft.Renderer.RenderJavelin;
+import com.kanbekotori.keycraft.entities.*;
+import com.kanbekotori.keycraft.event.*;
+import com.kanbekotori.keycraft.items.ModItems;
+import com.kanbekotori.keycraft.renderer.*;
 
 import cpw.mods.fml.client.registry.*;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -43,7 +41,10 @@ public class ClientProxy extends CommonProxy {
 		
 		// 注册渲染器
 		RenderingRegistry.registerEntityRenderingHandler(EntityBaseball.class, new RenderSnowball(ModItems.Baseball));
+		RenderingRegistry.registerEntityRenderingHandler(EntityDictionary.class, new RenderSnowball(ModItems.Dictionary));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());
 		RenderingRegistry.registerEntityRenderingHandler(EntityJavelin.class, new RenderJavelin());
+		RenderingRegistry.registerEntityRenderingHandler(EntityKagariCannon.class, new RenderKagariCannon());
 		RenderingRegistry.registerBlockHandler(new BlockTrapRenderer());
 	}
 	 

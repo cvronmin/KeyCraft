@@ -1,8 +1,8 @@
-package com.KanbeKotori.KeyCraft.Items;
+package com.kanbekotori.keycraft.items;
 
 import java.util.*;
 
-import com.KanbeKotori.KeyCraft.Helper.*;
+import com.kanbekotori.keycraft.helper.*;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;

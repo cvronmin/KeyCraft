@@ -10,9 +10,9 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Entities;
+package com.kanbekotori.keycraft.entities;
 
-import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.kanbekotori.keycraft.helper.RewriteHelper;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,18 +22,17 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class EntityJavelin extends EntityThrowable {
+public class EntityJavelin extends EntityThrowableWithoutGravity {
 
 	/** 相对于弓箭的速度 */
 	protected static final float SPEED_NO_SKILL = 1.5F;
 	protected static final float SPEED_HAS_SKILL = 2.0F;
-	protected static final float DAMAGE_NO_SKILL = 10.0F;
-	protected static final float DAMAGE_HAS_SKILL = 20.0F;
+	protected static final float DAMAGE_NO_SKILL = 25.0F;
+	protected static final float DAMAGE_HAS_SKILL = 50.0F;
 
 	public EntityJavelin(World world) {
-		super(world);
+		super(world, 0.5F, 0.5F);
 		this.renderDistanceWeight = 10.0D;
-        this.setSize(0.5F, 0.5F);
 	}
 	
 	public EntityJavelin(World world, EntityLivingBase thrower, float speed) {

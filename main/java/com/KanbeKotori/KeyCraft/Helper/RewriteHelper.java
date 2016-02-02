@@ -10,7 +10,7 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Helper;
+package com.kanbekotori.keycraft.helper;
 
 import java.util.*;
 
@@ -24,9 +24,9 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.ServerConfigurationManager;
 import net.minecraft.util.*;
 
-import com.KanbeKotori.KeyCraft.Helper.*;
-import com.KanbeKotori.KeyCraft.Items.ModItems;
-import com.KanbeKotori.KeyCraft.Network.RewriteNetwork;
+import com.kanbekotori.keycraft.helper.*;
+import com.kanbekotori.keycraft.items.ModItems;
+import com.kanbekotori.keycraft.network.RewriteNetwork;
 
 public class RewriteHelper {
 	
@@ -43,8 +43,12 @@ public class RewriteHelper {
 	public static final Skill HuntingRhythm			= new Skill(100, 5);
 	public static final Skill TrapProficient		= new Skill(111, 10);
 	public static final Skill BloodTrap				= new Skill(112, 20);
+	public static final Skill ViolinAttack			= new Skill(121, 10);
+	public static final Skill Shooting				= new Skill(122, 20);
+	public static final Skill Cream_KagariCannon	= new Skill(123, 20);
 	public static final Skill MissileProficient		= new Skill(131, 10);
 	public static final Skill JavelinOfLouis		= new Skill(132, 10);
+	public static final Skill DeadlyDictionary		= new Skill(133, 20);
 	public static final Skill OtherWorldPerception	= new Skill(141, 15);
 	public static final Skill Nightvision			= new Skill(142, 15);
 	public static final Skill EnergyPointUsage		= new Skill(143, 20);
@@ -75,7 +79,8 @@ public class RewriteHelper {
 	
 	public static final Skill SKILLS[] = { AuroraCognition,
 		HuntingRhythm, 			TrapProficient, 	BloodTrap,
-		MissileProficient, 		JavelinOfLouis,
+		ViolinAttack,			Shooting,			Cream_KagariCannon,
+		MissileProficient, 		JavelinOfLouis,		DeadlyDictionary,
 		OtherWorldPerception,	Nightvision,		EnergyPointUsage,
 		UrgentProtect, 			BattleReadiness, 	PhysiqueUp,
 		FireAttach, 			PoisonAttach, 		WitherAttach,
@@ -208,6 +213,18 @@ public class RewriteHelper {
     				modifyAuroraPoint(player, -1);
     				if (!player.worldObj.isRemote) {
     					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.shakingsword")));
+    				}
+    			}
+    		}
+    		if (held.getItem() == Items.string) {	// 实现玩家Skill123-『奶油☆篝酱的大炮』的效果。
+    			int num = held.stackSize;
+    			if (hasSkill(player, AuroraControl.id)
+    				&& getAuroraPoint(player) > num
+    				) {
+    				player.setCurrentItemOrArmor(0, new ItemStack(ModItems.MiracleRibbon, num));
+    				modifyAuroraPoint(player, -num);
+    				if (!player.worldObj.isRemote) {
+    					player.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("keycraft.prompt.aurorainjection")));
     				}
     			}
     		}

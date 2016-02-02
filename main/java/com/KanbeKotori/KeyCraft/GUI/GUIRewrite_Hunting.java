@@ -10,12 +10,13 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.GUI;
+package com.kanbekotori.keycraft.gui;
 
 import net.minecraft.client.gui.*;
 import net.minecraft.entity.player.EntityPlayer;
-import com.KanbeKotori.KeyCraft.KeyCraft;
-import com.KanbeKotori.KeyCraft.Helper.*;
+
+import com.kanbekotori.keycraft.KeyCraft;
+import com.kanbekotori.keycraft.helper.*;
 
 public class GUIRewrite_Hunting extends GuiScreen {
 	
@@ -24,12 +25,12 @@ public class GUIRewrite_Hunting extends GuiScreen {
 	private GuiButton btnSkill100; // 狩猎律动
 	private GuiButton btnSkill111; // 陷阱精通
 	private GuiButton btnSkill112; // 血之陷阱
-	private GuiButton btnSkill121; // 枪械精通
-	private GuiButton btnSkill122; // 快速射击
-	private GuiButton btnSkill123; // 子弹风暴
+	private GuiButton btnSkill121; // 音波攻击
+	private GuiButton btnSkill122; // 高速射击
+	private GuiButton btnSkill123; // 奶油☆篝酱的大炮
 	private GuiButton btnSkill131; // 投掷物精通
 	private GuiButton btnSkill132; // 路易斯之枪
-	private GuiButton btnSkill133; // 杀人字典
+	private GuiButton btnSkill133; // 致命字典
 	private GuiButton btnSkill141; // 异次元感知
 	private GuiButton btnSkill142; // 夜视
 	private GuiButton btnSkill143; // 能量点利用
@@ -49,17 +50,17 @@ public class GUIRewrite_Hunting extends GuiScreen {
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.TrapProficient.id))
 			buttonList.add(btnSkill112 = new GuiButton(RewriteHelper.BloodTrap.id, (int)(width * 0.2 - 16), (int)(height * 0.7), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
-			buttonList.add(btnSkill121 = new GuiButton(RewriteHelper.FireAttach.id, (int)(width * 0.4 - 16), (int)(height * 0.4), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.FireAttach.id))
-			buttonList.add(btnSkill122 = new GuiButton(RewriteHelper.PoisonAttach.id, (int)(width * 0.4 - 16), (int)(height * 0.55), 32, 32, ""));
-		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.PoisonAttach.id))
-			buttonList.add(btnSkill123 = new GuiButton(RewriteHelper.WitherAttach.id, (int)(width * 0.4 - 16), (int)(height * 0.7), 32, 32, ""));
+			buttonList.add(btnSkill121 = new GuiButton(RewriteHelper.ViolinAttack.id, (int)(width * 0.4 - 16), (int)(height * 0.4), 32, 32, ""));
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.ViolinAttack.id))
+			buttonList.add(btnSkill122 = new GuiButton(RewriteHelper.Shooting.id, (int)(width * 0.4 - 16), (int)(height * 0.55), 32, 32, ""));
+		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.Shooting.id))
+			buttonList.add(btnSkill123 = new GuiButton(RewriteHelper.Cream_KagariCannon.id, (int)(width * 0.4 - 16), (int)(height * 0.7), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
 			buttonList.add(btnSkill131 = new GuiButton(RewriteHelper.MissileProficient.id, (int)(width * 0.6 - 16), (int)(height * 0.4), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.MissileProficient.id))
 			buttonList.add(btnSkill132 = new GuiButton(RewriteHelper.JavelinOfLouis.id, (int)(width * 0.6 - 16), (int)(height * 0.55), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.JavelinOfLouis.id))
-			buttonList.add(btnSkill133 = new GuiButton(RewriteHelper.ParryProficient.id, (int)(width * 0.6 - 16), (int)(height * 0.7), 32, 32, ""));
+			buttonList.add(btnSkill133 = new GuiButton(RewriteHelper.DeadlyDictionary.id, (int)(width * 0.6 - 16), (int)(height * 0.7), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.HuntingRhythm.id))
 			buttonList.add(btnSkill141 = new GuiButton(RewriteHelper.OtherWorldPerception.id, (int)(width * 0.8 - 16), (int)(height * 0.4), 32, 32, ""));
 		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.OtherWorldPerception.id))
@@ -110,11 +111,11 @@ public class GUIRewrite_Hunting extends GuiScreen {
    			mc.renderEngine.bindTexture(ResourceHelper.icon121);
    			func_146110_a((int)(width * 0.4 - 16), (int)(height * 0.4), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.FireAttach.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.ViolinAttack.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon122);
    			func_146110_a((int)(width * 0.4 - 16), (int)(height * 0.55), 0, 0, 32, 32, 32, 32);
    		}
-   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.PoisonAttach.id)) {
+   		if (RewriteHelper.hasSkill(playerCl, RewriteHelper.Shooting.id)) {
    			mc.renderEngine.bindTexture(ResourceHelper.icon123);
    			func_146110_a((int)(width * 0.4 - 16), (int)(height * 0.7), 0, 0, 32, 32, 32, 32);
    		}
@@ -162,16 +163,16 @@ public class GUIRewrite_Hunting extends GuiScreen {
 			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.BloodTrap.id));
 		   }
 	   } else if (button == btnSkill121) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.FireAttach.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.FireAttach.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.ViolinAttack.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.ViolinAttack.id));
 		   }
 	   } else if (button == btnSkill122) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.PoisonAttach.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.PoisonAttach.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.Shooting.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.Shooting.id));
 		   }
 	   } else if (button == btnSkill123) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.WitherAttach.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.WitherAttach.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.Cream_KagariCannon.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.Cream_KagariCannon.id));
 		   }
 	   } else if (button == btnSkill131) {
 		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.MissileProficient.id)) {
@@ -182,8 +183,8 @@ public class GUIRewrite_Hunting extends GuiScreen {
 			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.JavelinOfLouis.id));
 		   }
 	   } else if (button == btnSkill133) {
-		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.ParryProficient.id)) {
-			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.ParryProficient.id));
+		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.DeadlyDictionary.id)) {
+			   mc.displayGuiScreen(new GUIRewriteEnsure(getThisScreen(), RewriteHelper.DeadlyDictionary.id));
 		   }
 	   } else if (button == btnSkill141) {
 		   if (!RewriteHelper.hasSkill(playerCl, RewriteHelper.OtherWorldPerception.id)) {

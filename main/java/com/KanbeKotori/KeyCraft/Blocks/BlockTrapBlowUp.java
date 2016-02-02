@@ -10,7 +10,7 @@
  * 在遵照该协议的情况下，您可以自由传播和修改。
  * http://www.gnu.org/licenses/gpl.html
  */
-package com.KanbeKotori.KeyCraft.Blocks;
+package com.kanbekotori.keycraft.blocks;
 
 import java.util.Iterator;
 import java.util.List;
@@ -27,7 +27,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
-import com.KanbeKotori.KeyCraft.Helper.RewriteHelper;
+import com.kanbekotori.keycraft.helper.RewriteHelper;
 
 public class BlockTrapBlowUp extends BlockTraps {
 
